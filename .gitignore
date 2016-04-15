@@ -169,5 +169,5 @@ fabric.properties
 
 
 # custom
-.idea/*
-bundle_bin/*
+.idea
+bundle_bin
