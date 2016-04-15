@@ -170,3 +170,4 @@ fabric.properties
 
 # custom
 .idea/*
+bundle_bin/*
