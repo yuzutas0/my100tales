@@ -5,7 +5,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -38,7 +39,7 @@ Temporary Items
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
-/tmp/
+#/tmp/
 
 ## Specific to RubyMotion:
 .dat*
@@ -82,8 +83,8 @@ build-iPhoneSimulator/
 *.rbc
 capybara-*.html
 .rspec
-/log
-/tmp
+#/log
+#/tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -171,3 +172,7 @@ fabric.properties
 # custom
 .idea
 bundle_bin
+log/*
+!log/.keep
+tmp/*
+!tmp/.keep
