@@ -1,9 +1,9 @@
-## BAKULOG
+## My 100 Tales
 
 This application manages your inspirations by save, edit, search.
 
 Tapir is called "Baku" in Japan, and thought as the animal which eats dream.
-So, Bakulog grows your inspirations in order to make dreams come true.
+So, my100tales grows your inspirations in order to make dreams come true.
 
 ## Ruby version
 
@@ -29,7 +29,7 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
 create scheme
 
 ```
-mysql> CREATE DATABASE bakulog;
+mysql> CREATE DATABASE my100tales;
 ```
 
 create tables
