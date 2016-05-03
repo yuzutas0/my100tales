@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
-  resources :tales
-  get 'mypage', to: 'tales#index'
-  get 'home/index'
+  # home
   root 'home#index'
+  get 'home/index'
+
+  # user
+  devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
+
+  # tale
+  get '/mypage(.:format)', to: 'tales#index', as: 'tales'
+  post '/tales(.:format)', to: 'tales#create', as: 'create_tale'
+  get '/tales/new(.:format)', to: 'tales#new', as: 'new_tale'
+  get '/tales/:view_number/edit(.:format)', to: 'tales#edit', as: 'edit_tale'
+  get '/tales/:view_number(.:format)', to: 'tales#show', as: 'tale'
+  patch '/tales/:view_number(.:format)', to: 'tales#update', as: 'update_tale'
+  put '/tales/:view_number(.:format)', to: 'tales#update'
+  delete 'tales/:view_number(.:format)', to: 'tales#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

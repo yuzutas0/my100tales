@@ -1,6 +1,8 @@
 <h1>Editing Tale</h1>
 
-<%= render 'form' %>
+<%= form_for @tale do |f| %>
+  <%= render 'form', f: f %>
+<% end %>
 
 <%= link_to 'Show', @tale %> |
 <%= link_to 'Back', tales_path %>

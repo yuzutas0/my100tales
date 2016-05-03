@@ -4,7 +4,7 @@ class TalesController < ApplicationController
   # GET /tales
   # GET /tales.json
   def index
-    @tales = Tale.all
+    @tales = Tale.list(current_user.id)
   end
 
   # GET /tales/1
@@ -24,8 +24,7 @@ class TalesController < ApplicationController
   # POST /tales
   # POST /tales.json
   def create
-    @tale = Tale.new(tale_params)
-
+    @tale = Tale.instance(tale_params, current_user)
     respond_to do |format|
       if @tale.save
         format.html { redirect_to @tale, notice: 'Tale was successfully created.' }
@@ -64,11 +63,11 @@ class TalesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tale
-      @tale = Tale.find(params[:id])
+      @tale = Tale.detail(params[:view_number], current_user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tale_params
-      params.require(:tale).permit(:title, :content, :user_id)
+      params.require(:tale).permit(:title, :content)
     end
 end

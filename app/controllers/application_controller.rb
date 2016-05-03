@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      session[:user_return_to] || mypage_path
+      session[:user_return_to] || tales_path
     end
 end

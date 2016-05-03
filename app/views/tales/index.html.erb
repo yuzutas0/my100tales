@@ -17,7 +17,7 @@
       <tr>
         <td><%= tale.title %></td>
         <td><%= tale.content %></td>
-        <td><%= tale.user %></td>
+        <td><%= tale.user.name %></td>
         <td><%= link_to 'Show', tale %></td>
         <td><%= link_to 'Edit', edit_tale_path(tale) %></td>
         <td><%= link_to 'Destroy', tale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
