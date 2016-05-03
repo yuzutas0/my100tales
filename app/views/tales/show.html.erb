@@ -1,2 +1,19 @@
-<h1>Tales#show</h1>
-<p>Find me in app/views/tales/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tale.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @tale.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tale.user %>
+</p>
+
+<%= link_to 'Edit', edit_tale_path(@tale) %> |
+<%= link_to 'Back', tales_path %>

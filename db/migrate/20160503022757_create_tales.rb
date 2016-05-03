@@ -1,7 +1,7 @@
 class CreateTales < ActiveRecord::Migration
   def change
     create_table :tales do |t|
-      t.string :title
+      t.name :title
       t.text :content
       t.references :user, index: true, foreign_key: true
 
