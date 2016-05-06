@@ -1,15 +1,17 @@
 class Tale < ActiveRecord::Base
   # relation
   belongs_to :user
+  has_many :sequels, dependent: :destroy
 
-  # routing path
+  # routing path (tales/:id => tales/:view_number)
   def to_param
     "#{view_number}"
   end
 
   # validation
+  validates :user, presence: true
   validates :title, presence: true, length: {minimum: 1}
-  validates :content, presence: true, length: {minimum: 1}
+  validates :content, presence: true, length: {minimum: 1, maximum: 15000}
 
   # CRUD
   def self.instance(params, user)
@@ -29,9 +31,9 @@ class Tale < ActiveRecord::Base
 
   # support method
   private
-    def self.get_view_number(user_id)
-      last = Tale.where("user_id = ?", user_id).maximum(:view_number)
-      last = last.present? ? last : 0
-      return last + 1
-    end
+  def self.get_view_number(user_id)
+    last = Tale.where("user_id = ?", user_id).maximum(:view_number)
+    last = last.present? ? last : 0
+    return last + 1
+  end
 end
