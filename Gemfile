@@ -35,6 +35,7 @@ gem 'devise'
 gem 'sass-rails', '~> 5.0'
 gem 'honoka-rails' # gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'redcarpet'
 
 # Log
 gem 'quiet_assets'

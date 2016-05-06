@@ -132,6 +132,7 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    redcarpet (3.3.4)
     redis (3.3.0)
     redis-actionpack (4.0.1)
       actionpack (~> 4)
@@ -211,6 +212,7 @@ DEPENDENCIES
   mysql2
   quiet_assets
   rails (= 4.2.6)
+  redcarpet
   redis-rails
   rubocop
   sass-rails (~> 5.0)

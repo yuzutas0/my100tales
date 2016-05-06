@@ -1,23 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="tale-show">
+  <div class="bg-success tale-show-information">
+    <div class="container">
+      <h1><%= @tale.title %></h1>
 
-<p><%= @tale.created_at.strftime('%Y-%b-%d') %>に投稿</p>
-<p><%= @tale.updated_at.strftime('%Y-%b-%d') %>に編集</p>
+      <div>
+        <a href="#" class="bg-info tales-show-label">Label1</a>
+        <a href="#" class="bg-info tales-show-label">Label2</a>
+        <a href="#" class="bg-info tales-show-label">Label3</a>
+      </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tale.title %>
-</p>
+      <div>
+        <a href="#" class="bg-warning tales-show-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+        <a href="#" class="bg-warning tales-show-star">Star2:<%= fa_icon 'star' %></a>
+        <a href="#" class="bg-warning tales-show-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+      </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= simple_format(h(@tale.content)) %>
-</p>
+      <p><%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %>に投稿</p>
+      <% unless @tale.created_at == @tale.updated_at %>
+          <p><%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %>に編集</p>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @tale.user.name %>
-</p>
+  <div class="container">
+    <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_tale_path(@tale) %> |
-<%= link_to 'Destroy', @tale, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', tales_path %>
+    <div>
+      <%= markdown(@tale.content) %>
+    </div>
+
+    <p>
+      <strong>User:</strong>
+      <%= @tale.user.name %>
+    </p>
+
+    <%= link_to 'Edit', edit_tale_path(@tale) %> |
+    <%= link_to 'Destroy', @tale, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', tales_path %>
+  </div>
+</div>

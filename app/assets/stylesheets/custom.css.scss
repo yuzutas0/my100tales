@@ -1,4 +1,16 @@
 
+.shared-header {
+  .shared-header-h1 {
+    margin: 0;
+    bottom: 0;
+    font-size: 2.0rem;
+  }
+}
+
+.shared-footer {
+  /* put here if you need */
+}
+
 .tales-index {
   .tales-index-created_at, .tales-index-label, .tales-index-star {
     font-size: 1.2rem;
@@ -8,5 +20,12 @@
   }
   .tales-index-content {
     font-size: 1.4rem;
+  }
+}
+
+.tale-show {
+  .tale-show-information {
+    /* offset navbar's margin-buttom */
+    margin-top: -2.2rem;
   }
 }

@@ -1,39 +1,41 @@
 <div class="tales-index">
-  <p id="notice"><%= notice %></p>
+  <div class="container">
+    <p id="notice"><%= notice %></p>
 
-  <h3>Listing Tales</h3>
+    <h3>Listing Tales</h3>
 
-  <% @tales.each do |tale| %>
-    <div class="list-group">
-      <div class="list-group-item">
-        <p class="tales-index-created_at">
-          <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
-        </p>
-        <h4 class="list-group-item-heading tales-index-title">
-          <%= link_to tale.title, tale %>
-        </h4>
-        <div>
-          <a href="#" class="bg-info tales-index-label">Label1</a>
-          <a href="#" class="bg-info tales-index-label">Label2</a>
-          <a href="#" class="bg-info tales-index-label">Label3</a>
+    <% @tales.each do |tale| %>
+      <div class="list-group">
+        <div class="list-group-item">
+          <p class="tales-index-created_at">
+            <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
+          </p>
+          <h4 class="list-group-item-heading tales-index-title">
+            <%= link_to tale.title, tale %>
+          </h4>
+          <div>
+            <a href="#" class="bg-info tales-index-label">Label1</a>
+            <a href="#" class="bg-info tales-index-label">Label2</a>
+            <a href="#" class="bg-info tales-index-label">Label3</a>
+          </div>
+          <div>
+            <a href="#" class="bg-warning tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+            <a href="#" class="bg-warning tales-index-star">Star2:<%= fa_icon 'star' %></a>
+            <a href="#" class="bg-warning tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+          </div>
+          <p class="list-group-item-text tales-index-content">
+            <% if tale.content.size >= 100 %>
+              <%= tale.content[0..99] %>...
+          <% else %>
+              <%= tale.content %>
+          <% end %>
+          </p>
         </div>
-        <div>
-          <a href="#" class="bg-warning tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-          <a href="#" class="bg-warning tales-index-star">Star2:<%= fa_icon 'star' %></a>
-          <a href="#" class="bg-warning tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-        </div>
-        <p class="list-group-item-text tales-index-content">
-          <% if tale.content.size >= 100 %>
-            <%= tale.content[0..99] %>...
-        <% else %>
-            <%= tale.content %>
-        <% end %>
-        </p>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <br>
+    <br>
 
-  <%= link_to 'New Tale', new_tale_path %>
+    <%= link_to 'New Tale', new_tale_path %>
+  </div>
 </div>
