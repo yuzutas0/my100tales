@@ -1,12 +1,6 @@
 
-body {
-  /* avoid to make contents hidden by fixed navbar */
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
 .tales-index {
-  .tales-index-created_at {
+  .tales-index-created_at, .tales-index-label, .tales-index-star {
     font-size: 1.2rem;
   }
   .tales-index-title {

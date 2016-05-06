@@ -10,7 +10,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @tale.content %>
+  <%= simple_format(h(@tale.content)) %>
 </p>
 
 <p>
