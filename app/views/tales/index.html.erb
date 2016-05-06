@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="tales-index">
+  <p id="notice"><%= notice %></p>
 
-<h3>Listing Tales</h3>
+  <h3>Listing Tales</h3>
 
-<% @tales.each do |tale| %>
-  <div class="list-group">
-    <%= link_to tale, class: 'list-group-item' do %>
-      <h4 class="list-group-item-heading">
-        <%= tale.title %>
-      </h4>
-      <p class="list-group-item-text">
-        <% if tale.content.size >= 30 %>
-          <%= tale.content[0..29] %>...
-      <% else %>
-          <%= tale.content %>
+  <% @tales.each do |tale| %>
+    <div class="list-group">
+      <%= link_to tale, class: 'list-group-item' do %>
+        <p class="tales-index-created_at">
+          <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
+        </p>
+        <h4 class="list-group-item-heading tales-index-title">
+          <%= tale.title %>
+        </h4>
+        <p class="list-group-item-text tales-index-content">
+          <% if tale.content.size >= 50 %>
+            <%= tale.content[0..49] %>...
+        <% else %>
+            <%= tale.content %>
+        <% end %>
+        </p>
       <% end %>
-      </p>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
 
-<br>
+  <br>
 
-<%= link_to 'New Tale', new_tale_path %>
+  <%= link_to 'New Tale', new_tale_path %>
+</div>

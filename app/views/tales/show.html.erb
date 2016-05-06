@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<p><%= @tale.created_at.strftime('%Y-%b-%d') %>に投稿</p>
+<p><%= @tale.updated_at.strftime('%Y-%b-%d') %>に編集</p>
+
 <p>
   <strong>Title:</strong>
   <%= @tale.title %>
