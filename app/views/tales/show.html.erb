@@ -16,4 +16,5 @@
 </p>
 
 <%= link_to 'Edit', edit_tale_path(@tale) %> |
+<%= link_to 'Destroy', @tale, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', tales_path %>

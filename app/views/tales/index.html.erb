@@ -1,30 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tales</h1>
+<h3>Listing Tales</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tales.each do |tale| %>
-      <tr>
-        <td><%= tale.title %></td>
-        <td><%= tale.content %></td>
-        <td><%= tale.user.name %></td>
-        <td><%= link_to 'Show', tale %></td>
-        <td><%= link_to 'Edit', edit_tale_path(tale) %></td>
-        <td><%= link_to 'Destroy', tale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @tales.each do |tale| %>
+  <div class="list-group">
+    <%= link_to tale, class: 'list-group-item' do %>
+      <h4 class="list-group-item-heading">
+        <%= tale.title %>
+      </h4>
+      <p class="list-group-item-text">
+        <% if tale.content.size >= 30 %>
+          <%= tale.content[0..29] %>...
+      <% else %>
+          <%= tale.content %>
+      <% end %>
+      </p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+<% end %>
 
 <br>
 
