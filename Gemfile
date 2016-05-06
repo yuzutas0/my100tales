@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -26,10 +24,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# ----------
-# custom
-# ----------
-
 # M/W
 gem 'mysql2'
 gem 'redis-rails'
@@ -39,9 +33,11 @@ gem 'devise'
 
 # View
 gem 'sass-rails', '~> 5.0'
-#gem 'bootstrap-sass'
-gem 'honoka-rails'
+gem 'honoka-rails' # gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+
+# Log
+gem 'quiet_assets'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,10 +45,9 @@ group :development, :test do
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop', require: false
+  gem 'bullet'
+  gem 'better_errors'
 end
-

@@ -176,3 +176,4 @@ log/*
 !log/.keep
 tmp/*
 !tmp/.keep
+.rubocop_todo.yml

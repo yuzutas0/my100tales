@@ -5,18 +5,18 @@ class TalesControllerTest < ActionController::TestCase
     @tale = tales(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:tales)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create tale" do
+  test 'should create tale' do
     assert_difference('Tale.count') do
       post :create, tale: { content: @tale.content, title: @tale.title, user_id: @tale.user_id }
     end
@@ -24,22 +24,22 @@ class TalesControllerTest < ActionController::TestCase
     assert_redirected_to tale_path(assigns(:tale))
   end
 
-  test "should show tale" do
+  test 'should show tale' do
     get :show, id: @tale
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @tale
     assert_response :success
   end
 
-  test "should update tale" do
+  test 'should update tale' do
     patch :update, id: @tale, tale: { content: @tale.content, title: @tale.title, user_id: @tale.user_id }
     assert_redirected_to tale_path(assigns(:tale))
   end
 
-  test "should destroy tale" do
+  test 'should destroy tale' do
     assert_difference('Tale.count', -1) do
       delete :destroy, id: @tale
     end

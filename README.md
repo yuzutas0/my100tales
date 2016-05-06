@@ -42,6 +42,12 @@ $ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate
 
 ## How to run the test suite
 
+```
+$ rake rubocop
+$ rake rubocop:auto_correct
+$ rubocop --auto-gen-config # => make source code better!
+```
+
 ## Services (job queues, cache servers, search engines, etc.)
 
 ## Deployment instructions

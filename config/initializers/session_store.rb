@@ -9,26 +9,26 @@ end
 # manage session by redis
 def use_redis(config)
   Rails.application.config.session_store :redis_store, servers: {
-      # password: config[:password],
-      host: config[:host],
-      port: config[:port],
-      db: config[:db],
-      namespace: config[:namespace],
+    # password: config[:password],
+    host: config[:host],
+    port: config[:port],
+    db: config[:db],
+    namespace: config[:namespace]
   }, expire_after: eval(config[:expire_after])
 end
 
 # util for redis setting
 def yml_include_erb(params)
   results = {}
-  params.each { |key, value|
+  params.each do |key, value|
     results[key] = ERB.new(value.to_s).result(binding)
-  }
-  return results
+  end
+  results
 end
 
 # main
 config_file = File.join(Rails.root, 'config', 'redis_store.yml')
-if File.exists?(config_file)
+if File.exist?(config_file)
   begin
     config = YAML.load_file(config_file)[Rails.env].symbolize_keys
     config = yml_include_erb(config)

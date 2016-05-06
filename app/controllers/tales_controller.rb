@@ -1,3 +1,7 @@
+#
+# TalesController
+#
+
 class TalesController < ApplicationController
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
 
@@ -61,13 +65,14 @@ class TalesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tale
-      @tale = Tale.detail(params[:view_number], current_user.id)
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tale_params
-      params.require(:tale).permit(:title, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tale
+    @tale = Tale.detail(params[:view_number], current_user.id)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tale_params
+    params.require(:tale).permit(:title, :content)
+  end
 end

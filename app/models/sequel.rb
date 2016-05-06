@@ -1,3 +1,6 @@
+#
+# Sequel
+#
 class Sequel < ActiveRecord::Base
   # relation
   belongs_to :tale
@@ -9,5 +12,5 @@ class Sequel < ActiveRecord::Base
 
   # validation
   validates :tale, presence: true
-  validates :content, presence: true, length: {minimum: 1, maximum: 15000}
+  validates :content, presence: true, length: { minimum: 1, maximum: 15_000 }
 end

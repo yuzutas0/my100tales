@@ -1,2 +1,5 @@
+#
+# HomeHelper
+#
 module HomeHelper
 end

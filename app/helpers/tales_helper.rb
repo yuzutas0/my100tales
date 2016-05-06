@@ -1,2 +1,5 @@
+#
+# TalesHelper
+#
 module TalesHelper
 end
