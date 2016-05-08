@@ -6,6 +6,10 @@ p, a, button {
   font-size: $font_size_middle;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .shared-header {
   .shared-header-h1 {
     margin: 0;
