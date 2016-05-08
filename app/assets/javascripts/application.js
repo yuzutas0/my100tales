@@ -10,9 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// RubyGem
 //= require jquery
 //= require jquery_ujs
 //= require vue
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+// BowerComponents
+//= require dompurify
+//= require markdown-it/dist/markdown-it.min
+//= require markdown-it-emoji/dist/markdown-it-emoji.min
+//= require markdown-it-footnote/dist/markdown-it-footnote.min
+//= require markdown-it-sup/dist/markdown-it-sup.min

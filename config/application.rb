@@ -23,10 +23,15 @@ module My100tales
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # performance
     config.generators do |g|
       g.assets false
       g.helper false
       g.test_framework :rspec, view_specs: false, routing_specs: false
     end
+
+    # emoji
+    config.assets.paths << Emoji.images_path
+    config.assets.precompile << "emoji/**/*.png"
   end
 end

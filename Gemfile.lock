@@ -45,6 +45,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.10.0)
     builder (3.2.2)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
@@ -70,6 +71,7 @@ GEM
     execjs (2.6.0)
     font-awesome-rails (4.6.2.0)
       railties (>= 3.2, < 5.1)
+    gemoji (2.1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     honoka-rails (3.3.6.3)
@@ -202,11 +204,13 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bower-rails
   bullet
   byebug
   coffee-rails (~> 4.1.0)
   devise
   font-awesome-rails
+  gemoji
   honoka-rails
   jbuilder (~> 2.0)
   jquery-rails

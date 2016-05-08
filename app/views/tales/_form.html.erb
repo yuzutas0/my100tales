@@ -18,7 +18,7 @@
 <div id="vue-markdown" class="field form-group">
   <%= f.label :content %><br>
   <%= f.text_area :content, id: 'vue-markdown-editor', class: 'form-control', rows: '15', 'v-model' => 'content' %>
-  <p>{{ preview }}</p>
+  <div v-html="content | preview" />
 </div>
 
 <div class="actions">

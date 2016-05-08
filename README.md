@@ -9,10 +9,16 @@ So, my100tales grows your inspirations in order to make dreams come true.
 
 ## System dependencies
 
+```
+$ brew install node
+$ npm install -g bower
+```
+
 ## Configuration
 
 ```
 $ bundle install --path vendor/bundle --without=production
+$ bundle exec rake bower:install
 ```
 
 ## Database creation
@@ -39,6 +45,12 @@ $ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate
 ```
 
 ## Database initialization
+
+## Assets initialization
+
+```
+$ bundle exec rake emoji
+```
 
 ## How to run the test suite
 

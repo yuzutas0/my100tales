@@ -6,6 +6,9 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 if Rails.env.development?
+  # emoji
+  load 'tasks/emoji.rake'
+
   # rubocop
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new

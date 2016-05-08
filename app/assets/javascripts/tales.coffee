@@ -2,20 +2,27 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-# bind data by Vue.js
 ready = ->
-  vue = new Vue(
+
+  # render from markdown to html
+  markdownToHtml = (content) ->
+    window.markdownit({ linkify: true })
+      .use(window.markdownitEmoji)
+      .use(window.markdownitFootnote)
+      .use(window.markdownitSup)
+      .render(DOMPurify.sanitize(content))
+
+  # bind data by Vue.js
+  new Vue(
     el: "#vue-markdown"
     data:
       content: $('#vue-markdown-editor').val()
-    computed:
-      preview: ->
-        markdownToHtml(@content)
+    filters:
+      preview: (content) ->
+        markdownToHtml(content)
   )
 
-# render from markdown to html
-markdownToHtml=(content) ->
-  content
+  return
 
 # execute with RubyGem 'turbolinks'
 $(document).ready(ready)
