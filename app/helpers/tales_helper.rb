@@ -6,7 +6,7 @@ module TalesHelper
   # render from markdown text to html
   def markdown_to_html(text)
     # set param
-    extentions = { tables: true, fenced_code_blocks: true }
+    extentions = { no_intra_emphasis: true, tables: true, fenced_code_blocks: true, autolink: true, strikethrough: true, lax_html_blocks: true, superscript: true }
     render_options = { filter_html: true, hard_wrap: true }
 
     # execute rendering
