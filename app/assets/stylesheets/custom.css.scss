@@ -1,9 +1,16 @@
+$font_size_large: 1.8rem;
+$font_size_middle: 1.4rem;
+$font_size_small: 1.2rem;
+
+p, a, button {
+  font-size: $font_size_middle;
+}
 
 .shared-header {
   .shared-header-h1 {
     margin: 0;
     bottom: 0;
-    font-size: 2.0rem;
+    font-size: $font_size_large;
   }
 }
 
@@ -12,20 +19,33 @@
 }
 
 .tales-index {
+  .tales-index-breadcrumb {
+    margin-top: 0.8rem;
+  }
   .tales-index-created_at, .tales-index-label, .tales-index-star {
-    font-size: 1.2rem;
+    font-size: $font_size_small;
   }
   .tales-index-title {
-    font-size: 1.8rem;
+    font-size: $font_size_large;
   }
   .tales-index-content {
-    font-size: 1.4rem;
+    font-size: $font_size_middle;
   }
+}
+
+.tale-new {
+  /* put here if you need */
 }
 
 .tale-show {
   .tale-show-information {
-    /* offset navbar's margin-buttom */
-    margin-top: -2.2rem;
+    /* put here if you need */
   }
+  .tale-show-content {
+    /* put here if you need */
+  }
+}
+
+.tale-edit {
+  /* put here if you need */
 }

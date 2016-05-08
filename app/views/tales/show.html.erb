@@ -1,7 +1,7 @@
 <div class="tale-show">
-  <div class="bg-success tale-show-information">
-    <div class="container">
-      <h1><%= @tale.title %></h1>
+  <p><%= render 'layouts/breadcrumb_2', third_page: @tale.title %></p>
+  <div class="tale-show-information">
+      <h2><%= @tale.title %></h2>
 
       <div>
         <a href="#" class="bg-info tales-show-label">Label1</a>
@@ -19,23 +19,13 @@
       <% unless @tale.created_at == @tale.updated_at %>
           <p><%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %>に編集</p>
       <% end %>
-    </div>
+
+      <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale), class: 'btn btn-primary' %>
+      <hr>
   </div>
 
-  <div class="container">
+  <div class="tale-show-content">
     <p id="notice"><%= notice %></p>
-
-    <div>
-      <%= markdown(@tale.content) %>
-    </div>
-
-    <p>
-      <strong>User:</strong>
-      <%= @tale.user.name %>
-    </p>
-
-    <%= link_to 'Edit', edit_tale_path(@tale) %> |
-    <%= link_to 'Destroy', @tale, method: :delete, data: { confirm: 'Are you sure?' } %> |
-    <%= link_to 'Back', tales_path %>
+    <div><%= markdown_to_html(@tale.content) %></div>
   </div>
 </div>
