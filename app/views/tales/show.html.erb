@@ -26,6 +26,8 @@
 
   <div class="tale-show-content">
     <p id="notice"><%= notice %></p>
-    <div><%= markdown_to_html(@tale.content) %></div>
+    <div class="panel panel-default">
+      <div class="panel-body"><%= markdown_to_html(@tale.content) %></div>
+    </div>
   </div>
 </div>

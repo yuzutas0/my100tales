@@ -1,26 +1,39 @@
-<% if @tale.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@tale.errors.count, "error") %> prohibited this tale from being saved:</h2>
+<div class="tale-form">
+  <% if @tale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tale.errors.count, "error") %> prohibited this tale from being saved:</h2>
 
-    <ul>
-    <% @tale.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
+      <ul>
+      <% @tale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
-<% end %>
 
-<div class="field form-group">
-  <%= f.label :title %><br>
-  <%= f.text_field :title, class: 'form-control' %>
-</div>
+  <div id="vue-markdown" class="field form-group">
+    <%= f.label :content %><br>
+    <div class="visible-xs">
+      <a href="#">Editor</a>
+      |
+      <a href="#">Preview</a>
+    </div>
+    <div class="row">
+      <div id="tale-form-markdown-editor" class="col-md-6 col-xs-12">
+        <%= f.text_area :content, id: 'vue-markdown-editor', class: 'form-control tale-form-markdown-editor', 'v-model' => 'content' %>
+      </div>
+      <div class="hidden-xs col-md-6 panel panel-default">
+        <div v-html="content | preview" class="panel-body tale-form-markdown-preview" />
+      </div>
+    </div>
+  </div>
 
-<div id="vue-markdown" class="field form-group">
-  <%= f.label :content %><br>
-  <%= f.text_area :content, id: 'vue-markdown-editor', class: 'form-control', rows: '15', 'v-model' => 'content' %>
-  <div v-html="content | preview" />
-</div>
-
-<div class="actions">
-  <%= f.submit class: 'btn btn-primary' %>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
 </div>
