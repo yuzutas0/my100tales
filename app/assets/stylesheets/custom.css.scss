@@ -68,14 +68,14 @@ p, a, button {
   .tale-form-markdown-editor {
     resize: none;
     height: $editor_size_large;
-    @media (max-width: $screen-sm) {
+    @media (max-width: $screen-xs-max) {
       height: $editor_size_small;
     }
   }
   .tale-form-markdown-preview {
     overflow: scroll;
     height: $editor_size_large;
-    @media (max-width: $screen-sm) {
+    @media (max-width: $screen-xs-max) {
       height: $editor_size_small;
     }
   }

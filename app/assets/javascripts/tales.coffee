@@ -14,7 +14,7 @@ ready = ->
 
   # bind data by Vue.js
   new Vue(
-    el: "#vue-markdown"
+    el: '#vue-markdown'
     data:
       content: $('#vue-markdown-editor').val()
     filters:

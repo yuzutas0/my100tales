@@ -24,10 +24,10 @@
       <a href="#">Preview</a>
     </div>
     <div class="row">
-      <div id="tale-form-markdown-editor" class="col-md-6 col-xs-12">
+      <div id="tale-form-markdown-editor" class="col-sm-6 col-xs-12">
         <%= f.text_area :content, id: 'vue-markdown-editor', class: 'form-control tale-form-markdown-editor', 'v-model' => 'content' %>
       </div>
-      <div class="hidden-xs col-md-6 panel panel-default">
+      <div class="hidden-xs col-sm-6 panel panel-default">
         <div v-html="content | preview" class="panel-body tale-form-markdown-preview" />
       </div>
     </div>
