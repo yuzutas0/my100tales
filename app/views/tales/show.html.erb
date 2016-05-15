@@ -1,31 +1,49 @@
 <div class="tale-show">
-  <p><%= render 'layouts/breadcrumb_2', third_page: @tale.title %></p>
-  <div class="tale-show-information">
-      <h2><%= @tale.title %></h2>
-
-      <div>
-        <a href="#" class="tale-show-label">Label1</a>
-        <a href="#" class="tale-show-label">Label2</a>
-        <a href="#" class="tale-show-label">Label3</a>
-      </div>
-
-      <div>
-        <a href="#" class="tale-show-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-        <a href="#" class="tale-show-star">Star2:<%= fa_icon 'star' %></a>
-        <a href="#" class="tale-show-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-      </div>
-
-      <p><%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %>に投稿</p>
-      <% unless @tale.created_at == @tale.updated_at %>
-          <p><%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %>に編集</p>
-      <% end %>
-
-      <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale), class: 'tale-show-button-to-edit' %>
-      <hr>
+  <div class="tale-show-header">
+    <p class="tale-show-breadcrumb"><%= render 'layouts/breadcrumb_2', third_page: Constants::SHOW_TALE_PATH_NAME %></p>
+    <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale), class: 'tale-show-button-to-edit' %>
+    <div class="tale-show-header-bottom"></div>
+    <hr>
+    <h2><%= @tale.title %></h2>
   </div>
 
+  <!-- TODO: set three tabs, information, content, comment -->
+
+  <div class="tale-show-information">
+      <div class="tale-show-label-group">
+        <p class="tale-show-label-heading">Label</p>
+        <div class="tale-show-label-text">
+          <a href="#" class="tale-show-label">Label1</a>
+          <a href="#" class="tale-show-label">Label2</a>
+          <a href="#" class="tale-show-label">Label3</a>
+        </div>
+      </div>
+
+      <div class="tale-show-star-group">
+        <p class="tale-show-star-heading">Score</p>
+        <div class="tale-show-star-text">
+          <a href="#" class="tale-show-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+          <a href="#" class="tale-show-star">Star2:<%= fa_icon 'star' %></a>
+          <a href="#" class="tale-show-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+        </div>
+      </div>
+
+      <div class="tale-show-time-group">
+        <p class="tale-show-time-heading">Info</p>
+        <div class="tale-show-time-text">
+          <ul>
+            <li>posted at <%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %></li>
+            <% unless @tale.created_at == @tale.updated_at %>
+                <li>updated at <%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <hr>
+
   <div class="tale-show-content">
-    <p id="notice"><%= notice %></p>
+    <%= render 'layouts/message' %>
     <div class="tale-show-panel">
       <div class="tale-show-panel-body"><%= markdown_to_html(@tale.content) %></div>
     </div>

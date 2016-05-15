@@ -8,9 +8,15 @@ ready = ->
   if document.getElementById(VUE_MARKDOWN_ID) != null
 
     # const
-    VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID;
-    VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor';
-    VUE_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + '-preview';
+    VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID
+    VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor'
+    VUE_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + '-preview'
+    SWITCH_MARKDOWN_EDITOR_DOM = '#switch-vue-markdown-editor'
+    SWITCH_MARKDOWN_PREVIEW_DOM = '#switch-vue-markdown-preview'
+    VUE_MARKDOWN_EDITOR_OUTER_DOM = '#vue-markdown-editor-outer'
+    VUE_MARKDOWN_PREVIEW_OUTER_DOM = '#vue-markdown-preview-outer'
+    HIDDEN_CLASS = 'hidden-xs'
+    CLICK = 'click'
     KEY_DOWN = 'keydown'
     KEY_CODE_TAB = 9
     KEY_CODE_SMALL_Z = 90
@@ -38,6 +44,20 @@ ready = ->
         preview: (content) ->
           markdownToHtml(content)
     )
+
+    # switch tab editor/preview for smart device
+    # TODO: jQuery#xxxClass -> Vue.js
+    displayBothEditorAndPreview =->
+      $(VUE_MARKDOWN_EDITOR_OUTER_DOM).removeClass(HIDDEN_CLASS)
+      $(VUE_MARKDOWN_PREVIEW_OUTER_DOM).removeClass(HIDDEN_CLASS)
+
+    $(SWITCH_MARKDOWN_EDITOR_DOM).on CLICK, ->
+      displayBothEditorAndPreview()
+      $(VUE_MARKDOWN_PREVIEW_OUTER_DOM).addClass(HIDDEN_CLASS)
+
+    $(SWITCH_MARKDOWN_PREVIEW_DOM).on CLICK, ->
+      displayBothEditorAndPreview()
+      $(VUE_MARKDOWN_EDITOR_OUTER_DOM).addClass(HIDDEN_CLASS)
 
     # calculate the beginning of present line
     getPresentLineFirst = (value, position) ->

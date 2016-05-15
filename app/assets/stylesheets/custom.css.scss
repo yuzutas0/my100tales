@@ -7,7 +7,10 @@ $font_size_middle: 1.4rem;
 $font_size_small: 1.2rem;
 
 $editor_size_large: 45.0rem;
-$editor_size_small: 25.0rem;
+$editor_size_small: 20.0rem;
+
+$pull_margin_top_small: 0.8rem;
+$pull_margin_top_middle: 1.2rem;
 
 /* base */
 p, a, button {
@@ -64,7 +67,7 @@ p, a, button {
   .tales-index-information {
     .tales-index-breadcrumb {
       @extend .pull-left;
-      margin-top: 0.8rem;
+      margin-top: $pull_margin_top_small;
     }
     .tales-index-button-to-create {
       @extend .pull-right;
@@ -115,16 +118,38 @@ p, a, button {
 
 /* tale-show */
 .tale-show {
-  .tale-show-information {
-    .tale-show-label {
-      @extend .bg-info;
-    }
-    .tale-show-star {
-      @extend .bg-warning;
+  .tale-show-header {
+    .tale-show-breadcrumb {
+      @extend .pull-left;
+      margin-top: $pull_margin_top_small;
     }
     .tale-show-button-to-edit {
+      @extend .pull-right;
       @extend .btn;
       @extend .btn-primary;
+    }
+    .tale-show-header-bottom {
+      @extend .clearfix;
+    }
+  }
+  .tale-show-information {
+    @extend .list-group;
+
+    .tale-show-label-group, .tale-show-star-group, .tale-show-time-group {
+      @extend .list-group-item;
+    }
+    .tale-show-label-heading, .tale-show-star-heading, .tale-show-time-heading {
+      @extend .list-group-item-heading;
+    }
+    .tale-show-label-text, .tale-show-star-text, .tale-show-time-text {
+      @extend .list-group-item-text;
+    }
+    .tale-show-label, .tale-show-star {
+      @extend .label;
+      @extend .label-primary;
+      font-weight: normal;
+      color: $gray;
+      background-color: $gray-lighter;
     }
   }
   .tale-show-content {
@@ -178,10 +203,17 @@ p, a, button {
       }
 
       .tale-form-markdown-preview-outer {
-        @extend .hidden-xs;
         @extend .col-sm-6;
+        @extend .col-xs-11;
         @extend .panel;
         @extend .panel-default;
+        padding: 0;
+        right: 1.5rem;
+        bottom: 0.1rem;
+
+        @media (max-width: $screen-xs-max) {
+          left: 1.5rem;
+        }
 
         .tale-form-markdown-preview-inner {
           @extend .panel-body;
