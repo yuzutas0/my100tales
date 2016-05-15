@@ -10,6 +10,18 @@ ready = ->
     # const
     VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID;
     VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor';
+    KEY_DOWN = 'keydown'
+    KEY_CODE_TAB = 9
+
+    # enable indent by keyboard-tab
+    $(VUE_MARKDOWN_EDITOR_DOM).bind KEY_DOWN, (e) ->
+      if e.keyCode == KEY_CODE_TAB
+        e.preventDefault()
+        element = e.target
+        value = element.value
+        position = element.selectionStart
+        element.value = value.substr(0, position) + '\t' + value.substr(position, value.length)
+        element.setSelectionRange(position + 1, position + 1)
 
     # render from markdown to html
     markdownToHtml = (content) ->
