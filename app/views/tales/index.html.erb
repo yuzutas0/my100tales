@@ -1,33 +1,32 @@
 <div class="tales-index">
-  <div>
-    <p class="pull-left tales-index-breadcrumb"><%= render 'layouts/breadcrumb_1', second_page: 'MyPage' %></p>
-    <%= link_to Constants::NEW_TALE_PATH_NAME, new_tale_path, class: 'pull-right btn btn-primary' %>
-    <span class="clearfix" />
+  <div class="tales-index-information">
+    <p class="tales-index-breadcrumb"><%= render 'layouts/breadcrumb_1', second_page: 'MyPage' %></p>
+    <%= link_to Constants::NEW_TALE_PATH_NAME, new_tale_path, class: 'tales-index-button-to-create' %>
+    <span class="tales-index-information-bottom" />
   </div>
   <hr>
 
   <h2>Listing Tales</h2>
-
-  <% @tales.each do |tale| %>
-    <div class="list-group">
-      <div class="list-group-item">
+    <div class="tales-index-list">
+      <% @tales.each do |tale| %>
+      <div class="tales-index-item">
         <p class="tales-index-created_at">
           <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
         </p>
-        <h4 class="list-group-item-heading">
-          <%= link_to tale.title, tale, class: 'tales-index-title' %>
+        <h4 class="tales-index-title-outer">
+          <%= link_to tale.title, tale, class: 'tales-index-title-inner' %>
         </h4>
         <div>
-          <a href="#" class="bg-info tales-index-label">Label1</a>
-          <a href="#" class="bg-info tales-index-label">Label2</a>
-          <a href="#" class="bg-info tales-index-label">Label3</a>
+          <a href="#" class="tales-index-label">Label1</a>
+          <a href="#" class="tales-index-label">Label2</a>
+          <a href="#" class="tales-index-label">Label3</a>
         </div>
         <div>
-          <a href="#" class="bg-warning tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-          <a href="#" class="bg-warning tales-index-star">Star2:<%= fa_icon 'star' %></a>
-          <a href="#" class="bg-warning tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+          <a href="#" class="tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+          <a href="#" class="tales-index-star">Star2:<%= fa_icon 'star' %></a>
+          <a href="#" class="tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
         </div>
-        <p class="list-group-item-text text-muted tales-index-content">
+        <p class="tales-index-content">
           <% tale_content_plain = markdown_to_plain(tale.content) %>
           <% if tale_content_plain.size <= 99 %>
             <%= tale_content_plain %>
@@ -36,6 +35,6 @@
           <% end %>
         </p>
       </div>
+      <% end %>
     </div>
-  <% end %>
 </div>

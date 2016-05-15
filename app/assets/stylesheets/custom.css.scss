@@ -20,63 +20,181 @@ p, a, button {
 }
 
 /* component */
+
+/* header */
 .shared-header {
-  .shared-header-h1 {
-    margin: 0;
-    bottom: 0;
-    font-size: $font_size_large;
+  @extend .navbar;
+  @extend .navbar-default;
+
+  .shared-header-layout {
+    @extend .navbar-header;
+
+    .shared-header-toggle-navigation {
+      @extend .navbar-toggle;
+    }
+    .shared-header-title {
+      @extend .navbar-brand;
+    }
+    .shared-header-h1 {
+      @extend .text-info;
+      margin: 0;
+      bottom: 0;
+      font-size: $font_size_large;
+    }
+  }
+
+  .navbar-content-outer {
+    @extend .navbar-right;
+    @extend .navbar-collapse;
+
+    .navbar-content-inner {
+      @extend .nav;
+      @extend .navbar-nav;
+    }
   }
 }
 
+/* footer */
 .shared-footer {
   /* put here if you need */
 }
 
+/* tales-index */
 .tales-index {
-  .tales-index-breadcrumb {
-    margin-top: 0.8rem;
+  .tales-index-information {
+    .tales-index-breadcrumb {
+      @extend .pull-left;
+      margin-top: 0.8rem;
+    }
+    .tales-index-button-to-create {
+      @extend .pull-right;
+      @extend .btn;
+      @extend .btn-primary;
+    }
+    .tales-index-information-bottom {
+      @extend .clearfix;
+    }
   }
-  .tales-index-created_at, .tales-index-label, .tales-index-star {
-    font-size: $font_size_small;
-  }
-  .tales-index-title {
-    font-size: $font_size_large;
-  }
-  .tales-index-content {
-    font-size: $font_size_middle;
+  .tales-index-list {
+    @extend .list-group;
+
+    .tales-index-item {
+      @extend .list-group-item;
+
+      .tales-index-created_at {
+        font-size: $font_size_small;
+      }
+      .tales-index-title-outer {
+        @extend .list-group-item-heading;
+
+        .tales-index-title-inner {
+          font-size: $font_size_large;
+        }
+      }
+      .tales-index-label {
+        @extend .bg-info;
+        font-size: $font_size_small;
+      }
+      .tales-index-star {
+        @extend .bg-warning;
+        font-size: $font_size_small;
+      }
+      .tales-index-content {
+        @extend .list-group-item-text;
+        @extend .text-muted;
+        font-size: $font_size_middle;
+      }
+    }
   }
 }
 
+/* tale-new */
 .tale-new {
   /* put here if you need */
 }
 
+/* tale-show */
 .tale-show {
   .tale-show-information {
-    /* put here if you need */
+    .tale-show-label {
+      @extend .bg-info;
+    }
+    .tale-show-star {
+      @extend .bg-warning;
+    }
+    .tale-show-button-to-edit {
+      @extend .btn;
+      @extend .btn-primary;
+    }
   }
   .tale-show-content {
-    /* put here if you need */
+    .tale-show-panel {
+      @extend .panel;
+      @extend .panel-default;
+    }
+    .tale-show-panel-body {
+      @extend .panel-body;
+    }
   }
 }
 
+/* tale-edit */
 .tale-edit {
   /* put here if you need */
 }
 
+/* tale-form */
 .tale-form {
-  .tale-form-markdown-editor {
-    resize: none;
-    height: $editor_size_large;
-    @media (max-width: $screen-xs-max) {
-      height: $editor_size_small;
+  .tale-form-title-group {
+    @extend .form-group;
+    .tale-form-title-control {
+      @extend .form-control;
     }
   }
-  .tale-form-markdown-preview {
-    overflow: scroll;
-    height: $editor_size_large;
-    @media (max-width: $screen-xs-max) {
-      height: $editor_size_small;
+  .tale-form-content-group {
+    @extend .form-group;
+
+    .tale-form-content-sp-tab {
+      @extend .visible-xs;
     }
+
+    .tale-form-markdown-adjust {
+      @extend .row;
+
+      .tale-form-markdown-editor-outer {
+        @extend .col-sm-6;
+        @extend .col-xs-12;
+
+        .tale-form-markdown-editor-inner {
+          @extend .form-control;
+          resize: none;
+          height: $editor_size_large;
+          @media (max-width: $screen-xs-max) {
+            height: $editor_size_small;
+          }
+        }
+      }
+
+      .tale-form-markdown-preview-outer {
+        @extend .hidden-xs;
+        @extend .col-sm-6;
+        @extend .panel;
+        @extend .panel-default;
+
+        .tale-form-markdown-preview-inner {
+          @extend .panel-body;
+          overflow: scroll;
+          height: $editor_size_large;
+          @media (max-width: $screen-xs-max) {
+            height: $editor_size_small;
+          }
+        }
+      }
+    }
+  }
+
+  .tale-form-button-to-act {
+    @extend .btn;
+    @extend .btn-primary;
   }
 }

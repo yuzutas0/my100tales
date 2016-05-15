@@ -11,29 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
+  <div class="tale-form-title-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'tale-form-title-control' %>
   </div>
 
-  <div id="vue-markdown" class="field form-group">
+  <div id="vue-markdown" class="tale-form-content-group">
     <%= f.label :content %><br>
-    <div class="visible-xs">
-      <a href="#">Editor</a>
-      |
-      <a href="#">Preview</a>
+    <div class="tale-form-content-sp-tab">
+      <a href="#">Editor</a>|<a href="#">Preview</a>
     </div>
-    <div class="row">
-      <div id="tale-form-markdown-editor" class="col-sm-6 col-xs-12">
-        <%= f.text_area :content, id: 'vue-markdown-editor', class: 'form-control tale-form-markdown-editor', 'v-model' => 'content' %>
+    <div class="tale-form-markdown-adjust">
+      <div id="tale-form-markdown-editor" class="tale-form-markdown-editor-outer">
+        <%= f.text_area :content, id: 'vue-markdown-editor', class: 'tale-form-markdown-editor-inner', 'v-model' => 'content' %>
       </div>
-      <div class="hidden-xs col-sm-6 panel panel-default">
-        <div v-html="content | preview" class="panel-body tale-form-markdown-preview" />
+      <div class="tale-form-markdown-preview-outer">
+        <div v-html="content | preview" class="tale-form-markdown-preview-inner" />
       </div>
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+  <div><%= f.submit class: 'tale-form-button-to-act' %></div>
 </div>
