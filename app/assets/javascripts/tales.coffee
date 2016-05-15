@@ -12,8 +12,13 @@ ready = ->
     VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor';
     KEY_DOWN = 'keydown'
     KEY_CODE_TAB = 9
+    KEY_CODE_SMALL_Z = 90
     TAB_CHAR = '\t'
     NEW_LINE_CHAR = '\n'
+
+    # variable
+    stringUndo = []
+    stringRedo = []
 
     # render from markdown to html
     markdownToHtml = (content) ->
@@ -43,6 +48,8 @@ ready = ->
 
     # control key bind for markdown editor
     $(VUE_MARKDOWN_EDITOR_DOM).bind KEY_DOWN, (e) ->
+
+      # indent - tab key
       if e.keyCode == KEY_CODE_TAB
         e.preventDefault()
 
@@ -52,15 +59,36 @@ ready = ->
         position = element.selectionStart
         present_line_first = getPresentLineFirst(value, position)
 
-        # enable to add indent by tab key without shift key
+        # add indent - tab (without shift key)
         if !e.shiftKey
           element.value = value.substr(0, present_line_first) + TAB_CHAR + value.substr(present_line_first, value.length)
           element.setSelectionRange(position + 1, position + 1)
 
-        # enable to delete indent by shift + tab key
+        # delete indent - shift + tab
         if e.shiftKey && value.indexOf(TAB_CHAR, present_line_first) - present_line_first == 0
           element.value = value.substr(0, present_line_first) + value.substr(present_line_first + TAB_CHAR.length, value.length)
           element.setSelectionRange(position - 1, position - 1)
+
+      # undo - ctrl + z (without shift key)
+      if e.ctrlKey && !e.shiftKey && e.keyCode == KEY_CODE_SMALL_Z
+        e.preventDefault()
+        if stringUndo.length > 0
+          temp = stringUndo.pop()
+          stringRedo.push $(VUE_MARKDOWN_EDITOR_DOM).val()
+          $(VUE_MARKDOWN_EDITOR_DOM).val(temp)
+
+      # redo - ctrl + shift + z
+      if e.ctrlKey && e.shiftKey && e.keyCode == KEY_CODE_SMALL_Z
+        e.preventDefault()
+        if stringRedo.length > 0
+          temp = stringRedo.pop()
+          stringUndo.push $(VUE_MARKDOWN_EDITOR_DOM).val()
+          $(VUE_MARKDOWN_EDITOR_DOM).val(temp)
+
+      # save text to undo
+      if !e.ctrlKey
+        stringRedo = []
+        stringUndo.push $(VUE_MARKDOWN_EDITOR_DOM).val()
 
   return
 
