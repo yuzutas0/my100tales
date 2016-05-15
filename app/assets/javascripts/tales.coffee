@@ -10,6 +10,7 @@ ready = ->
     # const
     VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID;
     VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor';
+    VUE_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + '-preview';
     KEY_DOWN = 'keydown'
     KEY_CODE_TAB = 9
     KEY_CODE_SMALL_Z = 90
@@ -89,6 +90,16 @@ ready = ->
       if !e.ctrlKey
         stringRedo = []
         stringUndo.push $(VUE_MARKDOWN_EDITOR_DOM).val()
+
+    # synchronous scroll - editor => preview
+    $(VUE_MARKDOWN_EDITOR_DOM).scroll ->
+      top = $(VUE_MARKDOWN_EDITOR_DOM).scrollTop()
+      $(VUE_MARKDOWN_PREVIEW_DOM).scrollTop(top)
+
+    # synchronous scroll - preview => editor
+    $(VUE_MARKDOWN_PREVIEW_DOM).scroll ->
+      top = $(VUE_MARKDOWN_PREVIEW_DOM).scrollTop()
+      $(VUE_MARKDOWN_EDITOR_DOM).scrollTop(top)
 
   return
 

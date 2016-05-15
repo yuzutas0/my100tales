@@ -26,7 +26,7 @@
         <%= f.text_area :content, id: 'vue-markdown-editor', class: 'tale-form-markdown-editor-inner', 'v-model' => 'content' %>
       </div>
       <div class="tale-form-markdown-preview-outer">
-        <div v-html="content | preview" class="tale-form-markdown-preview-inner" />
+        <div v-html="content | preview" id="vue-markdown-preview" class="tale-form-markdown-preview-inner" />
       </div>
     </div>
   </div>
