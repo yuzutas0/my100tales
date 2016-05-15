@@ -13,16 +13,21 @@ class Tale < ActiveRecord::Base
 
   # validation
   validates :user, presence: true
-  validates :title, presence: true, length: { minimum: 1 }
-  validates :content, presence: true, length: { minimum: 1, maximum: 15_000 }
+  validates :title, presence: true, length: {minimum: 1}
+  validates :content, presence: true, length: {minimum: 1, maximum: 15_000}
 
-  # CRUD
+  # Create
+
+  # use transaction to save record if you call this method
+  # in order to make combination of user_id and view_number unique
   def self.instance(params, user)
     tale = Tale.new(params)
     tale.user = user
     tale.view_number = get_view_number(user.id)
     tale
   end
+
+  # Read
 
   def self.list(user_id)
     Tale.where('user_id = ?', user_id).order(updated_at: :desc)
@@ -33,7 +38,6 @@ class Tale < ActiveRecord::Base
   end
 
   # support method
-
   def self.get_view_number(user_id)
     last = Tale.where('user_id = ?', user_id).maximum(:view_number)
     last = last.present? ? last : 0

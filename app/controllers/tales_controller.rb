@@ -28,14 +28,16 @@ class TalesController < ApplicationController
   # POST /tales
   # POST /tales.json
   def create
-    @tale = Tale.instance(tale_params, current_user)
-    respond_to do |format|
-      if @tale.save
-        format.html { redirect_to @tale, notice: 'Tale was successfully created.' }
-        format.json { render :show, status: :created, location: @tale }
-      else
-        format.html { render :new }
-        format.json { render json: @tale.errors, status: :unprocessable_entity }
+    Tale.transaction do
+      @tale = Tale.instance(tale_params, current_user)
+      respond_to do |format|
+        if @tale.save
+          format.html { redirect_to @tale, notice: 'Tale was successfully created.' }
+          format.json { render :show, status: :created, location: @tale }
+        else
+          format.html { render :new }
+          format.json { render json: @tale.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
