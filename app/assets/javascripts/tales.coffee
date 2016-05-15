@@ -3,24 +3,31 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
+  # check DOM
+  VUE_MARKDOWN_ID = 'vue-markdown';
+  if document.getElementById(VUE_MARKDOWN_ID) != null
 
-  # render from markdown to html
-  markdownToHtml = (content) ->
-    window.markdownit({ linkify: true })
-      .use(window.markdownitEmoji)
-      .use(window.markdownitFootnote)
-      .use(window.markdownitSup)
-      .render(DOMPurify.sanitize(content))
+    # const
+    VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID;
+    VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor';
 
-  # bind data by Vue.js
-  new Vue(
-    el: '#vue-markdown'
-    data:
-      content: $('#vue-markdown-editor').val()
-    filters:
-      preview: (content) ->
-        markdownToHtml(content)
-  )
+    # render from markdown to html
+    markdownToHtml = (content) ->
+      window.markdownit({ linkify: true })
+        .use(window.markdownitEmoji)
+        .use(window.markdownitFootnote)
+        .use(window.markdownitSup)
+        .render(DOMPurify.sanitize(content))
+
+    # bind data by Vue.js
+    new Vue(
+      el: VUE_MARKDOWN_DOM
+      data:
+        content: $(VUE_MARKDOWN_EDITOR_DOM).val()
+      filters:
+        preview: (content) ->
+          markdownToHtml(content)
+    )
 
   return
 

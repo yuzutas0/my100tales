@@ -168,7 +168,9 @@ p, a, button {
         .tale-form-markdown-editor-inner {
           @extend .form-control;
           resize: none;
+          min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
           height: $editor_size_large;
+
           @media (max-width: $screen-xs-max) {
             height: $editor_size_small;
           }
@@ -184,7 +186,9 @@ p, a, button {
         .tale-form-markdown-preview-inner {
           @extend .panel-body;
           overflow: scroll;
+          min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
           height: $editor_size_large;
+
           @media (max-width: $screen-xs-max) {
             height: $editor_size_small;
           }
