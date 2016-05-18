@@ -6,6 +6,14 @@
   TAB_CHAR = '\t'
   NEW_LINE_CHAR = '\n'
 
+  # calculate the beginning of present line
+  getPresentLineFirst = (value, position) ->
+    previous_line_last = value.lastIndexOf(NEW_LINE_CHAR, position - 1)
+    present_line_first = 0
+    if previous_line_last > 0
+      present_line_first = previous_line_last + NEW_LINE_CHAR.length
+    return present_line_first
+
   # check key
   if e.keyCode == KEY_CODE_TAB
     e.preventDefault()
@@ -27,11 +35,3 @@
       if value.indexOf(TAB_CHAR, present_line_first) - present_line_first == 0
         element.value = value.substr(0, present_line_first) + value.substr(present_line_first + TAB_CHAR.length, value.length)
         element.setSelectionRange(position - 1, position - 1)
-
-  # calculate the beginning of present line
-  getPresentLineFirst = (value, position) ->
-    previous_line_last = value.lastIndexOf(NEW_LINE_CHAR, position - 1)
-    present_line_first = 0
-    if previous_line_last > 0
-      present_line_first = previous_line_last + NEW_LINE_CHAR.length
-    return present_line_first
