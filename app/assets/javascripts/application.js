@@ -23,5 +23,5 @@
 //= require markdown-it-footnote/dist/markdown-it-footnote.min
 //= require markdown-it-sup/dist/markdown-it-sup.min
 // Custom
-//= require_directory ./markdown
+//= require_tree ./_markdown
 //= require_directory ./main

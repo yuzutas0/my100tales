@@ -1,5 +1,5 @@
 # switch tab editor/preview for smart device
-@my100tales_tales_markdown_tab = ->
+@my100tales_tales_markdown_switch = ->
 
   # const
   SWITCH_MARKDOWN_EDITOR_DOM = '#switch-vue-markdown-editor'
