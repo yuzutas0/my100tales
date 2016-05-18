@@ -109,13 +109,16 @@ ready = ->
       # save text to undo
       if !e.ctrlKey
         stringRedo = []
-        stringUndo.push $(VUE_MARKDOWN_EDITOR_DOM).val()
+        if stringUndo[stringUndo.length - 1] != $(VUE_MARKDOWN_EDITOR_DOM).val()
+          stringUndo.push $(VUE_MARKDOWN_EDITOR_DOM).val()
+        if stringUndo.length >= 20
+          stringUndo = stringUndo.slice(stringUndo.length - 20, stringUndo.length - 1)
 
+    # TODO: don't use pixel!!! use percentage!!!
     # synchronous scroll - editor => preview
     $(VUE_MARKDOWN_EDITOR_DOM).scroll ->
       top = $(VUE_MARKDOWN_EDITOR_DOM).scrollTop()
       $(VUE_MARKDOWN_PREVIEW_DOM).scrollTop(top)
-
     # synchronous scroll - preview => editor
     $(VUE_MARKDOWN_PREVIEW_DOM).scroll ->
       top = $(VUE_MARKDOWN_PREVIEW_DOM).scrollTop()
