@@ -16,6 +16,8 @@
   
   # check whether there is new line in the text
   existNewLines = (value, position_start, position_end) ->
+    if position_start == position_end
+      return false
     return value.substr(position_start, position_end - position_start).indexOf(NEW_LINE_CHAR) != -1
 
   # check key
@@ -30,7 +32,7 @@
     present_line_first = getPresentLineFirst(value, position_start)
 
     # cursor select one line
-    if (position_start == position_end) || (position_start < position_end && !existNewLines(value, position_start, position_end))
+    if !existNewLines(value, position_start, position_end)
 
       # add indent - tab (without shift key)
       if !e.shiftKey
@@ -45,5 +47,5 @@
           element.setSelectionRange(position_start - 1, position_start - 1)
 
     # cursor select some points
-    if position_start < position_end && existNewLines(value, position_start, position_end)
+    if existNewLines(value, position_start, position_end)
       console.log("test")
