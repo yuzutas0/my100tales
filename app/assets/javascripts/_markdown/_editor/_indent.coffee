@@ -13,6 +13,10 @@
     if previous_line_last > 0
       present_line_first = previous_line_last + NEW_LINE_CHAR.length
     return present_line_first
+  
+  # check whether there is new line in the text
+  existNewLines = (value, position_start, position_end) ->
+    return value.substr(position_start, position_end - position_start).indexOf(NEW_LINE_CHAR) != -1
 
   # check key
   if e.keyCode == KEY_CODE_TAB
@@ -21,17 +25,25 @@
     # set variable
     element = e.target
     value = element.value
-    position = element.selectionStart
-    present_line_first = getPresentLineFirst(value, position)
+    position_start = element.selectionStart
+    position_end = element.selectionEnd
+    present_line_first = getPresentLineFirst(value, position_start)
 
-    # add indent - tab (without shift key)
-    if !e.shiftKey
-      element.value = value.substr(0, present_line_first) + TAB_CHAR + value.substr(present_line_first, value.length)
-      element.setSelectionRange(position + 1, position + 1)
+    # cursor select one line
+    if (position_start == position_end) || (position_start < position_end && !existNewLines(value, position_start, position_end))
 
-    # delete indent - shift + tab
-    if e.shiftKey
-      # check whether first character at present line is tab or not
-      if value.indexOf(TAB_CHAR, present_line_first) - present_line_first == 0
-        element.value = value.substr(0, present_line_first) + value.substr(present_line_first + TAB_CHAR.length, value.length)
-        element.setSelectionRange(position - 1, position - 1)
+      # add indent - tab (without shift key)
+      if !e.shiftKey
+        element.value = value.substr(0, present_line_first) + TAB_CHAR + value.substr(present_line_first, value.length)
+        element.setSelectionRange(position_start + 1, position_start + 1)
+
+      # delete indent - shift + tab
+      if e.shiftKey
+        # check whether first character at present line is tab or not
+        if value.indexOf(TAB_CHAR, present_line_first) - present_line_first == 0
+          element.value = value.substr(0, present_line_first) + value.substr(present_line_first + TAB_CHAR.length, value.length)
+          element.setSelectionRange(position_start - 1, position_start - 1)
+
+    # cursor select some points
+    if position_start < position_end && existNewLines(value, position_start, position_end)
+      console.log("test")
