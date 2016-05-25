@@ -17,7 +17,7 @@
   # "  * test"
   # "    1. "
   # "    2. test"
-  LIST_REGEX = /(\t|\s{2})*(-|\*|\d\.)\s.*/
+  LIST_REGEX = /(\t|\s{2})*(-|\*|\d\.)\s.+/
 
   # calculate the beginning of present line
   getPresentLineFirst = (value, position) ->
@@ -29,7 +29,6 @@
 
   # check key
   if e.keyCode == KEY_CODE_ENTER
-    e.preventDefault()
 
     # set variable
     element = e.target
@@ -56,6 +55,7 @@
 
     # check whether there is list to suggest
     if LIST_REGEX.test(previous_contents)
+      e.preventDefault()
 
       # count tab
       tab_count = 0
@@ -83,6 +83,6 @@
       # add white space
       suggestion += WHITE_SPACE
 
-    # update content
-    element.value = value.substr(0, position_start) + NEW_LINE_CHAR + suggestion + value.substr(position_start, value.length - position_start)
-    element.setSelectionRange(position_start + suggestion.length + 1, position_start + suggestion.length + 1)
+      # update content
+      element.value = value.substr(0, position_start) + NEW_LINE_CHAR + suggestion + value.substr(position_start, value.length - position_start)
+      element.setSelectionRange(position_start + suggestion.length + 1, position_start + suggestion.length + 1)
