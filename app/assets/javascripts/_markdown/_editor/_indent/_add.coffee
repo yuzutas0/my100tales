@@ -54,7 +54,7 @@
         count++
 
       # check to avoid that cursor goes next line's first position
-      if text_list.length - 1 == count && text == ''
+      else if text_list.length - 1 == count && text == ''
         result_text = result_text.substr(0, result_text.length - TAB_CHAR.length)
         count -= 2
 
