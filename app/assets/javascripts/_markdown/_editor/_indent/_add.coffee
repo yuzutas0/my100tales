@@ -1,7 +1,7 @@
 # add indent - tab key without shift
 @my100tales_tales_markdown_editor_indent_add = (e) ->
 
-# const
+  # const
   TAB_CHAR = '\t'
   NEW_LINE_CHAR = '\n'
 
