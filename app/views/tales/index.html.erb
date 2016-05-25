@@ -7,7 +7,7 @@
   <hr>
 
   <h2>Listing Tales</h2>
-    <p>全<%= @tales.length %>件</p>
+    <p><%= page_entries_info @tales %></p>
     <div class="tales-index-list">
       <% @tales.each do |tale| %>
       <div class="tales-index-item">
@@ -38,4 +38,5 @@
       </div>
       <% end %>
     </div>
+    <p><%= paginate @tales, outer_window: 3 %></p>
 </div>

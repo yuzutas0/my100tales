@@ -1,14 +1,13 @@
 #
 # TalesController
 #
-
 class TalesController < ApplicationController
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
 
   # GET /tales
   # GET /tales.json
   def index
-    @tales = Tale.list(current_user.id)
+    @tales = Tale.list(current_user.id, params[:page])
   end
 
   # GET /tales/1

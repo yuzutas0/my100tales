@@ -19,6 +19,7 @@ gem 'devise'
 
 # View
 gem 'font-awesome-rails'
+gem 'kaminari'
 gem 'redcarpet'
 gem 'gemoji'
 

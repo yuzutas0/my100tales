@@ -29,8 +29,8 @@ class Tale < ActiveRecord::Base
 
   # Read
 
-  def self.list(user_id)
-    Tale.where('user_id = ?', user_id).order(updated_at: :desc)
+  def self.list(user_id, page)
+    Tale.where('user_id = ?', user_id).page(page).per(10).order(updated_at: :desc)
   end
 
   def self.detail(view_number, user_id)
