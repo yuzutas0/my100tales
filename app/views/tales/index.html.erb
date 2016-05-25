@@ -7,36 +7,36 @@
   <hr>
 
   <h2>Listing Tales</h2>
-    <p><%= page_entries_info @tales %></p>
-    <div class="tales-index-list">
-      <% @tales.each do |tale| %>
-      <div class="tales-index-item">
-        <p class="tales-index-created_at">
-          <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
-        </p>
-        <h4 class="tales-index-title-outer">
-          <%= link_to tale.title, tale, class: 'tales-index-title-inner' %>
-        </h4>
-        <div>
-          <a href="#" class="tales-index-label">Label1</a>
-          <a href="#" class="tales-index-label">Label2</a>
-          <a href="#" class="tales-index-label">Label3</a>
-        </div>
-        <div>
-          <a href="#" class="tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-          <a href="#" class="tales-index-star">Star2:<%= fa_icon 'star' %></a>
-          <a href="#" class="tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-        </div>
-        <p class="tales-index-content">
-          <% tale_content_plain = markdown_to_plain(tale.content) %>
-          <% if tale_content_plain.size <= 99 %>
-            <%= tale_content_plain %>
-          <% else %>
-              <%= tale_content_plain[0..99] %>...
-          <% end %>
-        </p>
+  <p><%= page_entries_info @tales %></p>
+  <div class="tales-index-list">
+    <% @tales.each do |tale| %>
+    <div class="tales-index-item">
+      <p class="tales-index-created_at">
+        <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
+      </p>
+      <h4 class="tales-index-title-outer">
+        <%= link_to tale.title, tale, class: 'tales-index-title-inner' %>
+      </h4>
+      <div>
+        <a href="#" class="tales-index-label">Label1</a>
+        <a href="#" class="tales-index-label">Label2</a>
+        <a href="#" class="tales-index-label">Label3</a>
       </div>
-      <% end %>
+      <div>
+        <a href="#" class="tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+        <a href="#" class="tales-index-star">Star2:<%= fa_icon 'star' %></a>
+        <a href="#" class="tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+      </div>
+      <p class="tales-index-content">
+        <% tale_content_plain = markdown_to_plain(tale.content) %>
+        <% if tale_content_plain.size <= 99 %>
+          <%= tale_content_plain %>
+        <% else %>
+            <%= tale_content_plain[0..99] %>...
+        <% end %>
+      </p>
     </div>
-    <p><%= paginate @tales, outer_window: 3 %></p>
+    <% end %>
+  </div>
+  <div class="tales-index-pagination"><%= paginate @tales, outer_window: 3 %></div>
 </div>
