@@ -7,6 +7,7 @@
   TAB_CHAR = '\t'
   NOT_NUMBER_LIST_STYLE_ONE = '*'
   NOT_NUMBER_LIST_STYLE_TWO = '-'
+  NOT_NUMBER_LIST_STYLE_THREE = '+'
   NUMBER_LIST_SUFFIX = '.'
   WHITE_SPACE = ' '
 
@@ -17,7 +18,7 @@
   # "  * test"
   # "    1. "
   # "    2. test"
-  LIST_REGEX = /(\t|\s{2})*(-|\*|\d\.)\s.+/
+  LIST_REGEX = /(\t|\s{2})*(-|\*|\+|\d\.)\s.+/
 
   # calculate the beginning of present line
   getPresentLineFirst = (value, position) ->
@@ -67,8 +68,8 @@
       # check list style
       previous_contents = previous_contents.substr(tab_count, previous_contents.length - tab_count)
 
-      # case '*' or '-' => use the same character
-      if previous_contents[0] == NOT_NUMBER_LIST_STYLE_ONE || previous_contents[0] == NOT_NUMBER_LIST_STYLE_TWO
+      # case '*' or '-' or '+' => use the same character
+      if [NOT_NUMBER_LIST_STYLE_ONE, NOT_NUMBER_LIST_STYLE_TWO, NOT_NUMBER_LIST_STYLE_THREE].indexOf(previous_contents[0]) > 0
         suggestion += previous_contents[0]
 
       # case '1.', '2.', ... => use the incremented number
