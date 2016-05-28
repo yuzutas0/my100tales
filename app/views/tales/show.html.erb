@@ -51,13 +51,23 @@
 
   <div>
     <h3>Sequels</h3>
-    <% @sequels.each do |sequel| %>
-    <div>
-      <%= sequel.content %>
-    </div>
-    <% end %>
     <%= form_for(@new_sequel, url: create_sequel_path) do |f| %>
         <%= render 'sequels/form', f: f %>
     <% end %>
+    <div class="sequels-index-list">
+      <% @sequels.each do |sequel| %>
+      <div class="sequels-index-item">
+        <div class="sequels-index-content">
+          <%= sequel.content %>
+        </div>
+        <div class="sequels-index-information">
+          created at <%= sequel.created_at.strftime('%Y-%b-%d %H:%M') %>
+          <% unless sequel.created_at == sequel.updated_at %>
+            | updated at <%= sequel.updated_at.strftime('%Y-%b-%d %H:%M') %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>

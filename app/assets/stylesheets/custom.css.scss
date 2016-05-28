@@ -164,6 +164,23 @@ p, a, button {
       @extend .panel-body;
     }
   }
+  .sequels-index-list {
+    @extend .list-group;
+
+    .sequels-index-item {
+      @extend .list-group-item;
+
+      .sequels-index-content {
+        @extend .list-group-item-heading;
+      }
+
+      .sequels-index-information {
+        @extend .text-muted;
+        @extend .list-group-item-text;
+        font-size: $font_size_middle;
+      }
+    }
+  }
 }
 
 /* tale-edit */
@@ -233,6 +250,18 @@ p, a, button {
   }
 
   .tale-form-button-to-act {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+}
+
+/* sequel-form */
+.sequel-form {
+  .sequel-form-content {
+    @extend .form-control;
+    resize: none;
+  }
+  .sequel-form-button-to-act {
     @extend .btn;
     @extend .btn-primary;
   }
