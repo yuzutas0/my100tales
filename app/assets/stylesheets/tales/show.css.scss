@@ -1,0 +1,67 @@
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "../partials/basic.css.scss";
+
+/* tale-show */
+.tale-show {
+  .tale-show-header {
+    .tale-show-breadcrumb {
+      @extend .pull-left;
+      margin-top: $pull_margin_top_small;
+    }
+    .tale-show-button-to-edit {
+      @extend .pull-right;
+      @extend .btn;
+      @extend .btn-primary;
+    }
+    .tale-show-header-bottom {
+      @extend .clearfix;
+    }
+  }
+  .tale-show-information {
+    @extend .list-group;
+
+    .tale-show-label-group, .tale-show-star-group, .tale-show-time-group {
+      @extend .list-group-item;
+    }
+    .tale-show-label-heading, .tale-show-star-heading, .tale-show-time-heading {
+      @extend .list-group-item-heading;
+    }
+    .tale-show-label-text, .tale-show-star-text, .tale-show-time-text {
+      @extend .list-group-item-text;
+    }
+    .tale-show-label, .tale-show-star {
+      @extend .label;
+      @extend .label-primary;
+      font-weight: normal;
+      color: $gray;
+      background-color: $gray-lighter;
+    }
+  }
+  .tale-show-content {
+    .tale-show-panel {
+      @extend .panel;
+      @extend .panel-default;
+    }
+    .tale-show-panel-body {
+      @extend .panel-body;
+    }
+  }
+  .sequels-index-list {
+    @extend .list-group;
+
+    .sequels-index-item {
+      @extend .list-group-item;
+
+      .sequels-index-content {
+        @extend .list-group-item-heading;
+      }
+
+      .sequels-index-information {
+        @extend .text-muted;
+        @extend .list-group-item-text;
+        font-size: $font_size_middle;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "basic.css.scss";
+
+/* sequel-form */
+.sequel-form {
+  .sequel-form-content {
+    @extend .form-control;
+    resize: none;
+  }
+  .sequel-form-button-to-act {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+}

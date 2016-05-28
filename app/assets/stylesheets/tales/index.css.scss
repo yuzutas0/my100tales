@@ -1,0 +1,55 @@
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "../partials/basic.css.scss";
+
+/* tales-index */
+.tales-index {
+  .tales-index-information {
+    .tales-index-breadcrumb {
+      @extend .pull-left;
+      margin-top: $pull_margin_top_small;
+    }
+    .tales-index-button-to-create {
+      @extend .pull-right;
+      @extend .btn;
+      @extend .btn-primary;
+    }
+    .tales-index-information-bottom {
+      @extend .clearfix;
+    }
+  }
+  .tales-index-list {
+    @extend .list-group;
+
+    .tales-index-item {
+      @extend .list-group-item;
+
+      .tales-index-created_at {
+        font-size: $font_size_small;
+      }
+      .tales-index-title-outer {
+        @extend .list-group-item-heading;
+
+        .tales-index-title-inner {
+          font-size: $font_size_large;
+        }
+      }
+      .tales-index-label {
+        @extend .bg-info;
+        font-size: $font_size_small;
+      }
+      .tales-index-star {
+        @extend .bg-warning;
+        font-size: $font_size_small;
+      }
+      .tales-index-content {
+        @extend .list-group-item-text;
+        @extend .text-muted;
+        font-size: $font_size_middle;
+      }
+    }
+  }
+  .tales-index-pagination {
+    text-align: center;
+  }
+}

@@ -1,0 +1,41 @@
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "basic.css.scss";
+
+/* header */
+.shared-header {
+  @extend .navbar;
+  @extend .navbar-default;
+
+  .shared-header-layout {
+    @extend .navbar-header;
+
+    .shared-header-toggle-navigation {
+      @extend .navbar-toggle;
+    }
+    .shared-header-title {
+      @extend .navbar-brand;
+    }
+    .shared-header-h1 {
+      @extend .text-info;
+      margin: 0;
+      bottom: 0;
+      font-size: $font_size_large;
+    }
+  }
+
+  .navbar-content-outer {
+    @extend .navbar-right;
+    @extend .navbar-collapse;
+
+    .navbar-content-inner {
+      @extend .nav;
+      @extend .navbar-nav;
+    }
+  }
+}
+
+/* footer */
+.shared-footer {
+  /* put here if you need */
+}

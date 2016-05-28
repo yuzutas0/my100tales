@@ -1,0 +1,70 @@
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "../partials/basic.css.scss";
+
+/* tale-form */
+.tale-form {
+  .tale-form-title-group {
+    @extend .form-group;
+    .tale-form-title-control {
+      @extend .form-control;
+    }
+  }
+  .tale-form-content-group {
+    @extend .form-group;
+
+    .tale-form-content-sp-tab {
+      @extend .visible-xs;
+    }
+
+    .tale-form-markdown-adjust {
+      @extend .row;
+
+      .tale-form-markdown-editor-outer {
+        @extend .col-sm-6;
+        @extend .col-xs-12;
+
+        .tale-form-markdown-editor-inner {
+          @extend .form-control;
+          resize: none;
+          min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
+          height: $editor_size_large;
+
+          @media (max-width: $screen-xs-max) {
+            height: $editor_size_small;
+          }
+        }
+      }
+
+      .tale-form-markdown-preview-outer {
+        @extend .col-sm-6;
+        @extend .col-xs-11;
+        @extend .panel;
+        @extend .panel-default;
+        padding: 0;
+        right: 1.5rem;
+        bottom: 0.1rem;
+
+        @media (max-width: $screen-xs-max) {
+          left: 1.5rem;
+        }
+
+        .tale-form-markdown-preview-inner {
+          @extend .panel-body;
+          overflow: scroll;
+          min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
+          height: $editor_size_large;
+
+          @media (max-width: $screen-xs-max) {
+            height: $editor_size_small;
+          }
+        }
+      }
+    }
+  }
+
+  .tale-form-button-to-act {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+}
