@@ -48,4 +48,16 @@
       <div class="tale-show-panel-body"><%= markdown_to_html(@tale.content) %></div>
     </div>
   </div>
+
+  <div>
+    <h3>Sequels</h3>
+    <% @sequels.each do |sequel| %>
+    <div>
+      <%= sequel.content %>
+    </div>
+    <% end %>
+    <%= form_for(@new_sequel, url: create_sequel_path) do |f| %>
+        <%= render 'sequels/form', f: f %>
+    <% end %>
+  </div>
 </div>

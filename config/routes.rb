@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   put '/tales/:view_number(.:format)', to: 'tales#update'
   delete 'tales/:view_number(.:format)', to: 'tales#destroy'
 
+  # sequel
+  post '/sequels(.:format)', to: 'sequels#create', as: 'create_sequel'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

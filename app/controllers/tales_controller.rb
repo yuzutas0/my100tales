@@ -13,6 +13,8 @@ class TalesController < ApplicationController
   # GET /tales/1
   # GET /tales/1.json
   def show
+    @sequels = Sequel.list(@tale.id)
+    @new_sequel = Sequel.new
   end
 
   # GET /tales/new

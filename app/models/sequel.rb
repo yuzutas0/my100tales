@@ -13,4 +13,9 @@ class Sequel < ActiveRecord::Base
   # validation
   validates :tale, presence: true
   validates :content, presence: true, length: { minimum: 1, maximum: 15_000 }
+
+  # Read
+  def self.list(tale_id)
+    Sequel.where('tale_id = ?', tale_id).order(created_at: :desc)
+  end
 end
