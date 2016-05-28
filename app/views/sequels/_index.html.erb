@@ -1,0 +1,15 @@
+<div class="sequels-index-list">
+  <% @sequels.each do |sequel| %>
+      <div class="sequels-index-item">
+        <div class="sequels-index-content">
+          <%= sequel.content %>
+        </div>
+        <div class="sequels-index-information">
+          created at <%= sequel.created_at.strftime('%Y-%b-%d %H:%M') %>
+          <% unless sequel.created_at == sequel.updated_at %>
+              | updated at <%= sequel.updated_at.strftime('%Y-%b-%d %H:%M') %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
