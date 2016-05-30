@@ -74,11 +74,8 @@
 
       # case '1.', '2.', ... => use the incremented number
       else if previous_contents.indexOf(NUMBER_LIST_SUFFIX) > 0
-        console.log(previous_contents.indexOf(NUMBER_LIST_SUFFIX).toString())
         present_list_number_string = previous_contents.substr(0, previous_contents.indexOf(NUMBER_LIST_SUFFIX))
-        console.log(present_list_number_string)
         next_list_number = Number(present_list_number_string) + 1
-        console.log(next_list_number.toString())
         suggestion += next_list_number + NUMBER_LIST_SUFFIX
 
       # add white space
