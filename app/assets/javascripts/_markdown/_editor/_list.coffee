@@ -29,58 +29,59 @@
     return present_line_first
 
   # check key
-  if e.keyCode == KEY_CODE_ENTER
+  if e.keyCode != KEY_CODE_ENTER
+    return
 
-    # set variable
+  # set variable
+  element = e.target
+  value = element.value
+  position_start = element.selectionStart
+  position_end = element.selectionEnd
+
+  # delete contents selected
+  if position_start < position_end
+    element.value = value.substr(0, position_start) + value.substr(position_end, value.length - position_end)
+    element.setSelectionRange(position_start, position_start)
+
+    # reset variable
     element = e.target
     value = element.value
     position_start = element.selectionStart
-    position_end = element.selectionEnd
 
-    # delete contents selected
-    if position_start < position_end
-      element.value = value.substr(0, position_start) + value.substr(position_end, value.length - position_end)
-      element.setSelectionRange(position_start, position_start)
+  # ready for check
+  present_line_first = getPresentLineFirst(value, position_start)
+  previous_contents = value.substr(present_line_first, position_start - present_line_first)
 
-      # reset variable
-      element = e.target
-      value = element.value
-      position_start = element.selectionStart
+  # check whether there is list to suggest
+  if LIST_REGEX.test(previous_contents)
+    e.preventDefault()
 
     # ready for suggestion
     suggestion = ''
 
-    # ready for check
-    present_line_first = getPresentLineFirst(value, position_start)
-    previous_contents = value.substr(present_line_first, position_start - present_line_first)
+    # count tab
+    tab_count = 0
+    while previous_contents[tab_count] == TAB_CHAR
+      if previous_contents[tab_count] == TAB_CHAR
+        suggestion += TAB_CHAR
+        tab_count++
 
-    # check whether there is list to suggest
-    if LIST_REGEX.test(previous_contents)
-      e.preventDefault()
+    # check list style
+    previous_contents = previous_contents.substr(tab_count, previous_contents.length - tab_count)
 
-      # count tab
-      tab_count = 0
-      while previous_contents[tab_count] == TAB_CHAR
-        if previous_contents[tab_count] == TAB_CHAR
-          suggestion += TAB_CHAR
-          tab_count++
+    # case '*' or '-' or '+' => use the same character
+    if [NOT_NUMBER_LIST_STYLE_ONE, NOT_NUMBER_LIST_STYLE_TWO, NOT_NUMBER_LIST_STYLE_THREE].indexOf(previous_contents[0]) >= 0
+      suggestion += previous_contents[0]
 
-      # check list style
-      previous_contents = previous_contents.substr(tab_count, previous_contents.length - tab_count)
+    # case '1.', '2.', ... => use the incremented number
+    else if previous_contents.indexOf(NUMBER_LIST_SUFFIX) > 0
+      present_list_number_string = previous_contents.substr(0, previous_contents.indexOf(NUMBER_LIST_SUFFIX))
+      next_list_number = Number(present_list_number_string) + 1
+      suggestion += next_list_number + NUMBER_LIST_SUFFIX
 
-      # case '*' or '-' or '+' => use the same character
-      if [NOT_NUMBER_LIST_STYLE_ONE, NOT_NUMBER_LIST_STYLE_TWO, NOT_NUMBER_LIST_STYLE_THREE].indexOf(previous_contents[0]) >= 0
-        suggestion += previous_contents[0]
+    # add white space
+    suggestion += WHITE_SPACE
 
-      # case '1.', '2.', ... => use the incremented number
-      else if previous_contents.indexOf(NUMBER_LIST_SUFFIX) > 0
-        present_list_number_string = previous_contents.substr(0, previous_contents.indexOf(NUMBER_LIST_SUFFIX))
-        next_list_number = Number(present_list_number_string) + 1
-        suggestion += next_list_number + NUMBER_LIST_SUFFIX
-
-      # add white space
-      suggestion += WHITE_SPACE
-
-      # update content
-      element.value = value.substr(0, position_start) + NEW_LINE_CHAR + suggestion + value.substr(position_start, value.length - position_start)
-      element.setSelectionRange(position_start + suggestion.length + 1, position_start + suggestion.length + 1)
+    # update content
+    element.value = value.substr(0, position_start) + NEW_LINE_CHAR + suggestion + value.substr(position_start, value.length - position_start)
+    element.setSelectionRange(position_start + suggestion.length + 1, position_start + suggestion.length + 1)

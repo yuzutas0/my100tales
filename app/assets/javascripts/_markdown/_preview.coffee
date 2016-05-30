@@ -1,6 +1,10 @@
 # preview
 @my100tales_tales_markdown_preview = (VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM) ->
 
+  # const
+  NEW_LINE_CHAR = '\n'
+  WHITE_SPACE_CHAR = ' '
+
   # render from markdown to html
   # reference https://www.npmjs.com/browse/keyword/markdown-it-plugin
   markdownToHtml = (content) ->
@@ -8,7 +12,19 @@
     .use(window.markdownitEmoji)
     .use(window.markdownitFootnote)
     .use(window.markdownitSup)
-    .render(DOMPurify.sanitize(content))
+    .render(DOMPurify.sanitize(reflectNewLine(content)))
+
+  # reflect new line without two spaces
+  reflectNewLine = (content) ->
+    result = ''
+    count = 0
+    lines = content.split(NEW_LINE_CHAR)
+    for line in lines
+      result += line
+      if count != lines.length - 1
+        result += WHITE_SPACE_CHAR + WHITE_SPACE_CHAR + WHITE_SPACE_CHAR + NEW_LINE_CHAR
+        count++
+    return result
 
   # bind data by Vue.js
   new Vue(
