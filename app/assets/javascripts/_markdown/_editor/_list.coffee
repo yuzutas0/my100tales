@@ -69,7 +69,7 @@
       previous_contents = previous_contents.substr(tab_count, previous_contents.length - tab_count)
 
       # case '*' or '-' or '+' => use the same character
-      if [NOT_NUMBER_LIST_STYLE_ONE, NOT_NUMBER_LIST_STYLE_TWO, NOT_NUMBER_LIST_STYLE_THREE].indexOf(previous_contents[0]) > 0
+      if [NOT_NUMBER_LIST_STYLE_ONE, NOT_NUMBER_LIST_STYLE_TWO, NOT_NUMBER_LIST_STYLE_THREE].indexOf(previous_contents[0]) >= 0
         suggestion += previous_contents[0]
 
       # case '1.', '2.', ... => use the incremented number
