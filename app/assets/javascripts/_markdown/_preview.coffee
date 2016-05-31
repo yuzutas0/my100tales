@@ -5,14 +5,15 @@
   NEW_LINE_CHAR = '\n'
   NEW_LINE_REGEX = /\n/g
   WHITE_SPACE_CHAR = ' '
+  NEW_LINE_CHAR_FOR_MARKDOWN = WHITE_SPACE_CHAR + WHITE_SPACE_CHAR + NEW_LINE_CHAR
   TABLE_SELECTOR_REGIX = /<table>/g
   TABLE_SELECTOR_WITH_CLASS = '<table class="table table-striped table-bordered">'
 
   # render from markdown to html
   markdownToHtml = (content) ->
-    content_customized = reflectNewLine(content)
+    content_customized = content.replace(NEW_LINE_REGEX, NEW_LINE_CHAR_FOR_MARKDOWN)
     content_customized = markdownToBaseHtml(content_customized)
-    addTableClass(content_customized)
+    return content_customized.replace(TABLE_SELECTOR_REGIX, TABLE_SELECTOR_WITH_CLASS)
 
   # reference https://www.npmjs.com/browse/keyword/markdown-it-plugin
   markdownToBaseHtml = (content) ->
@@ -21,14 +22,6 @@
           .use(window.markdownitFootnote)
           .use(window.markdownitSup)
           .render(DOMPurify.sanitize(content))
-
-  # reflect new line without two spaces
-  reflectNewLine = (content) ->
-    content.replace(NEW_LINE_REGEX, WHITE_SPACE_CHAR + WHITE_SPACE_CHAR + NEW_LINE_CHAR)
-
-  # add bootstrap class to table
-  addTableClass = (content) ->
-    content.replace(TABLE_SELECTOR_REGIX, TABLE_SELECTOR_WITH_CLASS)
 
   # bind data by Vue.js
   new Vue(
