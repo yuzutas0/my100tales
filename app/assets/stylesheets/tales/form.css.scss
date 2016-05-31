@@ -58,6 +58,17 @@
           @media (max-width: $screen-xs-max) {
             height: $editor_size_small;
           }
+
+          table {
+            @extend .table;
+            @extend .table-striped;
+            @extend .table-bordered;
+          }
+
+          p, pre, ul, ol, table {
+            font-size: $font_size_middle;
+            width: auto;
+          }
         }
       }
     }

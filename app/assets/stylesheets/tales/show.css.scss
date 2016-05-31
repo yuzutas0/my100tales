@@ -45,6 +45,17 @@
     }
     .tale-show-panel-body {
       @extend .panel-body;
+
+      table {
+        @extend .table;
+        @extend .table-striped;
+        @extend .table-bordered;
+      }
+
+      p, pre, ul, ol, table {
+        font-size: $font_size_middle;
+        width: auto;
+      }
     }
   }
   .sequels-index-list {
