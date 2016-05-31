@@ -4,6 +4,7 @@
   # const
   TAB_CHAR = '\t'
   NEW_LINE_CHAR = '\n'
+  NEW_LINE_AND_TAB_REGIX = /\n\t/g
 
   # calculate the beginning of present line
   getPresentLineFirst = (value, position) ->
@@ -47,20 +48,12 @@
     position_start = element.selectionStart
     position_end = element.selectionEnd
 
-    # ready for loop
-    count = 0
+    # \n\t => \n (except for last line)
     result_text = value.substr(0, position_start)
-    text_list = value.substr(position_start, position_end - position_start).split(NEW_LINE_CHAR + TAB_CHAR)
-
-    # loop
-    for text in text_list
-      result_text += text
-
-      # \n\t => \n (except for last line)
-      if text_list.length - 1 != count
-        result_text += NEW_LINE_CHAR
-        count++
+    result_text += value.substr(position_start, position_end - position_start).replace(NEW_LINE_AND_TAB_REGIX, NEW_LINE_CHAR)
+    result_text += value.substr(position_end, value.length - position_end)
+    diff_count = value.substr(position_start, position_end - position_start).split(NEW_LINE_CHAR + TAB_CHAR).length - 1
 
     # set DOM
-    element.value = result_text + value.substr(position_end, value.length - position_end)
-    element.setSelectionRange(position_start, position_end - count)
+    element.value = result_text
+    element.setSelectionRange(position_start, position_end - diff_count)
