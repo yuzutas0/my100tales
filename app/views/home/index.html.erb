@@ -1,4 +1,54 @@
-<h1>Home#index</h1>
+<div class="home-index">
+  <div class="home-atmosphere-outer">
+    <div class="home-atmosphere-inner">
+      <h1 class="home-atmosphere-title">Write down 100 dreams</h1>
+      <p class="home-atmosphere-content">
+        Thinking gives energy to make dreams come true.<br />
+        Here's the best place to list the will in your mind.<br />
+        They're no longer fairy tales with expression.
+      </p>
+      <%= link_to 'Signup', new_user_registration_path, class: 'home-atmosphere-signup' %>
+      <div class="home-atmosphere-login"><p>or <%= link_to 'Login', new_user_session_path %>, when you have account.</p></div>
+    </div>
+  </div>
 
-<%= link_to 'Signup', new_user_registration_path %>
-<%= link_to 'Login', new_user_session_path %>
+  <div class="home-explain">
+
+    <div class="home-explain-usage">
+      <div class="home-explain-title"><h2>Usage</h2></div>
+      <div class="home-explain-item">
+        <div class="home-explain-item-icon"><%= fa_icon 'pencil-square-o' %></div>
+        <h3 class="home-explain-item-title">1. Write</h3>
+        <p>write down your thinking with simple markdown editor.</p>
+      </div>
+      <div class="home-explain-item">
+        <div class="home-explain-item-icon"><%= fa_icon 'list-alt' %></div>
+        <h3 class="home-explain-item-title">2. List</h3>
+        <p>manage your wish list with tagging and scoring.</p>
+      </div>
+      <div class="home-explain-item">
+        <div class="home-explain-item-icon"><%= fa_icon 'comments-o' %></div>
+        <h3 class="home-explain-item-title">3. Sequel</h3>
+        <p>make your ideas deeper and bigger with additional comments.</p>
+      </div>
+    </div>
+
+    <div class="home-explain-signup">
+      <hr>
+      <div class="home-explain-title"><h2>Signup free, 30sec</h2></div>
+      <div class="home-explain-text">
+        <p>
+          We request your signup to provide secret space for each accounts,
+          and your email is necessary to send backup files.
+          You can save ideas even if data is lost by server incident.
+        </p>
+        <p>
+          In addition, signup task is going to be completed without time and money.
+        </p>
+      </div>
+      <%= link_to 'Signup', new_user_registration_path, class: 'home-atmosphere-signup' %>
+      <div class="home-atmosphere-login"><p>or <%= link_to 'Login', new_user_session_path %>, when you have account.</p></div>
+    </div>
+
+  </div>
+</div>

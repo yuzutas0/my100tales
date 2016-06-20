@@ -7,6 +7,8 @@
   @extend .navbar;
   @extend .navbar-default;
 
+  margin-bottom: 0;
+
   .shared-header-layout {
     @extend .navbar-header;
 

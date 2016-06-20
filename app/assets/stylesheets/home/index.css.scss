@@ -1,0 +1,87 @@
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "../partials/basic.css.scss";
+
+.home-index {
+  .home-atmosphere-outer {
+    width: 100%;
+    padding: 5rem 0;
+    background-color: #ccc; // FIXME: picture
+    text-align: center;
+    height: auto;
+
+    .home-atmosphere-inner {
+      @extend .container;
+
+      .home-atmosphere-title {
+        margin: 0;
+        font-size: $font-size-x-large;
+      }
+
+      .home-atmosphere-content {
+        margin-top: 1.5rem;
+        font-size: $font-size-small;
+      }
+    }
+  }
+  .home-explain {
+    @extend .container;
+
+    .home-explain-usage {
+      @extend .row;
+      margin-top: 4.5rem;
+    }
+
+    .home-explain-title {
+      text-align: center;
+    }
+
+    .home-explain-item {
+      @extend .col-sm-4;
+      @extend .col-xs-12;
+      margin-top: 2.5rem;
+
+      .home-explain-item-icon {
+        font-size: 6.4rem;
+        text-align: center;
+      }
+
+      .home-explain-item-title {
+        margin-top: 0;
+        text-align: center;
+        padding-right: 1.2rem;
+      }
+    }
+
+    .home-explain-signup {
+      margin-top: 4.5rem;
+      text-align: center;
+    }
+
+    .home-explain-title + .home-explain-text {
+      margin-top: 2.5rem;
+    }
+
+    .home-explain-text {
+      @extend .row;
+
+      > p {
+        @extend .col-sm-8;
+        @extend .col-sm-offset-2;
+        @extend .col-xs-12;
+      }
+    }
+  }
+
+  .home-atmosphere-signup {
+    @extend .btn;
+    @extend .btn-primary;
+
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+  }
+
+  .home-atmosphere-login {
+    margin-top: 1rem;
+  }
+}
