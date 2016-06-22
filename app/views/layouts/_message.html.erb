@@ -1,6 +1,12 @@
-<% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
+<% unless flash.empty? %>
+    <script type="text/javascript">
+      <% flash.each do |type, message| %>
+      <% type = type.gsub('alert', 'error').gsub('notice', 'info') %>
+        toastr.options = {
+          "closeButton": true,
+          "positionClass": "toast-bottom-full-width"
+        }
+        toastr.<%= type %>(<%= message.inspect.html_safe %>)
+      <% end %>
+    </script>
 <% end %>

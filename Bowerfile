@@ -1,8 +1,12 @@
 # Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
 # asset 'bootstrap'
 
+# markdown
 asset 'dompurify'
 asset 'markdown-it'
 asset 'markdown-it-footnote'
 asset 'markdown-it-sup'
 asset 'markdown-it-emoji'
+
+# notifications
+asset 'toastr'
