@@ -1,0 +1,16 @@
+// footer
+
+// import
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "base/const";
+
+// main
+.layout__shared__footer {
+  .layout__shared__footer__inner {
+    @extend .container;
+    @extend .text-muted;
+
+    margin-bottom: 22px;
+  }
+}
