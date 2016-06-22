@@ -1,9 +1,10 @@
 // basic
 
 // import
-@import "const";
+@import "base/const";
 
 // main
+
 p, a, button {
   font-size: $font_size_middle;
 }

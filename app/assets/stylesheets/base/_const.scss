@@ -1,11 +1,26 @@
-/* const */
-$font-size-x-large: 2.5rem;
-$font_size_large: 1.8rem;
-$font_size_middle: 1.4rem;
-$font_size_small: 1.2rem;
+// const
 
-$editor_size_large: 45.0rem;
-$editor_size_small: 20.0rem;
+// main
 
-$pull_margin_top_small: 0.8rem;
-$pull_margin_top_middle: 1.2rem;
+// FIXME wait for rem in bootstrap 4
+//$font-size-x-large: 2.5rem;
+//$font_size_large: 1.8rem;
+//$font_size_middle: 1.4rem;
+//$font_size_small: 1.2rem;
+//
+//$editor_size_large: 45.0rem;
+//$editor_size_small: 20.0rem;
+//
+//$pull_margin_top_small: 0.8rem;
+//$pull_margin_top_middle: 1.2rem;
+
+$font-size-x-large: 26px;
+$font_size_large: 18px;
+$font_size_middle: 14px;
+$font_size_small: 12px;
+
+$editor_size_large: 45px;
+$editor_size_small: 20px;
+
+$pull_margin_top_small: 8px;
+$pull_margin_top_middle: 12px;

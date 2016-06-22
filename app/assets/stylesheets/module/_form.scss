@@ -1,0 +1,17 @@
+// form
+
+// import
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "base/const";
+
+// main
+.form {
+  .form__field {
+    @extend .form-group;
+
+    .form__field__text {
+      @extend .form-control;
+    }
+  }
+}

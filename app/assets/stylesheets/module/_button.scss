@@ -1,0 +1,16 @@
+// button
+
+// import
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "base/const";
+
+// main
+.button {
+  @extend .btn;
+  @extend .btn-primary;
+
+  &.button--danger {
+    @extend .btn-danger;
+  }
+}
