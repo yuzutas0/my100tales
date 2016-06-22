@@ -1,0 +1,56 @@
+// header
+
+// import
+@import "bootstrap-sprockets";
+@import "honoka"; /* @import "bootstrap"; */
+@import "base/const";
+
+// main
+.layout__shared__header {
+  @extend .navbar;
+  @extend .navbar-default;
+  margin-bottom: 0;
+
+  .layout__shared__header__inner {
+    @extend .container;
+
+    .layout__shared__header__inner__layout {
+      @extend .navbar-header;
+
+      .layout__shared__header__inner__layout__menu {
+        @extend .navbar-toggle;
+
+        .layout__shared__header__inner__layout__menu__inner {
+          @extend .icon-bar;
+        }
+      }
+
+      .layout__shared__header__inner__layout__logo {
+        @extend .navbar-brand;
+
+        .layout__shared__header__inner__layout__logo__inner {
+          @extend .text-info;
+          margin: 0;
+          bottom: 0;
+          font-size: $font_size_large;
+        }
+      }
+    }
+
+    .layout__shared__header__inner__menu {
+      @extend .navbar-right;
+      @extend .navbar-collapse;
+
+      .layout__shared__header__inner__menu__list {
+        @extend .nav;
+        @extend .navbar-nav;
+
+        .layout__shared__header__inner__menu__list__item {
+          @extend a;
+        }
+      }
+    }
+  }
+}
+
+

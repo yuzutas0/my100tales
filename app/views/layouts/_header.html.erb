@@ -1,30 +1,33 @@
-<nav class="shared-header">
-  <div class="container">
-    <div class="shared-header-layout">
-      <!-- burger menu -->
-      <button type="button" class="shared-header-toggle-navigation collapsed" data-toggle="collapse" data-target="#navbar-content">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+<nav class="layout__shared__header">
+  <div class="layout__shared__header__inner">
+
+    <div class="layout__shared__header__inner__layout">
+      <!-- burger menu at right -->
+      <button type="button" class="layout__shared__header__inner__layout__menu" data-toggle="collapse" data-target="#shared__header__burger__menu">
+        <span class="layout__shared__header__inner__layout__menu__inner"></span>
+        <span class="layout__shared__header__inner__layout__menu__inner"></span>
+        <span class="layout__shared__header__inner__layout__menu__inner"></span>
       </button>
-      <a class="shared-header-title" href="#">
-        <h1 class="shared-header-h1"><%= fa_icon 'fire' %> My 100 tales</h1>
-      </a>
+      <!-- application logo at left -->
+      <%= link_to tales_path, class: 'layout__shared__header__inner__layout__logo' do %>
+          <h1 class="layout__shared__header__inner__layout__logo__inner"><%= fa_icon 'fire' %> My 100 tales</h1>
+      <% end %>
     </div>
+
     <!-- navbar contents -->
-    <div id="navbar-content" class="navbar-content-outer collapse">
-      <ul class="navbar-content-inner">
+    <div id="shared__header__burger__menu" class="layout__shared__header__inner__menu collapse"><%# パフォーマンス観点による .collapse の直指定 %>
+      <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
-            <li><a href="#">Logged in as <%= current_user.name %>.</a></li>
+            <li><p class="layout__shared__header__inner__menu__list__item">Logged in as <%= current_user.name %>.</p></li>
             <li><%= link_to 'Settings', edit_user_registration_path %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <% else %>
-            <li><a href="#">Welcome Guest User!</a></li>
+            <li><p class="layout__shared__header__inner__menu__list__item">Welcome Guest User!</p></li>
             <li><%= link_to 'Signup', new_user_registration_path %></li>
             <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
       </ul>
     </div>
+
   </div>
 </nav>
