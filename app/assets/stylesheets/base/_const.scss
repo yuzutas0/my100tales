@@ -9,13 +9,3 @@ $editor_size_small: 20.0rem;
 
 $pull_margin_top_small: 0.8rem;
 $pull_margin_top_middle: 1.2rem;
-
-/* base */
-p, a, button {
-  font-size: $font_size_middle;
-}
-
-/* util */
-.hidden {
-  visibility: hidden;
-}
