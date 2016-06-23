@@ -1,8 +1,10 @@
 // Common for Devise
 
+// import
 @import "module/button";
 @import "module/form";
 
+// main
 .layout__devise {
   @extend .container;
 }

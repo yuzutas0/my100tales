@@ -1,52 +1,59 @@
-<div class="home-index">
-  <div class="home-atmosphere-outer">
-    <div class="home-atmosphere-inner">
-      <h1 class="home-atmosphere-title">a list of 100 dreams</h1>
-      <p class="home-atmosphere-content">
+<div class="layout__home">
+
+  <div class="layout__home__impress">
+    <div class="layout__home__impress__inner">
+      <h1 class="layout__home__impress__inner__message">
+        a list of 100 dreams
+      </h1>
+      <p class="layout__home__impress__inner__description">
         Thinking gives energy to make dreams come true.<br />
         Here's the best place to list the will in your mind.<br />
         They're no longer fairy tales with expression.
       </p>
-      <%= link_to 'Sign up', new_user_registration_path, class: 'home-atmosphere-signup' %>
-      <div class="home-atmosphere-login"><p>or <%= link_to 'Log in', new_user_session_path %>, when you have account.</p></div>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'layout__home__impress__inner__signup button' %>
+      <div class="layout__home__impress__inner__login">
+        <p>or <%= link_to 'Log in', new_user_session_path %>, when you have account.</p>
+      </div>
     </div>
   </div>
 
-  <div class="home-explain">
+  <div class="layout__home__explain">
 
-    <div class="home-explain-usage">
-      <div class="home-explain-title"><h2>Usage of this app</h2></div>
-      <div class="home-explain-item">
-        <div class="home-explain-item-icon"><%= fa_icon 'pencil-square-o' %></div>
-        <h3 class="home-explain-item-title">1. Write</h3>
+    <div class="layout__home__explain__inner1">
+      <div class="layout__home__explain__inner1__title"><h2>Usage of this app</h2></div>
+      <div class="layout__home__explain__inner1__content1">
+        <div class="layout__home__explain__inner1__content1__icon"><%= fa_icon 'pencil-square-o' %></div>
+        <h3 class="layout__home__explain__inner1__content1__title">1. Write</h3>
         <p>write down your thinking<br />with simple markdown editor.</p>
       </div>
-      <div class="home-explain-item">
-        <div class="home-explain-item-icon"><%= fa_icon 'list-alt' %></div>
-        <h3 class="home-explain-item-title">2. List</h3>
+      <div class="layout__home__explain__inner1__content2">
+        <div class="layout__home__explain__inner1__content2__icon"><%= fa_icon 'list-alt' %></div>
+        <h3 class="layout__home__explain__inner1__content2__title">2. List</h3>
         <p>manage your wish list<br />with tagging and scoring.</p>
       </div>
-      <div class="home-explain-item">
-        <div class="home-explain-item-icon"><%= fa_icon 'comments-o' %></div>
-        <h3 class="home-explain-item-title">3. Sequel</h3>
+      <div class="layout__home__explain__inner1__content3">
+        <div class="layout__home__explain__inner1__content3__icon"><%= fa_icon 'comments-o' %></div>
+        <h3 class="layout__home__explain__inner1__content3__title">3. Sequel</h3>
         <p>make your ideas deeper and bigger<br />with additional comments.</p>
       </div>
     </div>
 
     <hr>
-    <div class="home-explain-signup">
-      <div class="home-explain-title"><h2>Signup for free</h2></div>
-      <div class="home-explain-text">
-        <p>
+    <div class="layout__home__explain__inner2">
+      <div class="layout__home__explain__inner2__title"><h2>Signup for free</h2></div>
+      <div class="layout__home__explain__inner2__description">
+        <p class="layout__home__explain__inner2__description__text">
           We request your signup to provide secret space for each accounts,
           and email is required to send backup file.
         </p>
-        <p>
+        <p class="layout__home__explain__inner2__description__text">
           In addition, signup is going to be completed without time and money.
         </p>
       </div>
-      <%= link_to 'Sign up', new_user_registration_path, class: 'home-atmosphere-signup' %>
-      <div class="home-atmosphere-login"><p>or <%= link_to 'Log in', new_user_session_path %>, when you have account.</p></div>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'layout__home__explain__inner2__signup button' %>
+      <div class="layout__home__explain__inner2__login">
+        <p>or <%= link_to 'Log in', new_user_session_path %>, when you have account.</p>
+      </div>
     </div>
 
   </div>

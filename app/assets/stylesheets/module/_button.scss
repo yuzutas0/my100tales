@@ -1,14 +1,14 @@
 // button
 
 // import
-@import "bootstrap-sprockets";
-@import "honoka"; /* @import "bootstrap"; */
+@import "honoka";
 @import "base/const";
 
 // main
 .button {
   @extend .btn;
   @extend .btn-primary;
+  padding: $margin_size_x_small $margin_size_middle;
 
   &.button--danger {
     @extend .btn-danger;

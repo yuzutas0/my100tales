@@ -1,95 +1,135 @@
-@import "bootstrap-sprockets";
-@import "honoka"; /* @import "bootstrap"; */
+// home
+
+// import
 @import "base/const";
+@import "module/button";
 
-.home-index {
-  .home-atmosphere-outer {
-    width: 100%;
-    padding: 5rem 0;
-    background-color: #ccc; // FIXME: picture
-    text-align: center;
-    height: auto;
+// main
+.layout__home {
+  width: 100%;
+  text-align: center;
 
-    .home-atmosphere-inner {
+  @mixin layout__home__signup() {
+    margin-top: $margin_size_small;
+  }
+
+  @mixin layout__home__login() {
+    margin-top: $margin_size_small;
+  }
+
+  .layout__home__impress {
+    padding: $margin_size_xx_large 0;
+    background-color: $mock_color; // FIXME: picture
+
+    .layout__home__impress__inner {
       @extend .container;
 
-      .home-atmosphere-title {
+      .layout__home__impress__inner__message {
         margin: 0;
-        font-size: $font-size-x-large;
+        font-size: $font_size_x_large;
       }
 
-      .home-atmosphere-content {
-        margin-top: 1.5rem;
+      .layout__home__impress__inner__description {
+        margin-top: $margin_size_small;
         font-size: $font-size-small;
       }
+
+      .layout__home__impress__inner__signup {
+        @include layout__home__signup;
+      }
+
+      .layout__home__impress__inner__login {
+        @include layout__home__login;
+      }
     }
   }
-  .home-explain {
+
+  .layout__home__explain {
     @extend .container;
 
-    .home-explain-usage {
-      @extend .row;
-      margin-top: 4.5rem;
+    @mixin layout__home__explain__inner() {
+      margin-top: $margin_size_x_large;
     }
 
-    .home-explain-title {
-      text-align: center;
+    @mixin layout__home__explain__inner__title() {
+      margin-bottom: $margin_size_middle;
     }
 
-    .home-explain-item {
+    @mixin layout__home__explain__inner__content() {
       @extend .col-sm-4;
       @extend .col-xs-12;
-      margin-top: 2.5rem;
-      text-align: center;
+      margin-top: $margin_size_middle;
+    }
 
-      .home-explain-item-icon {
-        font-size: 6.4rem;
-        padding-right: 1.0rem;
+    @mixin layout__home__explain__inner__content__icon() {
+      font-size: $icon_size_large;
+      padding-right: $margin_size_x_small;
 
-        @media (max-width: $screen-xs-max) {
-          padding-right: 0;
-        }
-      }
-
-      .home-explain-item-title {
-        margin-top: 0;
-        padding-right: 1.8rem;
-
-        @media (max-width: $screen-xs-max) {
-          padding-right: 0;
-        }
+      @media (max-width: $screen-xs-max) {
+        padding-right: 0;
       }
     }
 
-    .home-explain-signup {
-      margin-top: 4.5rem;
-      text-align: center;
+    @mixin layout__home__explain__inner__content__title() {
+      margin-top: 0;
+      padding-right: $margin_size_small;
+
+      @media (max-width: $screen-xs-max) {
+        padding-right: 0;
+      }
     }
 
-    .home-explain-title + .home-explain-text {
-      margin-top: 2.5rem;
-    }
-
-    .home-explain-text {
+    .layout__home__explain__inner1 {
+      @include layout__home__explain__inner;
       @extend .row;
 
-      > p {
-        @extend .col-sm-6;
-        @extend .col-sm-offset-3;
-        @extend .col-xs-12;
+      .layout__home__explain__inner1__title {
+        @include layout__home__explain__inner__title;
+      }
+
+      .layout__home__explain__inner1__content1,
+      .layout__home__explain__inner1__content2,
+      .layout__home__explain__inner1__content3 {
+        @include layout__home__explain__inner__content;
+
+        .layout__home__explain__inner1__content1__icon,
+        .layout__home__explain__inner1__content2__icon,
+        .layout__home__explain__inner1__content3__icon {
+          @include layout__home__explain__inner__content__icon;
+        }
+
+        .layout__home__explain__inner1__content1__title,
+        .layout__home__explain__inner1__content2__title,
+        .layout__home__explain__inner1__content3__title {
+          @include layout__home__explain__inner__content__title;
+        }
       }
     }
-  }
 
-  .home-atmosphere-signup {
-    @extend .btn;
-    @extend .btn-primary;
+    .layout__home__explain__inner2 {
+      @include layout__home__explain__inner;
 
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
-  }
+      .layout__home__explain__inner2__title {
+        @include layout__home__explain__inner__title;
+      }
 
-  .home-atmosphere-login {
-    margin-top: 1rem;
+      .layout__home__explain__inner2__description {
+        @extend .row;
+
+        .layout__home__explain__inner2__description__text {
+          @extend .col-sm-6;
+          @extend .col-sm-offset-3;
+          @extend .col-xs-12;
+        }
+      }
+
+      .layout__home__explain__inner2__signup {
+        @include layout__home__signup;
+      }
+
+      .layout__home__explain__inner2__login {
+        @include layout__home__login;
+      }
+    }
   }
 }
