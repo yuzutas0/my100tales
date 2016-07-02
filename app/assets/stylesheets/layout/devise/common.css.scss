@@ -1,10 +1,12 @@
 // Common for Devise
 
 // import
+@import "base/util";
 @import "module/button";
 @import "module/form";
 
 // main
 .layout__devise {
+  @include util__layout;
   @extend .container;
 }

@@ -1,0 +1,9 @@
+// util
+
+// import
+@import "base/const";
+
+// main
+@mixin util__layout() {
+  margin-top: $margin_size_middle;
+}

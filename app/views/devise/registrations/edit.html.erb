@@ -2,7 +2,7 @@
   <p><%= render 'layouts/breadcrumb_2', third_page: ('Edit ' + resource_name.to_s.humanize) %></p>
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form' }) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="form__field">
@@ -37,8 +37,9 @@
     <div><%= f.submit 'Update', class: 'button' %></div>
   <% end %>
 
-  <h3>Delete my account</h3>
-  <%= button_to 'Delte my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button button--danger' %>
-
-  <%= link_to 'Back', :back %>
+  <hr>
+  <p>
+    or <%= link_to 'delete ' + resource_name.to_s.humanize, registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete %>
+    : Pay attention that you can never be restored!!
+  </p>
 </div>
