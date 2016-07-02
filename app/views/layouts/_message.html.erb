@@ -4,7 +4,7 @@
       <% type = type.gsub('alert', 'error').gsub('notice', 'info') %>
         toastr.options = {
           "closeButton": true,
-          "positionClass": "toast-bottom-full-width"
+          "positionClass": "toast-top-right"
         }
         toastr.<%= type %>(<%= message.inspect.html_safe %>)
       <% end %>
