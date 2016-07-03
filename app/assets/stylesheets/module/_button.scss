@@ -5,12 +5,8 @@
 @import "base/const";
 
 // main
-.button {
+.module__button {
   @extend .btn;
   @extend .btn-primary;
   padding: $margin_size_x_small $margin_size_middle;
-
-  &.button--danger {
-    @extend .btn-danger;
-  }
 }

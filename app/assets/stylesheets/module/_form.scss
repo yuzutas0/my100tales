@@ -6,11 +6,11 @@
 @import "base/const";
 
 // main
-.form {
-  .form__field {
+.module__form {
+  .module__form__field {
     @extend .form-group;
 
-    .form__field__text {
+    .module__form__field__text {
       @extend .form-control;
     }
   }
