@@ -18,21 +18,23 @@
         <%= link_to tale.title, tale, class: 'tales-index-title-inner' %>
       </h4>
       <div>
-        <a href="#" class="tales-index-label">Label1</a>
-        <a href="#" class="tales-index-label">Label2</a>
-        <a href="#" class="tales-index-label">Label3</a>
+        <% %w('Label1','Label2','Label3').each do |label| %>
+          <a href="#" class="tales-index-label"><%= label %></a>
+        <% end %>
       </div>
       <div>
-        <a href="#" class="tales-index-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-        <a href="#" class="tales-index-star">Star2:<%= fa_icon 'star' %></a>
-        <a href="#" class="tales-index-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+        <% {'Star1':3,'Star2':1,'Star3':5}.each do |axis, score| %>
+          <a href="#" class="tales-index-star">
+            <%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %>
+          </a>
+        <% end %>
       </div>
       <p class="tales-index-content">
         <% tale_content_plain = markdown_to_plain(tale.content) %>
         <% if tale_content_plain.size <= 99 %>
           <%= tale_content_plain %>
         <% else %>
-            <%= tale_content_plain[0..99] %>...
+          <%= tale_content_plain[0..99] %>...
         <% end %>
       </p>
     </div>
