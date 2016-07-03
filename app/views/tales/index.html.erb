@@ -1,12 +1,13 @@
-<div class="tales-index">
-  <div class="tales-index-information">
-    <p class="tales-index-breadcrumb"><%= render 'layouts/breadcrumb_1', second_page: 'MyPage' %></p>
-    <%= link_to Constants::NEW_TALE_PATH_NAME, new_tale_path, class: 'tales-index-button-to-create' %>
-    <span class="tales-index-information-bottom" />
+<div class="layout__tales__index">
+
+  <div class="layout__tales__index__header">
+    <p class="layout__tales__index__header__left"><%= render 'layouts/breadcrumb_1', second_page: 'MyPage' %></p>
+    <%= link_to Constants::NEW_TALE_PATH_NAME, new_tale_path, class: 'layout__tales__index__header__right module__button module__button--small' %>
+    <span class="layout__tales__index__header__end" />
   </div>
+
   <hr>
 
-  <h2>Listing Tales</h2>
   <p><%= page_entries_info @tales %></p>
   <div class="tales-index-list">
     <% @tales.each do |tale| %>
@@ -23,10 +24,8 @@
         <% end %>
       </div>
       <div>
-        <% {'Star1':3,'Star2':1,'Star3':5}.each do |axis, score| %>
-          <a href="#" class="tales-index-star">
-            <%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %>
-          </a>
+        <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %>
+          <a href="#" class="tales-index-star"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
         <% end %>
       </div>
       <p class="tales-index-content">
@@ -40,5 +39,5 @@
     </div>
     <% end %>
   </div>
-  <div class="tales-index-pagination"><%= paginate @tales, outer_window: 3 %></div>
+  <div class="layout__tales__index__pagination"><%= paginate @tales, outer_window: 3 %></div>
 </div>

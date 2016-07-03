@@ -13,6 +13,7 @@
 
   .layout__shared__header__inner {
     @extend .container;
+    padding: 0;
 
     .layout__shared__header__inner__layout {
       @extend .navbar-header;

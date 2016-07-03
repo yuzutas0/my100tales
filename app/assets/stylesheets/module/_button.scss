@@ -1,7 +1,6 @@
 // button
 
 // import
-@import "honoka";
 @import "base/const";
 
 // main
@@ -9,4 +8,8 @@
   @extend .btn;
   @extend .btn-primary;
   padding: $margin_size_x_small $margin_size_middle;
+
+  &--small {
+    padding: $margin_size_xx_small $margin_size_small;
+  }
 }

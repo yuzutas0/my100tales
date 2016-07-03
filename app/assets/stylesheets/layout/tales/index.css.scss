@@ -1,23 +1,30 @@
-@import "bootstrap-sprockets";
-@import "honoka"; /* @import "bootstrap"; */
-@import "base/const";
+// tales index
 
-/* tales-index */
-.tales-index {
-  .tales-index-information {
-    .tales-index-breadcrumb {
+// import
+@import "base/const";
+@import "base/util";
+
+// main
+.layout__tales__index {
+  @extend .container;
+  @include util__layout;
+
+  .layout__tales__index__header {
+
+    .layout__tales__index__header__left {
       @extend .pull-left;
-      margin-top: $pull_margin_top_small;
+      margin-top: $margin_size_xx_small; // align height -> right button
     }
-    .tales-index-button-to-create {
+
+    .layout__tales__index__header__right {
       @extend .pull-right;
-      @extend .btn;
-      @extend .btn-primary;
     }
-    .tales-index-information-bottom {
+
+    .layout__tales__index__header__end {
       @extend .clearfix;
     }
   }
+
   .tales-index-list {
     @extend .list-group;
 
@@ -49,7 +56,8 @@
       }
     }
   }
-  .tales-index-pagination {
+
+  .layout__tales__index__pagination {
     text-align: center;
   }
 }

@@ -1,5 +1,10 @@
 // const
 
+// import
+
+@import "bootstrap-sprockets";
+@import "honoka";
+
 // main
 
 // FIXME : wait for rem in bootstrap 4
@@ -28,7 +33,7 @@ $margin_size_xx_small: 5px;
 $editor_size_large: 45px;
 $editor_size_small: 20px;
 
-$pull_margin_top_small: 8px;
+$pull_margin_top_small: 8px; // not use tales/index
 $pull_margin_top_middle: 12px;
 
 // FIXME
