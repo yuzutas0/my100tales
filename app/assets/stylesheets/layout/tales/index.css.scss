@@ -25,31 +25,31 @@
     }
   }
 
-  .tales-index-list {
+  .layout__tales__index__list {
     @extend .list-group;
 
-    .tales-index-item {
+    .layout__tales__index__list__item {
       @extend .list-group-item;
 
-      .tales-index-created_at {
+      .layout__tales__index__list__item__created {
         font-size: $font_size_small;
       }
-      .tales-index-title-outer {
-        @extend .list-group-item-heading;
 
-        .tales-index-title-inner {
-          font-size: $font_size_large;
-        }
+      .layout__tales__index__list__item__title {
+        font-size: $font_size_large;
       }
-      .tales-index-label {
+
+      .layout__tales__index__list__item__label {
         @extend .bg-info;
         font-size: $font_size_small;
       }
-      .tales-index-star {
+
+      .layout__tales__index__list__item__star {
         @extend .bg-warning;
         font-size: $font_size_small;
       }
-      .tales-index-content {
+
+      .layout__tales__index__list__item__content {
         @extend .list-group-item-text;
         @extend .text-muted;
         font-size: $font_size_middle;

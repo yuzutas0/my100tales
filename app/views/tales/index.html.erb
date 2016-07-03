@@ -9,35 +9,38 @@
   <hr>
 
   <p><%= page_entries_info @tales %></p>
-  <div class="tales-index-list">
+  <div class="layout__tales__index__list">
+
     <% @tales.each do |tale| %>
-    <div class="tales-index-item">
-      <p class="tales-index-created_at">
-        <%= tale.created_at.strftime('%Y-%b-%d') %>に投稿
-      </p>
-      <h4 class="tales-index-title-outer">
-        <%= link_to tale.title, tale, class: 'tales-index-title-inner' %>
-      </h4>
+    <div class="layout__tales__index__list__item">
+
+      <p class="layout__tales__index__list__item__created"><%= tale.created_at.strftime('%Y-%b-%d') %>に投稿</p>
+      <h4><%= link_to tale.title, tale, class: 'layout__tales__index__list__item__title' %></h4>
+
       <div>
-        <% %w(Label1 Label2 Label3).each do |label| %>
-          <a href="#" class="tales-index-label"><%= label %></a>
+        <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
+            <a href="#" class="layout__tales__index__list__item__label"><%= label %></a>
         <% end %>
       </div>
+
       <div>
-        <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %>
-          <a href="#" class="tales-index-star"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
+        <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
+          <a href="#" class="layout__tales__index__list__item__star"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
         <% end %>
       </div>
-      <p class="tales-index-content">
+
+      <p class="layout__tales__index__list__item__content">
         <% tale_content_plain = markdown_to_plain(tale.content) %>
-        <% if tale_content_plain.size <= 99 %>
-          <%= tale_content_plain %>
+        <% if tale_content_plain.size > 99 %>
+            <%= tale_content_plain[0..99] %>...
         <% else %>
-          <%= tale_content_plain[0..99] %>...
+            <%= tale_content_plain %>
         <% end %>
       </p>
+
     </div>
     <% end %>
   </div>
+
   <div class="layout__tales__index__pagination"><%= paginate @tales, outer_window: 3 %></div>
 </div>
