@@ -11,29 +11,30 @@
 
   <!-- TODO: set three tabs, information, content, comment -->
 
-  <div class="tale-show-information">
+  <div class="layout__tale__show__information">
     <h3>Information</h3>
-    <div class="tale-show-label-group">
-      <p class="tale-show-label-heading">Label</p>
-      <div class="tale-show-label-text">
-        <a href="#" class="module__label">Label1</a>
-        <a href="#" class="module__label">Label2</a>
-        <a href="#" class="module__label">Label3</a>
+
+    <div class="layout__tale__show__information__label">
+      <p class="layout__tale__show__information__label__heading">Label</p>
+      <div class="layout__tale__show__information__label__content">
+        <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
+            <a href="#" class="module__label"><%= label %></a>
+        <% end %>
       </div>
     </div>
 
-    <div class="tale-show-star-group">
-      <p class="tale-show-star-heading">Score</p>
-      <div class="tale-show-star-text">
-        <a href="#" class="module__label">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-        <a href="#" class="module__label">Star2:<%= fa_icon 'star' %></a>
-        <a href="#" class="module__label">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+    <div class="layout__tale__show__information__star">
+      <p class="layout__tale__show__information__star__heading">Score</p>
+      <div class="layout__tale__show__information__star__content">
+        <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
+            <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
+        <% end %>
       </div>
     </div>
 
-    <div class="tale-show-time-group">
-      <p class="tale-show-time-heading">Info</p>
-      <div class="tale-show-time-text">
+    <div class="layout__tale__show__information__time">
+      <p class="layout__tale__show__information__time__heading">History</p>
+      <div class="layout__tale__show__information__time__content">
         <ul>
           <li>posted at <%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %></li>
           <% unless @tale.created_at == @tale.updated_at %>

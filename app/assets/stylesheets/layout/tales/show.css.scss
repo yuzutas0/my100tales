@@ -27,16 +27,24 @@
     }
   }
 
-  .tale-show-information {
+  .layout__tale__show__information {
     @extend .list-group;
 
-    .tale-show-label-group, .tale-show-star-group, .tale-show-time-group {
+    .layout__tale__show__information__label,
+    .layout__tale__show__information__star,
+    .layout__tale__show__information__time {
       @extend .list-group-item;
     }
-    .tale-show-label-heading, .tale-show-star-heading, .tale-show-time-heading {
+
+    .layout__tale__show__information__label__heading,
+    .layout__tale__show__information__star__heading,
+    .layout__tale__show__information__time__heading {
       @extend .list-group-item-heading;
     }
-    .tale-show-label-text, .tale-show-star-text, .tale-show-time-text {
+
+    .layout__tale__show__information__label__content,
+    .layout__tale__show__information__star__content,
+    .layout__tale__show__information__time__content {
       @extend .list-group-item-text;
     }
   }
@@ -51,23 +59,5 @@
         font-size: $font_size_middle;
         width: auto;
       }
-  }
-
-  .sequels-index-list {
-    @extend .list-group;
-
-    .sequels-index-item {
-      @extend .list-group-item;
-
-      .sequels-index-content {
-        @extend .list-group-item-heading;
-      }
-
-      .sequels-index-information {
-        @extend .text-muted;
-        @extend .list-group-item-text;
-        font-size: $font_size_middle;
-      }
-    }
   }
 }

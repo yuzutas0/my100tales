@@ -8,8 +8,24 @@
     @extend .form-control;
     resize: none;
   }
-  .sequel-form-button-to-act {
-    @extend .btn;
-    @extend .btn-primary;
+}
+
+/* sequel-index */
+.sequels-index-list {
+  @extend .list-group;
+
+  .sequels-index-item {
+    @extend .list-group-item;
+
+    .sequels-index-content {
+      @extend .list-group-item-heading;
+    }
+
+    .sequels-index-information {
+      @extend .text-muted;
+      @extend .list-group-item-text;
+      font-size: $font_size_middle;
+    }
   }
 }
+
