@@ -1,0 +1,14 @@
+// button
+
+// import
+@import "base/const";
+
+// main
+.module__panel {
+  @extend .panel;
+  @extend .panel-default;
+
+  .module__panel__inner {
+    @extend .panel-body;
+  }
+}

@@ -1,11 +1,13 @@
-<div class="tale-show">
-  <div class="tale-show-header">
-    <p class="tale-show-breadcrumb"><%= render 'layouts/breadcrumb_2', third_page: Constants::SHOW_TALE_PATH_NAME %></p>
-    <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale), class: 'tale-show-button-to-edit' %>
-    <div class="tale-show-header-bottom"></div>
-    <hr>
-    <h2><%= @tale.title %></h2>
+<div class="layout__tale__show">
+
+  <div class="layout__tale__show__header">
+    <p class="layout__tale__show__header__left"><%= render 'layouts/breadcrumb_2', third_page: Constants::SHOW_TALE_PATH_NAME %></p>
+    <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale), class: 'layout__tales__index__header__right module__button module__button--small' %>
+    <div class="layout__tale__show__header__end"></div>
   </div>
+
+  <hr>
+  <h2><%= @tale.title %></h2>
 
   <!-- TODO: set three tabs, information, content, comment -->
 
@@ -14,18 +16,18 @@
     <div class="tale-show-label-group">
       <p class="tale-show-label-heading">Label</p>
       <div class="tale-show-label-text">
-        <a href="#" class="tale-show-label">Label1</a>
-        <a href="#" class="tale-show-label">Label2</a>
-        <a href="#" class="tale-show-label">Label3</a>
+        <a href="#" class="module__label">Label1</a>
+        <a href="#" class="module__label">Label2</a>
+        <a href="#" class="module__label">Label3</a>
       </div>
     </div>
 
     <div class="tale-show-star-group">
       <p class="tale-show-star-heading">Score</p>
       <div class="tale-show-star-text">
-        <a href="#" class="tale-show-star">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
-        <a href="#" class="tale-show-star">Star2:<%= fa_icon 'star' %></a>
-        <a href="#" class="tale-show-star">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+        <a href="#" class="module__label">Star1:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
+        <a href="#" class="module__label">Star2:<%= fa_icon 'star' %></a>
+        <a href="#" class="module__label">Star3:<%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %><%= fa_icon 'star' %></a>
       </div>
     </div>
 
@@ -43,11 +45,10 @@
   </div>
   <hr>
 
-  <div class="tale-show-content">
+  <div class="layout__tale__show__content">
     <h3>Content</h3>
-    <%= render 'layouts/message' %>
-    <div class="tale-show-panel">
-      <div class="tale-show-panel-body"><%= markdown_to_html(@tale.content) %></div>
+    <div class="module__panel">
+      <div class="module__panel__inner"><%= markdown_to_html(@tale.content) %></div>
     </div>
   </div>
 

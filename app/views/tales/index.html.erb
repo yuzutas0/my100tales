@@ -19,13 +19,11 @@
 
       <div>
         <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
-            <a href="#" class="layout__tales__index__list__item__label"><%= label %></a>
+            <a href="#" class="module__label"><%= label %></a>
         <% end %>
-      </div>
 
-      <div>
         <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
-          <a href="#" class="layout__tales__index__list__item__star"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
+          <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
         <% end %>
       </div>
 

@@ -1,23 +1,32 @@
-@import "bootstrap-sprockets";
-@import "honoka"; /* @import "bootstrap"; */
+// tale show
+
+// import
 @import "base/const";
+@import "base/util";
+@import "module/table";
+@import "module/label";
 
 /* tale-show */
-.tale-show {
-  .tale-show-header {
-    .tale-show-breadcrumb {
+.layout__tale__show {
+  @extend .container;
+  @include util__layout;
+
+  .layout__tale__show__header {
+
+    .layout__tale__show__header__left {
       @extend .pull-left;
-      margin-top: $pull_margin_top_small;
+      margin-top: $margin_size_xx_small; // align height -> right button
     }
-    .tale-show-button-to-edit {
+
+    .layout__tales__index__header__right {
       @extend .pull-right;
-      @extend .btn;
-      @extend .btn-primary;
     }
-    .tale-show-header-bottom {
+
+    .layout__tale__show__header__end {
       @extend .clearfix;
     }
   }
+
   .tale-show-information {
     @extend .list-group;
 
@@ -30,34 +39,20 @@
     .tale-show-label-text, .tale-show-star-text, .tale-show-time-text {
       @extend .list-group-item-text;
     }
-    .tale-show-label, .tale-show-star {
-      @extend .label;
-      @extend .label-primary;
-      font-weight: normal;
-      color: $gray;
-      background-color: $gray-lighter;
-    }
   }
-  .tale-show-content {
-    .tale-show-panel {
-      @extend .panel;
-      @extend .panel-default;
-    }
-    .tale-show-panel-body {
-      @extend .panel-body;
+
+  .layout__tale__show__content {
 
       table {
-        @extend .table;
-        @extend .table-striped;
-        @extend .table-bordered;
+        @extend .module__table;
       }
 
       p, pre, ul, ol, table {
         font-size: $font_size_middle;
         width: auto;
       }
-    }
   }
+
   .sequels-index-list {
     @extend .list-group;
 

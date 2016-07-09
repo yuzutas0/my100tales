@@ -39,16 +39,6 @@
         font-size: $font_size_large;
       }
 
-      .layout__tales__index__list__item__label {
-        @extend .bg-info;
-        font-size: $font_size_small;
-      }
-
-      .layout__tales__index__list__item__star {
-        @extend .bg-warning;
-        font-size: $font_size_small;
-      }
-
       .layout__tales__index__list__item__content {
         @extend .list-group-item-text;
         @extend .text-muted;
