@@ -16,12 +16,13 @@
   </div>
 
   <div id="vue-markdown" class="tale-form-content-group">
-    <div class="tale-form-content-sp-tab">
-      <a id="switch-vue-markdown-editor">Editor</a>|<a id="switch-vue-markdown-preview">Preview</a>
+    <div class="tale-form-content-sp-tab module__tab">
+      <li class="active"><a id="switch-vue-markdown-editor">Editor</a></li>
+      <li><a id="switch-vue-markdown-preview">Preview</a></li>
     </div>
     <div class="tale-form-markdown-adjust">
       <div id="vue-markdown-editor-outer" class="tale-form-markdown-editor-outer">
-        <%= f.text_area :content, id: 'vue-markdown-editor', class: 'tale-form-markdown-editor-inner', 'v-model' => 'content' %>
+        <%= f.text_area :content, id: 'vue-markdown-editor', class: 'tale-form-markdown-editor-inner', 'v-model' => 'content', placeholder: 'Write down by markdown' %>
       </div>
       <div id="vue-markdown-preview-outer" class="tale-form-markdown-preview-outer hidden-xs">
         <div v-html="content | preview" id="vue-markdown-preview" class="tale-form-markdown-preview-inner" />
