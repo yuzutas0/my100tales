@@ -1,8 +1,10 @@
 // tale new
 
 // import
+@import "base/util";
 
 // main
-.tale-new {
-  // put here if you need
+.layout__tale__new {
+  @extend .container;
+  @include util__layout;
 }
