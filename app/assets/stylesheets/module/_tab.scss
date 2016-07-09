@@ -1,0 +1,11 @@
+// button
+
+// import
+@import "base/const";
+
+// main
+.module__tab {
+  @extend .nav;
+  @extend .nav-tabs;
+  margin-bottom: $margin_size_small;
+}

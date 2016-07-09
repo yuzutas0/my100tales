@@ -9,73 +9,59 @@
   <hr>
   <h2><%= @tale.title %></h2>
 
-  <!-- TODO: set three tabs, information, content, comment -->
-
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">タブ1</a></li>
-    <li><a href="#tab2" data-toggle="tab">タブ2</a></li>
-    <li><a href="#tab3" data-toggle="tab">タブ3</a></li>
+  <ul class="module__tab">
+    <li class="active"><a href="#tab__first" data-toggle="tab">Content</a></li>
+    <li><a href="#tab__second" data-toggle="tab">Information</a></li>
+    <li><a href="#tab__third" data-toggle="tab">Sequels</a></li>
   </ul>
 
-  <div class="tab-content">
-    <div class="tab-pane fade in active" id="tab1">
-      <p>コンテンツ1</p>
-    </div>
-    <div class="tab-pane fade" id="tab2">
-      <p>コンテンツ2</p>
-    </div>
-    <div class="tab-pane fade" id="tab3">
-      <p>コンテンツ3</p>
-    </div>
-  </div>
+  <div class="tab-content"> <!-- tab -->
 
-  <div class="layout__tale__show__information">
-    <h3>Information</h3>
-
-    <div class="layout__tale__show__information__label">
-      <p class="layout__tale__show__information__label__heading">Label</p>
-      <div class="layout__tale__show__information__label__content">
-        <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
-            <a href="#" class="module__label"><%= label %></a>
-        <% end %>
+    <div id="tab__first" class="layout__tale__show__content tab-pane fade fade in active"> <!-- tab -->
+      <div class="module__panel">
+        <div class="module__panel__inner"><%= markdown_to_html(@tale.content) %></div>
       </div>
     </div>
 
-    <div class="layout__tale__show__information__star">
-      <p class="layout__tale__show__information__star__heading">Score</p>
-      <div class="layout__tale__show__information__star__content">
-        <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
-            <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
-        <% end %>
-      </div>
-    </div>
+    <div id="tab__second" class="layout__tale__show__information tab-pane fade"> <!-- tab -->
 
-    <div class="layout__tale__show__information__time">
-      <p class="layout__tale__show__information__time__heading">History</p>
-      <div class="layout__tale__show__information__time__content">
-        <ul>
-          <li>posted at <%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %></li>
-          <% unless @tale.created_at == @tale.updated_at %>
-              <li>updated at <%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %></li>
+      <div class="layout__tale__show__information__label">
+        <p class="layout__tale__show__information__label__heading">Label</p>
+        <div class="layout__tale__show__information__label__content">
+          <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
+              <a href="#" class="module__label"><%= label %></a>
           <% end %>
-        </ul>
+        </div>
+      </div>
+
+      <div class="layout__tale__show__information__star">
+        <p class="layout__tale__show__information__star__heading">Score</p>
+        <div class="layout__tale__show__information__star__content">
+          <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
+              <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="layout__tale__show__information__time">
+        <p class="layout__tale__show__information__time__heading">History</p>
+        <div class="layout__tale__show__information__time__content">
+          <ul>
+            <li>posted at <%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %></li>
+            <% unless @tale.created_at == @tale.updated_at %>
+                <li>updated at <%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <hr>
 
-  <div class="layout__tale__show__content">
-    <h3>Content</h3>
-    <div class="module__panel">
-      <div class="module__panel__inner"><%= markdown_to_html(@tale.content) %></div>
+    <div id="tab__third" class="tab-pane fade"> <!-- tab -->
+      <%= form_for(@new_sequel, url: create_sequel_path) do |f| %>
+          <%= render 'sequels/form', f: f %>
+      <% end %>
+      <%= render 'sequels/index' %>
     </div>
-  </div>
 
-  <div>
-    <h3>Sequels</h3>
-    <%= form_for(@new_sequel, url: create_sequel_path) do |f| %>
-        <%= render 'sequels/form', f: f %>
-    <% end %>
-    <%= render 'sequels/index' %>
   </div>
 </div>
