@@ -1,8 +1,8 @@
-<div class="tale-form">
+<div class="layout__tale__form module__form">
+
   <% if @tale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tale.errors.count, "error") %> prohibited this tale from being saved:</h2>
-
       <ul>
       <% @tale.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,13 +11,11 @@
     </div>
   <% end %>
 
-  <div class="tale-form-title-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: 'tale-form-title-control' %>
+  <div class="module__form__field">
+    <%= f.text_field :title, class: 'module__form__field__text', placeholder: 'Title' %>
   </div>
 
   <div id="vue-markdown" class="tale-form-content-group">
-    <%= f.label :content %><br>
     <div class="tale-form-content-sp-tab">
       <a id="switch-vue-markdown-editor">Editor</a>|<a id="switch-vue-markdown-preview">Preview</a>
     </div>
@@ -31,5 +29,5 @@
     </div>
   </div>
 
-  <div><%= f.submit class: 'tale-form-button-to-act' %></div>
+  <div><%= f.submit class: 'module__button' %></div>
 </div>

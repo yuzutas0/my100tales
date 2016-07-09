@@ -1,11 +1,9 @@
-<div class="tale-edit">
+<div class="layout__tale__edit">
   <p><%= render 'breadcrumb_3_tale', forth_page: Constants::EDIT_TALE_PATH_NAME %></p>
-  <h2><%= Constants::EDIT_TALE_PATH_NAME %></h2>
 
   <%= form_for @tale do |f| %>
     <%= render 'form', f: f %>
   <% end %>
 
-  <hr>
   <%= link_to 'Delete Tale', @tale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
 </div>

@@ -6,7 +6,7 @@
 @import "module/table";
 @import "module/label";
 
-/* tale-show */
+// main
 .layout__tale__show {
   @extend .container;
   @include util__layout;
@@ -56,8 +56,7 @@
       }
 
       p, pre, ul, ol, table {
-        font-size: $font_size_middle;
-        width: auto;
+        @include util__markdown__text;
       }
   }
 }

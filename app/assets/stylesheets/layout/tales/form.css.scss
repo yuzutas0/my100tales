@@ -1,15 +1,13 @@
-@import "bootstrap-sprockets";
-@import "honoka"; /* @import "bootstrap"; */
-@import "base/const";
+// tale form
 
-/* tale-form */
-.tale-form {
-  .tale-form-title-group {
-    @extend .form-group;
-    .tale-form-title-control {
-      @extend .form-control;
-    }
-  }
+// import
+@import "base/const";
+@import "base/util";
+@import "module/table";
+
+// main
+.layout__tale__form {
+
   .tale-form-content-group {
     @extend .form-group;
 
@@ -42,11 +40,11 @@
         @extend .panel;
         @extend .panel-default;
         padding: 0;
-        right: 1.5rem;
-        bottom: 0.1rem;
+        right: $margin_size_small;
+        bottom: $margin_size_xxx_small;
 
         @media (max-width: $screen-xs-max) {
-          left: 1.5rem;
+          left: $margin_size_small;
         }
 
         .tale-form-markdown-preview-inner {
@@ -60,22 +58,14 @@
           }
 
           table {
-            @extend .table;
-            @extend .table-striped;
-            @extend .table-bordered;
+            @extend .module__table;
           }
 
           p, pre, ul, ol, table {
-            font-size: $font_size_middle;
-            width: auto;
+            @include util__markdown__text;
           }
         }
       }
     }
-  }
-
-  .tale-form-button-to-act {
-    @extend .btn;
-    @extend .btn-primary;
   }
 }
