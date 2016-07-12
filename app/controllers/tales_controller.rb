@@ -31,14 +31,10 @@ class TalesController < ApplicationController
   def create
     Tale.transaction do
       @tale = Tale.instance(tale_params, current_user)
-      respond_to do |format|
-        if @tale.save
-          format.html { redirect_to @tale, notice: 'Tale was successfully created.' }
-          format.json { render :show, status: :created, location: @tale }
-        else
-          format.html { render :new }
-          format.json { render json: @tale.errors, status: :unprocessable_entity }
-        end
+      if @tale.save
+        redirect_to @tale, notice: 'Tale was successfully created.'
+      else
+        render :new
       end
     end
   end
@@ -46,14 +42,10 @@ class TalesController < ApplicationController
   # PATCH/PUT /tales/1
   # PATCH/PUT /tales/1.json
   def update
-    respond_to do |format|
-      if @tale.update(tale_params)
-        format.html { redirect_to @tale, notice: 'Tale was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tale }
-      else
-        format.html { render :edit }
-        format.json { render json: @tale.errors, status: :unprocessable_entity }
-      end
+    if @tale.update(tale_params)
+      redirect_to @tale, notice: 'Tale was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -61,10 +53,7 @@ class TalesController < ApplicationController
   # DELETE /tales/1.json
   def destroy
     @tale.destroy
-    respond_to do |format|
-      format.html { redirect_to tales_url, notice: 'Tale was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tales_url, notice: 'Tale was successfully destroyed.'
   end
 
   private

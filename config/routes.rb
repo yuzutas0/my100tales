@@ -7,17 +7,18 @@ Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
   # tale
-  get '/mypage(.:format)', to: 'tales#index', as: 'tales'
-  post '/tales(.:format)', to: 'tales#create', as: 'create_tale'
-  get '/tales/new(.:format)', to: 'tales#new', as: 'new_tale'
-  get '/tales/:view_number/edit(.:format)', to: 'tales#edit', as: 'edit_tale'
-  get '/tales/:view_number(.:format)', to: 'tales#show', as: 'tale'
-  patch '/tales/:view_number(.:format)', to: 'tales#update', as: 'update_tale'
-  put '/tales/:view_number(.:format)', to: 'tales#update'
-  delete 'tales/:view_number(.:format)', to: 'tales#destroy'
+  get '/mypage', to: 'tales#index', as: 'tales'
+  post '/tales', to: 'tales#create', as: 'create_tale'
+  get '/tales/new', to: 'tales#new', as: 'new_tale'
+  get '/tales', to: 'tales#new'
+  get '/tales/:view_number/edit', to: 'tales#edit', as: 'edit_tale'
+  get '/tales/:view_number', to: 'tales#show', as: 'tale'
+  patch '/tales/:view_number', to: 'tales#update', as: 'update_tale'
+  put '/tales/:view_number', to: 'tales#update'
+  delete 'tales/:view_number', to: 'tales#destroy'
 
   # sequel
-  post '/sequels(.:format)', to: 'sequels#create', as: 'create_sequel'
+  post '/sequels', to: 'sequels#create', as: 'create_sequel'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,7 +1,7 @@
 <div class="layout__tale__form module__form">
 
   <% if @tale.errors.any? %>
-    <div id="error_explanation">
+    <div>
       <h2><%= pluralize(@tale.errors.count, "error") %> prohibited this tale from being saved:</h2>
       <ul>
       <% @tale.errors.full_messages.each do |message| %>
