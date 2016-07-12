@@ -8,7 +8,6 @@ class SequelsController < ApplicationController
     Sequel.transaction do
       @tale = Tale.detail(params[:view_number], current_user)
       sequel = @tale.sequels.build(sequel_params)
-      puts sequel.attributes
       if sequel.save
         redirect_to @tale, notice: 'Sequel was successfully created.'
       else
