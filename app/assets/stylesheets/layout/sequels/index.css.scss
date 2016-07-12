@@ -16,10 +16,15 @@
       @extend .list-group-item-heading;
     }
 
+    .layout__sequels__index__item__divide {
+      margin: $margin_size_x_small 0;
+    }
+
+    .layout__sequels__index__item__number,
     .layout__sequels__index__item__information {
       @extend .text-muted;
       @extend .list-group-item-text;
-      font-size: $font_size_middle;
+      font-size: $font_size_small;
     }
   }
 }

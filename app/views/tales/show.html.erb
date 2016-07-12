@@ -10,9 +10,18 @@
   <h2><%= @tale.title %></h2>
 
   <ul class="module__tab">
-    <li class=<%= @tab_class[0][0] %>><a href="#tab__first" data-toggle="tab">Content</a></li>
-    <li class=<%= @tab_class[1][0] %>><a href="#tab__second" data-toggle="tab">Information</a></li>
-    <li class=<%= @tab_class[2][0] %>><a href="#tab__third" data-toggle="tab">Sequels</a></li>
+    <li class=<%= @tab_class[0][0] %>>
+      <a href="#tab__first" data-toggle="tab">Content</a>
+    </li>
+    <li class=<%= @tab_class[1][0] %>>
+      <a href="#tab__second" data-toggle="tab">Information</a>
+    </li>
+    <li class=<%= @tab_class[2][0] %>>
+      <a href="#tab__third" data-toggle="tab">
+        Sequels
+        <span class="module__badge module__badge--desktop"><%= @tale.sequels.length %></span>
+      </a>
+    </li>
   </ul>
 
   <div class="tab-content"> <!-- tab -->

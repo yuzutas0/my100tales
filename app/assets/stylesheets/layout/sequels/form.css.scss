@@ -1,0 +1,18 @@
+// sequels index
+
+// import
+@import "base/const";
+
+/* sequel-index */
+.layout__sequels__form {
+
+  .layout__sequels__form__content {
+    min-height: $editor_size_small; // bootstrapによる上書き height: auto; 回避のため
+    height: $editor_size_small;
+
+    @media (max-width: $screen-xs-max) {
+      height: $editor_size_x_small;
+    }
+  }
+}
+

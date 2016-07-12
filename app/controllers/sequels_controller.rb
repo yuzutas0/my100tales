@@ -7,7 +7,7 @@ class SequelsController < ApplicationController
   def create
     Sequel.transaction do
       @tale = Tale.detail(params[:view_number], current_user)
-      @sequel = @tale.sequels.build(sequel_params)
+      @sequel = Sequel.instance(sequel_params, @tale)
       if @sequel.save
         flash[:notice] = 'Sequel was successfully created.'
       else

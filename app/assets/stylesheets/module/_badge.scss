@@ -1,0 +1,14 @@
+// badge
+
+// import
+@import "base/const";
+
+// main
+.module__badge {
+  @extend .label;
+  @extend .label-default;
+
+  &--desktop {
+    @extend .hidden-xs;
+  }
+}

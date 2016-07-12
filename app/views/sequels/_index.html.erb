@@ -6,6 +6,12 @@
         <%= sequel.content %>
       </div>
 
+      <hr class="layout__sequels__index__item__divide"/>
+
+      <div class="layout__sequels__index__item__number">
+        <%= sequel.view_number.ordinalize %> comment :
+      </div>
+
       <div class="layout__sequels__index__item__information">
         created at <%= sequel.created_at.strftime('%Y-%b-%d %H:%M') %>
         <% unless sequel.created_at == sequel.updated_at %>
