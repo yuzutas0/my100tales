@@ -34,6 +34,7 @@ class TalesController < ApplicationController
       if @tale.save
         redirect_to @tale, notice: 'Tale was successfully created.'
       else
+        set_flash
         render :new
       end
     end
@@ -45,6 +46,7 @@ class TalesController < ApplicationController
     if @tale.update(tale_params)
       redirect_to @tale, notice: 'Tale was successfully updated.'
     else
+      set_flash
       render :edit
     end
   end
@@ -66,5 +68,11 @@ class TalesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def tale_params
     params.require(:tale).permit(:title, :content)
+  end
+
+  # add flash message about error reasons
+  def set_flash
+    flash.now[:alert] = []
+    @tale.errors.full_messages.each { |message| flash.now[:alert] << message + '<br>' }
   end
 end

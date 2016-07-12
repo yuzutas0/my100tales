@@ -13,8 +13,8 @@ class Tale < ActiveRecord::Base
 
   # validation
   validates :user, presence: true
-  validates :title, presence: true, length: {minimum: 1}
-  validates :content, presence: true, length: {minimum: 1, maximum: 15_000}
+  validates :title, presence: true
+  validates :content, presence: true, length: {maximum: 15_000}
 
   # Create
 
