@@ -5,11 +5,16 @@
 
 // main
 .module__form {
+
   .module__form__field {
     @extend .form-group;
 
     .module__form__field__text {
       @extend .form-control;
+
+      &--fixed {
+        resize: none;
+      }
     }
   }
 }

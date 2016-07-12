@@ -1,5 +1,9 @@
-<div class="sequel-form">
-  <%= f.text_area :content, class: 'sequel-form-content' %>
-  <%= hidden_field_tag :view_number, @tale.view_number %>
-  <%= f.submit 'Post', class: 'module__button' %>
+<div class="module__form">
+  <div class="module__form__field">
+    <%= f.text_area :content, class: 'module__form__field__text module__form__field__text--fixed' %>
+  </div>
+  <div>
+    <%= hidden_field_tag :view_number, @tale.view_number %>
+    <%= f.submit 'Post', class: 'module__button' %>
+  </div>
 </div>

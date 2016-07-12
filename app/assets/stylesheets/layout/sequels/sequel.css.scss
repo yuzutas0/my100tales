@@ -2,14 +2,6 @@
 @import "honoka"; /* @import "bootstrap"; */
 @import "base/const";
 
-/* sequel-form */
-.sequel-form {
-  .sequel-form-content {
-    @extend .form-control;
-    resize: none;
-  }
-}
-
 /* sequel-index */
 .sequels-index-list {
   @extend .list-group;
