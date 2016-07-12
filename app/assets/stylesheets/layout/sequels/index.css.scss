@@ -1,19 +1,22 @@
-@import "bootstrap-sprockets";
-@import "honoka"; /* @import "bootstrap"; */
+// sequels index
+
+// import
 @import "base/const";
+@import "base/util";
 
 /* sequel-index */
-.sequels-index-list {
+.layout__sequels__index {
+  @include util__layout;
   @extend .list-group;
 
-  .sequels-index-item {
+  .layout__sequels__index__item {
     @extend .list-group-item;
 
-    .sequels-index-content {
+    .layout__sequels__index__item__content {
       @extend .list-group-item-heading;
     }
 
-    .sequels-index-information {
+    .layout__sequels__index__item__information {
       @extend .text-muted;
       @extend .list-group-item-text;
       font-size: $font_size_middle;
