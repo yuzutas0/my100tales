@@ -5,16 +5,15 @@ class TalesController < ApplicationController
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
 
   # GET /tales
-  # GET /tales.json
   def index
     @tales = Tale.list(current_user.id, params[:page])
   end
 
   # GET /tales/1
-  # GET /tales/1.json
   def show
     @sequels = Sequel.list(@tale.id)
     @new_sequel = Sequel.new
+    set_tab
   end
 
   # GET /tales/new
@@ -27,7 +26,6 @@ class TalesController < ApplicationController
   end
 
   # POST /tales
-  # POST /tales.json
   def create
     Tale.transaction do
       @tale = Tale.instance(tale_params, current_user)
@@ -41,7 +39,6 @@ class TalesController < ApplicationController
   end
 
   # PATCH/PUT /tales/1
-  # PATCH/PUT /tales/1.json
   def update
     if @tale.update(tale_params)
       redirect_to @tale, notice: 'Tale was successfully updated.'
@@ -52,7 +49,6 @@ class TalesController < ApplicationController
   end
 
   # DELETE /tales/1
-  # DELETE /tales/1.json
   def destroy
     @tale.destroy
     redirect_to tales_url, notice: 'Tale was successfully destroyed.'
@@ -74,5 +70,14 @@ class TalesController < ApplicationController
   def set_flash
     flash.now[:alert] = []
     @tale.errors.full_messages.each { |message| flash.now[:alert] << message + '<br>' }
+  end
+
+  # decide which tab is opened at first view
+  def set_tab
+    if params[:sequels].present?
+      @tab_class = [['',''],['',''],['active','in active']]
+    else
+      @tab_class = [['active','in active'],['',''],['','']]
+    end
   end
 end
