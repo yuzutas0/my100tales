@@ -4,18 +4,30 @@
     <%= f.text_field :title, class: 'module__form__field__text', placeholder: 'Title' %>
   </div>
 
-  <div id="vue-markdown" class="tale-form-content-group">
-    <div class="tale-form-content-sp-tab module__tab">
+  <div id="vue-markdown" class="module__form__field">
+
+    <div class="layout__tale__form__tab module__tab">
       <li class="active"><a id="switch-vue-markdown-editor">Editor</a></li>
       <li><a id="switch-vue-markdown-preview">Preview</a></li>
     </div>
-    <div class="tale-form-markdown-adjust">
-      <div id="vue-markdown-editor-outer" class="tale-form-markdown-editor-outer">
-        <%= f.text_area :content, id: 'vue-markdown-editor', class: 'tale-form-markdown-editor-inner', 'v-model' => 'content', placeholder: 'Write down by markdown' %>
+
+    <div class="layout__tale__form__content">
+
+      <div id="vue-markdown-editor-outer" class="layout__tale__form__content__editor">
+        <%= f.text_area :content,
+                        id: 'vue-markdown-editor',
+                        class: 'layout__tale__form__content__editor__inner module__form__field__text module__form__field__text--fixed',
+                        'v-model' => 'content',
+                        placeholder: 'Write down by markdown' %>
       </div>
-      <div id="vue-markdown-preview-outer" class="tale-form-markdown-preview-outer hidden-xs">
-        <div v-html="content | preview" id="vue-markdown-preview" class="tale-form-markdown-preview-inner" />
+
+      <div id="vue-markdown-preview-outer"
+           class="layout__tale__form__content__preview module__panel hidden-xs"><!-- tab change by JS -->
+        <div v-html="content | preview"
+             id="vue-markdown-preview"
+             class="layout__tale__form__content__preview__inner module__panel__inner" />
       </div>
+
     </div>
   </div>
 
