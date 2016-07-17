@@ -3,7 +3,7 @@
     <div class="layout__sequels__index__item">
 
       <div class="layout__sequels__index__item__content">
-        <%= sequel.content %>
+        <%= markdown_to_html(sequel.content) %>
       </div>
 
       <hr class="layout__sequels__index__item__divide"/>
