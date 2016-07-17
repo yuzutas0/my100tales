@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   get '/tales/:view_number', to: 'tales#show', as: 'tale'
   patch '/tales/:view_number', to: 'tales#update', as: 'update_tale'
   put '/tales/:view_number', to: 'tales#update'
-  delete 'tales/:view_number', to: 'tales#destroy'
+  delete '/tales/:view_number', to: 'tales#destroy'
 
   # sequel
   post '/sequels', to: 'sequels#create', as: 'create_sequel'
+  delete '/sequels', to: 'sequels#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

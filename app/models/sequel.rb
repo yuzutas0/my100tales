@@ -29,6 +29,10 @@ class Sequel < ActiveRecord::Base
     Sequel.where('tale_id = ?', tale_id).order(created_at: :desc)
   end
 
+  def self.detail(user_id, tale_view_number, sequel_view_number)
+    Tale.detail(tale_view_number, user_id).sequels.find_by(view_number: sequel_view_number)
+  end
+
   # support method
   def self.get_view_number(tale_id)
     last = Sequel.where('tale_id = ?', tale_id).maximum(:view_number)
