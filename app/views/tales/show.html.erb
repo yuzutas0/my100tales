@@ -19,7 +19,9 @@
     <li class=<%= @tab_class[2][0] %>>
       <a href="#tab__third" data-toggle="tab">
         Sequels
+        <% if @tale.sequels.length > 0 %>
         <span class="module__badge module__badge--desktop"><%= @tale.sequels.length %></span>
+        <% end %>
       </a>
     </li>
   </ul>
@@ -63,6 +65,9 @@
           </ul>
         </div>
       </div>
+
+      <hr>
+      <%= link_to 'Delete Tale', @tale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
     </div>
 
     <div id="tab__third" class="tab-pane fade <%= @tab_class[2][1] %>"> <!-- tab -->

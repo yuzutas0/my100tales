@@ -42,6 +42,7 @@
     .layout__shared__header__inner__menu {
       @extend .navbar-right;
       @extend .navbar-collapse;
+      margin: 0;
 
       .layout__shared__header__inner__menu__list {
         @extend .nav;

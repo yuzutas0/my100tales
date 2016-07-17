@@ -12,4 +12,9 @@
   &--small {
     padding: $margin_size_xx_small $margin_size_small;
   }
+
+  &--wide {
+    @extend .btn-lg;
+    @extend .btn-block;
+  }
 }
