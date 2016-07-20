@@ -1,0 +1,10 @@
+<div id="vue__sequel__new" class="layout__sequels__new">
+
+  <div v-cloak>
+    <%= form_for(@new_sequel, url: create_sequel_path) do |f| %>
+        <%= render 'sequels/form', f: f %>
+    <% end %>
+  </div>
+
+  <a v-on:click="show" class="module__button module__button--wide">New</a>
+</div>

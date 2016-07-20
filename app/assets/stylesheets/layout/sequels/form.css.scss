@@ -2,18 +2,18 @@
 
 // import
 @import "base/const";
+@import "module/modal";
 
 // main
 .layout__sequels__form {
 
   .layout__sequels__form__content {
-    min-height: $editor_size_small; // bootstrapによる上書き height: auto; 回避のため
-    height: $editor_size_small;
+    min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
+    height: $editor_size_large;
 
     @media (max-width: $screen-xs-max) {
-      min-height: $editor_size_x_small;
-      height: $editor_size_x_small;
+      min-height: $editor_size_middle;
+      height: $editor_size_middle;
     }
   }
 }
-

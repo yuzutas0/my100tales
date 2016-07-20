@@ -6,7 +6,7 @@
         <div v-cloak>
           <%= form_for(sequel, url: update_sequel_path) do |f| %>
               <%= hidden_field_tag :sequel_view_number, sequel.view_number %>
-              <%= render 'sequels/modal', f: f %>
+              <%= render 'sequels/form', f: f %>
           <% end %>
         </div>
 

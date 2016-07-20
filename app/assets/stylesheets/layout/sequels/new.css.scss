@@ -1,0 +1,9 @@
+// sequels index
+
+// import
+@import "base/util";
+
+// main
+.layout__sequels__new {
+  @include util__layout;
+}

@@ -1,9 +1,19 @@
-<div class="layout__sequels__form module__form">
-  <div class="module__form__field">
-    <%= f.text_area :content, class: 'layout__sequels__form__content module__form__field__text module__form__field__text--fixed' %>
-  </div>
-  <div>
-    <%= hidden_field_tag :view_number, @tale.view_number %>
-    <%= f.submit 'Post', class: 'module__button module__button--small module__button--wide' %>
+<div class="module__modal__outer" v-show="display">
+  <div class="module__modal__background" v-on:click="close"></div>
+
+  <div class="module__modal">
+    <div class="module__modal__inner">
+
+      <div class="layout__sequels__form module__form">
+        <div class="module__form__field">
+          <%= f.text_area :content, class: 'layout__sequels__form__content module__form__field__text module__form__field__text--fixed' %>
+        </div>
+        <div>
+          <%= hidden_field_tag :view_number, @tale.view_number %>
+          <%= f.submit 'Post', class: 'module__button module__button--small module__button--wide' %>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
