@@ -1,12 +1,12 @@
 <div class="layout__sequels__index">
-  <% @sequels.each_with_index do |sequel, index| %>
+  <% @sequels.each.with_index(1) do |sequel, index| %>
     <div id="vue__sequel__index--<%= index %>" class="layout__sequels__index__item module__panel">
       <div class="module__panel__inner">
 
         <div v-cloak>
           <%= form_for(sequel, url: update_sequel_path) do |f| %>
               <%= hidden_field_tag :sequel_view_number, sequel.view_number %>
-              <%= render 'sequels/form', f: f %>
+              <%= render 'sequels/form', f: f, index: index %>
           <% end %>
         </div>
 

@@ -1,7 +1,7 @@
 # common
 @my100tales_sequels_modal_common = ->
 
-  # common
+  # modal
   create_modal = (dom) ->
     new Vue(
       el: dom
@@ -14,23 +14,7 @@
           this.display = false
     )
 
-  # -------------
-  # sequel new
-  # -------------
-
-  # const
-  VUE_NEW_ID = "vue__sequel__new"
-  VUE_NEW_DOM = "#" + VUE_NEW_ID
-
-  # check DOM
-  if document.getElementById(VUE_NEW_ID) != null
-    create_modal(VUE_NEW_DOM)
-
-  # -------------
-  # sequel edit
-  # -------------
-
-  # loop for sequel index length
+  # loop for sequel index length - 0 for new
   index = -1
   while true
     index++
@@ -40,7 +24,20 @@
     VUE_EDIT_DOM = "#" + VUE_EDIT_ID
 
     # check DOM
-    if document.getElementById(VUE_EDIT_ID) != null
-      create_modal(VUE_EDIT_DOM)
-    else
+    if document.getElementById(VUE_EDIT_ID) == null
       break
+
+    # modal
+    create_modal(VUE_EDIT_DOM)
+
+    # markdown
+    # const
+    VUE_MARKDOWN_ID = 'vue-markdown-' + index
+    VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID
+    VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '-editor'
+    VUE_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + '-preview'
+
+    # check DOM
+    if document.getElementById(VUE_MARKDOWN_ID) != null
+      my100tales_tales_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
+      my100tales_tales_markdown_preview(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)

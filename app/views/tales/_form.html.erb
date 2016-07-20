@@ -18,14 +18,16 @@
                         id: 'vue-markdown-editor',
                         class: 'layout__tale__form__content__editor__inner module__form__field__text module__form__field__text--fixed',
                         'v-model' => 'content',
-                        placeholder: 'Write down by markdown' %>
+                        placeholder: 'Write down by markdown'
+        %>
       </div>
 
       <div id="vue-markdown-preview-outer"
            class="layout__tale__form__content__preview module__panel hidden-xs"><!-- tab change by JS -->
         <div v-html="content | preview"
              id="vue-markdown-preview"
-             class="layout__tale__form__content__preview__inner module__markdown module__panel__inner" />
+             class="layout__tale__form__content__preview__inner module__markdown module__panel__inner">
+        </div>
       </div>
 
     </div>
