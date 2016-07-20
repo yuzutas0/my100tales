@@ -14,8 +14,16 @@
     <% @tales.each do |tale| %>
     <div class="layout__tales__index__list__item">
 
-      <p class="layout__tales__index__list__item__created"><%= tale.created_at.strftime('%Y-%b-%d') %>に投稿</p>
-      <h4><%= link_to tale.title, tale, class: 'layout__tales__index__list__item__title' %></h4>
+      <p class="layout__tales__index__list__item__created">created at <%= tale.created_at.strftime('%Y-%b-%d') %></p>
+      <h4>
+        <%= link_to tale, class: 'layout__tales__index__list__item__title' do %>
+          <% if tale.title.size > 30 %>
+                <%= tale.title[0..29] + '...' %>
+            <% else %>
+                <%= tale.title %>
+            <% end %>
+        <% end %>
+      </h4>
 
       <div>
         <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->

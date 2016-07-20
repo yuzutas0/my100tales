@@ -1,4 +1,4 @@
-// button
+// label
 
 // import
 @import "base/const";
@@ -8,6 +8,4 @@
   @extend .label;
   @extend .label-primary;
   font-weight: normal;
-  color: $gray;
-  background-color: $gray-lighter;
 }
