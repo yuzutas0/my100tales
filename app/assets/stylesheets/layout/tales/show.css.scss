@@ -6,6 +6,7 @@
 @import "module/badge";
 @import "module/table";
 @import "module/label";
+@import "module/markdown";
 
 // main
 .layout__tale__show {
@@ -48,16 +49,5 @@
     .layout__tale__show__information__time__content {
       @extend .list-group-item-text;
     }
-  }
-
-  .layout__tale__show__content {
-
-      table {
-        @extend .module__table;
-      }
-
-      p, pre, ul, ol, table {
-        @include util__markdown__text;
-      }
   }
 }

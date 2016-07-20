@@ -5,6 +5,7 @@
 @import "base/util";
 @import "module/table";
 @import "module/form";
+@import "module/markdown";
 
 // main
 .layout__tale__form {
@@ -48,14 +49,6 @@
 
         @media (max-width: $screen-xs-max) {
           height: $editor_size_small;
-        }
-
-        table {
-          @extend .module__table;
-        }
-
-        p, pre, ul, ol, table {
-          @include util__markdown__text;
         }
       }
     }

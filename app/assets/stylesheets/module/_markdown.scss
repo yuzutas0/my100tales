@@ -1,0 +1,17 @@
+// badge
+
+// import
+@import "base/const";
+@import "module/table";
+
+// main
+.module__markdown {
+  table {
+    @extend .module__table;
+  }
+
+  p, pre, ul, ol, table {
+    font-size: $font_size_middle;
+    width: auto;
+  }
+}

@@ -3,27 +3,23 @@
 // import
 @import "base/const";
 @import "base/util";
+@import "module/panel";
+@import "module/markdown";
 
 /* sequel-index */
 .layout__sequels__index {
   @include util__layout;
-  @extend .list-group;
 
   .layout__sequels__index__item {
-    @extend .list-group-item;
-
-    .layout__sequels__index__item__content {
-      @extend .list-group-item-heading;
-    }
 
     .layout__sequels__index__item__divide {
       margin: $margin_size_x_small 0;
     }
 
-    .layout__sequels__index__item__number,
+    .layout__sequels__index__item__edit,
+    .layout__sequels__index__item__delete,
     .layout__sequels__index__item__information {
       @extend .text-muted;
-      @extend .list-group-item-text;
       font-size: $font_size_small;
     }
   }

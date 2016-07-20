@@ -7,8 +7,3 @@
 @mixin util__layout() {
   margin-top: $margin_size_middle;
 }
-
-@mixin util__markdown__text() {
-  font-size: $font_size_middle;
-  width: auto;
-}
