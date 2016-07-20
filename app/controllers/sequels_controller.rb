@@ -2,7 +2,7 @@
 # SequelsController
 #
 class SequelsController < ApplicationController
-  before_action :set_sequel, only: [:edit, :update, :destroy]
+  before_action :set_sequel, only: [:update, :destroy]
 
   # POST /sequels
   def create
@@ -14,14 +14,30 @@ class SequelsController < ApplicationController
       else
         set_flash
       end
-      redirect_to "/tales/#{params[:view_number]}?sequels=posted"
+      redirect_to "/tales/#{params[:view_number]}?sequels=created"
     end
   end
 
-  # DELETE /tales/1
+  # PATCH /sequels
+  def update
+    Sequel.transaction do
+      if @sequel.update(sequel_params)
+        flash[:notice] = 'Sequel was successfully updated.'
+      else
+        set_flash
+      end
+      redirect_to "/tales/#{params[:view_number]}?sequels=updated"
+    end
+  end
+
+  # DELETE /sequels
   def destroy
-    @sequel.destroy
-    redirect_to "/tales/#{params[:view_number]}?sequels=deleted", notice: 'Sequel was successfully destroyed.'
+    if @sequel.destroy
+      flash[:notice] = 'Sequel was successfully destroyed.'
+    else
+      set_flash
+    end
+    redirect_to "/tales/#{params[:view_number]}?sequels=deleted"
   end
 
   private

@@ -3,7 +3,7 @@
 // import
 @import "base/const";
 
-/* sequel-index */
+// main
 .layout__sequels__form {
 
   .layout__sequels__form__content {
@@ -11,6 +11,7 @@
     height: $editor_size_small;
 
     @media (max-width: $screen-xs-max) {
+      min-height: $editor_size_x_small;
       height: $editor_size_x_small;
     }
   }

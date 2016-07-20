@@ -1,0 +1,44 @@
+// modal
+
+// import
+@import "base/const";
+
+// main
+
+.module__modal__outer {
+  @extend .container;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+
+  .module__modal__background {
+    z-index: 9998;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    transition: opacity .3s ease;
+  }
+
+  .module__modal {
+    display: table-cell;
+    vertical-align: middle;
+
+    .module__modal__inner {
+      @extend .container;
+      z-index: 9999;
+      position: relative;
+      margin: 0 auto;
+      padding: $margin_size_small $margin_size_middle;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+      transition: all .3s ease;
+    }
+  }
+}

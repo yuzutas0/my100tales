@@ -1,4 +1,4 @@
-// badge
+// markdown
 
 // import
 @import "base/const";
@@ -6,6 +6,7 @@
 
 // main
 .module__markdown {
+
   table {
     @extend .module__table;
   }

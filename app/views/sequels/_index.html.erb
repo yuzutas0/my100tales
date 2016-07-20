@@ -3,16 +3,18 @@
     <div id="vue__sequel__index--<%= index %>" class="layout__sequels__index__item module__panel">
       <div class="module__panel__inner">
 
+        <div v-cloak>
+          <%= form_for(sequel, url: update_sequel_path) do |f| %>
+              <%= hidden_field_tag :sequel_view_number, sequel.view_number %>
+              <%= render 'sequels/modal', f: f %>
+          <% end %>
+        </div>
+
         <div class="module__markdown">
           <%= markdown_to_html(sequel.content) %>
         </div>
 
         <hr class="layout__sequels__index__item__divide"/>
-
-        <div v-show="display" v-cloak>
-          Modal
-          <button v-on:click="close">Close</button>
-        </div>
 
         <a v-on:click="show" class="layout__sequels__index__item__edit">Edit</a>
 
