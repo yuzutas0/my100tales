@@ -1,6 +1,6 @@
 <div class="layout__sequels__index">
-  <% @sequels.each do |sequel| %>
-    <div class="layout__sequels__index__item">
+  <% @sequels.each_with_index do |sequel, index| %>
+    <div id="vue__sequel__index--<%= index %>" class="layout__sequels__index__item">
 
       <div class="layout__sequels__index__item__content">
         <%= markdown_to_html(sequel.content) %>
@@ -18,6 +18,13 @@
             | updated at <%= sequel.updated_at.strftime('%Y-%b-%d %H:%M') %>
         <% end %>
       </div>
+
+      <div v-show="display" v-cloak>
+        Modal
+        <button v-on:click="close">Close</button>
+      </div>
+
+      <a v-on:click="show">Edit</a>
 
       <%= link_to 'Delete',
                   sequels_path(sequel_view_number: sequel.view_number, view_number: @tale.view_number),

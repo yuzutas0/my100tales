@@ -8,3 +8,7 @@
 p, a, button {
   font-size: $font_size_middle;
 }
+
+[v-cloak] {
+  display: none;
+}
