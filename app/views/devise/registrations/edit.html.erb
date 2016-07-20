@@ -38,8 +38,14 @@
   <% end %>
 
   <hr>
-  <p>
-    or <%= link_to 'delete ' + resource_name.to_s.humanize, registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete %>
-    : Pay attention that you can never be restored!!
-  </p>
+  <%= link_to 'delete ' + resource_name.to_s.humanize,
+              registration_path(resource_name),
+              method: :delete,
+              data: {
+                  confirm: "Are you absolutely sure you want to delete your account <strong>#{current_user.name}</strong>?",
+                  verify: current_user.name,
+                  'verify-text' => 'This action cannot be undone. Please type in the name of your account to confirm.'
+              },
+              title: 'Verify the deletion'
+  %>
 </div>

@@ -20,7 +20,9 @@
 
         <%= link_to 'Delete',
                     sequels_path(sequel_view_number: sequel.view_number, view_number: @tale.view_number),
-                    method: :delete, data: { confirm: 'Are you sure?' },
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    title: 'Delete',
                     class: 'layout__sequels__index__item__delete'
         %>
 

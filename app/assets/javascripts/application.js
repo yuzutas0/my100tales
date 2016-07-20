@@ -16,6 +16,7 @@
 //= require vue
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require data-confirm-modal
 // BowerComponents
 //= require dompurify
 //= require markdown-it/dist/markdown-it.min

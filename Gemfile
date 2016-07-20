@@ -22,6 +22,7 @@ gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'redcarpet'
 gem 'gemoji'
+gem 'data-confirm-modal'
 
 # Stylesheet
 gem 'sass-rails', '~> 5.0'

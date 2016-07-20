@@ -31,5 +31,14 @@
   </div>
 
   <hr>
-  <%= link_to 'Delete Tale', @tale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
+  <%= link_to 'Delete', @tale,
+              method: :delete,
+              data: {
+                  confirm: 'Are you sure?',
+                  verify: @tale.title,
+                  'verify-text' => 'Please type in the title of this tale to confirm.'
+              },
+              title: 'Delete',
+              class: 'text-danger'
+  %>
 </div>
