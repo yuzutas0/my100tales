@@ -1,0 +1,6 @@
+<div id="tab__third" class="tab-pane fade <%= @tab_class[2][1] %>"> <!-- tab -->
+  <%= form_for(@new_sequel, url: create_sequel_path) do |f| %>
+      <%= render 'sequels/form', f: f %>
+  <% end %>
+  <%= render 'sequels/index' %>
+</div>
