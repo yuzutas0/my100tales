@@ -16,17 +16,21 @@
   .layout__tale__form__content {
     @extend .row;
 
+    @mixin size() {
+      min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
+      height: $editor_size_large;
+
+      @media (max-width: $screen-xs-max) {
+        height: $editor_size_small;
+      }
+    }
+
     .layout__tale__form__content__editor {
       @extend .col-sm-6;
       @extend .col-xs-12;
 
       .layout__tale__form__content__editor__inner {
-        min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
-        height: $editor_size_large;
-
-        @media (max-width: $screen-xs-max) {
-          height: $editor_size_small;
-        }
+        @include size();
       }
     }
 
@@ -42,13 +46,8 @@
       }
 
       .layout__tale__form__content__preview__inner {
+        @include size();
         overflow: scroll;
-        min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
-        height: $editor_size_large;
-
-        @media (max-width: $screen-xs-max) {
-          height: $editor_size_small;
-        }
       }
     }
   }

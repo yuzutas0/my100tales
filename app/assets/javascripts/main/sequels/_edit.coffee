@@ -6,16 +6,30 @@
   while true
     index++
 
-    # const
+    # check DOM
     VUE_EDIT_ID = "vue__sequel__index--" + index
     VUE_EDIT_DOM = "#" + VUE_EDIT_ID
 
-    # check DOM
     if document.getElementById(VUE_EDIT_ID) == null
       break
 
     # modal
     @My100TalesUtilModal.createModal(VUE_EDIT_DOM)
+
+    # switch
+    SWITCH_MARKDOWN_EDITOR_DOM = "#script__sequel__" + index + "__editor__tab__switch"
+    SWITCH_MARKDOWN_PREVIEW_DOM = "#script__sequel__" + index + "__preview__tab__switch"
+    VUE_MARKDOWN_EDITOR_OUTER_DOM = "#script__sequel__" + index + "__editor__tab__content"
+    VUE_MARKDOWN_PREVIEW_OUTER_DOM = "#script__sequel__" + index + "__preview__tab__content"
+    HIDDEN_CLASS = 'hidden'
+
+    My100TalesUtilTab.createTab(
+      SWITCH_MARKDOWN_EDITOR_DOM,
+      SWITCH_MARKDOWN_PREVIEW_DOM,
+      VUE_MARKDOWN_EDITOR_OUTER_DOM,
+      VUE_MARKDOWN_PREVIEW_OUTER_DOM,
+      HIDDEN_CLASS
+    )
 
     # markdown
     # const

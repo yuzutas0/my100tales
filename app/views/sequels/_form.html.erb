@@ -1,15 +1,15 @@
-<div class="module__modal__outer" v-show="display">
-  <div class="module__modal__background" v-on:click="close"></div>
+<div class="module__modal__outer layout__sequels__form__outer" v-show="display">
+  <div class="module__modal__background" v-on:click="closeModal"></div>
   <div class="module__modal">
     <div class="module__modal__inner">
       <div id="vue-markdown-<%= index %>" class="layout__sequels__form module__form">
 
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab__sequel__<%= index %>__editor" data-toggle="tab">Editor</a></li>
-          <li><a href="#tab__sequel__<%= index %>__preview" data-toggle="tab">Preview</a></li>
+          <li class="active"><a id="script__sequel__<%= index %>__editor__tab__switch">Editor</a></li>
+          <li><a id="script__sequel__<%= index %>__preview__tab__switch">Preview</a></li>
         </ul>
 
-        <div id="tab__sequel__<%= index %>__editor" class="module__form__field tab-pane fade in active">
+        <div id="script__sequel__<%= index %>__editor__tab__content" class="module__form__field">
           <%= f.text_area :content,
                           id: "vue-markdown-#{index}-editor",
                           class: 'layout__sequels__form__content module__form__field__text module__form__field__text--fixed',
@@ -18,7 +18,8 @@
           %>
         </div>
 
-        <div id="tab__sequel__<%= index %>__preview" class="module__panel tab-pane fade">
+        <div id="script__sequel__<%= index %>__preview__tab__content"
+             class="layout__sequels__form__preview module__panel hidden"><!-- tab change by JS -->
           <div v-html="content | preview"
                id="vue-markdown-<%= index %>-preview"
                class="module__markdown module__panel__inner">

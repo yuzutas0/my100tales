@@ -16,7 +16,7 @@
 
         <hr class="layout__sequels__index__item__divide"/>
 
-        <a v-on:click="show" class="layout__sequels__index__item__edit">Edit</a>
+        <a v-on:click="showModal" class="layout__sequels__index__item__edit">Edit</a>
 
         <%= link_to 'Delete',
                     sequels_path(sequel_view_number: sequel.view_number, view_number: @tale.view_number),

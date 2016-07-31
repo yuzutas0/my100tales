@@ -6,15 +6,30 @@
 @import "module/markdown";
 
 // main
-.layout__sequels__form {
+.layout__sequels__form__outer {
+  width: 100%;
 
-  .layout__sequels__form__content {
-    min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
-    height: $editor_size_large;
+  .layout__sequels__form {
 
-    @media (max-width: $screen-xs-max) {
-      min-height: $editor_size_middle;
-      height: $editor_size_middle;
+    @mixin size() {
+      min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
+      height: $editor_size_large;
+
+      @media (max-width: $screen-xs-max) {
+        min-height: $editor_size_middle;
+        height: $editor_size_middle;
+      }
+    }
+
+    .layout__sequels__form__content {
+      @include size();
+    }
+
+    .layout__sequels__form__preview {
+      @include size();
+      padding: 0;
+      overflow: scroll;
+      margin-bottom: $margin_size_small;
     }
   }
 }

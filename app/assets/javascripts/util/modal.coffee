@@ -7,8 +7,8 @@ class @My100TalesUtilModal
       data:
         display: false
       methods:
-        show: ->
+        showModal: ->
           this.display = true
-        close: ->
+        closeModal: ->
           this.display = false
     )
