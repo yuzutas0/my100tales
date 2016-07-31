@@ -74,10 +74,10 @@ class TalesController < ApplicationController
 
   # decide which tab is opened at first view
   def set_tab
-    if params[:sequels].present?
-      @tab_class = [['',''],['',''],['active','in active']]
-    else
-      @tab_class = [['active','in active'],['',''],['','']]
-    end
+    @tab_class = if params[:sequels].present?
+                   [['', ''], ['', ''], ['active', 'in active']]
+                 else
+                   [['active', 'in active'], ['', ''], ['', '']]
+                 end
   end
 end

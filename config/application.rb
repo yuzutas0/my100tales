@@ -32,6 +32,6 @@ module My100tales
 
     # emoji
     config.assets.paths << Emoji.images_path
-    config.assets.precompile << "emoji/**/*.png"
+    config.assets.precompile << 'emoji/**/*.png'
   end
 end
