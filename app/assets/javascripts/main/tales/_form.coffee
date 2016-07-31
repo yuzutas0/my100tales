@@ -28,4 +28,4 @@
     
     # markdown
     my100tales_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
-    my100tales_util_markdown_preview(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
+    My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)

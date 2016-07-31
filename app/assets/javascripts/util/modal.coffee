@@ -1,7 +1,7 @@
 # util/modal
 class @My100TalesUtilModal
 
-  @createModal = (dom) ->
+  @createModal = (dom, actions...) ->
     new Vue(
       el: dom
       data:
@@ -9,6 +9,7 @@ class @My100TalesUtilModal
       methods:
         showModal: ->
           this.display = true
+          for action in actions then action
         closeModal: ->
           this.display = false
     )
