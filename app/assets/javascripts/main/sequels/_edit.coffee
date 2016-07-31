@@ -1,18 +1,5 @@
-# common
-@my100tales_sequels_modal_common = ->
-
-  # modal
-  create_modal = (dom) ->
-    new Vue(
-      el: dom
-      data:
-        display: false
-      methods:
-        show: ->
-          this.display = true
-        close: ->
-          this.display = false
-    )
+# sequels/edit
+@my100tales_sequels_edit = ->
 
   # loop for sequel index length - 0 for new
   index = -1
@@ -28,7 +15,7 @@
       break
 
     # modal
-    create_modal(VUE_EDIT_DOM)
+    @My100TalesUtilModal.create_modal(VUE_EDIT_DOM)
 
     # markdown
     # const

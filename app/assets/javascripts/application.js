@@ -26,5 +26,5 @@
 //= require toastr
 // Custom
 //= require_tree ./_markdown
-//= require_tree ./_modal
-//= require_directory ./main
+//= require_tree ./util
+//= require_tree ./main
