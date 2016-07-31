@@ -4,28 +4,28 @@
     <%= f.text_field :title, class: 'module__form__field__text', placeholder: 'Title' %>
   </div>
 
-  <div id="vue-markdown" class="module__form__field">
+  <div id="script__tale" class="module__form__field">
 
     <div class="layout__tale__form__tab module__tab">
-      <li class="active"><a id="switch-vue-markdown-editor">Editor</a></li>
-      <li><a id="switch-vue-markdown-preview">Preview</a></li>
+      <li class="active"><a id="script__tale__editor__tab__switch">Editor</a></li>
+      <li><a id="script__tale__preview__tab__switch">Preview</a></li>
     </div>
 
     <div class="layout__tale__form__content">
 
-      <div id="vue-markdown-editor-outer" class="layout__tale__form__content__editor">
+      <div id="script__tale__editor__tab__content" class="layout__tale__form__content__editor">
         <%= f.text_area :content,
-                        id: 'vue-markdown-editor',
+                        id: 'script__tale__editor',
                         class: 'layout__tale__form__content__editor__inner module__form__field__text module__form__field__text--fixed',
                         'v-model' => 'content',
                         placeholder: 'Write down by markdown'
         %>
       </div>
 
-      <div id="vue-markdown-preview-outer"
+      <div id="script__tale__preview__tab__content"
            class="layout__tale__form__content__preview module__panel hidden-xs"><!-- tab change by JS -->
         <div v-html="content | preview"
-             id="vue-markdown-preview"
+             id="script__tale__preview"
              class="layout__tale__form__content__preview__inner module__markdown module__panel__inner">
         </div>
       </div>

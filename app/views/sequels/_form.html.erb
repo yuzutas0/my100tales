@@ -2,26 +2,26 @@
   <div class="module__modal__background" v-on:click="closeModal"></div>
   <div class="module__modal">
     <div class="module__modal__inner">
-      <div id="vue-markdown-<%= index %>" class="layout__sequels__form module__form">
+      <div id="script__sequel__form__<%= index %>" class="layout__sequels__form module__form">
 
         <ul class="nav nav-tabs">
-          <li class="active"><a id="script__sequel__<%= index %>__editor__tab__switch">Editor</a></li>
-          <li><a id="script__sequel__<%= index %>__preview__tab__switch">Preview</a></li>
+          <li class="active"><a id="script__sequel__form__<%= index %>__editor__tab__switch">Editor</a></li>
+          <li><a id="script__sequel__form__<%= index %>__preview__tab__switch">Preview</a></li>
         </ul>
 
-        <div id="script__sequel__<%= index %>__editor__tab__content" class="module__form__field">
+        <div id="script__sequel__form__<%= index %>__editor__tab__content" class="module__form__field">
           <%= f.text_area :content,
-                          id: "vue-markdown-#{index}-editor",
+                          id: "script__sequel__form__#{index}__editor",
                           class: 'layout__sequels__form__content module__form__field__text module__form__field__text--fixed',
                           'v-model' => 'content',
                           placeholder: 'Write down by markdown'
           %>
         </div>
 
-        <div id="script__sequel__<%= index %>__preview__tab__content"
+        <div id="script__sequel__form__<%= index %>__preview__tab__content"
              class="layout__sequels__form__preview module__panel hidden"><!-- tab change by JS -->
           <div v-html="content | preview"
-               id="vue-markdown-<%= index %>-preview"
+               id="script__sequel__form__<%= index %>__preview"
                class="module__markdown module__panel__inner">
           </div>
         </div>
