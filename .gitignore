@@ -177,5 +177,6 @@ log/*
 tmp/*
 !tmp/.keep
 .rubocop_todo.yml
+db/data.yml
 public/images/emoji/**/*.png
 *.iml

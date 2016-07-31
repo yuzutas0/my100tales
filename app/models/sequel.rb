@@ -26,7 +26,7 @@ class Sequel < ActiveRecord::Base
 
   # Read
   def self.list(tale_id)
-    Sequel.where('tale_id = ?', tale_id).order(created_at: :desc)
+    Sequel.where('tale_id = ?', tale_id).order(view_number: :desc)
   end
 
   def self.detail(user_id, tale_view_number, sequel_view_number)

@@ -7,5 +7,7 @@ class CreateSequels < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :sequels, [:view_number, :tale_id], unique: true
   end
 end

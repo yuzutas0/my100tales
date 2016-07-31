@@ -51,6 +51,9 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
 
+  # Data
+  gem 'yaml_db'
+
   # Static analysis
   gem 'rubocop', require: false
 
