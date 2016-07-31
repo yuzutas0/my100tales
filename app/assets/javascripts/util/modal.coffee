@@ -1,7 +1,7 @@
 # util/modal
 class @My100TalesUtilModal
 
-  @create_modal = (dom) ->
+  @createModal = (dom) ->
     new Vue(
       el: dom
       data:

@@ -15,7 +15,7 @@
       break
 
     # modal
-    @My100TalesUtilModal.create_modal(VUE_EDIT_DOM)
+    @My100TalesUtilModal.createModal(VUE_EDIT_DOM)
 
     # markdown
     # const
