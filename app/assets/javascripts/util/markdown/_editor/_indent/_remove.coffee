@@ -1,5 +1,5 @@
 # add indent - tab key with shift
-@my100tales_tales_markdown_editor_indent_remove = (e) ->
+@my100tales_util_markdown_editor_indent_remove = (e) ->
 
   # const
   TAB_CHAR = '\t'

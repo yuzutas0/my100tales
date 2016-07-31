@@ -1,5 +1,5 @@
 # preview
-@my100tales_tales_markdown_preview = (VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM) ->
+@my100tales_util_markdown_preview = (VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM) ->
 
   # const
   NEW_LINE_CHAR = '\n'

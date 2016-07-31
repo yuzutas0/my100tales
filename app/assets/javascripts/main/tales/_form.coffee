@@ -1,6 +1,6 @@
-# common
-@my100tales_tales_markdown_common = ->
-
+# tales/form
+@my100tales_tales_form = ->
+  
   # const
   VUE_MARKDOWN_ID = 'vue-markdown'
   VUE_MARKDOWN_DOM = '#' + VUE_MARKDOWN_ID
@@ -11,11 +11,13 @@
   SWITCH_MARKDOWN_PREVIEW_DOM = '#switch-vue-markdown-preview'
   VUE_MARKDOWN_EDITOR_OUTER_DOM = '#vue-markdown-editor-outer'
   VUE_MARKDOWN_PREVIEW_OUTER_DOM = '#vue-markdown-preview-outer'
-  
+
   MOBILE_HIDDEN_CLASS = 'hidden-xs'
 
   # check DOM
   if document.getElementById(VUE_MARKDOWN_ID) != null
+    
+    # tab
     My100TalesUtilTab.createTab(
       SWITCH_MARKDOWN_EDITOR_DOM,
       SWITCH_MARKDOWN_PREVIEW_DOM,
@@ -23,5 +25,7 @@
       VUE_MARKDOWN_PREVIEW_OUTER_DOM,
       MOBILE_HIDDEN_CLASS
     )
-    my100tales_tales_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
-    my100tales_tales_markdown_preview(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
+    
+    # markdown
+    my100tales_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
+    my100tales_util_markdown_preview(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)

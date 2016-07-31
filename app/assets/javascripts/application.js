@@ -25,6 +25,5 @@
 //= require markdown-it-sup/dist/markdown-it-sup.min
 //= require toastr
 // Custom
-//= require_tree ./_markdown
 //= require_tree ./util
 //= require_tree ./main

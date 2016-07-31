@@ -1,5 +1,5 @@
-# sequels/edit
-@my100tales_sequels_edit = ->
+# sequels/form
+@my100tales_sequels_form = ->
 
   # loop for sequel index length - 0 for new
   index = -1
@@ -40,5 +40,5 @@
 
     # check DOM
     if document.getElementById(VUE_MARKDOWN_ID) != null
-      my100tales_tales_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
-      my100tales_tales_markdown_preview(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
+      my100tales_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
+      my100tales_util_markdown_preview(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)

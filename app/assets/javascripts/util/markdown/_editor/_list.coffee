@@ -1,5 +1,5 @@
 # list suggestion
-@my100tales_tales_markdown_editor_list = (e) ->
+@my100tales_util_markdown_editor_list = (e) ->
 
   # const
   KEY_CODE_ENTER = 13
