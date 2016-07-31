@@ -46,6 +46,10 @@ $ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate
 
 ## Database initialization
 
+```
+$ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate:reset
+```
+
 ## Assets initialization
 
 ```
@@ -62,5 +66,12 @@ $ rubocop --auto-gen-config # => make source code better!
 
 ## Services (job queues, cache servers, search engines, etc.)
 
+- MariaDB
+- Redis
+
 ## Deployment instructions
+
+```
+$ DB_USERNAME=[username] DB_PASSWORD=[password] REDIS_DB=[db number] rails s
+```
 

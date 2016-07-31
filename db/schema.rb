@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_160_506_112_922) do
+ActiveRecord::Schema.define(version: 20_160_731_083_835) do
   create_table 'sequels', force: :cascade do |t|
     t.text     'content',     limit: 65_535
     t.integer  'view_number', limit: 4, default: 0, null: false
@@ -24,8 +24,14 @@ ActiveRecord::Schema.define(version: 20_160_506_112_922) do
   add_index 'sequels', %w(view_number tale_id), name: 'index_sequels_on_view_number_and_tale_id', unique: true, using: :btree
   add_index 'sequels', ['view_number'], name: 'index_sequels_on_view_number', using: :btree
 
+  create_table 'tags', force: :cascade do |t|
+    t.string   'name', limit: 255
+    t.datetime 'created_at',             null: false
+    t.datetime 'updated_at',             null: false
+  end
+
   create_table 'tales', force: :cascade do |t|
-    t.string   'title',       limit: 255,               null: false
+    t.string   'title',       limit: 255, null: false
     t.text     'content',     limit: 65_535, null: false
     t.integer  'view_number', limit: 4, default: 0, null: false
     t.integer  'user_id',     limit: 4,                 null: false
@@ -36,6 +42,14 @@ ActiveRecord::Schema.define(version: 20_160_506_112_922) do
   add_index 'tales', ['user_id'], name: 'index_tales_on_user_id', using: :btree
   add_index 'tales', %w(view_number user_id), name: 'index_tales_on_view_number_and_user_id', unique: true, using: :btree
   add_index 'tales', ['view_number'], name: 'index_tales_on_view_number', using: :btree
+
+  create_table 'tales_tags', force: :cascade do |t|
+    t.integer 'tale_id', limit: 4
+    t.integer 'tag_id',  limit: 4
+  end
+
+  add_index 'tales_tags', ['tag_id'], name: 'index_tales_tags_on_tag_id', using: :btree
+  add_index 'tales_tags', ['tale_id'], name: 'index_tales_tags_on_tale_id', using: :btree
 
   create_table 'users', force: :cascade do |t|
     t.string   'email',                  limit: 255, default: '', null: false
@@ -58,4 +72,6 @@ ActiveRecord::Schema.define(version: 20_160_506_112_922) do
 
   add_foreign_key 'sequels', 'tales'
   add_foreign_key 'tales', 'users'
+  add_foreign_key 'tales_tags', 'tags'
+  add_foreign_key 'tales_tags', 'tales'
 end
