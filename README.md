@@ -1,9 +1,7 @@
 ## My 100 Tales
 
 This application manages your inspirations by save, edit, search.
-
-Tapir is called "Baku" in Japan, and thought as the animal which eats dream.
-So, my100tales grows your inspirations in order to make dreams come true.
+So, my100tales grows your ideas in order to make dreams come true.
 
 ## Ruby version
 

@@ -12,6 +12,8 @@ gem 'quiet_assets'
 # M/W
 gem 'mysql2'
 gem 'redis-rails'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 
 # AP
 gem 'jbuilder', '~> 2.0'

@@ -2,6 +2,10 @@
 # Tale
 #
 class Tale < ActiveRecord::Base
+
+  # include
+  include TaleSearchable
+
   # relation
   belongs_to :user
   has_many :sequels, dependent: :destroy
