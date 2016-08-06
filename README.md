@@ -48,6 +48,19 @@ $ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate
 $ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate:reset
 ```
 
+## Search engine creation
+
+```
+$ docker build -t [image name] ./docker/elasticsearch/
+$ docker run -d -p 9200:9200 -p 9300:9300 --name [container name] [image name]
+```
+
+## Search engine initialization
+
+```
+$ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake elasticsearch:create_index
+```
+
 ## Assets initialization
 
 ```
