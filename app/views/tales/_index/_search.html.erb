@@ -1,0 +1,18 @@
+<a id="script__tale__index__search">
+
+  <div v-cloak>
+    <div class="module__modal__outer" v-show="display">
+      <div class="module__modal__background" v-on:click="closeModal">
+      </div>
+      <div class="module__modal">
+        <div class="module__modal__inner">
+          <div class="width: 400px; height: 500px; background-color: #fff">
+            <p>It's modal!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span v-on:click="showModal" class="module__button module__button--small"><%= fa_icon 'search' %></span>
+</a>
