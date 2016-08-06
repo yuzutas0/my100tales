@@ -47,8 +47,13 @@ module TaleSearchable
         }
     } do
       mappings dynamic: 'false' do
-        indexes :title, type: 'string', index: 'analyzed', analyzer: 'kuromoji_analyzer'
-        indexes :content, type: 'string', index: 'analyzed', analyzer: 'kuromoji_analyzer'
+        indexes :id,          type: 'integer'
+        indexes :title,       type: 'string', analyzer: 'kuromoji_analyzer'
+        indexes :content,     type: 'string', analyzer: 'kuromoji_analyzer'
+        indexes :view_number, type: 'integer'
+        indexes :user_id,     type: 'integer'
+        indexes :created_at,  type: 'date', format: 'date_time'
+        indexes :updated_at,  type: 'date', format: 'date_time'
       end
     end
   end

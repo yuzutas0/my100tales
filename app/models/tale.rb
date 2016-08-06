@@ -40,7 +40,7 @@ class Tale < ActiveRecord::Base
   end
 
   # import data to ElasticSearch
-  def self.import
+  def self.import_index
     self.__elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
     self.__elasticsearch__.import
   end
@@ -60,4 +60,5 @@ class Tale < ActiveRecord::Base
     last = last.present? ? last : 0
     last + 1
   end
+
 end
