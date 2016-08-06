@@ -2,7 +2,6 @@
 # Tale
 #
 class Tale < ActiveRecord::Base
-
   # include
   include TaleSearchable
 
@@ -34,15 +33,15 @@ class Tale < ActiveRecord::Base
 
   # create index for ElasticSearch
   def self.create_index
-    self.__elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
-    self.create_index! force: true
-    self.__elasticsearch__.import
+    __elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+    create_index! force: true
+    __elasticsearch__.import
   end
 
   # import data to ElasticSearch
   def self.import_index
-    self.__elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
-    self.__elasticsearch__.import
+    __elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+    __elasticsearch__.import
   end
 
   # Read
@@ -60,5 +59,4 @@ class Tale < ActiveRecord::Base
     last = last.present? ? last : 0
     last + 1
   end
-
 end

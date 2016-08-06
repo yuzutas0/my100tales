@@ -10,41 +10,41 @@ module TaleSearchable
 
     # mapping
     settings index: {
-        number_of_shards:   1,
-        number_of_replicas: 0,
-        analysis: {
-            filter: {
-                pos_filter: {
-                    type:     'kuromoji_part_of_speech',
-                    stoptags: ['助詞-格助詞-一般', '助詞-終助詞'],
-                },
-                greek_lowercase_filter: {
-                    type:     'lowercase',
-                    language: 'greek',
-                },
-            },
-            tokenizer: {
-                kuromoji: {
-                    type: 'kuromoji_tokenizer'
-                },
-                ngram_tokenizer: {
-                    type: 'nGram',
-                    min_gram: '2',
-                    max_gram: '3',
-                    token_chars: ['letter', 'digit']
-                }
-            },
-            analyzer: {
-                kuromoji_analyzer: {
-                    type:      'custom',
-                    tokenizer: 'kuromoji_tokenizer',
-                    filter:    ['kuromoji_baseform', 'pos_filter', 'greek_lowercase_filter', 'cjk_width'],
-                },
-                ngram_analyzer: {
-                    tokenizer: "ngram_tokenizer"
-                }
-            }
+      number_of_shards:   1,
+      number_of_replicas: 0,
+      analysis: {
+        filter: {
+          pos_filter: {
+            type:     'kuromoji_part_of_speech',
+            stoptags: ['助詞-格助詞-一般', '助詞-終助詞']
+          },
+          greek_lowercase_filter: {
+            type:     'lowercase',
+            language: 'greek'
+          }
+        },
+        tokenizer: {
+          kuromoji: {
+            type: 'kuromoji_tokenizer'
+          },
+          ngram_tokenizer: {
+            type: 'nGram',
+            min_gram: '2',
+            max_gram: '3',
+            token_chars: %w(letter digit)
+          }
+        },
+        analyzer: {
+          kuromoji_analyzer: {
+            type:      'custom',
+            tokenizer: 'kuromoji_tokenizer',
+            filter:    %w(kuromoji_baseform pos_filter greek_lowercase_filter cjk_width)
+          },
+          ngram_analyzer: {
+            tokenizer: 'ngram_tokenizer'
+          }
         }
+      }
     } do
       mappings dynamic: 'false' do
         indexes :id,          type: 'integer'
@@ -59,13 +59,17 @@ module TaleSearchable
   end
 
   module ClassMethods
-    def create_index!(options={})
+    def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: self.index_name rescue nil if options[:force]
-      client.indices.create(index: self.index_name,
+      begin
+        client.indices.delete index: index_name
+      rescue
+        nil
+      end if options[:force]
+      client.indices.create(index: index_name,
                             body: {
-                                settings: self.settings.to_hash,
-                                mappings: self.mappings.to_hash
+                              settings: settings.to_hash,
+                              mappings: mappings.to_hash
                             })
     end
   end
