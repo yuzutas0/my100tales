@@ -11,14 +11,11 @@ development:
   host: 127.0.0.1
   namespace: session_my100tales_development
 
-# TODO
 test:
   <<: *default
 
-# TODO
 staging:
   <<: *default
 
-# TODO
 production:
   <<: *default

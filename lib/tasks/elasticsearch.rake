@@ -2,7 +2,7 @@
 namespace :elasticsearch do
   desc 'Create index for Elasticsearch'
   task :create_index => :environment do
-    Tale.create_index!
+    Tale.create_index
   end
 
   desc 'Import to ElasticSearch'

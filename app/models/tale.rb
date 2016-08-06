@@ -32,8 +32,20 @@ class Tale < ActiveRecord::Base
     tale
   end
 
-  # Read
+  # create index for ElasticSearch
+  def self.create_index
+    self.__elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+    self.create_index! force: true
+    self.__elasticsearch__.import
+  end
 
+  # import data to ElasticSearch
+  def self.import
+    self.__elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+    self.__elasticsearch__.import
+  end
+
+  # Read
   def self.list(user_id, page)
     Tale.where('user_id = ?', user_id).page(page).per(10).order(updated_at: :desc)
   end
