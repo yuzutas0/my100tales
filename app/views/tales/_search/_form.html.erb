@@ -4,7 +4,7 @@
   <%= form_tag tales_path, method: :get do %>
     <div class="module__form">
       <div class="module__form__field">
-        <%= text_field_tag 'keyword', nil, class: 'module__form__field__text', placeholder: 'Keyword' %>
+        <%= text_field_tag 'keyword', @queries.keyword, class: 'module__form__field__text', placeholder: 'Keyword' %>
       </div>
       <div>
         <%= submit_tag 'Search', name: nil, class: 'module__button module__button--small module__button--wide' %>

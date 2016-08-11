@@ -6,7 +6,8 @@ class TalesController < ApplicationController
 
   # GET /tales
   def index
-    @tales = Tale.list(current_user.id, params[:page])
+    @queries = SearchForm.new(params)
+    @tales = Tale.read(current_user.id, @queries)
   end
 
   # GET /tales/1
