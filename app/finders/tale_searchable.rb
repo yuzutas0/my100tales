@@ -58,6 +58,7 @@ module TaleSearchable
     end
   end
 
+  # methods
   module ClassMethods
     def create_index!(options = {})
       client = __elasticsearch__.client

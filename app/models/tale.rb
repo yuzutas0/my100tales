@@ -91,7 +91,7 @@ class Tale < ActiveRecord::Base
   # search by Elasticsearch
   # FIXME
   def self.search_by_es(query, page)
-    self.search(query).page(page).per(10).order(updated_at: :desc).records
+    search(query).page(page).per(10).order(updated_at: :desc).records
   end
 
   # -----------------------------------------------------------------

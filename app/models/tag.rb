@@ -1,3 +1,6 @@
+#
+# Tag
+#
 class Tag < ActiveRecord::Base
   # -----------------------------------------------------------------
   # relation
@@ -30,5 +33,4 @@ class Tag < ActiveRecord::Base
     last = Tag.where('user_id = ?', user_id).maximum(:view_number)
     last.present? ? last + 1 : 1
   end
-
 end
