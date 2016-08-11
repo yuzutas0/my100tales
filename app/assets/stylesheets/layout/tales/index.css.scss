@@ -31,6 +31,7 @@
 
     .layout__tales__index__list__item {
       @extend .list-group-item;
+      position: static; // enable module__modal to use z-index
 
       .layout__tales__index__list__item__created {
         font-size: $font_size_small;
