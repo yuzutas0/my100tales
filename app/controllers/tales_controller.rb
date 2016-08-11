@@ -7,7 +7,6 @@ class TalesController < ApplicationController
   # GET /tales
   def index
     @tales = Tale.list(current_user.id, params[:page])
-    @searchable = TaleFindForm.new
   end
 
   # GET /tales/1

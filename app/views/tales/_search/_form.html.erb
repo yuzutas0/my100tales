@@ -1,13 +1,13 @@
 <div class="layout__tale__search">
   <p>It's modal!</p>
 
-  <%= form_for searchable, url: tales_path, html: { method: :get } do |f| %>
+  <%= form_tag tales_path, method: :get do %>
     <div class="module__form">
       <div class="module__form__field">
-        <%= f.text_field :keyword, class: 'module__form__field__text', placeholder: 'Keyword' %>
+        <%= text_field_tag 'keyword', nil, class: 'module__form__field__text', placeholder: 'Keyword' %>
       </div>
       <div>
-        <%= f.submit 'Search', name: nil, class: 'module__button module__button--small module__button--wide' %>
+        <%= submit_tag 'Search', name: nil, class: 'module__button module__button--small module__button--wide' %>
       </div>
     </div>
   <% end %>
