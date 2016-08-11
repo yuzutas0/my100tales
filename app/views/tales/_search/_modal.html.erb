@@ -1,4 +1,4 @@
-<span id="script__tale__index__search">
+<span id="script__tale__search">
   <a v-on:click="showModal" class="module__button module__button--small"><%= fa_icon 'search' %></a>
 
   <div v-cloak>
@@ -7,9 +7,7 @@
       </div>
       <div class="module__modal">
         <div class="module__modal__inner">
-          <div style="width: 100%; height: 300px; background-color: #fff">
-            <p>It's modal!</p>
-          </div>
+          <%= render 'tales/_search/form', searchable: searchable %>
         </div>
       </div>
     </div>

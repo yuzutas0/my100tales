@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  my100tales_tales_index()
+  my100tales_tales_search()
   my100tales_tales_form()
 
 # execute with RubyGem 'turbolinks'
