@@ -97,8 +97,8 @@ class Tale < ActiveRecord::Base
       query: {
         bool: {
           should: [
-            term: { title: query.downcase },
-            term: { content: query.downcase }
+            { term: { title: query.downcase } },
+            { term: { content: query.downcase } }
           ]
         }
       },
@@ -108,7 +108,7 @@ class Tale < ActiveRecord::Base
       sort: [
         { updated_at: 'desc' }
       ],
-      size: 10000
+      size: 10_000
     ).records.page(page).per(10)
   end
 
