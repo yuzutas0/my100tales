@@ -68,8 +68,9 @@ class Tale < ActiveRecord::Base
   def self.read(user_id, queries)
     if queries.keyword.present?
       begin
-        Tale.search_by_es(queries.keyword, queries.page)
-      rescue
+        Tale.search_by_es(user_id, queries.keyword, queries.page)
+      rescue => e
+        p e
         Tale.search_by_db(user_id, queries.keyword, queries.page)
       end
     else
@@ -89,9 +90,26 @@ class Tale < ActiveRecord::Base
   end
 
   # search by Elasticsearch
-  # FIXME
-  def self.search_by_es(query, page)
-    search(query).page(page).per(10).order(updated_at: :desc).records
+  # FIXME: kaminari + elasticsearch
+  def self.search_by_es(user_id, query, page)
+    __elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+    __elasticsearch__.search(
+        query: {
+            bool: {
+                should: [
+                    term: { title: query.downcase },
+                    term: { content: query.downcase }
+                ]
+            }
+        },
+        filter: {
+            term: { user_id: user_id }
+        },
+        sort: [
+            { updated_at: 'desc' }
+        ],
+        size: 10000
+    ).records.page(page).per(10)
   end
 
   # -----------------------------------------------------------------
