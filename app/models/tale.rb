@@ -3,12 +3,6 @@
 #
 class Tale < ActiveRecord::Base
   # -----------------------------------------------------------------
-  # include
-  # -----------------------------------------------------------------
-  include TaleSearchable
-  include TaleFinder
-
-  # -----------------------------------------------------------------
   # relation
   # -----------------------------------------------------------------
   belongs_to :user
@@ -32,6 +26,9 @@ class Tale < ActiveRecord::Base
   # -----------------------------------------------------------------
   # Elasticsearch
   # -----------------------------------------------------------------
+  # include
+  include TaleSearchable
+  include TaleFinder
   # property
   index_name "es_my100tales_tale_#{Rails.env}"
   # connect

@@ -58,7 +58,6 @@ module TaleSearchable
 
   # methods
   module ClassMethods
-
     # create index
     def create_index
       delete_index(force: true)

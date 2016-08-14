@@ -1,6 +1,5 @@
 # tale_repository
 class TaleRepository
-
   # -----------------------------------------------------------------
   # Read - index
   # -----------------------------------------------------------------
@@ -37,5 +36,4 @@ class TaleRepository
     Tale.where('view_number = ? AND user_id = ?', view_number, user_id)
         .first
   end
-
 end

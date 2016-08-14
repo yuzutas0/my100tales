@@ -37,7 +37,8 @@ module TalesHelper
   # copy from gemoji's readme
   def emojify(content)
     h(content).to_str.gsub(/:([\w+-]+):/) do |match|
-      if emoji = Emoji.find_by_alias(Regexp.last_match(1))
+      emoji = Emoji.find_by_alias(Regexp.last_match(1))
+      if emoji
         %(<img alt="#{Regexp.last_match(1)}" src="#{asset_path("emoji/#{emoji.image_filename}")}" style="vertical-align:middle" width="20" height="20" />)
       else
         match
