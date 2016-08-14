@@ -7,14 +7,14 @@ class TalesController < ApplicationController
   # GET /tales
   def index
     @queries = SearchForm.new(params)
-    @tales = Tale.read(current_user.id, @queries)
+    @tales = TaleService.list(current_user.id, @queries)
   end
 
   # GET /tales/1
   def show
     @sequels = Sequel.list(@tale.id)
     @new_sequel = Sequel.new
-    set_tab
+    @tab_class = TaleDecorator.tab(params)
   end
 
   # GET /tales/new
@@ -28,14 +28,12 @@ class TalesController < ApplicationController
 
   # POST /tales
   def create
-    Tale.transaction do
-      @tale = Tale.instance(tale_params, current_user)
-      if @tale.save
-        redirect_to @tale, notice: 'Tale was successfully created.'
-      else
-        set_flash
-        render :new
-      end
+    @tale = TaleService.create(tale_params, current_user)
+    if @tale.present?
+      redirect_to @tale, notice: 'Tale was successfully created.'
+    else
+      flash.now[:alert] = TaleDecorator.flash(@tale)
+      render :new
     end
   end
 
@@ -44,7 +42,7 @@ class TalesController < ApplicationController
     if @tale.update(tale_params)
       redirect_to @tale, notice: 'Tale was successfully updated.'
     else
-      set_flash
+      flash.now[:alert] = TaleDecorator.flash(@tale)
       render :edit
     end
   end
@@ -59,26 +57,11 @@ class TalesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_tale
-    @tale = Tale.detail(params[:view_number], current_user.id)
+    @tale = TaleService.detail(params[:view_number], current_user.id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tale_params
     params.require(:tale).permit(:title, :content)
-  end
-
-  # add flash message about error reasons
-  def set_flash
-    flash.now[:alert] = []
-    @tale.errors.full_messages.each { |message| flash.now[:alert] << message + '<br>' }
-  end
-
-  # decide which tab is opened at first view
-  def set_tab
-    @tab_class = if params[:sequels].present?
-                   [['', ''], ['', ''], ['active', 'in active']]
-                 else
-                   [['active', 'in active'], ['', ''], ['', '']]
-                 end
   end
 end

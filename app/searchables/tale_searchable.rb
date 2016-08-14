@@ -6,8 +6,6 @@ module TaleSearchable
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
-    index_name "es_my100tales_tale_#{Rails.env}"
-
     # mapping
     settings index: {
       number_of_shards:   1,
@@ -16,7 +14,7 @@ module TaleSearchable
         filter: {
           pos_filter: {
             type:     'kuromoji_part_of_speech',
-            stoptags: ['助詞-格助詞-一般', '助詞-終助詞']
+            stoptags: %w(助詞-格助詞-一般 助詞-終助詞)
           },
           greek_lowercase_filter: {
             type:     'lowercase',
@@ -60,18 +58,32 @@ module TaleSearchable
 
   # methods
   module ClassMethods
-    def create_index!(options = {})
-      client = __elasticsearch__.client
+
+    # create index
+    def create_index
+      delete_index(force: true)
+      __elasticsearch__.client.indices.create(
+        index: index_name,
+        body: {
+          settings: settings.to_hash,
+          mappings: mappings.to_hash
+        }
+      )
+      import_index
+    end
+
+    # import index
+    def import_index
+      __elasticsearch__.import
+    end
+
+    # delete index
+    def delete_index(options = {})
       begin
-        client.indices.delete index: index_name
+        __elasticsearch__.client.indices.delete index: index_name
       rescue
         nil
       end if options[:force]
-      client.indices.create(index: index_name,
-                            body: {
-                              settings: settings.to_hash,
-                              mappings: mappings.to_hash
-                            })
     end
   end
 end
