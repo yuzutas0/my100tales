@@ -16,7 +16,7 @@
   # check DOM
   if document.getElementById(VUE_MARKDOWN_ID) != null
     
-    # tab
+    # tab for modal
     My100TalesUtilTab.createTab(
       SWITCH_MARKDOWN_EDITOR_DOM,
       SWITCH_MARKDOWN_PREVIEW_DOM,
@@ -24,7 +24,7 @@
       VUE_MARKDOWN_PREVIEW_OUTER_DOM,
       MOBILE_HIDDEN_CLASS
     )
-    
+
     # markdown
     my100tales_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
     My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)

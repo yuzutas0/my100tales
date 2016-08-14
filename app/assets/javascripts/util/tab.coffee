@@ -5,8 +5,6 @@ class @My100TalesUtilTab
   ACTIVE_CLASS = 'active'
   CLICK = 'click'
 
-  # TODO: jQuery#xxxClass -> Vue.js
-  
   # create
   @createTab = (leftSwitch, rightSwitch, leftContent, rightContent, hiddenClass) ->
 
@@ -28,3 +26,15 @@ class @My100TalesUtilTab
       displayBothEditorAndPreview()
       $(leftContent).addClass(hiddenClass)
       $(rightSwitch).parent().addClass(ACTIVE_CLASS)
+
+  # rewrite query
+  @rewriteQuery = (buttons, queries) ->
+    # validate
+    return if buttons.length != queries.length
+    # function
+    action = (button, query) ->
+      $(button).on CLICK, ->
+        location.search = query
+    # button -> query
+    for i in [0..buttons.length-1]
+      action(buttons[i], queries[i])

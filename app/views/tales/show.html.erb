@@ -9,15 +9,15 @@
   <hr>
   <h2><%= @tale.title %></h2>
 
-  <ul class="module__tab">
+  <ul id="script__tale__detail" class="module__tab">
     <li class=<%= @tab_class[0][0] %>>
-      <a href="#tab__first" data-toggle="tab">Content</a>
+      <a id="script__tale__detail__tab1" href="#tab__first" data-toggle="tab">Content</a>
     </li>
     <li class=<%= @tab_class[1][0] %>>
-      <a href="#tab__second" data-toggle="tab">Information</a>
+      <a id="script__tale__detail__tab2" href="#tab__second" data-toggle="tab">Information</a>
     </li>
     <li class=<%= @tab_class[2][0] %>>
-      <a href="#tab__third" data-toggle="tab">
+      <a id="script__tale__detail__tab3" href="#tab__third" data-toggle="tab">
         Sequels
         <% if @tale.sequels.length > 0 %>
         <span class="module__badge module__badge--desktop"><%= @tale.sequels.length %></span>

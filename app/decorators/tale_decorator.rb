@@ -2,11 +2,17 @@
 class TaleDecorator
   # decide which tab is opened at first view
   def self.tab(params)
+    blank = ['', '']
+    active = ['active', 'in active']
+    result = [blank, blank, blank]
     if params[:sequels].present?
-      [['', ''], ['', ''], ['active', 'in active']]
+      result[2] = active
+    elsif params[:information].present?
+      result[1] = active
     else
-      [['active', 'in active'], ['', ''], ['', '']]
+      result[0] = active
     end
+    result
   end
 
   # add flash message about error reasons

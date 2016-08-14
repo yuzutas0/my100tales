@@ -5,6 +5,7 @@
 ready = ->
   my100tales_tales_search()
   my100tales_tales_form()
+  my100tales_tales_detail()
 
 # execute with RubyGem 'turbolinks'
 $(document).ready(ready)
