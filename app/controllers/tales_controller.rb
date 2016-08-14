@@ -12,8 +12,7 @@ class TalesController < ApplicationController
 
   # GET /tales/1
   def show
-    @sequels = Sequel.list(@tale.id)
-    @new_sequel = Sequel.new
+    @sequels, @new_sequel = SequelService.list(@tale.id)
     @tab_class = TaleDecorator.tab(params)
   end
 
@@ -28,11 +27,11 @@ class TalesController < ApplicationController
 
   # POST /tales
   def create
-    @tale = TaleService.create(tale_params, current_user)
-    if @tale.present?
+    @tale, success = TaleService.create(tale_params, current_user)
+    if success
       redirect_to @tale, notice: 'Tale was successfully created.'
     else
-      flash.now[:alert] = TaleDecorator.flash(@tale)
+      flash.now[:alert] = TaleDecorator.flash(@tale, flash)
       render :new
     end
   end
@@ -42,7 +41,7 @@ class TalesController < ApplicationController
     if @tale.update(tale_params)
       redirect_to @tale, notice: 'Tale was successfully updated.'
     else
-      flash.now[:alert] = TaleDecorator.flash(@tale)
+      flash.now[:alert] = TaleDecorator.flash(@tale, flash)
       render :edit
     end
   end

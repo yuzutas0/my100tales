@@ -7,7 +7,8 @@ class TaleService
   def self.create(params, user)
     Tale.transaction do
       tale = TaleFactory.instance(params, user)
-      tale if tale.save
+      success = tale.save
+      return tale, success
     end
   end
 

@@ -10,7 +10,7 @@ class TaleDecorator
   end
 
   # add flash message about error reasons
-  def self.flash(tale)
+  def self.flash(tale, flash)
     flash.now[:alert] = []
     tale.errors.full_messages.each { |message| flash.now[:alert] << message + '<br>' }
     flash.now[:alert]

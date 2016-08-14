@@ -24,7 +24,7 @@ class Tale < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 15_000 }
 
   # -----------------------------------------------------------------
-  # Elasticsearch
+  # elasticsearch
   # -----------------------------------------------------------------
   # include
   include TaleSearchable
