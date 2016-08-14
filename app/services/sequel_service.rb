@@ -20,7 +20,7 @@ class SequelService
   def self.list(tale_id)
     sequels = SequelRepository.list(tale_id)
     new_sequel = Sequel.new
-    return sequels, new_sequel
+    [sequels, new_sequel]
   end
 
   # -----------------------------------------------------------------
