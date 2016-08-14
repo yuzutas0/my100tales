@@ -13,8 +13,6 @@ class TaleFactory
     tale
   end
 
-  private
-
   # support method
   def self.increment_view_number(user_id)
     last = Tale.where('user_id = ?', user_id).maximum(:view_number)

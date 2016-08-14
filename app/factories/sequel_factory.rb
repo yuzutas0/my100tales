@@ -12,8 +12,6 @@ class SequelFactory
     sequel
   end
 
-  private
-
   # support method
   def self.increment_view_number(tale_id)
     last = Sequel.where('tale_id = ?', tale_id).maximum(:view_number)
