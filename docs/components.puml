@@ -1,0 +1,55 @@
+@startuml
+
+package "Front" {
+  [view]
+
+  package "Style" {
+    view -> Style
+    [layout] <|.. [module]
+    layout <|.. [base]
+    module <|.. base
+  }
+
+  package "Script" {
+    view -> Script
+    [main] <|.. [util]
+  }
+}
+
+package "Middle" {
+  view --> [controller]
+
+  package "ViewObject" {
+    view --> [helper]
+    controller --> [decorator]
+  }
+}
+
+package "Back" {
+
+  package "DTO" {
+    [form]
+  }
+
+  package "BusinessLogic" {
+    controller --> [service]
+    service --> [repository]
+    service --> [factory]
+  }
+
+  package "DAO" {
+    [model]
+    model <|.. [searchable]
+    model <|.. [finder]
+    factory --> model
+    repository --> model
+  }
+}
+
+package "DataStore" {
+  model --> [mariadb]
+  model --> [elasticsearch]
+  [redis]
+}
+
+@enduml
