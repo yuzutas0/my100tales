@@ -13,9 +13,8 @@ class TalesController < ApplicationController
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
 
   # -----------------------------------------------------------------
-  # action - create
+  # endpoint - create
   # -----------------------------------------------------------------
-
   # GET /tales/new
   def new
     @tale = Tale.new
@@ -33,7 +32,7 @@ class TalesController < ApplicationController
   end
 
   # -----------------------------------------------------------------
-  # action - read
+  # endpoint - read
   # -----------------------------------------------------------------
   # GET /tales
   def index
@@ -48,9 +47,8 @@ class TalesController < ApplicationController
   end
 
   # -----------------------------------------------------------------
-  # action - update
+  # endpoint - update
   # -----------------------------------------------------------------
-
   # GET /tales/1/edit
   def edit
   end
@@ -66,9 +64,8 @@ class TalesController < ApplicationController
   end
 
   # -----------------------------------------------------------------
-  # action - delete
+  # endpoint - delete
   # -----------------------------------------------------------------
-
   # DELETE /tales/1
   def destroy
     @tale.destroy
@@ -78,7 +75,6 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # support methods
   # -----------------------------------------------------------------
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
