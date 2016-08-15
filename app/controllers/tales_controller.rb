@@ -2,27 +2,23 @@
 # TalesController
 #
 class TalesController < ApplicationController
+  # -----------------------------------------------------------------
+  # include
+  # -----------------------------------------------------------------
+  include ErrorHandlers
+
+  # -----------------------------------------------------------------
+  # filter
+  # -----------------------------------------------------------------
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
 
-  # GET /tales
-  def index
-    @queries = SearchForm.new(params)
-    @tales = TaleService.list(current_user.id, @queries)
-  end
-
-  # GET /tales/1
-  def show
-    @sequels, @new_sequel = SequelService.list(@tale.id)
-    @tab_class = TaleDecorator.tab(params)
-  end
+  # -----------------------------------------------------------------
+  # action - create
+  # -----------------------------------------------------------------
 
   # GET /tales/new
   def new
     @tale = Tale.new
-  end
-
-  # GET /tales/1/edit
-  def edit
   end
 
   # POST /tales
@@ -36,6 +32,29 @@ class TalesController < ApplicationController
     end
   end
 
+  # -----------------------------------------------------------------
+  # action - read
+  # -----------------------------------------------------------------
+  # GET /tales
+  def index
+    @queries = SearchForm.new(params)
+    @tales = TaleService.list(current_user.id, @queries)
+  end
+
+  # GET /tales/1
+  def show
+    @sequels, @new_sequel = SequelService.list(@tale.id)
+    @tab_class = TaleDecorator.tab(params)
+  end
+
+  # -----------------------------------------------------------------
+  # action - update
+  # -----------------------------------------------------------------
+
+  # GET /tales/1/edit
+  def edit
+  end
+
   # PATCH/PUT /tales/1
   def update
     if @tale.update(tale_params)
@@ -46,17 +65,26 @@ class TalesController < ApplicationController
     end
   end
 
+  # -----------------------------------------------------------------
+  # action - delete
+  # -----------------------------------------------------------------
+
   # DELETE /tales/1
   def destroy
     @tale.destroy
     redirect_to tales_url, notice: 'Tale was successfully destroyed.'
   end
 
+  # -----------------------------------------------------------------
+  # support methods
+  # -----------------------------------------------------------------
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_tale
     @tale = TaleService.detail(params[:view_number], current_user.id)
+    render_404 if @tale.blank?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

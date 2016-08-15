@@ -12,10 +12,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # params for Devise
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
+  # friendly forward
   def after_sign_in_path_for(_resource)
     session[:user_return_to] || tales_path
   end
