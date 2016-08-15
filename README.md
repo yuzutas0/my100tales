@@ -89,4 +89,3 @@ $ rails_best_practices # => make source code better!
 ```
 $ DB_USERNAME=[username] DB_PASSWORD=[password] REDIS_DB=[db number] rails s
 ```
-

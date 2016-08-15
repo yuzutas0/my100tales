@@ -26,7 +26,8 @@ class TaleService
         queries.keyword.html_safe,
         queries.page
       )
-    rescue
+    rescue => e
+      logger.warn "failure to request Elasticsearch: #{e.message}"
       # mariaDB
       TaleRepository.search_by_db(
         user_id,
