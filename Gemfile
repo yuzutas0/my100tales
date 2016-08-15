@@ -58,6 +58,7 @@ group :development do
 
   # Static analysis
   gem 'rubocop', require: false
+  gem 'rails_best_practices'
 
   # Front Tools
   gem 'bower-rails'

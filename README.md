@@ -76,12 +76,14 @@ $ bundle exec rake emoji
 $ rake rubocop
 $ rake rubocop:auto_correct
 $ rubocop --auto-gen-config # => make source code better!
+$ rails_best_practices # => make source code better!
 ```
 
 ## Services (job queues, cache servers, search engines, etc.)
 
 - MariaDB
 - Redis
+- ElasticSearch
 
 ## Deployment instructions
 

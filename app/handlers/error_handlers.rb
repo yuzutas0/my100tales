@@ -1,3 +1,4 @@
+# error_handlers
 module ErrorHandlers
   extend ActiveSupport::Concern
 
