@@ -1,7 +1,25 @@
+/'
+## Setup
+1. Install graphviz into MacOSX
+$ brew install graphviz
+
+2. Install PlantUML integration for IntelliJ
+Preferences -> Plugins -> "PlantUML integration"
+'/
 @startuml
 
+title My 100 Tales Components by @yuzutas0
+
+package "Client" {
+  [browser]
+}
+
+cloud Public {
+  browser -- Public
+}
+
 package "View" {
-  [view]
+  Public --> [view]
 
   package "Style" {
     view -> Style
@@ -47,10 +65,16 @@ package "Model" {
   }
 }
 
-package "DataStore" {
+database "Database" {
   model --> [mariadb]
+}
+
+database "KVS" {
+  model --> [redis]
+}
+
+database "SearchEngine" {
   model --> [elasticsearch]
-  [redis]
 }
 
 @enduml

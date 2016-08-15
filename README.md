@@ -12,7 +12,6 @@ So, my100tales grows your ideas in order to make dreams come true.
 ```
 $ brew install node
 $ npm install -g bower
-# $ brew install graphviz
 ```
 
 ## Configuration
