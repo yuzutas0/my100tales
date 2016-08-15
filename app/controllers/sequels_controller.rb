@@ -3,11 +3,6 @@
 #
 class SequelsController < ApplicationController
   # -----------------------------------------------------------------
-  # include
-  # -----------------------------------------------------------------
-  include ErrorHandlers
-
-  # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
   before_action :set_sequel, only: [:update, :destroy]
@@ -60,7 +55,7 @@ class SequelsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_sequel
     @sequel = SequelService.detail(current_user.id, params[:view_number], params[:sequel_view_number])
-    render_404 if @sequel.blank?
+    routing_error if @sequel.blank?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
