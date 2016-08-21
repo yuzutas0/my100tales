@@ -1,4 +1,4 @@
-<div id="tab__second" class="layout__tale__show__information tab-pane fade <%= @tab_class[1][1] %>"> <!-- tab -->
+<div id="tab__second" class="layout__tale__show__information tab-pane fade <%= tab_class[1][1] %>"> <!-- tab -->
 
   <div class="layout__tale__show__information__label">
     <p class="layout__tale__show__information__label__heading">Label</p>
@@ -22,20 +22,20 @@
     <p class="layout__tale__show__information__time__heading">History</p>
     <div class="layout__tale__show__information__time__content">
       <ul>
-        <li>posted at <%= @tale.created_at.strftime('%Y-%b-%d %H:%M') %></li>
-        <% unless @tale.created_at == @tale.updated_at %>
-            <li>updated at <%= @tale.updated_at.strftime('%Y-%b-%d %H:%M') %></li>
+        <li>posted at <%= tale.created_at.strftime('%Y-%b-%d %H:%M') %></li>
+        <% unless tale.created_at == tale.updated_at %>
+            <li>updated at <%= tale.updated_at.strftime('%Y-%b-%d %H:%M') %></li>
         <% end %>
       </ul>
     </div>
   </div>
 
   <hr>
-  <%= link_to 'Delete', @tale,
+  <%= link_to 'Delete', tale,
               method: :delete,
               data: {
                   confirm: 'Are you sure?',
-                  verify: @tale.title,
+                  verify: tale.title,
                   'verify-text' => 'Please type in the title of this tale to confirm.'
               },
               title: 'Delete',

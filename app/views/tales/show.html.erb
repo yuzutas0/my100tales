@@ -27,8 +27,8 @@
   </ul>
 
   <div class="tab-content"> <!-- tab -->
-    <%= render 'tales/_show/content' %>
-    <%= render 'tales/_show/information' %>
+    <%= render 'tales/_show/content', tab_class: @tab_class, tale: @tale %>
+    <%= render 'tales/_show/information', tab_class: @tab_class, tale: @tale %>
     <%= render 'tales/_show/sequels', tab_class: @tab_class, new_sequel: @new_sequel, sequels: @sequels, tale: @tale %>
   </div>
 </div>
