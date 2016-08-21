@@ -1,12 +1,12 @@
 <div class="layout__sequels__index">
-  <% @sequels.each.with_index(1) do |sequel, index| %>
+  <% sequels.each.with_index(1) do |sequel, index| %>
     <div id="script__sequel__<%= index %>" class="layout__sequels__index__item module__panel">
       <div class="module__panel__inner">
 
         <div v-cloak>
           <%= form_for(sequel, url: update_sequel_path) do |f| %>
               <%= hidden_field_tag :sequel_view_number, sequel.view_number %>
-              <%= render 'sequels/form', f: f, index: index %>
+              <%= render 'sequels/form', f: f, index: index, tale: tale %>
           <% end %>
         </div>
 
@@ -19,7 +19,7 @@
         <a v-on:click="showModal" class="layout__sequels__index__item__edit">Edit</a>
 
         <%= link_to 'Delete',
-                    sequels_path(sequel_view_number: sequel.view_number, view_number: @tale.view_number),
+                    sequels_path(sequel_view_number: sequel.view_number, view_number: tale.view_number),
                     method: :delete,
                     data: { confirm: 'Are you sure?' },
                     title: 'Delete',
