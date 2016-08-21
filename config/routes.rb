@@ -23,6 +23,13 @@ Rails.application.routes.draw do
   put '/sequels', to: 'sequels#update'
   delete '/sequels', to: 'sequels#destroy'
 
+  # no route error
+  get '*all', to: 'application#routing_error'
+  post '*all', to: 'application#routing_error'
+  patch '*all', to: 'application#routing_error'
+  put '*all', to: 'application#routing_error'
+  delete '*all', to: 'application#routing_error'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
