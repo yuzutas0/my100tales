@@ -21,4 +21,13 @@ class TaleDecorator
     tale.errors.full_messages.each { |message| flash.now[:alert] << message + '<br>' }
     flash.now[:alert]
   end
+
+  # set form options
+  def self.form_options(tale)
+    params = {}
+    tags = ''
+    tale.tags.each { |tag| tags = tags + ' ' + tag } if tale.tags.present?
+    params[:tags] = tags
+    TaleForm.new(params)
+  end
 end
