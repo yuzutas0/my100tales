@@ -22,8 +22,8 @@ class TaleDecorator
     flash.now[:alert]
   end
 
-  # set form options
-  def self.form_options(tale)
+  # set option form
+  def self.option_form(tale)
     params = {}
     tags = tale.tags.present? ? tale.tags.join(' ') : ''
     params[:tags] = tags

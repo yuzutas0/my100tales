@@ -15,6 +15,9 @@ gem 'redis-rails'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
 
+# SQL Performance
+gem 'activerecord-import'
+
 # AP
 gem 'jbuilder', '~> 2.0'
 gem 'devise'

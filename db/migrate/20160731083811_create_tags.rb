@@ -7,5 +7,8 @@ class CreateTags < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :tags, [:view_number, :user_id], unique: true
+    add_index :tags, [:name, :user_id], unique: true
   end
 end

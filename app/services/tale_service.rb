@@ -4,10 +4,11 @@ class TaleService
   # Create
   # -----------------------------------------------------------------
 
-  def self.create(params, user)
+  def self.create(params, option_form, user)
     Tale.transaction do
       tale = TaleFactory.instance(params, user)
       success = tale.save
+      change_tags(tale, option_form, user)
       return tale, success
     end
   end
@@ -42,5 +43,28 @@ class TaleService
   # -----------------------------------------------------------------
   def self.detail(view_number, user_id)
     TaleRepository.detail(view_number, user_id)
+  end
+
+  # -----------------------------------------------------------------
+  # Update
+  # -----------------------------------------------------------------
+  def self.update(tale, tale_params, option_form, user)
+    Tale.transaction do
+      success = tale.update(tale_params)
+      change_tags(tale, option_form, user)
+      return tale, success
+    end
+  end
+
+  # -----------------------------------------------------------------
+  # Support
+  # -----------------------------------------------------------------
+  private
+
+  # *** use transaction ***
+  # change tags and relation between tale and tags
+  def self.change_tags(tale, option_form, user)
+    new_tag_list = TagService.create_and_read(user, option_form.tags)
+    TaleTagRelationshipService.change(tale, new_tag_list)
   end
 end

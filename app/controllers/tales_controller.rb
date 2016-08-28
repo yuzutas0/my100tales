@@ -6,7 +6,7 @@ class TalesController < ApplicationController
   # filter
   # -----------------------------------------------------------------
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
-  after_action :set_form_options, only: [:new, :edit]
+  after_action :set_option_form, only: [:new, :edit]
 
   # -----------------------------------------------------------------
   # endpoint - create
@@ -18,7 +18,7 @@ class TalesController < ApplicationController
 
   # POST /tales
   def create
-    @tale, success = TaleService.create(tale_params, current_user)
+    @tale, success = TaleService.create(tale_params, option_form_params, current_user)
     if success
       redirect_to @tale, notice: 'Tale was successfully created.'
     else
@@ -51,7 +51,8 @@ class TalesController < ApplicationController
 
   # PATCH/PUT /tales/1
   def update
-    if @tale.update(tale_params)
+    @tale, success = TaleService.update(@tale, tale_params, option_form_params, current_user)
+    if success
       redirect_to @tale, notice: 'Tale was successfully updated.'
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
@@ -84,8 +85,14 @@ class TalesController < ApplicationController
     params.require(:tale).permit(:title, :content)
   end
 
-  # Set form options
-  def set_form_options
-    @form = TaleDecorator.form_options(@tale)
+  # Set option form
+  def set_option_form
+    @form = TaleDecorator.option_form(@tale)
+  end
+
+  # Get option form
+  def option_form_params
+    option_form = params.require(:form).permit(:tags)
+    TaleForm.new(tags: option_form[:tags]).form_to_object
   end
 end

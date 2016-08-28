@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(version: 20_160_731_083_835) do
     t.datetime 'updated_at',                          null: false
   end
 
+  add_index 'tags', %w(name user_id), name: 'index_tags_on_name_and_user_id', unique: true, using: :btree
   add_index 'tags', ['user_id'], name: 'index_tags_on_user_id', using: :btree
+  add_index 'tags', %w(view_number user_id), name: 'index_tags_on_view_number_and_user_id', unique: true, using: :btree
   add_index 'tags', ['view_number'], name: 'index_tags_on_view_number', using: :btree
 
   create_table 'tale_tag_relationships', force: :cascade do |t|
