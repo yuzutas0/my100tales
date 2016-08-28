@@ -25,7 +25,7 @@ class TaleDecorator
   # set option form
   def self.option_form(tale)
     params = {}
-    tags = tale.tags.present? ? tale.tags.join(' ') : ''
+    tags = tale.tags.present? ? tale.tags.pluck(:name).join(' ') : ''
     params[:tags] = tags
     TaleForm.new(params)
   end

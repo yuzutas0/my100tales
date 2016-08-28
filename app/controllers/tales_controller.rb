@@ -6,7 +6,6 @@ class TalesController < ApplicationController
   # filter
   # -----------------------------------------------------------------
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
-  after_action :set_option_form, only: [:new, :edit]
 
   # -----------------------------------------------------------------
   # endpoint - create
@@ -14,6 +13,8 @@ class TalesController < ApplicationController
   # GET /tales/new
   def new
     @tale = Tale.new
+    @tale.tags = []
+    @form = TaleDecorator.option_form(@tale)
   end
 
   # POST /tales
@@ -47,6 +48,7 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # GET /tales/1/edit
   def edit
+    @form = TaleDecorator.option_form(@tale)
   end
 
   # PATCH/PUT /tales/1
@@ -83,11 +85,6 @@ class TalesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def tale_params
     params.require(:tale).permit(:title, :content)
-  end
-
-  # Set option form
-  def set_option_form
-    @form = TaleDecorator.option_form(@tale)
   end
 
   # Get option form
