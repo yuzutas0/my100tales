@@ -6,7 +6,8 @@ class Tag < ActiveRecord::Base
   # relation
   # -----------------------------------------------------------------
   belongs_to :user
-  has_and_belongs_to_many :tales
+  has_many :tale_tag_relationships
+  has_many :tales, through: :tale_tag_relationships
 
   # -----------------------------------------------------------------
   # routing path

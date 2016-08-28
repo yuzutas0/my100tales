@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20_160_731_083_835) do
   add_index 'tags', ['user_id'], name: 'index_tags_on_user_id', using: :btree
   add_index 'tags', ['view_number'], name: 'index_tags_on_view_number', using: :btree
 
+  create_table 'tale_tag_relationships', force: :cascade do |t|
+    t.integer 'tale_id', limit: 4
+    t.integer 'tag_id',  limit: 4
+  end
+
+  add_index 'tale_tag_relationships', ['tag_id'], name: 'index_tale_tag_relationships_on_tag_id', using: :btree
+  add_index 'tale_tag_relationships', ['tale_id'], name: 'index_tale_tag_relationships_on_tale_id', using: :btree
+
   create_table 'tales', force: :cascade do |t|
     t.string   'title',       limit: 255, null: false
     t.text     'content',     limit: 65_535, null: false
@@ -47,14 +55,6 @@ ActiveRecord::Schema.define(version: 20_160_731_083_835) do
   add_index 'tales', ['user_id'], name: 'index_tales_on_user_id', using: :btree
   add_index 'tales', %w(view_number user_id), name: 'index_tales_on_view_number_and_user_id', unique: true, using: :btree
   add_index 'tales', ['view_number'], name: 'index_tales_on_view_number', using: :btree
-
-  create_table 'tales_tags', force: :cascade do |t|
-    t.integer 'tale_id', limit: 4
-    t.integer 'tag_id',  limit: 4
-  end
-
-  add_index 'tales_tags', ['tag_id'], name: 'index_tales_tags_on_tag_id', using: :btree
-  add_index 'tales_tags', ['tale_id'], name: 'index_tales_tags_on_tale_id', using: :btree
 
   create_table 'users', force: :cascade do |t|
     t.string   'email',                  limit: 255, default: '', null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20_160_731_083_835) do
 
   add_foreign_key 'sequels', 'tales'
   add_foreign_key 'tags', 'users'
+  add_foreign_key 'tale_tag_relationships', 'tags'
+  add_foreign_key 'tale_tag_relationships', 'tales'
   add_foreign_key 'tales', 'users'
-  add_foreign_key 'tales_tags', 'tags'
-  add_foreign_key 'tales_tags', 'tales'
 end

@@ -6,6 +6,7 @@ class TalesController < ApplicationController
   # filter
   # -----------------------------------------------------------------
   before_action :set_tale, only: [:show, :edit, :update, :destroy]
+  after_action :set_form_options, only: [:new, :edit]
 
   # -----------------------------------------------------------------
   # endpoint - create
@@ -81,5 +82,19 @@ class TalesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def tale_params
     params.require(:tale).permit(:title, :content)
+  end
+
+  # set tags to form view
+  def set_form_options
+    params = {}
+    params[:tags] = ready_tags
+    @form = TaleForm.new(params)
+  end
+
+  # ready tags for form option
+  def ready_tags
+    tags = ''
+    @tale.tags.each { |tag| tags = tags + ' ' + tag } if @tale.tags.present?
+    tags
   end
 end

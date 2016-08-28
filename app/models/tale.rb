@@ -7,7 +7,8 @@ class Tale < ActiveRecord::Base
   # -----------------------------------------------------------------
   belongs_to :user
   has_many :sequels, dependent: :destroy
-  has_and_belongs_to_many :tags
+  has_many :tale_tag_relationships
+  has_many :tags, through: :tale_tag_relationships
 
   # -----------------------------------------------------------------
   # routing path (tales/:id => tales/:view_number)
