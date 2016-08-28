@@ -20,20 +20,20 @@ module ErrorHandlers
   private
 
   # facade
-  def render_error(error_code, e = nil, request, params)
+  def render_error(error_code, e, request, params)
     log_exception error_code, e
     render_json error_code, request, params
     render_html error_code
   end
 
   # logger
-  def log_exception(error_code, e = nil)
-    logger.warn "Rendering #{error_code.to_s} with exception: #{e.message}" if e
+  def log_exception(error_code, e)
+    logger.warn "Rendering #{error_code} with exception: #{e.message}" if e
   end
 
   # json
   def render_json(error_code, request, params)
-    render json: { error: "#{error_code.to_s} error" }, status: error_code if request.xhr? || params[:format] == :json
+    render json: { error: "#{error_code} error" }, status: error_code if request.xhr? || params[:format] == :json
   end
 
   # html

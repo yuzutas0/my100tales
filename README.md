@@ -23,7 +23,18 @@ $ bundle exec rake bower:install
 
 ## Database creation
 
-after set up MySQL / MariaDB
+set up MariaDB
+
+```
+$ docker build -t [image name] ./docker/mariadb/
+$ docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[root password] [image name] \
+    --name [container name] \
+    --character-set-server=utf8mb4 \
+    --collation-server=utf8mb4_unicode_ci \
+    --innodb-file-format=Barracuda \
+    --innodb-file-per-table=true \
+    --innodb-large-prefix=true
+```
 
 create user
 
@@ -35,7 +46,7 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
 create scheme
 
 ```
-mysql> CREATE DATABASE my100tales;
+mysql> CREATE DATABASE my100tales DEFAULT CHARSET utf8mb4;
 ```
 
 create tables
