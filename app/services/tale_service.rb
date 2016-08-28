@@ -63,6 +63,7 @@ class TaleService
 
   # *** use transaction ***
   # change tags and relation between tale and tags
+  # FIXME: performance turning
   def self.change_tags(tale, option_form, user)
     new_tag_list = TagService.create_and_read(user, option_form.tags)
     TaleTagRelationshipService.change(tale, new_tag_list)
