@@ -4,6 +4,14 @@ class TaleService
   # Create
   # -----------------------------------------------------------------
 
+  # render page for create
+  def self.new
+    tale = Tale.new
+    tale.tags = []
+    tale
+  end
+
+  # action to create
   def self.create(params, option_form, user)
     Tale.transaction do
       tale = TaleFactory.instance(params, user)
@@ -43,6 +51,10 @@ class TaleService
   # -----------------------------------------------------------------
   def self.detail(view_number, user_id)
     TaleRepository.detail(view_number, user_id)
+  end
+
+  def self.detail_with_options(view_number, user_id)
+    TaleRepository.detail_with_options(view_number, user_id)
   end
 
   # -----------------------------------------------------------------

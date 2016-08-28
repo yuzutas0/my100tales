@@ -5,15 +5,15 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
-  before_action :set_tale, only: [:show, :edit, :update, :destroy]
+  before_action :set_tale, only: [:edit, :update, :destroy]
+  before_action :set_tale_with_options, only: [:show]
 
   # -----------------------------------------------------------------
   # endpoint - create
   # -----------------------------------------------------------------
   # GET /tales/new
   def new
-    @tale = Tale.new
-    @tale.tags = []
+    @tale = TaleService.new
     @form = TaleDecorator.option_form(@tale)
   end
 
@@ -79,6 +79,11 @@ class TalesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_tale
     @tale = TaleService.detail(params[:view_number], current_user.id)
+    routing_error if @tale.blank?
+  end
+
+  def set_tale_with_options
+    @tale = TaleService.detail_with_options(params[:view_number], current_user.id)
     routing_error if @tale.blank?
   end
 
