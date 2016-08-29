@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20_160_731_083_835) do
   end
 
   add_index 'tale_tag_relationships', ['tag_id'], name: 'index_tale_tag_relationships_on_tag_id', using: :btree
+  add_index 'tale_tag_relationships', %w(tale_id tag_id), name: 'index_tale_tag_relationships_on_tale_id_and_tag_id', unique: true, using: :btree
   add_index 'tale_tag_relationships', ['tale_id'], name: 'index_tale_tag_relationships_on_tale_id', using: :btree
 
   create_table 'tales', force: :cascade do |t|

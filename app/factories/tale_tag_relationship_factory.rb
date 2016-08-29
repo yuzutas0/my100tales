@@ -4,11 +4,26 @@ class TaleTagRelationshipFactory
   # Create
   # -----------------------------------------------------------------
 
-  # create only new relations for the user
-  def self.create_only_new_relation(tale, only_new_tag_list)
-    return if only_new_tag_list.blank?
-    new_relations = []
-    only_new_tag_list.each { |new_tag| new_relations << TaleTagRelationship.new(tale: tale, tag: new_tag) }
-    TaleTagRelationship.bulk_import(new_relations)
+  # INSERT INTO tale_tag_relationships (tale_id, tag_id)
+  # SELECT #{tale_id}, T.id FROM tags T
+  # WHERE T.name IN (#{tag_name_list[0]}, ..., #{tag_name_list[n]})
+  def self.create_by_tag_name_list(tale_id, tag_name_list)
+    return if tag_name_list.blank?
+    args = ['
+      INSERT INTO
+        tale_tag_relationships (
+          tale_id,
+          tag_id
+        )
+      SELECT
+          ?,
+          T.id
+      FROM
+          tags T
+      WHERE
+          T.name IN (?)
+      ', tale_id, tag_name_list]
+    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
+    ActiveRecord::Base.connection.execute(sql)
   end
 end

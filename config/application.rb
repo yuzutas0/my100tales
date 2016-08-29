@@ -6,7 +6,7 @@ require 'rails/all'
 require 'activerecord-import/base'
 class ActiveRecord::Base
   class << self
-    alias :bulk_import :import
+    alias bulk_import import
     remove_method :import
   end
 end

@@ -4,11 +4,20 @@ class TagFactory
   # Create
   # -----------------------------------------------------------------
 
+  # *** use transaction ***
   # create only new tags for the user without already exist tags
   def self.create_only_new_name(user, tag_name_list)
-    new_list = diff_list(user.id, tag_name_list)
+    # ready params
+    only_new_name_list = diff_list(user.id, tag_name_list)
     records = []
-    new_list.each { |new_name| records << create_by_name(user, new_name) }
+    max_view_number = max_view_number(user.id)
+    # ready query
+    only_new_name_list.each.with_index(1) do |new_name, index|
+      records << Tag.new(user: user,
+                         name: new_name,
+                         view_number: max_view_number + index)
+    end
+    # execute
     Tag.bulk_import(records)
   end
 
@@ -23,24 +32,10 @@ class TagFactory
     tag_name_list - exist_list
   end
 
-  # create new tag by name
-  def self.create_by_name(user, tag_name)
-    param = { name: tag_name }
-    instance(param, user)
-  end
-
-  # use transaction to save record if you call this method
-  # in order to make combination of tale_id and view_number unique
-  def self.instance(params, user)
-    tag = Tag.new(params)
-    tag.user = user
-    tag.view_number = increment_view_number(user.id)
-    tag
-  end
-
-  # increment
-  def self.increment_view_number(user_id)
-    last = Tag.where('user_id = ?', user_id).maximum(:view_number)
-    last.present? ? last + 1 : 1
+  # SELECT MAX(view_number) FROM tags WHERE user_id = #{user_id}
+  # => return 1 if the result is blank
+  def self.max_view_number(user_id)
+    number = Tag.where('user_id = ?', user_id).maximum(:view_number)
+    number.present? ? number : 0
   end
 end

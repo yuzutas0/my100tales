@@ -4,5 +4,7 @@ class CreateTaleTagRelationships < ActiveRecord::Migration
       t.references :tale, index: true, foreign_key: true
       t.references :tag, index: true, foreign_key: true
     end
+
+    add_index :tale_tag_relationships, [:tale_id, :tag_id], unique: true
   end
 end

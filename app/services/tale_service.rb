@@ -16,7 +16,7 @@ class TaleService
     Tale.transaction do
       tale = TaleFactory.instance(params, user)
       success = tale.save
-      change_tags(tale, option_form, user)
+      change_tags(tale.id, option_form, user)
       return tale, success
     end
   end
@@ -63,7 +63,7 @@ class TaleService
   def self.update(tale, tale_params, option_form, user)
     Tale.transaction do
       success = tale.update(tale_params)
-      change_tags(tale, option_form, user)
+      change_tags(tale.id, option_form, user)
       return tale, success
     end
   end
@@ -75,9 +75,8 @@ class TaleService
 
   # *** use transaction ***
   # change tags and relation between tale and tags
-  # FIXME: performance turning
-  def self.change_tags(tale, option_form, user)
-    new_tag_list = TagService.create_and_read(user, option_form.tags)
-    TaleTagRelationshipService.change(tale, new_tag_list)
+  def self.change_tags(tale_id, option_form, user)
+    TagFactory.create_only_new_name(user, option_form.tags)
+    TaleTagRelationshipService.update(tale_id, option_form.tags)
   end
 end
