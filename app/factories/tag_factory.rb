@@ -28,14 +28,14 @@ class TagFactory
     private
 
     # get only new tags for the user without already exist tags
-    def self.diff_list(user_id, tag_name_list)
+    def diff_list(user_id, tag_name_list)
       exist_list = Tag.where('user_id = ?', user_id).pluck(:name)
       tag_name_list - exist_list
     end
 
     # SELECT MAX(view_number) FROM tags WHERE user_id = #{user_id}
     # => return 1 if the result is blank
-    def self.max_view_number(user_id)
+    def max_view_number(user_id)
       number = Tag.where('user_id = ?', user_id).maximum(:view_number)
       number.present? ? number : 0
     end

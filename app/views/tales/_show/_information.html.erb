@@ -3,8 +3,8 @@
   <div class="layout__tale__show__information__label">
     <p class="layout__tale__show__information__label__heading">Label</p>
     <div class="layout__tale__show__information__label__content">
-      <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
-          <a href="#" class="module__label"><%= label %></a>
+      <% tale.tags.each do |label| %>
+          <a href="#" class="module__label"><%= label.name %></a>
       <% end %>
     </div>
   </div>
