@@ -71,12 +71,14 @@ class TaleService
   # -----------------------------------------------------------------
   # Support
   # -----------------------------------------------------------------
-  private
+  class << self
+    private
 
-  # *** use transaction ***
-  # change tags and relation between tale and tags
-  def self.change_tags(tale_id, option_form, user)
-    TagFactory.create_only_new_name(user, option_form.tags)
-    TaleTagRelationshipService.update(tale_id, option_form.tags)
+    # *** use transaction ***
+    # change tags and relation between tale and tags
+    def self.change_tags(tale_id, option_form, user)
+      TagFactory.create_only_new_name(user, option_form.tags)
+      TaleTagRelationshipService.update(tale_id, option_form.tags)
+    end
   end
 end
