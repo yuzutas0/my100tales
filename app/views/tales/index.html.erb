@@ -29,8 +29,8 @@
       </h4>
 
       <div>
-        <% %w(Label1 Label2 Label3).each do |label| %> <!-- FIXME : sample data -->
-            <a href="#" class="module__label"><%= label %></a>
+        <% tale.tags.each do |label| %>
+            <a href="#" class="module__label"><%= label.name %></a>
         <% end %>
 
         <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->

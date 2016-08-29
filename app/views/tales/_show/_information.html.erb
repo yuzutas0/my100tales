@@ -1,11 +1,12 @@
 <div id="tab__second" class="layout__tale__show__information tab-pane fade <%= tab_class[1][1] %>"> <!-- tab -->
 
   <div class="layout__tale__show__information__label">
-    <p class="layout__tale__show__information__label__heading">Label</p>
+    <p class="layout__tale__show__information__label__heading">Tag</p>
     <div class="layout__tale__show__information__label__content">
       <% tale.tags.each do |label| %>
-          <a href="#" class="module__label"><%= label.name %></a>
+        <a href="#" class="module__label"><%= label.name %></a>
       <% end %>
+      <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale) if tale.tags.blank? %>
     </div>
   </div>
 
