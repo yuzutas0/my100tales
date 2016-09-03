@@ -6,6 +6,7 @@ module Constants
   SHOW_TALE_PATH_NAME = 'YourTale'.freeze
   NEW_TALE_PATH_NAME = 'New Tale'.freeze
   EDIT_TALE_PATH_NAME = 'Edit Tale'.freeze
+  TAG_INDEX_PATH_NAME = 'Tag List'.freeze
 
   # message
   TALE_NOT_EXISTS = 'There is no tale.'.freeze

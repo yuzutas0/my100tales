@@ -1,0 +1,11 @@
+// tags index
+
+// import
+@import "base/const";
+@import "base/util";
+
+// main
+.layout__tags__index {
+  @extend .container;
+  @include util__layout;
+}
