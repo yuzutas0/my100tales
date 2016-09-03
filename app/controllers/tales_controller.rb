@@ -39,7 +39,7 @@ class TalesController < ApplicationController
 
   # GET /tales/1
   def show
-    @sequels, @new_sequel = SequelService.list(@tale.id)
+    @new_sequel = Sequel.new
     @tab_class = TaleDecorator.tab(params)
   end
 
