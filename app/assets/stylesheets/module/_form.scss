@@ -23,6 +23,10 @@
   }
 
   .module__form__label {
-    font-weight: normal;
+    margin-right: $margin_size_x_small;
+
+    .module__form__label__text {
+      font-weight: normal;
+    }
   }
 }
