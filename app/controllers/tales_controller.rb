@@ -7,6 +7,7 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   before_action :set_tale, only: [:edit, :update, :destroy]
   before_action :set_tale_with_options, only: [:show]
+  before_action :ready_form, only: [:new, :edit]
 
   # -----------------------------------------------------------------
   # endpoint - create
@@ -14,8 +15,6 @@ class TalesController < ApplicationController
   # GET /tales/new
   def new
     @tale = TaleService.new
-    @form = TaleDecorator.option_form(@tale)
-    @tags = %w(test1 test2 test3) # FIXME: dynamic data
   end
 
   # POST /tales
@@ -49,8 +48,6 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # GET /tales/1/edit
   def edit
-    @form = TaleDecorator.option_form(@tale)
-    @tags = %w(test1 test2 test3) # FIXME: dynamic data
   end
 
   # PATCH/PUT /tales/1
@@ -78,6 +75,9 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   private
 
+  # -----------------------------------------------------------------
+  # for filter
+  # -----------------------------------------------------------------
   # Use callbacks to share common setup or constraints between actions.
   def set_tale
     @tale = TaleService.detail(params[:view_number], current_user.id)
@@ -89,6 +89,15 @@ class TalesController < ApplicationController
     routing_error if @tale.blank?
   end
 
+  # set some params for tale form
+  def ready_form
+    @form = TaleDecorator.option_form(@tale)
+    @tags = TagService.name_list(current_user.id)
+  end
+
+  # -----------------------------------------------------------------
+  # for strong parameter
+  # -----------------------------------------------------------------
   # Never trust parameters from the scary internet, only allow the white list through.
   def tale_params
     params.require(:tale).permit(:title, :content)
