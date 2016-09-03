@@ -9,17 +9,20 @@
 
       <div class="module__form__checkbox">
         <p>Tag</p>
-        <% if tags.blank? %>There's no tags.<% end %>
-        <% tags.each do |tag| %>
-          <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__label' do %>
-            <%= check_box_tag 'tags[id][]',
-                              tag.view_number,
-                              queries.tags.include?(tag.view_number.to_s),
-                              id: "input_tags_#{tag.view_number}"
-            %>
-            <span class="module__form__label__text"><%= tag.name %></span>
+        <p>
+          <% if tags.blank? %>There's no tags.<% end %>
+          <% tags.each do |tag| %>
+            <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__label' do %>
+              <%= check_box_tag 'tags[id][]',
+                                tag.view_number,
+                                queries.tags.include?(tag.view_number.to_s),
+                                id: "input_tags_#{tag.view_number}"
+              %>
+              <span class="module__form__label__text"><%= tag.name %></span>
+            <% end %>
           <% end %>
-        <% end %>
+          - <a href="#">Tag List</a><!-- TODO implement -->
+        </p>
       </div>
 
       <div>
