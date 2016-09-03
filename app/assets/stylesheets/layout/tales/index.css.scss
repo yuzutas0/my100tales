@@ -26,6 +26,11 @@
     }
   }
 
+  .layout__tales__index__header__bottom {
+    @extend .alert;
+    @extend .alert-info;
+  }
+
   .layout__tales__index__list {
     @extend .list-group;
 

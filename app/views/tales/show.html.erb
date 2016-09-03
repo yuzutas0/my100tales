@@ -2,7 +2,7 @@
 
   <div class="layout__tale__show__header">
     <p class="layout__tale__show__header__left"><%= render 'layouts/breadcrumb_tale_2', third_page: Constants::SHOW_TALE_PATH_NAME %></p>
-    <%= link_to edit_tale_path(@tale), class: 'layout__tales__index__header__right module__button module__button--small' do %>
+    <%= link_to edit_tale_path(@tale), class: 'layout__tales__show__header__right module__button module__button--small' do %>
       <%= fa_icon 'pencil' %>
     <% end %>
     <div class="layout__tale__show__header__end"></div>
