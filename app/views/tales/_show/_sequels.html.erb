@@ -1,4 +1,5 @@
 <div id="tab__third" class="tab-pane fade <%= tab_class[2][1] %>"> <!-- tab -->
   <%= render 'sequels/new', new_sequel: new_sequel, tale: tale %>
   <%= render 'sequels/index', tale: tale %>
+  <%= Constants::SEQUEL_NOT_EXISTS if tale.sequels.blank? %>
 </div>

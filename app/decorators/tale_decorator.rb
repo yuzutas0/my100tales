@@ -1,5 +1,5 @@
 # tale_decorator
-class TaleDecorator
+class TaleDecorator < CommonDecorator
   # decide which tab is opened at first view
   def self.tab(params)
     blank = ['', '']
@@ -17,9 +17,7 @@ class TaleDecorator
 
   # add flash message about error reasons
   def self.flash(tale, flash)
-    flash.now[:alert] = []
-    tale.errors.full_messages.each { |message| flash.now[:alert] << message + '<br>' }
-    flash.now[:alert]
+    flash_for_render(tale, flash)
   end
 
   # set option form

@@ -1,9 +1,7 @@
 # sequel_decorator
-class SequelDecorator
+class SequelDecorator < CommonDecorator
   # add flash message about error reasons
   def flash(sequel, flash)
-    flash[:alert] = []
-    sequel.errors.full_messages.each { |message| flash[:alert] << message + '<br>' }
-    flash[:alert]
+    flash_for_redirect(sequel, flash)
   end
 end
