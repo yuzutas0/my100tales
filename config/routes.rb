@@ -30,10 +30,10 @@ Rails.application.routes.draw do
   delete '/tags/:view_number', to: 'tags#destroy'
 
   # no route error
-  get '*all', to: 'application#routing_error'
-  post '*all', to: 'application#routing_error'
-  patch '*all', to: 'application#routing_error'
-  put '*all', to: 'application#routing_error'
+  get    '*all', to: 'application#routing_error'
+  post   '*all', to: 'application#routing_error'
+  patch  '*all', to: 'application#routing_error'
+  put    '*all', to: 'application#routing_error'
   delete '*all', to: 'application#routing_error'
 
   # Example of regular route:
