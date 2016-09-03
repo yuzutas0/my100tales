@@ -1,5 +1,5 @@
 # common_decorator
-class CommonDecorator
+class BaseDecorator
   # const
   NEW_LINE_TAG = '<br>'.freeze
 

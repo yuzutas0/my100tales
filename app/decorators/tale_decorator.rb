@@ -1,5 +1,5 @@
 # tale_decorator
-class TaleDecorator < CommonDecorator
+class TaleDecorator < BaseDecorator
   # decide which tab is opened at first view
   def self.tab(params)
     blank = ['', '']
