@@ -24,26 +24,12 @@ class TaleService
   # -----------------------------------------------------------------
   # Read - index
   # -----------------------------------------------------------------
+
+  # return [is_searched, tales]
   def self.list(user_id, queries)
-    # without keyword
-    return TaleRepository.list(user_id, queries.page) if queries.keyword.blank?
-    # with keyword
-    begin
-      # Elasticsearch
-      TaleRepository.search_by_es(
-        user_id,
-        queries.keyword.html_safe,
-        queries.page
-      )
-    rescue => e
-      logger.warn "failure to request Elasticsearch: #{e.message}"
-      # mariaDB
-      TaleRepository.search_by_db(
-        user_id,
-        queries.keyword.html_safe,
-        queries.page
-      )
-    end
+    queries.keyword.blank? ?
+        list_without_keyword(user_id, queries) :
+        list_with_keyword(user_id, queries)
   end
 
   # -----------------------------------------------------------------
@@ -79,6 +65,43 @@ class TaleService
     def change_tags(tale_id, option_form, user)
       TagFactory.create_only_new_name(user, option_form.tags)
       TaleTagRelationshipService.update(tale_id, option_form.tags)
+    end
+
+    # get list without keyword
+    # return [is_searched, tales]
+    def list_without_keyword(user_id, queries)
+      tales = TaleRepository.list(user_id, queries.page)
+      [false, tales]
+    end
+
+    # get list with keyword
+    # return [is_searched, tales]
+    def list_with_keyword(user_id, queries)
+      begin
+        tales = search_by_es(user_id, queries)
+      rescue => e
+        logger.warn "failure to request Elasticsearch: #{e.message}"
+        tales = search_by_db(user_id, queries)
+      end
+      [true, tales]
+    end
+
+    # search by Elasticsearch
+    def search_by_es(user_id, queries)
+      TaleRepository.search_by_es(
+        user_id,
+        queries.keyword.html_safe,
+        queries.page
+      )
+    end
+
+    # search by mariaDB
+    def search_by_db(user_id, queries)
+      TaleRepository.search_by_db(
+        user_id,
+        queries.keyword.html_safe,
+        queries.page
+      )
     end
   end
 end

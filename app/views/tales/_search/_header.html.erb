@@ -1,0 +1,20 @@
+<div class="layout__tales__index__header">
+
+  <p class="layout__tales__index__header__left">
+    <% if is_searched %>
+      <%= render 'layouts/breadcrumb_tale_2', third_page: Constants::SEARCHED_PATH_NAME %>
+    <% else %>
+      <%= render 'layouts/breadcrumb_tale_1' %>
+    <% end %>
+  </p>
+
+  <div class="layout__tales__index__header__right">
+    <%= link_to new_tale_path, class: 'module__button module__button--small' do %>
+      <%= fa_icon 'pencil' %>
+    <% end %>
+    <%= render 'tales/_search/modal', queries: queries %>
+  </div>
+
+  <span class="layout__tales__index__header__end"></span>
+</div>
+<hr>

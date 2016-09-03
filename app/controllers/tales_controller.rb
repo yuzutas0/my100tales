@@ -7,7 +7,6 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   before_action :set_tale, only: [:edit, :update, :destroy]
   before_action :set_tale_with_options, only: [:show]
-  before_action :ready_form, only: [:new, :edit]
 
   # -----------------------------------------------------------------
   # endpoint - create
@@ -15,6 +14,7 @@ class TalesController < ApplicationController
   # GET /tales/new
   def new
     @tale = TaleService.new
+    ready_form(@tale, current_user.id)
   end
 
   # POST /tales
@@ -34,7 +34,7 @@ class TalesController < ApplicationController
   # GET /tales
   def index
     @queries = SearchForm.new(params)
-    @tales = TaleService.list(current_user.id, @queries)
+    @is_searched, @tales = TaleService.list(current_user.id, @queries)
   end
 
   # GET /tales/1
@@ -48,6 +48,7 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # GET /tales/1/edit
   def edit
+    ready_form(@tale, current_user.id)
   end
 
   # PATCH/PUT /tales/1
@@ -90,9 +91,9 @@ class TalesController < ApplicationController
   end
 
   # set some params for tale form
-  def ready_form
-    @form = TaleDecorator.option_form(@tale)
-    @tags = TagService.name_list(current_user.id)
+  def ready_form(tale, user_id)
+    @form = TaleDecorator.option_form(tale)
+    @tags = TagService.name_list(user_id)
   end
 
   # -----------------------------------------------------------------
