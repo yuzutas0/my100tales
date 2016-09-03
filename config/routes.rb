@@ -1,27 +1,33 @@
 Rails.application.routes.draw do
   # home
   root 'home#index'
-  get 'home/index'
+  get  'home/index'
 
   # user
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
   # tale
-  get '/mypage', to: 'tales#index', as: 'tales'
-  post '/tales', to: 'tales#create', as: 'create_tale'
-  get '/tales/new', to: 'tales#new', as: 'new_tale'
-  get '/tales', to: 'tales#new'
-  get '/tales/:view_number/edit', to: 'tales#edit', as: 'edit_tale'
-  get '/tales/:view_number', to: 'tales#show', as: 'tale'
-  patch '/tales/:view_number', to: 'tales#update', as: 'update_tale'
-  put '/tales/:view_number', to: 'tales#update'
-  delete '/tales/:view_number', to: 'tales#destroy'
+  get    '/mypage',                  to: 'tales#index',  as: 'tales'
+  post   '/tales',                   to: 'tales#create', as: 'create_tale'
+  get    '/tales/new',               to: 'tales#new',    as: 'new_tale'
+  get    '/tales',                   to: 'tales#new'
+  get    '/tales/:view_number/edit', to: 'tales#edit',   as: 'edit_tale'
+  get    '/tales/:view_number',      to: 'tales#show',   as: 'tale'
+  patch  '/tales/:view_number',      to: 'tales#update', as: 'update_tale'
+  put    '/tales/:view_number',      to: 'tales#update'
+  delete '/tales/:view_number',      to: 'tales#destroy'
 
   # sequel
-  post '/sequels', to: 'sequels#create', as: 'create_sequel'
-  patch '/sequels', to: 'sequels#update', as: 'update_sequel'
-  put '/sequels', to: 'sequels#update'
+  post   '/sequels', to: 'sequels#create', as: 'create_sequel'
+  patch  '/sequels', to: 'sequels#update', as: 'update_sequel'
+  put    '/sequels', to: 'sequels#update'
   delete '/sequels', to: 'sequels#destroy'
+
+  # tag
+  get    '/tags',              to: 'tags#index',  as: 'tags'
+  patch  '/tags/:view_number', to: 'tags#update', as: 'update_tag'
+  put    '/tags/:view_number', to: 'tags#update'
+  delete '/tags/:view_number', to: 'tags#destroy'
 
   # no route error
   get '*all', to: 'application#routing_error'
