@@ -13,6 +13,9 @@ class Tale < ActiveRecord::Base
   # -----------------------------------------------------------------
   # routing path (tales/:id => tales/:view_number)
   # -----------------------------------------------------------------
+  # needs two params with request
+  # user.id, tale.view_number
+  # (user.id + tale.view_number => tale.id)
   def to_param
     view_number.to_s
   end

@@ -3,6 +3,7 @@
 // import
 @import "base/const";
 @import "base/util";
+@import "module/button";
 
 // main
 .layout__tags__index {
@@ -11,5 +12,16 @@
 
   .layout__tags__index__header {
     margin-top: $margin_size_xx_small; // => same as tale view header
+  }
+
+  .layout__tags__index__item__form {
+    border: solid $margin_size_xxx_small lightskyblue;
+    padding: $margin_size_x_small;
+    width: auto;
+    height: 4rem;
+    resize: none;
+    -webkit-border-radius: $margin_size_xx_small;
+    -moz-border-radius: $margin_size_xx_small;
+    border-radius: $margin_size_xx_small;
   }
 }

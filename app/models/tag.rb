@@ -10,11 +10,14 @@ class Tag < ActiveRecord::Base
   has_many :tales, through: :tale_tag_relationships
 
   # -----------------------------------------------------------------
-  # routing path
+  # routing path (tags/:id => tags/:view_number)
   # -----------------------------------------------------------------
-  # needs three params with request
+  # needs two params with request
   # user.id, tag.view_number
   # (user.id + tag.view_number => tag.id)
+  def to_param
+    view_number.to_s
+  end
 
   # -----------------------------------------------------------------
   # validation

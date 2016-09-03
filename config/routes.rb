@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   # tag
   get    '/tags',              to: 'tags#index',  as: 'tags'
-  patch  '/tags/:view_number', to: 'tags#update', as: 'update_tag'
+  patch  '/tags/:view_number', to: 'tags#update', as: 'tag'
   put    '/tags/:view_number', to: 'tags#update'
   delete '/tags/:view_number', to: 'tags#destroy'
 
