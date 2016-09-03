@@ -15,6 +15,7 @@ class TalesController < ApplicationController
   def new
     @tale = TaleService.new
     @form = TaleDecorator.option_form(@tale)
+    @tags = %w(test1 test2 test3) # FIXME: dynamic data
   end
 
   # POST /tales
@@ -49,6 +50,7 @@ class TalesController < ApplicationController
   # GET /tales/1/edit
   def edit
     @form = TaleDecorator.option_form(@tale)
+    @tags = %w(test1 test2 test3) # FIXME: dynamic data
   end
 
   # PATCH/PUT /tales/1

@@ -10,3 +10,6 @@ asset 'markdown-it-emoji'
 
 # notifications
 asset 'toastr'
+
+# suggest
+asset "suggest", "git@github.com:onozaty/suggest.js"

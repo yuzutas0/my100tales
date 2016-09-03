@@ -24,6 +24,7 @@
 //= require markdown-it-footnote/dist/markdown-it-footnote.min
 //= require markdown-it-sup/dist/markdown-it-sup.min
 //= require toastr
+//= require suggest/src/suggest.js
 // Custom
 //= require_tree ./util
 //= require_tree ./main
