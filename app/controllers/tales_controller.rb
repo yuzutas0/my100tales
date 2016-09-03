@@ -35,6 +35,7 @@ class TalesController < ApplicationController
   def index
     @queries = SearchForm.new(params)
     @is_searched, @tales = TaleService.list(current_user.id, @queries)
+    @tags = TagService.list(current_user.id)
   end
 
   # GET /tales/1

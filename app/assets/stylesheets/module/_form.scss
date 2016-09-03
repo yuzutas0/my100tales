@@ -17,4 +17,12 @@
       }
     }
   }
+
+  .module__form__checkbox {
+    @extend .checkbox;
+  }
+
+  .module__form__label {
+    font-weight: normal;
+  }
 }
