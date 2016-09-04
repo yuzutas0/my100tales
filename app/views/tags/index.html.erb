@@ -7,26 +7,39 @@
   <div class="module__list">
     <% @tags.each_with_index do |tag, index| %>
       <div id="script__tag__<%= index %>" class="module__list__item">
+
         <p class="module__list__item__content">
-          <a v-on:click="showModal" class="module__label"><%= tag.name %></a>
+          <span class="module__label"><%= tag.name %></span>
           is attached to
           <%= link_to '3 tales', "/mypage/?tags[id][]=#{tag.view_number}" %><!-- FIXME: dynamic count -->
+          |
+          <a v-on:click="showModal">Edit</a>
+          |
+          <%= link_to 'Delete',
+                      tags_path(view_number: tag.view_number),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' },
+                      title: 'Delete',
+                      class: 'layout__tags__index__item__delete'
+          %>
         </p>
-      </div>
 
-      <div v-cloak>
-        <%= form_for(tag) do |f| %>
-          <%= f.text_area :name, class: 'layout__tags__index__item__form' %>
-          <%= f.hidden_field :view_number %>
-          <%= f.submit 'Update', class: 'module__button module__button--small' %>
-        <% end %>
-        <%= link_to 'Delete',
-                    tags_path(view_number: tag.view_number),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' },
-                    title: 'Delete',
-                    class: 'layout__tags__index__item__delete'
-        %>
+        <div v-cloak>
+          <div class="module__modal__outer" v-show="display">
+            <div class="module__modal__background" v-on:click="closeModal"></div>
+            <div class="module__modal">
+              <div class="module__modal__inner">
+                <%= form_for tag, html: { class: 'module__form' } do |f| %>
+                  <div class="module__form__field">
+                    <%= f.text_area :name, class: 'module__form__field__text module__form__field__text--fixed' %>
+                  </div>
+                  <%= f.hidden_field :view_number %>
+                  <%= f.submit 'Update', class: 'module__button module__button--small' %>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
