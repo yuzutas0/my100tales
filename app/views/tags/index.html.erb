@@ -15,8 +15,7 @@
           |
           <a v-on:click="showModal">Edit</a>
           |
-          <%= link_to 'Delete',
-                      tags_path(view_number: tag.view_number),
+          <%= link_to 'Delete', tag,
                       method: :delete,
                       data: { confirm: 'Are you sure?' },
                       title: 'Delete',
