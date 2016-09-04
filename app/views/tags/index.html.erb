@@ -4,21 +4,30 @@
   </p>
   <hr>
 
-  <% @tags.each do |tag| %>
-    <p>
-      <%= form_for(tag) do |f| %>
-        <%= f.text_area :name, class: 'layout__tags__index__item__form' %>
-        <%= f.hidden_field :view_number %>
-        <%= f.submit 'Update', class: 'module__button module__button--small' %>
-      <% end %>
+  <div class="module__list">
+    <% @tags.each_with_index do |tag, index| %>
+      <div id="script__tag__<%= index %>" class="module__list__item">
+        <p class="module__list__item__content">
+          <a v-on:click="showModal" class="module__label"><%= tag.name %></a>
+          is attached to
+          <%= link_to '3 tales', "/mypage/?tags[id][]=#{tag.view_number}" %><!-- FIXME: dynamic count -->
+        </p>
+      </div>
 
-      <%= link_to '(3 tales)', "/mypage/?tags[id][]=#{tag.view_number}" %><!-- FIXME: dynamic count -->
-      <%= link_to 'Delete',
-                  tags_path(view_number: tag.view_number),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' },
-                  title: 'Delete',
-                  class: 'layout__tags__index__item__delete' %>
-    </p>
-  <% end %>
+      <div v-cloak>
+        <%= form_for(tag) do |f| %>
+          <%= f.text_area :name, class: 'layout__tags__index__item__form' %>
+          <%= f.hidden_field :view_number %>
+          <%= f.submit 'Update', class: 'module__button module__button--small' %>
+        <% end %>
+        <%= link_to 'Delete',
+                    tags_path(view_number: tag.view_number),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    title: 'Delete',
+                    class: 'layout__tags__index__item__delete'
+        %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -3,14 +3,14 @@
   <%= Constants::TALE_NOT_EXISTS if @tales.blank? %>
 
   <p><%= page_entries_info @tales %></p>
-  <div class="layout__tales__index__list">
+  <div class="module__list">
 
     <% @tales.each do |tale| %>
-    <div class="layout__tales__index__list__item">
+    <div class="module__list__item">
 
       <p class="layout__tales__index__list__item__created">created at <%= tale.created_at.strftime('%Y-%b-%d') %></p>
       <h4>
-        <%= link_to tale, class: 'layout__tales__index__list__item__title' do %>
+        <%= link_to tale, class: 'module__list__item__title' do %>
           <% if tale.title.size > 30 %>
                 <%= tale.title[0..29] + '...' %>
             <% else %>
@@ -29,7 +29,7 @@
         <% end %>
       </div>
 
-      <p class="layout__tales__index__list__item__content">
+      <p class="module__list__item__content">
         <% tale_content_plain = markdown_to_plain(tale.content) %>
         <% if tale_content_plain.size > 99 %>
             <%= tale_content_plain[0..99] %>...

@@ -1,0 +1,25 @@
+// list
+
+// import
+@import "base/const";
+
+// main
+.module__list {
+  @extend .list-group;
+
+  .module__list__item {
+    @extend .list-group-item;
+    position: static; // enable module__modal to use z-index
+
+    .module__list__item__title {
+      font-size: $font_size_large;
+      font-weight: bold;
+    }
+
+    .module__list__item__content {
+      @extend .list-group-item-text;
+      @extend .text-muted;
+      font-size: $font_size_middle;
+    }
+  }
+}
