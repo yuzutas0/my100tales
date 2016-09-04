@@ -7,9 +7,8 @@
   <div class="module__list">
     <% @tags.each_with_index do |tag, index| %>
       <div id="script__tag__<%= index %>" class="module__list__item">
-
+        <p class="module__label"><%= tag.name %></p>
         <p class="module__list__item__content">
-          <span class="module__label"><%= tag.name %></span>
           is attached to
           <%= link_to "#{@tags_attached[tag.view_number]} tales", "/mypage/?tags[id][]=#{tag.view_number}" %><!-- FIXME: dynamic count -->
           |

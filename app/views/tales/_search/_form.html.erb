@@ -20,11 +20,10 @@
               %>
               <span class="module__form__label__text">
                 <span class="module__label"><%= tag.name %></span>
-                (<%= tags_attached[tag.view_number] %> tales)
+                - <%= tags_attached[tag.view_number] %> tales
               </span>
             <% end %>
           <% end %>
-          - <%= link_to Constants::TAG_INDEX_PATH_NAME, tags_path %>
         </p>
       </div>
 
