@@ -26,6 +26,11 @@ class TaleService
   # -----------------------------------------------------------------
 
   # return [is_searched, tales, tags, tags_attached]
+  #
+  # *** attention ***
+  # combine tales.tale_tag_relationships with tag as necessary!
+  # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
+  # because avoid to throw query about tag records twice
   def self.list(user_id, queries)
     if queries.keyword.blank?
       is_searched = false

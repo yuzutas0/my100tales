@@ -10,7 +10,7 @@ class TaleRepository
         .page(page)
         .per(10)
         .order(created_at: :desc)
-        .includes(:tags)
+        .includes(:tale_tag_relationships)
   end
 
   # search by MariaDB
@@ -20,7 +20,7 @@ class TaleRepository
         .page(page)
         .per(10)
         .order(created_at: :desc)
-        .includes(:tags)
+        .includes(:tale_tag_relationships)
   end
 
   # search by Elasticsearch
@@ -30,7 +30,7 @@ class TaleRepository
         .page(page)
         .per(10)
         .order(created_at: :desc)
-        .includes(:tags)
+        .includes(:tale_tag_relationships)
   end
 
   # -----------------------------------------------------------------

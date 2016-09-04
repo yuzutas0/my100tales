@@ -20,8 +20,9 @@
       </h4>
 
       <div>
-        <% tale.tags.each do |label| %>
-            <a href="#" class="module__label"><%= label.name %></a>
+        <% tale.tale_tag_relationships.each do |relation| %>
+          <%  #avoid to throw query about tag records twice ref. TaleService#list %>
+          <a href="#" class="module__label"><%= (@tags.select { |tag| tag.id == relation.tag_id })[0].name %></a>
         <% end %>
 
         <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
