@@ -25,11 +25,18 @@ class TaleService
   # Read - index
   # -----------------------------------------------------------------
 
-  # return [is_searched, tales]
+  # return [is_searched, tales, tags, tags_attached]
   def self.list(user_id, queries)
-    queries.keyword.blank? ?
-        list_without_keyword(user_id, queries) :
-        list_with_keyword(user_id, queries)
+    if queries.keyword.blank?
+      is_searched = false
+      tales = TaleRepository.list(user_id, queries.page)
+    else
+      is_searched = true
+      tales = search(user_id, queries)
+    end
+    tags = TagRepository.list(user_id)
+    tags_attached = TagRepository.attached_count(user_id)
+    [is_searched, tales, tags, tags_attached]
   end
 
   # -----------------------------------------------------------------
@@ -67,23 +74,14 @@ class TaleService
       TaleTagRelationshipService.update(tale_id, option_form.tags)
     end
 
-    # get list without keyword
-    # return [is_searched, tales]
-    def list_without_keyword(user_id, queries)
-      tales = TaleRepository.list(user_id, queries.page)
-      [false, tales]
-    end
-
     # get list with keyword
-    # return [is_searched, tales]
-    def list_with_keyword(user_id, queries)
+    def search(user_id, queries)
       begin
-        tales = search_by_es(user_id, queries)
+        search_by_es(user_id, queries)
       rescue => e
         logger.warn "failure to request Elasticsearch: #{e.message}"
-        tales = search_by_db(user_id, queries)
+        search_by_db(user_id, queries)
       end
-      [true, tales]
     end
 
     # search by Elasticsearch

@@ -10,15 +10,15 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - read
   # -----------------------------------------------------------------
+  # GET /tags
   def index
-    @tags = TagService.list(current_user.id)
-    @tags_attached = TagService.attached_count(current_user.id)
+    @tags, @tags_attached = TagService.list(current_user.id)
   end
 
   # -----------------------------------------------------------------
   # endpoint - update
   # -----------------------------------------------------------------
-  # PATCH /sequels
+  # PATCH /tags/:view_number
   def update
     if @tag.update(tag_params)
       flash[:notice] = 'Tag was successfully updated.'
@@ -31,7 +31,7 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - delete
   # -----------------------------------------------------------------
-  # DELETE /sequels
+  # DELETE /tags/:view_number
   def destroy
     if @tag.destroy
       flash[:notice] = 'Tag was successfully destroyed.'

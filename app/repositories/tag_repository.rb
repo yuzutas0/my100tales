@@ -6,12 +6,12 @@ class TagRepository
 
   # SELECT * FROM tags WHERE user_id = #{user_id}
   def self.list(user_id)
-    Tag.where('user_id = ?', user_id)
+    Tag.where('user_id = ?', user_id) || []
   end
 
   # SELECT name FROM tags WHERE user_id = #{user_id}
   def self.name_list(user_id)
-    Tag.where('user_id = ?', user_id).pluck(:name)
+    Tag.where('user_id = ?', user_id).pluck(:name) || []
   end
 
   # SELECT * FROM tags WHERE user_id = #{user_id} AND view_number = #{view_number}
@@ -19,6 +19,10 @@ class TagRepository
     Tag.where('user_id = ? AND view_number = ?', user_id, view_number).first
   end
 
+  # get hash about tag's view_number and how many tales tag is attached to
+  # => { view_number: size, ... }
+  # => e.g. { 1: 21, 2: 15, 3: 23 }
+  #
   # SELECT T.view_number, count(R.id) AS size
   # FROM tags T
   # LEFT OUTER JOIN tale_tag_relationships R -- count for zero attached record
@@ -43,6 +47,7 @@ class TagRepository
         T.id
       ', user_id]
     sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
-    ActiveRecord::Base.connection.execute(sql)
+    result = ActiveRecord::Base.connection.execute(sql)
+    result.to_h || {}
   end
 end
