@@ -11,7 +11,7 @@
         <p class="module__list__item__content">
           <span class="module__label"><%= tag.name %></span>
           is attached to
-          <%= link_to '3 tales', "/mypage/?tags[id][]=#{tag.view_number}" %><!-- FIXME: dynamic count -->
+          <%= link_to "#{@tags_attached[tag.view_number]} tales", "/mypage/?tags[id][]=#{tag.view_number}" %><!-- FIXME: dynamic count -->
           |
           <a v-on:click="showModal">Edit</a>
           |

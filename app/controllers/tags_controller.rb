@@ -12,6 +12,7 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   def index
     @tags = TagService.list(current_user.id)
+    @tags_attached = TagService.attached_count(current_user.id)
   end
 
   # -----------------------------------------------------------------

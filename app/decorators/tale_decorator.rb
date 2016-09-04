@@ -1,6 +1,7 @@
 # tale_decorator
 class TaleDecorator < BaseDecorator
   # decide which tab is opened at first view
+  # e.g. [ ['',''], ['',''], ['active','in active'] ]
   def self.tab(params)
     blank = ['', '']
     active = ['active', 'in active']
