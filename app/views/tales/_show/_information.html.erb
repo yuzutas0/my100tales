@@ -6,7 +6,7 @@
       <% tale.tags.each do |label| %>
         <a href="#" class="module__label"><%= label.name %></a>
       <% end %>
-      <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(@tale) if tale.tags.blank? %>
+      <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(tale) if tale.tags.blank? %>
     </div>
   </div>
 

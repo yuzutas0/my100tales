@@ -30,14 +30,11 @@ class TagRepository
   # WHERE T.user_id = #{user_id}
   # GROUP BY T.id
   def self.attached_count(user_id)
+    # validate
     return if user_id.blank?
-    args = [@@ATTACHED_COUNT_QUERY, user_id]
-    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
-    result = ActiveRecord::Base.connection.execute(sql)
-    result.to_h || {}
-  end
 
-  @@ATTACHED_COUNT_QUERY = <<-'SQL'.freeze
+    # query
+    query = <<-'SQL'.freeze
       SELECT
         T.view_number,
         count(R.id) AS size
@@ -51,5 +48,14 @@ class TagRepository
         T.user_id = ?
       GROUP BY
         T.id
-  SQL
+    SQL
+
+    # execute
+    args = [query, user_id]
+    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
+    result = ActiveRecord::Base.connection.execute(sql)
+
+    # interface
+    result.to_h || {}
+  end
 end
