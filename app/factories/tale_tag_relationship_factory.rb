@@ -9,8 +9,13 @@ class TaleTagRelationshipFactory
   # WHERE T.name IN (#{tag_name_list[0]}, ..., #{tag_name_list[n]})
   def self.create_by_tag_name_list(tale_id, tag_name_list)
     return if tag_name_list.blank?
-    args = ['
-      INSERT INTO
+    args = [@@CREATE_BY_TAG_NAME_LIST_QUERY, tale_id, tag_name_list]
+    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
+    ActiveRecord::Base.connection.execute(sql)
+  end
+
+  @@CREATE_BY_TAG_NAME_LIST_QUERY = <<-'SQL'.freeze
+    INSERT INTO
         tale_tag_relationships (
           tale_id,
           tag_id
@@ -22,8 +27,5 @@ class TaleTagRelationshipFactory
           tags T
       WHERE
           T.name IN (?)
-      ', tale_id, tag_name_list]
-    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
-    ActiveRecord::Base.connection.execute(sql)
-  end
+  SQL
 end
