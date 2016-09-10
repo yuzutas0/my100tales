@@ -82,7 +82,7 @@ class TaleService
     # get list with keyword
     def search(user_id, queries)
       search_by_es(user_id, queries)
-    rescue => e
+    rescue Exception => e
       logger.warn "failure to request Elasticsearch: #{e.message}"
       search_by_db(user_id, queries)
     end
