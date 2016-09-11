@@ -28,7 +28,7 @@
     .layout__sequels__form__preview {
       @include size();
       padding: 0;
-      overflow: scroll;
+      overflow: auto;
       margin-bottom: $margin_size_small;
     }
   }
