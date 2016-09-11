@@ -22,6 +22,12 @@
   FORM_INPUT_ID = 'script__tale__form__input'
   FORM_SUGGEST_ID = 'script__tale__form__suggest'
   FORM_SUGGEST_OPTIONS_ID = 'script__tale__form__suggest__options'
+  FORM_INPUT_DOM = '#' + FORM_INPUT_ID
+
+  # keycode
+  ENTER_KEY_CODE = 13
+  SPACE_KEY_CODE = 32
+  COMMA_KEY_CODE = 44
 
   # ---------------------------------------------------------------------
   # logic for markdown
@@ -43,6 +49,14 @@
     My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
 
   # ---------------------------------------------------------------------
+  # logic for tag form
+  # ---------------------------------------------------------------------
+  if document.getElementById(FORM_INPUT_ID) != null
+    $(FORM_INPUT_DOM).tagsinput({
+      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
+    })
+
+  # ---------------------------------------------------------------------
   # logic for suggest
   # ---------------------------------------------------------------------
   # check DOM
@@ -61,16 +75,48 @@
       option = document.getElementById(FORM_SUGGEST_OPTION_ID).innerText
       suggestList.push(option)
 
-    # form suggest create
-    new Suggest.LocalMulti(
-      FORM_INPUT_ID, # input
-      FORM_SUGGEST_ID, # output
-      suggestList, # target list
-      {
-        interval: 1000,
-        dispMax: 5,
+#    # form suggest create
+#    new Suggest.LocalMulti(
+#      FORM_INPUT_ID, # input
+#      FORM_SUGGEST_ID, # output
+#      suggestList, # target list
+#      {
+#        interval: 1000,
+#        dispMax: 5,
+#        highlight: true,
+#        classMouseOver: 'layout__tale__form__suggest__over',
+#        classSelect: 'layout__tale__form__suggest__select',
+#        delim: ','
+#      } # refs. http://www.enjoyxstudy.com/javascript/suggest/
+#    )
+
+    bloodhound = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: $.map(suggestList, (value) -> return { value: value, countlist: 20 })
+    })
+    bloodhound.initialize()
+
+    $('#script__bloodhound input').tagsinput({
+      typeaheadjs: [{
+        hint: true,
         highlight: true,
-        classMouseOver: 'layout__tale__form__suggest__over',
-        classSelect: 'layout__tale__form__suggest__select'
-      } # refs. http://www.enjoyxstudy.com/javascript/suggest/
+        minLength: 1
+      },{
+        valueKey: 'value',
+        displayKey: 'value',
+        itemValue: 'value',
+        itemText: 'value',
+        source: bloodhound.ttAdapter(), # data set
+        templates: {
+          suggestion: (data) -> return '<div>' + data.value + ':' + data.countlist + '</div>'
+        }
+      }]
+    })
+
+    count = 0
+    document.querySelectorAll('.bootstrap-tagsinput').forEach(
+      console.log($(this))
+      if count != 0
+        $(this).unwrap()
     )

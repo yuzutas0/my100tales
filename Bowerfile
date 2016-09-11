@@ -11,5 +11,6 @@ asset 'markdown-it-emoji'
 # notifications
 asset 'toastr'
 
-# suggest
+# tag
+asset 'bootstrap-tagsinput'
 asset "suggest", "git@github.com:onozaty/suggest.js"

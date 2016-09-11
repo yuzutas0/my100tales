@@ -24,6 +24,9 @@
 //= require markdown-it-footnote/dist/markdown-it-footnote.min
 //= require markdown-it-sup/dist/markdown-it-sup.min
 //= require toastr
+//= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
+//= require typeahead.js/dist/typeahead.jquery.min
+//= require typeahead.js/dist/bloodhound.min
 //= require suggest/src/suggest.js
 // Custom
 //= require_tree ./util

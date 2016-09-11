@@ -2,6 +2,8 @@
  *= require_self
  *= require font-awesome
  *= require toastr
+ *= require bootstrap-tagsinput/dist/bootstrap-tagsinput
+ *= require bootstrap-tagsinput/dist/bootstrap-tagsinput-typeahead
  *= require_tree ./base
  *= require_tree ./module
  *= require_tree ./layout
