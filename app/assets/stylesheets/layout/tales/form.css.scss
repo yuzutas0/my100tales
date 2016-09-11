@@ -5,9 +5,33 @@
 @import "base/util";
 @import "module/form";
 @import "module/markdown";
+@import "module/label";
 
 // main
 .layout__tale__form {
+
+  .layout__tale__form__tag__item [data-role="remove"] {
+    margin-left: $margin_size_xx_small;
+    cursor: pointer;
+
+    &:after {
+      content: "x";
+      padding: 0 $margin_size_xxx_small;
+    }
+  }
+
+  .layout__tale__form__suggest {
+    &.tt-cursor {
+      @extend .bg-primary;
+    }
+    .tt-highlight {
+      @extend .text-warning;
+    }
+    .layout__tale__form__suggest__count {
+      @extend .text-muted;
+      @extend .pull-right;
+    }
+  }
 
   .layout__tale__form__suggest__options {
     display: none;

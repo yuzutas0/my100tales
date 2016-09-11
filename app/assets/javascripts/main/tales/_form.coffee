@@ -99,8 +99,12 @@
         itemText: 'value',
         source: bloodhound.ttAdapter(),
         templates: {
-          suggestion: (data) -> return '<div>' + data.value + ':' + data.countlist + '</div>'
+          suggestion: (data) ->
+            return '<div class="layout__tale__form__suggest">' + data.value +
+                '<span class="layout__tale__form__suggest__count">' + data.countlist + '</span></div>'
         }
       }],
-      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
+      trimValue: true,
+      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE],
+      tagClass: 'module__label layout__tale__form__tag__item'
     })
