@@ -49,15 +49,7 @@
     My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
 
   # ---------------------------------------------------------------------
-  # logic for tag form
-  # ---------------------------------------------------------------------
-  if document.getElementById(FORM_INPUT_ID) != null
-    $(FORM_INPUT_DOM).tagsinput({
-      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
-    })
-
-  # ---------------------------------------------------------------------
-  # logic for suggest
+  # logic for tag
   # ---------------------------------------------------------------------
   # check DOM
   if document.getElementById(FORM_SUGGEST_ID) != null && document.getElementById(FORM_SUGGEST_OPTIONS_ID) != null
@@ -111,12 +103,6 @@
         templates: {
           suggestion: (data) -> return '<div>' + data.value + ':' + data.countlist + '</div>'
         }
-      }]
-    })
-
-    count = 0
-    document.querySelectorAll('.bootstrap-tagsinput').forEach(
-      console.log($(this))
-      if count != 0
-        $(this).unwrap()
-    )
+      }],
+      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
+    }) # FORM_INPUT_ID
