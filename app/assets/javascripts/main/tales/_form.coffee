@@ -83,7 +83,16 @@
 #    )
 
     bloodhound = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      datumTokenizer: (d) ->
+        datum = Bloodhound.tokenizers.whitespace(d.value)
+        $.each(datum, (k,v) ->
+          i = 0
+          while(i+1 < v.length)
+            datum.push(v.substr(i, v.length))
+            i++
+        )
+        return datum
+      ,
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: $.map(suggestList, (value) -> return { value: value, countlist: 20 })
     })
