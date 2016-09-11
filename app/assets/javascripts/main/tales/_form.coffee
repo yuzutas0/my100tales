@@ -52,7 +52,7 @@
   # logic for tag
   # ---------------------------------------------------------------------
   # check DOM
-  if document.getElementById(FORM_SUGGEST_ID) != null && document.getElementById(FORM_SUGGEST_OPTIONS_ID) != null
+  if document.getElementById(FORM_SUGGEST_OPTIONS_ID) != null
 
     # form suggest options
     suggestList = []
@@ -63,25 +63,12 @@
       index++
       FORM_SUGGEST_OPTION_ID = FORM_SUGGEST_OPTIONS_ID + '__' + index
       break if document.getElementById(FORM_SUGGEST_OPTION_ID) == null
+
       # value
       option = document.getElementById(FORM_SUGGEST_OPTION_ID).innerText
       suggestList.push(option)
 
-#    # form suggest create
-#    new Suggest.LocalMulti(
-#      FORM_INPUT_ID, # input
-#      FORM_SUGGEST_ID, # output
-#      suggestList, # target list
-#      {
-#        interval: 1000,
-#        dispMax: 5,
-#        highlight: true,
-#        classMouseOver: 'layout__tale__form__suggest__over',
-#        classSelect: 'layout__tale__form__suggest__select',
-#        delim: ','
-#      } # refs. http://www.enjoyxstudy.com/javascript/suggest/
-#    )
-
+    # set suggestion
     bloodhound = new Bloodhound({
       datumTokenizer: (d) ->
         datum = Bloodhound.tokenizers.whitespace(d.value)
@@ -96,9 +83,11 @@
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: $.map(suggestList, (value) -> return { value: value, countlist: 20 })
     })
+    # init suggestion
     bloodhound.initialize()
 
-    $('#script__bloodhound input').tagsinput({
+    # set tag form
+    $(FORM_INPUT_DOM).tagsinput({
       typeaheadjs: [{
         hint: true,
         highlight: true,
@@ -108,10 +97,10 @@
         displayKey: 'value',
         itemValue: 'value',
         itemText: 'value',
-        source: bloodhound.ttAdapter(), # data set
+        source: bloodhound.ttAdapter(),
         templates: {
           suggestion: (data) -> return '<div>' + data.value + ':' + data.countlist + '</div>'
         }
       }],
       confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
-    }) # FORM_INPUT_ID
+    })

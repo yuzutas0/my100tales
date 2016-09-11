@@ -27,7 +27,6 @@
 //= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min
 //= require typeahead.js/dist/typeahead.jquery.min
 //= require typeahead.js/dist/bloodhound.min
-//= require suggest/src/suggest.js
 // Custom
 //= require_tree ./util
 //= require_tree ./main

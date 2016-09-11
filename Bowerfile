@@ -13,4 +13,4 @@ asset 'toastr'
 
 # tag
 asset 'bootstrap-tagsinput'
-asset "suggest", "git@github.com:onozaty/suggest.js"
+asset 'typeahead.js'

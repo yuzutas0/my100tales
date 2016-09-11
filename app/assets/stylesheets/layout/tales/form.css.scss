@@ -9,39 +9,6 @@
 // main
 .layout__tale__form {
 
-  .layout__tale__form__suggest__wrapper {
-    position: relative;
-
-    .layout__tale__form__suggest {
-      position: absolute;
-      background-color: white;
-      border: $margin_size_xxx_small solid $gray-base;
-      font-size: 80%;
-      width: 100%;
-      z-index: 9999;
-
-      div {
-        display: block;
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        padding: $margin_size_xx_small;
-
-        strong {
-          @extend .text-warning;
-        }
-      }
-
-      .layout__tale__form__suggest__select {
-        @extend .bg-primary;
-      }
-
-      .layout__tale__form__suggest__over {
-        @extend .bg-info;
-      }
-    }
-  }
-
   .layout__tale__form__suggest__options {
     display: none;
   }
