@@ -5,12 +5,13 @@
   </div>
 
   <div class="module__form__field">
+    <div class="module__form__field__text">
     <%= text_field :form, :tags,
                    id: 'script__tale__form__input',
-                   class: 'module__form__field__text',
                    placeholder: 'tag1 tag2',
                    autocomplete: :off
     %>
+    </div>
     <ul id="script__tale__form__suggest__options" class="layout__tale__form__suggest__options">
       <% tags.each_with_index do | tag, index | %>
         <li id="script__tale__form__suggest__options__<%= index %>"><%= tag %></li>

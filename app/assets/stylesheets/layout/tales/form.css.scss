@@ -13,6 +13,13 @@
     display: none;
   }
 
+  .tt-input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    margin-left: $margin_size_xx_small;
+  }
+
   .layout__tale__form__tab {
     @extend .visible-xs;
   }
