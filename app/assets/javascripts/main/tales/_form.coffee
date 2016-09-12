@@ -24,11 +24,6 @@
   FORM_SUGGEST_OPTIONS_ID = 'script__tale__form__suggest__options'
   FORM_INPUT_DOM = '#' + FORM_INPUT_ID
 
-  # keycode
-  ENTER_KEY_CODE = 13
-  SPACE_KEY_CODE = 32
-  COMMA_KEY_CODE = 44
-
   # tag options text
   WHITE_SPACE = ' '
   TAG_OPTIONS_NAME = 0
@@ -75,42 +70,16 @@
       suggestList.push(suggestion)
 
     # set suggestion
-    bloodhound = new Bloodhound({
-      datumTokenizer: (d) ->
-        datum = Bloodhound.tokenizers.whitespace(d.value)
-        $.each(datum, (k,v) ->
-          i = 0
-          while(i+1 < v.length)
-            datum.push(v.substr(i, v.length))
-            i++
-        )
-        return datum
-      ,
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: suggestList
-    })
-    # init suggestion
-    bloodhound.initialize()
+    bloodhound = My100TalesUtilTagsinput.setSuggestion(suggestList)
+    bloodhound.initialize
+
+    # ready tag form
+    templates = {
+      suggestion: (data) ->
+        return '<div class="layout__tale__form__suggest">' + data.value +
+            '<span class="layout__tale__form__suggest__count">' + data.countlist + '</span></div>'
+    }
+    tagClass = 'module__label layout__tale__form__tag__item'
 
     # set tag form
-    $(FORM_INPUT_DOM).tagsinput({
-      typeaheadjs: [{
-        hint: true,
-        highlight: true,
-        minLength: 1
-      },{
-        valueKey: 'value',
-        displayKey: 'value',
-        itemValue: 'value',
-        itemText: 'value',
-        source: bloodhound.ttAdapter(),
-        templates: {
-          suggestion: (data) ->
-            return '<div class="layout__tale__form__suggest">' + data.value +
-                '<span class="layout__tale__form__suggest__count">' + data.countlist + '</span></div>'
-        }
-      }],
-      trimValue: true,
-      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE],
-      tagClass: 'module__label layout__tale__form__tag__item'
-    })
+    My100TalesUtilTagsinput.setTagForm(FORM_INPUT_DOM, bloodhound, templates, tagClass)
