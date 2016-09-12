@@ -15,16 +15,19 @@
   .module__form__field .layout__tale__form__tags {
     height: auto;
 
+    // the same style as bootstrap-tagsinput/dist/bootstrap-tagsinput.css
     .layout__tale__form__tag__item [data-role="remove"] {
       margin-left: $margin_size_xx_small;
       cursor: pointer;
 
+      // the same style as bootstrap-tagsinput/dist/bootstrap-tagsinput.css
       &:after {
         content: "x";
         padding: 0 $margin_size_xxx_small;
       }
     }
 
+    // the same style as bootstrap-tagsinput/dist/bootstrap-tagsinput.css
     .tt-input {
       border: none;
       box-shadow: none;
