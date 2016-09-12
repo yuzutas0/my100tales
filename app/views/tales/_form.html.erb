@@ -13,8 +13,8 @@
     %>
     </div>
     <ul id="script__tale__form__suggest__options" class="layout__tale__form__suggest__options">
-      <% tags.each_with_index do | tag, index | %>
-        <li id="script__tale__form__suggest__options__<%= index %>"><%= tag %></li>
+      <% tags.each_with_index do | (name, size), index | %>
+        <li id="script__tale__form__suggest__options__<%= index %>"><%= name %> <%= size %></li>
       <% end %>
     </ul>
   </div>

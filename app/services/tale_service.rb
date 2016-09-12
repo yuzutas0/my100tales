@@ -40,7 +40,7 @@ class TaleService
       tales = search(user_id, queries)
     end
     tags = TagRepository.list(user_id)
-    tags_attached = TagRepository.attached_count(user_id)
+    tags_attached = TagRepository.view_number_and_attached_count(user_id)
     [is_searched, tales, tags, tags_attached]
   end
 

@@ -29,6 +29,11 @@
   SPACE_KEY_CODE = 32
   COMMA_KEY_CODE = 44
 
+  # tag options text
+  WHITE_SPACE = ' '
+  TAG_OPTIONS_NAME = 0
+  TAG_OPTIONS_SIZE = 1
+
   # ---------------------------------------------------------------------
   # logic for markdown
   # ---------------------------------------------------------------------
@@ -65,8 +70,9 @@
       break if document.getElementById(FORM_SUGGEST_OPTION_ID) == null
 
       # value
-      option = document.getElementById(FORM_SUGGEST_OPTION_ID).innerText
-      suggestList.push(option)
+      option = document.getElementById(FORM_SUGGEST_OPTION_ID).innerText.split(WHITE_SPACE)
+      suggestion = { value: option[TAG_OPTIONS_NAME], countlist: option[TAG_OPTIONS_SIZE] }
+      suggestList.push(suggestion)
 
     # set suggestion
     bloodhound = new Bloodhound({
@@ -81,7 +87,7 @@
         return datum
       ,
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: $.map(suggestList, (value) -> return { value: value, countlist: 20 })
+      local: suggestList
     })
     # init suggestion
     bloodhound.initialize()

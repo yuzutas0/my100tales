@@ -93,7 +93,7 @@ class TalesController < ApplicationController
   # set some params for tale form
   def ready_form(tale, user_id)
     @form = TaleDecorator.option_form(tale)
-    @tags = TagService.name_list(user_id)
+    @tags = TagService.name_and_attached_count(user_id)
   end
 
   # -----------------------------------------------------------------
