@@ -10,6 +10,8 @@
 // main
 .layout__tale__form {
 
+  // write down .module__form__field
+  // in order to give priority than bootstrap/forms .form-control {...}
   .module__form__field .layout__tale__form__tags {
     height: auto;
 
