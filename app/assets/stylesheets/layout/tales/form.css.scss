@@ -10,38 +10,42 @@
 // main
 .layout__tale__form {
 
-  .layout__tale__form__tag__item [data-role="remove"] {
-    margin-left: $margin_size_xx_small;
-    cursor: pointer;
+  .module__form__field .layout__tale__form__tags {
+    height: auto;
 
-    &:after {
-      content: "x";
-      padding: 0 $margin_size_xxx_small;
-    }
-  }
+    .layout__tale__form__tag__item [data-role="remove"] {
+      margin-left: $margin_size_xx_small;
+      cursor: pointer;
 
-  .layout__tale__form__suggest {
-    &.tt-cursor {
-      @extend .bg-primary;
+      &:after {
+        content: "x";
+        padding: 0 $margin_size_xxx_small;
+      }
     }
-    .tt-highlight {
-      @extend .text-warning;
+
+    .tt-input {
+      border: none;
+      box-shadow: none;
+      outline: none;
+      margin-left: $margin_size_xx_small;
     }
-    .layout__tale__form__suggest__count {
-      @extend .text-muted;
-      @extend .pull-right;
+
+    .layout__tale__form__suggest {
+      &.tt-cursor {
+        @extend .bg-primary;
+      }
+      .tt-highlight {
+        @extend .text-warning;
+      }
+      .layout__tale__form__suggest__count {
+        @extend .text-muted;
+        @extend .pull-right;
+      }
     }
   }
 
   .layout__tale__form__suggest__options {
     display: none;
-  }
-
-  .tt-input {
-    border: none;
-    box-shadow: none;
-    outline: none;
-    margin-left: $margin_size_xx_small;
   }
 
   .layout__tale__form__tab {
