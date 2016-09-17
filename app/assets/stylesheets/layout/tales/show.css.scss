@@ -43,13 +43,8 @@
       @extend .list-group-item-heading;
     }
 
-    .layout__tale__show__information__label__content,
-    .layout__tale__show__information__star__content,
     .layout__tale__show__information__time__content {
       @extend .list-group-item-text;
-    }
-
-    .layout__tale__show__information__time__content {
       @extend .text-muted;
       font-size: $font_size_small;
     }

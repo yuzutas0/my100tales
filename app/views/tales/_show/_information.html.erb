@@ -2,7 +2,7 @@
 
   <div class="layout__tale__show__information__label">
     <p class="layout__tale__show__information__label__heading">Tag</p>
-    <div class="layout__tale__show__information__label__content">
+    <div>
       <% tale.tags.each do |label| %>
         <a href="#" class="module__label"><%= label.name %></a>
       <% end %>
@@ -12,7 +12,7 @@
 
   <div class="layout__tale__show__information__star">
     <p class="layout__tale__show__information__star__heading">Score</p>
-    <div class="layout__tale__show__information__star__content">
+    <div>
       <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
           <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
       <% end %>
