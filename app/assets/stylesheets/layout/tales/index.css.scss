@@ -11,20 +11,17 @@
   @extend .container;
   @include util__layout;
 
-  .layout__tales__index__header {
+  .layout__tales__index__header__left {
+    @extend .pull-left;
+    margin-top: $margin_size_xx_small; // align height -> right button
+  }
 
-    .layout__tales__index__header__left {
-      @extend .pull-left;
-      margin-top: $margin_size_xx_small; // align height -> right button
-    }
+  .layout__tales__index__header__right {
+    @extend .pull-right;
+  }
 
-    .layout__tales__index__header__right {
-      @extend .pull-right;
-    }
-
-    .layout__tales__index__header__end {
-      @extend .clearfix;
-    }
+  .layout__tales__index__header__end {
+    @extend .clearfix;
   }
 
   .layout__tales__index__header__bottom {

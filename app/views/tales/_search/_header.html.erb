@@ -1,22 +1,18 @@
-<div class="layout__tales__index__header">
+<p class="layout__tales__index__header__left">
+  <%= render 'layouts/breadcrumb_tale_1' %>
+</p>
 
-  <p class="layout__tales__index__header__left">
-    <%= render 'layouts/breadcrumb_tale_1' %>
-  </p>
-
-  <div class="layout__tales__index__header__right">
-    <%= link_to new_tale_path, class: 'module__button module__button--small' do %>
-      <%= fa_icon 'pencil' %>
-    <% end %>
-    <%= link_to tags_path, class: 'module__button module__button--small' do %>
-      <%= fa_icon 'tags' %>
-    <% end %>
-    <%= render 'tales/_search/modal', queries: queries, tags: tags, tags_attached: tags_attached %>
-  </div>
-
-  <span class="layout__tales__index__header__end"></span>
+<div class="layout__tales__index__header__right">
+  <%= link_to new_tale_path, class: 'module__button module__button--small' do %>
+    <%= fa_icon 'pencil' %>
+  <% end %>
+  <%= link_to tags_path, class: 'module__button module__button--small' do %>
+    <%= fa_icon 'tags' %>
+  <% end %>
+  <%= render 'tales/_search/modal', queries: queries, tags: tags, tags_attached: tags_attached %>
 </div>
 
+<span class="layout__tales__index__header__end"></span>
 <hr>
 
 <% if is_searched %>
