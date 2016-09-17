@@ -34,11 +34,8 @@ class TaleService
   def self.list(user_id, queries)
     is_searched = queries.keyword.present?
     tales = is_searched ? search(user_id, queries) : TaleRepository.list(user_id, queries.page)
-
-    # call these method once! and except for useless record - where attached count = 0
     tags = TagRepository.list(user_id)
     tags_attached = TagRepository.view_number_and_attached_count(user_id)
-
     [is_searched, tales, tags, tags_attached]
   end
 
