@@ -30,7 +30,7 @@
         <% end %>
       </div>
 
-      <p class="module__list__item__content">
+      <p class="layout__tales__index__list__item__content module__list__item__content">
         <% tale_content_plain = markdown_to_plain(tale.content) %>
         <% if tale_content_plain.size > 99 %>
             <%= tale_content_plain[0..99] %>...
