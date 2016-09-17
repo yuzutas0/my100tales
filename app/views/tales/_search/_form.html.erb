@@ -9,22 +9,23 @@
 
       <div class="module__form__checkbox">
         <p>Tag</p>
-        <p>
+        <div>
           <%= Constants::TAG_NOT_EXISTS if tags.blank? %>
           <% tags.each do |tag| %>
-            <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__label' do %>
-              <%= check_box_tag 'tags[id][]',
-                                tag.view_number,
-                                queries.tags.include?(tag.view_number.to_s),
-                                id: "input_tags_#{tag.view_number}"
-              %>
-              <span class="module__form__label__text">
-                <span class="module__label"><%= tag.name %></span>
-                - <%= tags_attached[tag.view_number] %> tales
-              </span>
+            <%= check_box_tag 'tags[id][]',
+                              tag.view_number,
+                              queries.tags.include?(tag.view_number.to_s),
+                              id: "input_tags_#{tag.view_number}"
+            %>
+            <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox_label' do %>
+              <p class="module__form__checkbox_label__inner">
+                <%= tag.name %>
+                -
+                <%= tags_attached[tag.view_number] %> tales
+              </p>
             <% end %>
           <% end %>
-        </p>
+        </div>
       </div>
 
       <div>

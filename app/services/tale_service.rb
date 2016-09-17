@@ -32,6 +32,7 @@ class TaleService
   # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
   # because avoid to throw query about tag records twice
   def self.list(user_id, queries)
+    # use is_searched to choose
     if queries.keyword.blank?
       is_searched = false
       tales = TaleRepository.list(user_id, queries.page)
@@ -39,8 +40,11 @@ class TaleService
       is_searched = true
       tales = search(user_id, queries)
     end
+
+    # call these method once! and except for useless record - where attached count = 0 -
     tags = TagRepository.list(user_id)
     tags_attached = TagRepository.view_number_and_attached_count(user_id)
+
     [is_searched, tales, tags, tags_attached]
   end
 

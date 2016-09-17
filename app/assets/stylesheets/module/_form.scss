@@ -19,14 +19,25 @@
   }
 
   .module__form__checkbox {
-    @extend .checkbox;
-  }
 
-  .module__form__label {
-    margin-right: $margin_size_x_small;
+    input {
+      display: none;
+    }
 
-    .module__form__label__text {
-      font-weight: normal;
+    .module__form__checkbox_label {
+      @extend .btn;
+      @extend .btn-default;
+      @extend .btn-block;
+      white-space: normal !important; // cancel bootstrap
+      padding: $margin_size_xx_small;
+
+      .module__form__checkbox_label__inner {
+        margin-bottom: 0;
+      }
+    }
+
+    input:checked+.module__form__checkbox_label {
+      @extend .btn-primary;
     }
   }
 }
