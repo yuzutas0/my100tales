@@ -27,9 +27,10 @@
     .module__form__checkbox_label {
       @extend .btn;
       @extend .btn-default;
-      @extend .btn-block;
       white-space: normal !important; // cancel bootstrap
       padding: $margin_size_xx_small;
+      margin-right: $margin_size_xx_small;
+      margin-bottom: $margin_size_xx_small !important; // cancel bootstrap
 
       .module__form__checkbox_label__inner {
         margin-bottom: 0;

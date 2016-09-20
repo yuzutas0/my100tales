@@ -7,26 +7,23 @@
         <%= text_field_tag 'keyword', queries.keyword, class: 'module__form__field__text', placeholder: 'Keyword' %>
       </div>
 
+      <p>Tag</p>
       <div class="module__form__checkbox">
-        <p>Tag</p>
-        <div>
-          <%= Constants::TAG_NOT_EXISTS if tags.blank? %>
-          <% tags.each do |tag| %>
-            <% next unless tags_attached[tag.view_number] > 0 %>
-            <%= check_box_tag 'tags[id][]',
-                              tag.view_number,
-                              queries.tags.include?(tag.view_number.to_s),
-                              id: "input_tags_#{tag.view_number}"
-            %>
-            <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox_label' do %>
-              <p class="module__form__checkbox_label__inner">
-                <%= tag.name %>
-                -
-                <%= tags_attached[tag.view_number] %> tales
-              </p>
-            <% end %>
+        <%= Constants::TAG_NOT_EXISTS if tags.blank? %>
+        <% tags.each do |tag| %>
+          <% next unless tags_attached[tag.view_number] > 0 %>
+          <%= check_box_tag 'tags[id][]',
+                            tag.view_number,
+                            queries.tags.include?(tag.view_number.to_s),
+                            id: "input_tags_#{tag.view_number}"
+          %>
+          <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox_label' do %>
+            <p class="module__form__checkbox_label__inner">
+              <%= tag.name %>
+              <span class="module__badge"><%= tags_attached[tag.view_number] %></span>
+            </p>
           <% end %>
-        </div>
+        <% end %>
       </div>
 
       <div>
