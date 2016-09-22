@@ -33,8 +33,7 @@ class Tale < ActiveRecord::Base
   # include
   include TaleSearchable
   include TaleFinder
-  # property
-  index_name "es_my100tales_tale_#{Rails.env}"
   # connect
-  __elasticsearch__.client = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+  index_name ApplicationSearchable::INDEX_NAME
+  __elasticsearch__.client = ApplicationSearchable::CLIENT
 end

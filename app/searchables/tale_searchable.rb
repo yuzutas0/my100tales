@@ -24,6 +24,11 @@ module TaleSearchable
   module ClassMethods
     # create index
     def create_index
+      # ready
+      settings = Tale.settings.to_hash.merge TaleTagRelationship.settings.to_hash
+      mappings = Tale.mappings.to_hash.merge TaleTagRelationship.mappings.to_hash
+
+      # change index
       delete_index(force: true)
       __elasticsearch__.client.indices.create(
         index: index_name,

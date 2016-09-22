@@ -1,5 +1,11 @@
 # searchables/application_searchable.rb
 module ApplicationSearchable
+
+  # called by model
+  INDEX_NAME = "es_my100tales_tale_#{Rails.env}"
+  CLIENT = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
+
+  # called by searchable
   SETTINGS = {
       index: {
         number_of_shards:   1,
