@@ -47,7 +47,7 @@ module TaleFinder
 
     # called by TaleRepository#search_by_es
     def search_by_es(user_id, keyword, tags, page)
-      condition = Tale.search_request(user_id, keyword).records
+      condition = search_request(user_id, keyword).records
       read(condition, page)
     end
 
