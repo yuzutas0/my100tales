@@ -1,6 +1,11 @@
 # tale_repository
 class TaleRepository
   # -----------------------------------------------------------------
+  # Const
+  # -----------------------------------------------------------------
+  RECORD_LIST_LIMIT_SIZE = 10.freeze
+
+  # -----------------------------------------------------------------
   # Read - index
   # -----------------------------------------------------------------
 
@@ -8,7 +13,7 @@ class TaleRepository
   def self.list(user_id, page)
     Tale.where('user_id = ?', user_id)
         .page(page)
-        .per(10)
+        .per(RECORD_LIST_LIMIT_SIZE)
         .order(created_at: :desc)
         .includes(:tale_tag_relationships)
   end
@@ -18,7 +23,7 @@ class TaleRepository
     keyword = '%' + keyword + '%'
     Tale.where('user_id = ? AND (title LIKE ? OR content LIKE ?)', user_id, keyword, keyword)
         .page(page)
-        .per(10)
+        .per(RECORD_LIST_LIMIT_SIZE)
         .order(created_at: :desc)
         .includes(:tale_tag_relationships)
   end
@@ -28,7 +33,7 @@ class TaleRepository
     Tale.search_index(user_id, query)
         .records
         .page(page)
-        .per(10)
+        .per(RECORD_LIST_LIMIT_SIZE)
         .order(created_at: :desc)
         .includes(:tale_tag_relationships)
   end
