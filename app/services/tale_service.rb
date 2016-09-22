@@ -33,7 +33,7 @@ class TaleService
   # because avoid to throw query about tag records twice
   def self.list(user_id, queries)
     is_searched = queries.keyword.present?
-    tales = is_searched ? search(user_id, queries) : TaleRepository.list(user_id, queries.page)
+    tales = is_searched ? search(user_id, queries) : TaleRepository.list(user_id, queries.tags, queries.page)
     tags = TagRepository.list(user_id)
     tags_attached = TagRepository.view_number_and_attached_count(user_id)
     [is_searched, tales, tags, tags_attached]
@@ -86,7 +86,8 @@ class TaleService
     def search_by_es(user_id, queries)
       TaleRepository.search_by_es(
         user_id,
-        queries.keyword.html_safe,
+        queries.keyword,
+        queries.tags,
         queries.page
       )
     end
@@ -95,7 +96,8 @@ class TaleService
     def search_by_db(user_id, queries)
       TaleRepository.search_by_db(
         user_id,
-        queries.keyword.html_safe,
+        queries.keyword,
+        queries.tags,
         queries.page
       )
     end
