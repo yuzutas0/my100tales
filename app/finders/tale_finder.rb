@@ -6,13 +6,13 @@ module TaleFinder
   module ClassMethods
     # search
     # FIXME: kaminari, analyzer
-    def search_index(user_id, query)
+    def search_index(user_id, keyword)
       __elasticsearch__.search(
         query: {
           bool: {
             should: [
-              { term: { title: query.downcase } },
-              { term: { content: query.downcase } }
+              { term: { title: keyword.downcase } },
+              { term: { content: keyword.downcase } }
             ]
           }
         },

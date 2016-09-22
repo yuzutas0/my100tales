@@ -23,8 +23,8 @@ class TaleRepository
   end
 
   # search by Elasticsearch
-  def self.search_by_es(user_id, query, page)
-    condition = Tale.search_index(user_id, query).records
+  def self.search_by_es(user_id, keyword, page)
+    condition = Tale.search_index(user_id, keyword).records
     read_index(condition, page)
   end
 
