@@ -9,7 +9,6 @@ module Constants
   TAG_INDEX_PATH_NAME = 'Tag List'.freeze
 
   # message
-  TALE_NOT_EXISTS = 'There is no tale.'.freeze
   SEQUEL_NOT_EXISTS = 'There is no sequel.'.freeze
   TAG_NOT_EXISTS = 'There is no tag.'.freeze
 end

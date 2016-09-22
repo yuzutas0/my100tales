@@ -1,6 +1,5 @@
 <div class="layout__tales__index">
   <%= render 'tales/_search/header', queries: @queries, is_searched: @is_searched, tags: @tags, tags_attached: @tags_attached %>
-  <%= Constants::TALE_NOT_EXISTS if @tales.blank? %>
 
   <p><%= page_entries_info @tales %></p>
   <div class="module__list">
