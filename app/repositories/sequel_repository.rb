@@ -1,6 +1,5 @@
 # sequel_repository
 class SequelRepository
-
   # get hash about tale_id and how many sequels is posted to the tale
   # => { tale_id: size, ... }
   # => e.g. { 1: 15, 2: 0, 3: 4 }

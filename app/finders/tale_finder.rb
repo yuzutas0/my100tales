@@ -5,20 +5,19 @@ module TaleFinder
   # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
-  DB_LIMIT_SIZE = 10.freeze
-  ES_LIMIT_SIZE = 10_000.freeze
+  DB_LIMIT_SIZE = 10
+  ES_LIMIT_SIZE = 10_000
   QUERY = {
-      user: 'tales.user_id = ?',
-      tags: 'tale_tag_relationships.tag_id IN (?)',
-      keyword: '(tales.title LIKE ? OR tales.content LIKE ?)',
-      and: ' AND '
+    user: 'tales.user_id = ?',
+    tags: 'tale_tag_relationships.tag_id IN (?)',
+    keyword: '(tales.title LIKE ? OR tales.content LIKE ?)',
+    and: ' AND '
   }.freeze
 
   # -----------------------------------------------------------------
   # Methods
   # -----------------------------------------------------------------
   module ClassMethods
-
     # called by TaleRepository#list
     def index_by_db(user_id, tags, sort, page)
       condition = condition_for_db(user_id, tags)
@@ -37,7 +36,7 @@ module TaleFinder
 
     # called by TaleRepository#search_by_es
     def search_by_es(user_id, keywords, tags, sort, page)
-      # FIXME through waste query by Elasticsearch::Model::Response::Records
+      # FIXME: through waste query by Elasticsearch::Model::Response::Records
       condition = search_request(user_id, keywords).records
       condition = condition_about_tags(condition, tags) if tags.present?
       read(condition, sort, page)
@@ -57,8 +56,8 @@ module TaleFinder
 
     def condition_about_tags(condition, tags)
       condition
-          .joins(:tale_tag_relationships)
-          .where(QUERY[:tags], tags)
+        .joins(:tale_tag_relationships)
+        .where(QUERY[:tags], tags)
     end
 
     # common logic
@@ -74,47 +73,46 @@ module TaleFinder
     # refs. SearchForm#sort_master
     def custom_sort(sort)
       case sort
-        when 1 then { created_at: :asc }
-        when 2 then { updated_at: :desc }
-        when 3 then { updated_at: :asc }
-        else { created_at: :desc }
+      when 1 then { created_at: :asc }
+      when 2 then { updated_at: :desc }
+      when 3 then { updated_at: :asc }
+      else { created_at: :desc }
       end
     end
 
     # keyword search by elasticsearch
     # FIXME: kaminari, analyzer, has_child
     def search_request(user_id, keywords)
-
       keyword_queries = keywords.map do |keyword|
         {
-            bool: {
-                should: [
-                    { term: { title: keyword.downcase } },
-                    { term: { content: keyword.downcase } }
-                ]
-            }
+          bool: {
+            should: [
+              { term: { title: keyword.downcase } },
+              { term: { content: keyword.downcase } }
+            ]
+          }
         }
       end
 
       __elasticsearch__.search(
-          query: {
-              bool: {
-                  must: keyword_queries
-              }
-          },
-          filter: {
-              term: {
-                  user_id: user_id
-              }
-          },
-          sort: [
-              {
-                  created_at: {
-                      order: 'desc'
-                  }
-              }
-          ],
-          size: ES_LIMIT_SIZE
+        query: {
+          bool: {
+            must: keyword_queries
+          }
+        },
+        filter: {
+          term: {
+            user_id: user_id
+          }
+        },
+        sort: [
+          {
+            created_at: {
+              order: 'desc'
+            }
+          }
+        ],
+        size: ES_LIMIT_SIZE
       )
     end
   end

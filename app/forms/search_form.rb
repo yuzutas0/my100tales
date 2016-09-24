@@ -33,7 +33,7 @@ class SearchForm
   end
 
   def convert_tags(tags)
-    tags[:id].map { |tag| tag.to_i }
+    tags[:id].map(&:to_i)
   end
 
   def valid_sort?(sort)
