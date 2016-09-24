@@ -4,7 +4,7 @@ module ErrorHandlers
 
   # raise 404
   def routing_error
-    raise ActionController::RoutingError.new(params[:path])
+    raise ActionController::RoutingError, params[:path]
   end
 
   # 404
