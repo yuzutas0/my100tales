@@ -5,7 +5,8 @@ module TaleFinder
   # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
-  LIMIT_SIZE = 10.freeze
+  DB_LIMIT_SIZE = 10.freeze
+  ES_LIMIT_SIZE = 10_000.freeze
   QUERY = {
       user: 'tales.user_id = ?',
       tags: 'tale_tag_relationships.tag_id IN (?)',
@@ -47,7 +48,14 @@ module TaleFinder
 
     # called by TaleRepository#search_by_es
     def search_by_es(user_id, keyword, tags, page)
-      condition = search_request(user_id, keyword).records
+      # FIXME through waste query by Elasticsearch::Model::Response::Records
+      condition = if tags.present?
+                    search_request(user_id, keyword).records
+                        .joins(:tale_tag_relationships)
+                        .where(QUERY[:tags], tags)
+                  else
+                    search_request(user_id, keyword).records
+                  end
       read(condition, page)
     end
 
@@ -61,30 +69,37 @@ module TaleFinder
       condition
           .uniq
           .page(page)
-          .per(LIMIT_SIZE)
+          .per(DB_LIMIT_SIZE)
           .order(created_at: :desc)
           .includes(:tale_tag_relationships)
     end
 
     # keyword search by elasticsearch
-    # FIXME: kaminari, analyzer
+    # FIXME: kaminari, analyzer, has_child
     def search_request(user_id, keyword)
+
+      keyword_query = {
+          should: [
+              { term: { title: keyword.downcase } },
+              { term: { content: keyword.downcase } }
+          ]
+      }
+
+      user_query = {
+          term: {
+              user_id: user_id
+          }
+      }
+
       __elasticsearch__.search(
           query: {
-              bool: {
-                  should: [
-                      { term: { title: keyword.downcase } },
-                      { term: { content: keyword.downcase } }
-                  ]
-              }
+              bool: keyword_query
           },
-          filter: {
-              term: { user_id: user_id }
-          },
+          filter: user_query,
           sort: [
               { created_at: { order: 'desc' } }
           ],
-          size: 10_000
+          size: ES_LIMIT_SIZE
       )
     end
   end

@@ -34,6 +34,6 @@ class Tale < ActiveRecord::Base
   include TaleSearchable
   include TaleFinder
   # connect
-  index_name ApplicationSearchable::INDEX_NAME
-  __elasticsearch__.client = ApplicationSearchable::CLIENT
+  index_name TaleSearchable::INDEX_NAME
+  __elasticsearch__.client = TaleSearchable::CLIENT
 end

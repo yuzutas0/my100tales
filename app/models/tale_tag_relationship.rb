@@ -15,5 +15,6 @@ class TaleTagRelationship < ActiveRecord::Base
   # include
   include TaleTagRelationshipSearchable
   # connect
-  index_name ApplicationSearchable::INDEX_NAME
+  index_name TaleTagRelationshipSearchable::INDEX_NAME
+  __elasticsearch__.client = TaleTagRelationshipSearchable::CLIENT
 end
