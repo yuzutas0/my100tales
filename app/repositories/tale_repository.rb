@@ -10,12 +10,12 @@ class TaleRepository
   end
 
   # search by MariaDB
-  def self.search_by_db(user_id, keyword, tags, sort, page)
+  def self.search_by_db(user_id:, keyword:, tags:, sort:, page:)
     Tale.search_by_db(user_id, keyword, tags, sort, page)
   end
 
   # search by Elasticsearch
-  def self.search_by_es(user_id, keyword, tags, sort, page)
+  def self.search_by_es(user_id:, keyword:, tags:, sort:, page:)
     Tale.search_by_es(user_id, keyword, tags, sort, page)
   end
 

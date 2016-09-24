@@ -86,32 +86,20 @@ class TaleService
 
     # get list with keyword
     def search(user_id, queries)
-      search_by_es(user_id, queries)
-    rescue Exception => e
+      TaleRepository.search_by_es(search_args(user_id, queries))
+    rescue => e
       Rails.logger.warn "failure to request Elasticsearch: #{e.message}"
-      search_by_db(user_id, queries)
+      TaleRepository.search_by_db(search_args(user_id, queries))
     end
 
-    # search by Elasticsearch
-    def search_by_es(user_id, queries)
-      TaleRepository.search_by_es(
-        user_id,
-        queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
-        queries.tags,
-        queries.sort,
-        queries.page
-      )
-    end
-
-    # search by mariaDB
-    def search_by_db(user_id, queries)
-      TaleRepository.search_by_db(
-        user_id,
-        queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
-        queries.tags,
-        queries.sort,
-        queries.page
-      )
+    def search_args(user_id, queries)
+      {
+          user_id: user_id,
+          keyword: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
+          tags: queries.tags,
+          sort: queries.sort,
+          page: queries.page
+      }
     end
   end
 end
