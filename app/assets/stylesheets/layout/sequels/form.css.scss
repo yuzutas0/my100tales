@@ -12,12 +12,12 @@
   .layout__sequels__form {
 
     @mixin size() {
-      min-height: $editor_size_large; // bootstrapによる上書き height: auto; 回避のため
-      height: $editor_size_large;
+      min-height: $editor_size_middle; // bootstrapによる上書き height: auto; 回避のため
+      height: $editor_size_middle;
 
       @media (max-width: $screen-xs-max) {
-        min-height: $editor_size_middle;
-        height: $editor_size_middle;
+        min-height: $editor_size_small;
+        height: $editor_size_small;
       }
     }
 
