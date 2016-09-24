@@ -14,7 +14,7 @@
           <% next unless tags_attached[tag.view_number] > 0 %>
           <%= check_box_tag 'tags[id][]',
                             tag.view_number,
-                            queries.tags.include?(tag.view_number.to_s),
+                            queries.tags.include?(tag.view_number),
                             id: "input_tags_#{tag.view_number}"
           %>
           <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox_label' do %>
