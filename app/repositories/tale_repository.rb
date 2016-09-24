@@ -5,18 +5,18 @@ class TaleRepository
   # -----------------------------------------------------------------
 
   # get index by MariaDB
-  def self.list(user_id, tags, page)
-    Tale.index_by_db(user_id, tags, page)
+  def self.list(user_id, tags, sort, page)
+    Tale.index_by_db(user_id, tags, sort, page)
   end
 
   # search by MariaDB
-  def self.search_by_db(user_id, keyword, tags, page)
-    Tale.search_by_db(user_id, keyword, tags, page)
+  def self.search_by_db(user_id, keyword, tags, sort, page)
+    Tale.search_by_db(user_id, keyword, tags, sort, page)
   end
 
   # search by Elasticsearch
-  def self.search_by_es(user_id, keyword, tags, page)
-    Tale.search_by_es(user_id, keyword, tags, page)
+  def self.search_by_es(user_id, keyword, tags, sort, page)
+    Tale.search_by_es(user_id, keyword, tags, sort, page)
   end
 
   # -----------------------------------------------------------------

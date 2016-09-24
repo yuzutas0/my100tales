@@ -20,23 +20,23 @@ module TaleFinder
   module ClassMethods
 
     # called by TaleRepository#list
-    def index_by_db(user_id, tags, page)
+    def index_by_db(user_id, tags, sort, page)
       condition = condition_for_db(user_id, tags)
-      read(condition, page)
+      read(condition, sort, page)
     end
 
     # called by TaleRepository#search_by_db
-    def search_by_db(user_id, keywords, tags, page)
+    def search_by_db(user_id, keywords, tags, sort, page)
       condition = condition_for_db(user_id, tags)
       keywords.each do |keyword|
         keyword = '%' + keyword + '%'
         condition = condition.where(QUERY[:keyword], keyword, keyword)
       end
-      read(condition, page)
+      read(condition, sort, page)
     end
 
     # called by TaleRepository#search_by_es
-    def search_by_es(user_id, keywords, tags, page)
+    def search_by_es(user_id, keywords, tags, sort, page)
       # FIXME through waste query by Elasticsearch::Model::Response::Records
       condition = if tags.present?
                     search_request(user_id, keywords).records
@@ -45,7 +45,7 @@ module TaleFinder
                   else
                     search_request(user_id, keywords).records
                   end
-      read(condition, page)
+      read(condition, sort, page)
     end
 
     # -----------------------------------------------------------------
@@ -63,13 +63,24 @@ module TaleFinder
       end
     end
 
-    def read(condition, page)
+    # common logic
+    def read(condition, sort, page)
       condition
           .uniq
           .page(page)
           .per(DB_LIMIT_SIZE)
-          .order(created_at: :desc)
+          .order(custom_sort(sort))
           .includes(:tale_tag_relationships)
+    end
+
+    # refs. SearchForm#sort_master
+    def custom_sort(sort)
+      case sort
+        when 1 then { created_at: :asc }
+        when 2 then { updated_at: :desc }
+        when 3 then { updated_at: :asc }
+        else { created_at: :desc }
+      end
     end
 
     # keyword search by elasticsearch

@@ -32,10 +32,17 @@ class TaleService
   # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
   # because avoid to throw query about tag records twice
   def self.list(user_id, queries)
+    # get tale data
     is_searched = queries.keyword.present?
-    tales = is_searched ? search(user_id, queries) : TaleRepository.list(user_id, queries.tags, queries.page)
+    tales = is_searched ?
+        search(user_id, queries) :
+        TaleRepository.list(user_id, queries.tags, queries.sort, queries.page)
+
+    # get tag data
     tags = TagRepository.list(user_id)
     tags_attached = TagRepository.view_number_and_attached_count(user_id)
+
+    # response
     [is_searched, tales, tags, tags_attached]
   end
 
@@ -88,6 +95,7 @@ class TaleService
         user_id,
         queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
         queries.tags,
+        queries.sort,
         queries.page
       )
     end
@@ -98,6 +106,7 @@ class TaleService
         user_id,
         queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
         queries.tags,
+        queries.sort,
         queries.page
       )
     end

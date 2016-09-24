@@ -15,8 +15,12 @@ class SearchForm
   # -----------------------------------------------------------------
   # Master Enum
   # -----------------------------------------------------------------
+  # 0: Newer_Create
+  # 1: Older_Create
+  # 2: Newer_Update
+  # 3: Older_Update
   def self.sort_master
-    %w(Newer_Update Older_Update More_Sequels Less_Sequels)
+    %w(Newer_Create Older_Create Newer_Update Older_Update)
   end
 
   # -----------------------------------------------------------------
