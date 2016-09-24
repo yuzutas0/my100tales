@@ -21,40 +21,29 @@ module TaleFinder
 
     # called by TaleRepository#list
     def index_by_db(user_id, tags, page)
-      query = QUERY[:user]
-      condition = if tags.present?
-                    query = query + QUERY[:and] + QUERY[:tags]
-                    Tale.joins(:tale_tag_relationships)
-                        .where(query, user_id, tags)
-                  else
-                    Tale.where(query, user_id)
-                  end
+      condition = condition_for_db(user_id, tags)
       read(condition, page)
     end
 
     # called by TaleRepository#search_by_db
-    def search_by_db(user_id, keyword, tags, page)
-      keyword = '%' + keyword + '%'
-      query = QUERY[:user] + QUERY[:and] + QUERY[:keyword]
-      condition = if tags.present?
-                    query = query + QUERY[:and] + QUERY[:tags]
-                    Tale.joins(:tale_tag_relationships)
-                        .where(query, user_id, keyword, keyword, tags)
-                  else
-                    Tale.where(query, user_id, keyword, keyword)
-                  end
+    def search_by_db(user_id, keywords, tags, page)
+      condition = condition_for_db(user_id, tags)
+      keywords.each do |keyword|
+        keyword = '%' + keyword + '%'
+        condition = condition.where(QUERY[:keyword], keyword, keyword)
+      end
       read(condition, page)
     end
 
     # called by TaleRepository#search_by_es
-    def search_by_es(user_id, keyword, tags, page)
+    def search_by_es(user_id, keywords, tags, page)
       # FIXME through waste query by Elasticsearch::Model::Response::Records
       condition = if tags.present?
-                    search_request(user_id, keyword).records
+                    search_request(user_id, keywords).records
                         .joins(:tale_tag_relationships)
                         .where(QUERY[:tags], tags)
                   else
-                    search_request(user_id, keyword).records
+                    search_request(user_id, keywords).records
                   end
       read(condition, page)
     end
@@ -65,6 +54,15 @@ module TaleFinder
     private
 
     # common logic
+    def condition_for_db(user_id, tags)
+      if tags.present?
+        Tale.joins(:tale_tag_relationships)
+            .where(QUERY[:user] + QUERY[:and] + QUERY[:tags], user_id, tags)
+      else
+        Tale.where(QUERY[:user], user_id)
+      end
+    end
+
     def read(condition, page)
       condition
           .uniq
@@ -76,28 +74,36 @@ module TaleFinder
 
     # keyword search by elasticsearch
     # FIXME: kaminari, analyzer, has_child
-    def search_request(user_id, keyword)
+    def search_request(user_id, keywords)
 
-      keyword_query = {
-          should: [
-              { term: { title: keyword.downcase } },
-              { term: { content: keyword.downcase } }
-          ]
-      }
-
-      user_query = {
-          term: {
-              user_id: user_id
-          }
-      }
+      keyword_queries = keywords.map do |keyword|
+        {
+            bool: {
+                should: [
+                    { term: { title: keyword.downcase } },
+                    { term: { content: keyword.downcase } }
+                ]
+            }
+        }
+      end
 
       __elasticsearch__.search(
           query: {
-              bool: keyword_query
+              bool: {
+                  must: keyword_queries
+              }
           },
-          filter: user_query,
+          filter: {
+              term: {
+                  user_id: user_id
+              }
+          },
           sort: [
-              { created_at: { order: 'desc' } }
+              {
+                  created_at: {
+                      order: 'desc'
+                  }
+              }
           ],
           size: ES_LIMIT_SIZE
       )

@@ -86,7 +86,7 @@ class TaleService
     def search_by_es(user_id, queries)
       TaleRepository.search_by_es(
         user_id,
-        queries.keyword,
+        queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
         queries.tags,
         queries.page
       )
@@ -96,7 +96,7 @@ class TaleService
     def search_by_db(user_id, queries)
       TaleRepository.search_by_db(
         user_id,
-        queries.keyword,
+        queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
         queries.tags,
         queries.page
       )
