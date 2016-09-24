@@ -50,7 +50,7 @@ module ApplicationSearchable
     # create index
     def create_index
       # ready
-      settings = Tale.settings.to_hash.merge TaleTagRelationship.settings.to_hash
+      settings = SETTINGS.to_hash
       mappings = Tale.mappings.to_hash.merge TaleTagRelationship.mappings.to_hash
 
       # change index
