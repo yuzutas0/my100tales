@@ -38,13 +38,8 @@ module TaleFinder
     # called by TaleRepository#search_by_es
     def search_by_es(user_id, keywords, tags, sort, page)
       # FIXME through waste query by Elasticsearch::Model::Response::Records
-      condition = if tags.present?
-                    search_request(user_id, keywords).records
-                        .joins(:tale_tag_relationships)
-                        .where(QUERY[:tags], tags)
-                  else
-                    search_request(user_id, keywords).records
-                  end
+      condition = search_request(user_id, keywords).records
+      condition = condition_about_tags(condition, tags) if tags.present?
       read(condition, sort, page)
     end
 
@@ -55,18 +50,21 @@ module TaleFinder
 
     # common logic
     def condition_for_db(user_id, tags)
-      if tags.present?
-        Tale.joins(:tale_tag_relationships)
-            .where(QUERY[:user] + QUERY[:and] + QUERY[:tags], user_id, tags)
-      else
-        Tale.where(QUERY[:user], user_id)
-      end
+      condition = Tale.where(QUERY[:user], user_id)
+      condition = condition_about_tags(condition, tags) if tags.present?
+      condition
+    end
+
+    def condition_about_tags(condition, tags)
+      condition
+          .joins(:tale_tag_relationships)
+          .where(QUERY[:tags], tags)
     end
 
     # common logic
     def read(condition, sort, page)
-      condition
-          .uniq
+      id_list = condition.uniq.pluck(:id)
+      Tale.where('tales.id IN (?)', id_list)
           .page(page)
           .per(DB_LIMIT_SIZE)
           .order(custom_sort(sort))
