@@ -1,6 +1,13 @@
 <% @page_title = Constants::TALES_PATH_NAME %>
 <div class="layout__tales__index">
-  <%= render 'tales/_search/header', queries: @queries, is_searched: @is_searched, tags: @tags, tags_attached: @tags_attached %>
+
+  <%= render 'tales/_search/header',
+             queries: @queries,
+             is_searched: @is_searched,
+             tags: @tags,
+             tags_attached: @tags_attached,
+             sort_master: @sort_master
+  %>
 
   <p><%= page_entries_info @tales %></p>
   <div class="module__list">

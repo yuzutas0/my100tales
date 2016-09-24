@@ -6,6 +6,7 @@
         <p>Keyword</p>
         <%= text_field_tag 'keyword', queries.keyword, class: 'module__form__field__text', placeholder: 'Keyword' %>
       </div>
+      <hr>
 
       <p>Tag</p>
       <div class="module__form__checkbox">
@@ -17,14 +18,26 @@
                             queries.tags.include?(tag.view_number),
                             id: "input_tags_#{tag.view_number}"
           %>
-          <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox_label' do %>
-            <p class="module__form__checkbox_label__inner">
+          <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox__label' do %>
+            <p class="module__form__checkbox__label__inner">
               <%= tag.name %>
               <span class="module__badge"><%= tags_attached[tag.view_number] %></span>
             </p>
           <% end %>
         <% end %>
       </div>
+      <hr>
+
+      <p>Sort</p>
+      <div class="module__form__radiobutton">
+        <% sort_master.each_with_index do |sort_item, index| %>
+          <%= radio_button_tag 'sort', index, queries.sort == index, id: "input_sort_#{index}" %>
+          <%= label_tag "input_sort_#{index}", class: 'module__form__radiobutton__label' do %>
+            <p class="module__form__radiobutton__label__inner"><%= sort_item %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <hr>
 
       <div>
         <%= submit_tag 'Search', name: nil, class: 'module__button module__button--small module__button--wide' %>

@@ -18,13 +18,13 @@
     }
   }
 
-  .module__form__checkbox {
+  .module__form__checkbox, .module__form__radiobutton {
 
     input {
       display: none;
     }
 
-    .module__form__checkbox_label {
+    .module__form__checkbox__label, .module__form__radiobutton__label {
       @extend .btn;
       @extend .btn-default;
       white-space: normal !important; // cancel bootstrap
@@ -32,12 +32,12 @@
       margin-right: $margin_size_xx_small;
       margin-bottom: $margin_size_xx_small !important; // cancel bootstrap
 
-      .module__form__checkbox_label__inner {
+      .module__form__checkbox__label__inner, .module__form__radiobutton__label__inner {
         margin-bottom: 0;
       }
     }
 
-    input:checked+.module__form__checkbox_label {
+    input:checked+.module__form__checkbox__label, input:checked+.module__form__radiobutton__label {
       @extend .btn-primary;
     }
   }

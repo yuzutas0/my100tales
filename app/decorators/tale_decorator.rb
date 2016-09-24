@@ -1,5 +1,19 @@
 # tale_decorator
 class TaleDecorator < BaseDecorator
+
+  # -----------------------------------------------------------------
+  # Common
+  # -----------------------------------------------------------------
+
+  # add flash message about error reasons
+  def self.flash(tale, flash)
+    flash_for_render(tale, flash)
+  end
+
+  # -----------------------------------------------------------------
+  # Show
+  # -----------------------------------------------------------------
+
   # decide which tab is opened at first view
   # e.g. [ ['',''], ['',''], ['active','in active'] ]
   def self.tab(params)
@@ -16,10 +30,9 @@ class TaleDecorator < BaseDecorator
     result
   end
 
-  # add flash message about error reasons
-  def self.flash(tale, flash)
-    flash_for_render(tale, flash)
-  end
+  # -----------------------------------------------------------------
+  # Form
+  # -----------------------------------------------------------------
 
   # set option form
   def self.option_form(tale)
