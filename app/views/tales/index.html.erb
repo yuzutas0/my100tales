@@ -15,7 +15,17 @@
     <% @tales.each do |tale| %>
     <div class="module__list__item">
 
-      <p class="layout__tales__index__list__item__created">created at <%= tale.created_at.strftime('%Y-%b-%d') %></p>
+      <p class="layout__tales__index__list__item__created">
+        created at <%= tale.created_at.strftime('%Y-%b-%d') %>
+      </p>
+
+      <p class="layout__tales__index__list__item__sequels module__badge">
+        <%= fa_icon 'comment' %>
+        <%= @sequels_attached[tale.id] < 100 ? @sequels_attached[tale.id] : '99+' %>
+      </p>
+
+      <span class="layout__tales__index__list__item__pretitle"></span>
+
       <h4>
         <%= link_to tale, class: 'module__list__item__title' do %>
           <% if tale.title.size > 30 %>

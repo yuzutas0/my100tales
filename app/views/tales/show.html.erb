@@ -23,7 +23,10 @@
       <a id="script__tale__detail__tab3" href="#tab__third" data-toggle="tab">
         Sequels
         <% if @tale.sequels.length > 0 %>
-        <span class="module__badge module__badge--desktop"><%= @tale.sequels.length %></span>
+        <span class="module__badge module__badge--desktop">
+          <%= fa_icon 'comment' %>
+          <%= @tale.sequels.length %>
+        </span>
         <% end %>
       </a>
     </li>
