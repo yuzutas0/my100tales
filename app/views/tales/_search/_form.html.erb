@@ -39,6 +39,24 @@
       </div>
       <hr>
 
+      <p>Search Condition</p>
+      <div class="module__form__checkbox layout__tale__search__condition__save">
+        <%= check_box_tag 'save', true, queries.save, id: 'input_condition_save' %>
+        <%= label_tag 'input_condition_save', class: 'module__form__checkbox__label' do %>
+          <p class="module__form__checkbox__label__inner">Save</p>
+        <% end %>
+      </div>
+      <div class="module__form__field layout__tale__search__condition__name">
+        <%= text_field_tag 'name', queries.name,
+                           class: 'module__form__field__text',
+                           id: 'script__tale__search__condition__name',
+                           placeholder: 'name',
+                           disabled: true
+        %>
+      </div>
+      <span class="layout__tale__search__condition__end"></span>
+      <hr>
+
       <div>
         <%= submit_tag 'Search', name: nil, class: 'module__button module__button--small module__button--wide' %>
       </div>

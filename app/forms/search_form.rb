@@ -1,6 +1,6 @@
 # search form
 class SearchForm
-  attr_accessor :page, :keyword, :tags, :sort
+  attr_accessor :page, :keyword, :tags, :sort, :save, :name
 
   # -----------------------------------------------------------------
   # Constructor
@@ -10,6 +10,8 @@ class SearchForm
     @keyword = params[:keyword].html_safe if params[:keyword].present?
     @tags = valid_tags?(params[:tags]) ? convert_tags(params[:tags]) : []
     @sort = valid_sort?(params[:sort]) ? params[:sort].to_i : 0
+    @save = params[:save]
+    @name = params[:name]
   end
 
   # -----------------------------------------------------------------

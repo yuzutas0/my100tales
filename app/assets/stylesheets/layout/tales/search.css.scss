@@ -6,4 +6,13 @@
 
 // main
 .layout__tale__search {
+
+  .layout__tale__search__condition__save,
+  .layout__tale__search__condition__name {
+    @extend .pull-left;
+  }
+
+  .layout__tale__search__condition__end {
+    @extend .clearfix;
+  }
 }
