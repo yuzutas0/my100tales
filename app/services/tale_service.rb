@@ -103,7 +103,7 @@ class TaleService
     end
 
     def sequels_attached(tales)
-      tale_id_list = tales.inject([]) { |a, e| a << e.id }
+      tale_id_list = tales.map(&:id)
       SequelRepository.tale_id_and_attached_count(tale_id_list)
     end
   end
