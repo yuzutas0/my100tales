@@ -38,8 +38,8 @@
 
       <div>
         <% tale.tale_tag_relationships.each do |relation| %>
-          <%  #avoid to throw query about tag records twice ref. TaleService#list %>
-          <a href="#" class="module__label"><%= (@tags.select { |tag| tag.id == relation.tag_id })[0].name %></a>
+          <% tag = (@tags.select { |tag| tag.id == relation.tag_id })[0] %>
+          <%= link_to "#{tag.name}", tales_path('tags':{'id':[tag.view_number]}), class: 'module__label' %>
         <% end %>
 
         <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
