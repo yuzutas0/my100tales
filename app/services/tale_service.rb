@@ -85,7 +85,7 @@ class TaleService
 
     # get list with keyword
     def search(is_searched, user_id, queries)
-      return TaleRepository.list(user_id, queries.tags, queries.sort, queries.page) if is_searched
+      return TaleRepository.list(user_id, queries.tags, queries.sort, queries.page) unless is_searched
       TaleRepository.search_by_es(search_args(user_id, queries))
     rescue => e
       Rails.logger.warn "failure to request Elasticsearch: #{e.message}"
@@ -95,7 +95,7 @@ class TaleService
     def search_args(user_id, queries)
       {
         user_id: user_id,
-        keyword: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
+        keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
         tags: queries.tags,
         sort: queries.sort,
         page: queries.page
