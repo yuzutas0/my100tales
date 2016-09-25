@@ -49,11 +49,16 @@ module TaleFinder
       Tale.where(QUERY[:user], user_id)
     end
 
-    # common logic
+    def condition_for_tag(condition, user_id, tags)
+      return condition if tags.blank?
+      condition
+          .joins(:tags)
+          .where(QUERY[:tags], user_id, tags)
+    end
+
     def read(condition, user_id, tags, sort, page)
-      condition = condition.joins(:tags).where(QUERY[:tags], user_id, tags) if tags.present?
-      id_list = condition.uniq.pluck(:id)
-      Tale.where('tales.id IN (?)', id_list)
+      condition_for_tag(condition, user_id, tags)
+          .uniq
           .page(page)
           .per(DB_LIMIT_SIZE)
           .order(custom_sort(sort))
