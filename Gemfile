@@ -44,7 +44,6 @@ gem 'turbolinks'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
 end
 
 group :development do
