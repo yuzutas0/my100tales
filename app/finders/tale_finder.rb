@@ -20,26 +20,24 @@ module TaleFinder
   module ClassMethods
     # called by TaleRepository#list
     def index_by_db(user_id, tags, sort, page)
-      condition = condition_for_db(user_id, tags)
-      read(condition, sort, page)
+      condition = condition_for_db(user_id)
+      read(condition, user_id, tags, sort, page)
     end
 
-    # called by TaleRepository#search_by_db
+    # called by TaleRepository#search_by_db only when keywords are present
     def search_by_db(user_id, keywords, tags, sort, page)
-      condition = condition_for_db(user_id, tags)
+      condition = condition_for_db(user_id)
       keywords.each do |keyword|
         keyword = '%' + keyword + '%'
         condition = condition.where(QUERY[:keyword], keyword, keyword)
       end
-      read(condition, sort, page)
+      read(condition, user_id, tags, sort, page)
     end
 
     # called by TaleRepository#search_by_es
     def search_by_es(user_id, keywords, tags, sort, page)
-      # FIXME: through waste query by Elasticsearch::Model::Response::Records
       condition = search_request(user_id, keywords).records
-      condition = condition_about_tags(condition, user_id, tags) if tags.present?
-      read(condition, sort, page)
+      read(condition, user_id, tags, sort, page)
     end
 
     # -----------------------------------------------------------------
@@ -48,20 +46,13 @@ module TaleFinder
     private
 
     # common logic
-    def condition_for_db(user_id, tags)
-      condition = Tale.where(QUERY[:user], user_id)
-      condition = condition_about_tags(condition, user_id, tags) if tags.present?
-      condition
-    end
-
-    def condition_about_tags(condition, user_id, tags)
-      condition
-        .joins(:tags)
-        .where(QUERY[:tags], user_id, tags)
+    def condition_for_db(user_id)
+      Tale.where(QUERY[:user], user_id)
     end
 
     # common logic
-    def read(condition, sort, page)
+    def read(condition, user_id, tags, sort, page)
+      condition = condition.joins(:tags).where(QUERY[:tags], user_id, tags) if tags.present?
       id_list = condition.uniq.pluck(:id)
       Tale.where('tales.id IN (?)', id_list)
           .page(page)
