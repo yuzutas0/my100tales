@@ -7,7 +7,5 @@ class CreateSearches < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    add_index :searches, [:user_id, :condition], unique: true
   end
 end

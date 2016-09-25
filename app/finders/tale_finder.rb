@@ -10,7 +10,7 @@ module TaleFinder
   QUERY = {
     user: 'tales.user_id = ?',
     tags: 'tags.user_id = ? AND tags.view_number IN (?)',
-    keyword: '(tales.title LIKE ? OR tales.content LIKE ?)',
+    keyword: '(tales.title LIKE ? OR tales.content LIKE ?)'
   }.freeze
 
   # -----------------------------------------------------------------
@@ -52,17 +52,17 @@ module TaleFinder
     def condition_for_tag(condition, user_id, tags)
       return condition if tags.blank?
       condition
-          .joins(:tags)
-          .where(QUERY[:tags], user_id, tags)
+        .joins(:tags)
+        .where(QUERY[:tags], user_id, tags)
     end
 
     def read(condition, user_id, tags, sort, page)
       condition_for_tag(condition, user_id, tags)
-          .uniq
-          .page(page)
-          .per(DB_LIMIT_SIZE)
-          .order(custom_sort(sort))
-          .includes(:tale_tag_relationships)
+        .uniq
+        .page(page)
+        .per(DB_LIMIT_SIZE)
+        .order(custom_sort(sort))
+        .includes(:tale_tag_relationships)
     end
 
     # refs. SearchForm#sort_master
