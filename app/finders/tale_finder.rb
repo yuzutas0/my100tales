@@ -9,7 +9,7 @@ module TaleFinder
   ES_LIMIT_SIZE = 10_000
   QUERY = {
     user: 'tales.user_id = ?',
-    tags: 'tale_tag_relationships.tag_id IN (?)',
+    tags: 'tags.user_id = ? AND tags.view_number IN (?)',
     keyword: '(tales.title LIKE ? OR tales.content LIKE ?)',
     and: ' AND '
   }.freeze
@@ -38,7 +38,7 @@ module TaleFinder
     def search_by_es(user_id, keywords, tags, sort, page)
       # FIXME: through waste query by Elasticsearch::Model::Response::Records
       condition = search_request(user_id, keywords).records
-      condition = condition_about_tags(condition, tags) if tags.present?
+      condition = condition_about_tags(condition, user_id, tags) if tags.present?
       read(condition, sort, page)
     end
 
@@ -50,14 +50,14 @@ module TaleFinder
     # common logic
     def condition_for_db(user_id, tags)
       condition = Tale.where(QUERY[:user], user_id)
-      condition = condition_about_tags(condition, tags) if tags.present?
+      condition = condition_about_tags(condition, user_id, tags) if tags.present?
       condition
     end
 
-    def condition_about_tags(condition, tags)
+    def condition_about_tags(condition, user_id, tags)
       condition
-        .joins(:tale_tag_relationships)
-        .where(QUERY[:tags], tags)
+        .joins(:tags)
+        .where(QUERY[:tags], user_id, tags)
     end
 
     # common logic
