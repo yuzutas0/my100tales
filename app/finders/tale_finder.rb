@@ -11,7 +11,6 @@ module TaleFinder
     user: 'tales.user_id = ?',
     tags: 'tags.user_id = ? AND tags.view_number IN (?)',
     keyword: '(tales.title LIKE ? OR tales.content LIKE ?)',
-    and: ' AND '
   }.freeze
 
   # -----------------------------------------------------------------
