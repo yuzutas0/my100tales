@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(version: 20_160_925_081_554) do
   create_table 'searches', force: :cascade do |t|
     t.string   'name',       limit: 255
-    t.text     'condition',  limit: 65_535
-    t.integer  'user_id',    limit: 4
-    t.datetime 'created_at',               null: false
-    t.datetime 'updated_at',               null: false
+    t.text     'condition',  limit: 65_535, null: false
+    t.boolean  'save_flag', default: false, null: false
+    t.integer  'user_id', limit: 4, null: false
+    t.datetime 'created_at',                               null: false
+    t.datetime 'updated_at',                               null: false
   end
 
   add_index 'searches', ['user_id'], name: 'index_searches_on_user_id', using: :btree
