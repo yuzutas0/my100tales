@@ -31,11 +31,11 @@ class @My100TalesUtilTab
   @rewriteQuery = (buttons, queries) ->
     # validate
     return if buttons.length != queries.length
+    return unless history.state != undefined
     # function
     action = (button, query) ->
       $(button).on CLICK, ->
         path = location.pathname + query
-        history.pushState(null, null, path)
         history.replaceState(null, null, path)
     # button -> query
     for i in [0..buttons.length-1]
