@@ -34,7 +34,9 @@ class @My100TalesUtilTab
     # function
     action = (button, query) ->
       $(button).on CLICK, ->
-        location.search = query
+        path = location.pathname + query
+        history.pushState(null, null, path)
+        history.replaceState(null, null, path)
     # button -> query
     for i in [0..buttons.length-1]
       action(buttons[i], queries[i])
