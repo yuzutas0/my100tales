@@ -3,12 +3,8 @@ class SearchConditionFactory
   # -----------------------------------------------------------------
   # Create
   # -----------------------------------------------------------------
-  def self.create(user, params, save_flag)
-    search_condition = SearchCondition.new
-    search_condition.user = user
-    search_condition.save_flag = save_flag
-    search_condition.name = params[:name] if search_condition.save_flag
-    search_condition.query_string = params[:query_string]
-    search_condition.save
+  def self.create(user, query_string, save_flag, name)
+    name = save_flag && name.present? ? name : ''
+    SearchCondition.create(user: user, query_string: query_string, save_flag: save_flag, name: name)
   end
 end
