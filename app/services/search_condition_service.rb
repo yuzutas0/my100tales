@@ -4,9 +4,13 @@ class SearchConditionService
   # Read
   # -----------------------------------------------------------------
   # called by TaleService#list
-  def self.request(user, query_string, save_flag, name)
-    # validation
+  def self.request(user, query_string, search_form)
+    # param
+    save_flag = search_form.save_flag
+    name = search_form.name
     present_list = SearchConditionRepository.select_by_user(user.id)
+
+    # validation
     return present_list if query_string.blank?
 
     # update or create
