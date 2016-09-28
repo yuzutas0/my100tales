@@ -38,7 +38,7 @@
 
       <div>
         <% tale.tale_tag_relationships.each do |relation| %>
-          <% tag = (@tags.select { |tag| tag.id == relation.tag_id })[0] %>
+          <% tag = (@tags.select { |tag| tag.id == relation.tag_id }).first %>
           <%= link_to "#{tag.name}", tales_path('tags':{'id':[tag.view_number]}), class: 'module__label' %>
         <% end %>
 
