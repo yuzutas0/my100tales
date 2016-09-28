@@ -10,8 +10,8 @@ class SearchForm
     @keyword = params[:keyword].html_safe if params[:keyword].present?
     @tags = valid_tags?(params[:tags]) ? convert_tags(params[:tags]) : []
     @sort = valid_sort?(params[:sort]) ? params[:sort].to_i : 0
-    @save = params[:save]
-    @name = params[:name]
+    @save = params[:save].is_a?(TrueClass)
+    @name = params[:name].html_safe if params[:name].present?
   end
 
   # -----------------------------------------------------------------
@@ -31,7 +31,7 @@ class SearchForm
   private
 
   def valid_tags?(tags)
-    tags.present? && tags[:id].present?
+    tags.present? && tags[:id].is_a?(Integer)
   end
 
   def convert_tags(tags)
@@ -40,6 +40,6 @@ class SearchForm
 
   def valid_sort?(sort)
     value_range = [*0..(self.class.sort_master.length - 1)]
-    sort.present? && value_range.include?(sort.to_i)
+    sort.is_a?(Integer) && value_range.include?(sort.to_i)
   end
 end
