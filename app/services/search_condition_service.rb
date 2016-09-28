@@ -23,7 +23,7 @@ class SearchConditionService
   class << self
     private
 
-    # logic for history (save_flag = false)
+    # logic for history (save_flag == false)
     def add_history(user, query_string, present_list)
       # get the records to be updated
       to_be_updated = (present_list.select { |item|
