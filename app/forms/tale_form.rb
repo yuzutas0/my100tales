@@ -7,7 +7,7 @@ class TaleForm
   end
 
   def form_to_object
-    @tags = @tags.split(',').map(&:html_safe?)
+    @tags = @tags.split(',').map(&:html_safe)
     self
   end
 end
