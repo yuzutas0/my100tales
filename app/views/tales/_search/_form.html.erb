@@ -2,6 +2,16 @@
   <%= form_tag tales_path, method: :get do %>
     <div class="module__form">
 
+      <div>
+        <!-- display search_conditions -->
+        <!-- saved -->
+        <% search_conditions.select(&:save_flag) do |search_condition| %>
+        <% end %>
+        <!-- history -->
+        <% search_conditions.reject(&:save_flag) do |search_condition| %>
+        <% end %>
+      </div>
+
       <div class="module__form__field">
         <p>Keyword</p>
         <%= text_field_tag 'keyword', queries.keyword, class: 'module__form__field__text', placeholder: 'Keyword' %>
