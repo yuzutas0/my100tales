@@ -1,8 +1,8 @@
 class CreateSearches < ActiveRecord::Migration
   def change
-    create_table :searches do |t|
+    create_table :search_conditions do |t|
       t.string :name
-      t.text :condition, null: false
+      t.text :query_string, null: false
       t.boolean :save_flag, default: false, null: false
       t.references :user, index: true, foreign_key: true, null: false
 

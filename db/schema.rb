@@ -12,16 +12,16 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20_160_925_081_554) do
-  create_table 'searches', force: :cascade do |t|
-    t.string   'name',       limit: 255
-    t.text     'condition',  limit: 65_535, null: false
+  create_table 'search_conditions', force: :cascade do |t|
+    t.string   'name',         limit: 255
+    t.text     'query_string', limit: 65_535, null: false
     t.boolean  'save_flag', default: false, null: false
     t.integer  'user_id', limit: 4, null: false
-    t.datetime 'created_at',                               null: false
-    t.datetime 'updated_at',                               null: false
+    t.datetime 'created_at',                                 null: false
+    t.datetime 'updated_at',                                 null: false
   end
 
-  add_index 'searches', ['user_id'], name: 'index_searches_on_user_id', using: :btree
+  add_index 'search_conditions', ['user_id'], name: 'index_search_conditions_on_user_id', using: :btree
 
   create_table 'sequels', force: :cascade do |t|
     t.text     'content',     limit: 65_535
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20_160_925_081_554) do
   add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
   add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
-  add_foreign_key 'searches', 'users'
+  add_foreign_key 'search_conditions', 'users'
   add_foreign_key 'sequels', 'tales'
   add_foreign_key 'tags', 'users'
   add_foreign_key 'tale_tag_relationships', 'tags'
