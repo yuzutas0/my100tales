@@ -6,10 +6,9 @@ class SearchConditionService
 
   # called by TaleService#list
   def foobar(user, params)
-    # if param exist
-    params[:query_string].present?
-
-    # get list
+    # get present list
+    present_list = SearchConditionRepository.select_by_user(user.id)
+    return present_list if params[:query_string].blank?
 
     # -> if query has been not already saved
     #   -> create new history
