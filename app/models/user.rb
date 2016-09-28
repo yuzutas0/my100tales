@@ -18,5 +18,5 @@ class User < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 1, maximum: 255 }
 end

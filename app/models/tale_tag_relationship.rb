@@ -10,6 +10,12 @@ class TaleTagRelationship < ActiveRecord::Base
   accepts_nested_attributes_for :tale
 
   # -----------------------------------------------------------------
+  # validation
+  # -----------------------------------------------------------------
+  validates :tale, presence: true
+  validates :tag, presence: true
+
+  # -----------------------------------------------------------------
   # elasticsearch
   # -----------------------------------------------------------------
   # include
