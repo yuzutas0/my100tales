@@ -4,10 +4,9 @@ class SearchConditionService
   # Read
   # -----------------------------------------------------------------
   # called by TaleService#list
-  def self.request(user, query_string, search_form)
+  def self.request(user, search_form)
     # param
-    save_flag = search_form.save_flag
-    name = search_form.name
+    save_flag, name, query_string = params_from_form(search_form)
     present_list = SearchConditionRepository.select_by_user(user.id)
 
     # validation
@@ -26,6 +25,14 @@ class SearchConditionService
   # -----------------------------------------------------------------
   class << self
     private
+
+    # get params value
+    def params_from_form(search_form)
+      save_flag = search_form.save_flag
+      name = search_form.name
+      query_string = search_form.query_string
+      [save_flag, name, query_string]
+    end
 
     # logic for history (save_flag == false)
     def add_history(user, query_string, present_list)
