@@ -16,8 +16,7 @@ class SearchConditionRepository
   # Update
   # -----------------------------------------------------------------
   def self.update_time(search_condition)
-    search_condition.updated_at = Time.now
-    search_condition.update
+    search_condition.update_columns(updated_at: Time.now)
   end
 
   # -----------------------------------------------------------------
@@ -32,12 +31,12 @@ class SearchConditionRepository
     query = <<-'SQL'.freeze
       DELETE
       FROM
-        search_conditions S
+        search_conditions
       WHERE
-        S.user_id = ?
-        AND S.save_flag = ?
+        user_id = ?
+        AND save_flag = ?
       ORDER BY
-        S.updated_at ASC
+        updated_at ASC
       LIMIT
         ?
     SQL

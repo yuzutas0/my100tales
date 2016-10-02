@@ -14,5 +14,6 @@
     @My100TalesUtilModal.createModal(VUE_SEARCH_DOM)
 
     # disabled
+    $(VUE_SEARCH_CONDITION_NAME_DOM).prop('disabled', !($(VUE_SEARCH_CONDITION_SAVE_DOM).is(':checked')))
     $(VUE_SEARCH_CONDITION_SAVE_DOM).on 'click', ->
       $(VUE_SEARCH_CONDITION_NAME_DOM).prop('disabled', !($(VUE_SEARCH_CONDITION_SAVE_DOM).is(':checked')))

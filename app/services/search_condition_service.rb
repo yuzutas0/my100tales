@@ -28,7 +28,7 @@ class SearchConditionService
 
     # get params value
     def params_from_form(search_form)
-      save_flag = search_form.save_flag
+      save_flag = search_form.save
       name = search_form.name
       query_string = search_form.query_string
       [save_flag, name, query_string]
