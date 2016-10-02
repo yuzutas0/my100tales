@@ -1,15 +1,14 @@
-<div>
+<div class="layout__tale__search__conditions__item">
   <p><%= topic_name.capitalize %></p>
   <% if conditions.present? %>
     <ul>
       <% conditions.each do |condition| %>
-        <% string = condition.name.present? ? condition.name : condition.query_string %>
-        <% display = string.length > 20 ? string[0..20] + '...' : string %>
+        <% display = condition.name.present? ? condition.name : '?' + condition.query_string %>
         <li><a href="<%= tales_path + '?' + condition.query_string %>"><%= display %></a></li>
       <% end %>
     </ul>
   <% else %>
-  <p><%= '--  ' + Constants::SEARCH_CONDITION_NOT_EXISTS + ' ' + topic_name + '. --' %></p>
+  <p><%= Constants::SEARCH_CONDITION_NOT_EXISTS + ' ' + topic_name + '.' %></p>
   <% end %>
+  <hr class="layout__tale__search__conditions__item__end">
 </div>
-<hr>

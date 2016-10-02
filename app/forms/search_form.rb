@@ -53,7 +53,6 @@ class SearchForm
 
   def convert_query_string
     query = ''
-    query = add_query(query, 'page', @page.to_s) unless @page == DEFAULT_PAGE
     query = add_query(query, 'keyword', @keyword) unless @keyword == DEFAULT_KEYWORD
     @tags.each { |tag| query = add_query(query, 'tags[id][]', tag.to_s) } unless @tags == DEFAULT_TAGS
     query = add_query(query, 'sort', @sort.to_s) unless @sort == DEFAULT_SORT

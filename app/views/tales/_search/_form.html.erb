@@ -69,10 +69,11 @@
     </div>
   <% end %>
 
-  <div id="script__tale__search__condition__tab__content" class="hidden">
+  <div id="script__tale__search__condition__tab__content" class="layout__tale__search__conditions hidden">
     <% saved_conditions = search_conditions.select(&:save_flag) %>
     <%= render 'tales/_search/conditions', conditions: saved_conditions, topic_name: 'saved' %>
     <% history_conditions = search_conditions.reject(&:save_flag) %>
     <%= render 'tales/_search/conditions', conditions: history_conditions, topic_name: 'history' %>
+    <hr class="layout__tale__search__conditions__end">
   </div>
 </div>
