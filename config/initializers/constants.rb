@@ -22,4 +22,5 @@ module Constants
   # message
   SEQUEL_NOT_EXISTS = 'There is no sequel.'.freeze
   TAG_NOT_EXISTS = 'There is no tag.'.freeze
+  SEARCH_CONDITION_NOT_EXISTS = 'There is no search'.freeze
 end

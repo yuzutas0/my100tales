@@ -1,38 +1,12 @@
 <div class="layout__tale__search">
-  <%= form_tag tales_path, method: :get do %>
-    <div class="module__form">
 
-      <!-- display search_conditions -->
-      <!-- saved -->
-      <% saved_conditions = search_conditions.select(&:save_flag) %>
-      <% if saved_conditions.present? %>
-      <div>
-        <p>Saved</p>
-        <ul>
-          <% saved_conditions.each do |search_condition| %>
-            <% string = search_condition.name %>
-            <% display_name = string.length > 20 ? string[0..20] + '...' : string %>
-          <li><a href="mypage?<%= search_condition.query_string %>"><%= display_name %></a></li>
-          <% end %>
-        </ul>
-      </div>
-      <hr>
-      <% end %>
-      <!-- history -->
-      <% history_conditions = search_conditions.reject(&:save_flag) %>
-      <% if history_conditions.present? %>
-      <div>
-        <p>History</p>
-        <ul>
-          <% history_conditions.each do |search_condition| %>
-            <% string = search_condition.query_string %>
-            <% display_query_string = string.length > 20 ? string[0..20] + '...' : string %>
-            <li><a href="mypage?<%= search_condition.query_string %>"><%= display_query_string %></a></li>
-          <% end %>
-        </ul>
-      </div>
-      <hr>
-      <% end %>
+  <div class="module__tab">
+    <li class="active"><a id="script__tale__search__input__tab__switch">Input</a></li>
+    <li><a id="script__tale__search__condition__tab__switch">Condition</a></li>
+  </div>
+
+  <%= form_tag tales_path, method: :get do %>
+    <div id="script__tale__search__input__tab__content" class="module__form">
 
       <div class="module__form__field">
         <p>Keyword</p>
@@ -94,4 +68,11 @@
       </div>
     </div>
   <% end %>
+
+  <div id="script__tale__search__condition__tab__content" class="hidden">
+    <% saved_conditions = search_conditions.select(&:save_flag) %>
+    <%= render 'tales/_search/conditions', conditions: saved_conditions, topic_name: 'saved' %>
+    <% history_conditions = search_conditions.reject(&:save_flag) %>
+    <%= render 'tales/_search/conditions', conditions: history_conditions, topic_name: 'history' %>
+  </div>
 </div>
