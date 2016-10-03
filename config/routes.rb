@@ -30,10 +30,10 @@ Rails.application.routes.draw do
   delete '/tags/:view_number', to: 'tags#destroy'
 
   # search condition
-  get    '/searches',              to: 'search_conditions#index',  as: 'searches'
-  patch  '/searches/:view_number', to: 'search_conditions#update', as: 'search'
-  put    '/searches/:view_number', to: 'search_conditions#update'
-  delete '/searches/:view_number', to: 'search_conditions#update'
+  get    '/searches',                       to: 'search_conditions#index',  as: 'search_conditions'
+  patch  '/search_conditions/:view_number', to: 'search_conditions#update', as: 'search_condition'
+  put    '/search_conditions/:view_number', to: 'search_conditions#update'
+  delete '/search_conditions/:view_number', to: 'search_conditions#update'
 
   # no route error
   get    '*all', to: 'application#routing_error'

@@ -6,15 +6,15 @@
   <hr>
 
   <div class="module__list">
-    <% @search_conditions.each_with_index do |search_condition, index| %>
+    <% @search_conditions.each_with_index do |condition, index| %>
       <div id="script__conditions__<%= index %>" class="module__list__item">
-        <p class="module__label"><%= search_condition.name %></p>
+        <p class="module__label"><%= condition.name %></p>
         <p class="module__list__item__content">
           <a href="<%= tales_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a>
           |
           <a v-on:click="showModal">Edit</a>
           |
-          <%= link_to 'Delete', search_condition,
+          <%= link_to 'Delete', condition,
                       method: :delete,
                       data: { confirm: 'Are you sure?' },
                       title: 'Delete',
@@ -27,7 +27,7 @@
             <div class="module__modal__background" v-on:click="closeModal"></div>
             <div class="module__modal">
               <div class="module__modal__inner">
-                <%= form_for search_condition, html: { class: 'module__form' } do |f| %>
+                <%= form_for condition, html: { class: 'module__form' } do |f| %>
                   <div class="module__form__field">
                     <%= f.text_area :name, class: 'module__form__field__text module__form__field__text--fixed' %>
                   </div>

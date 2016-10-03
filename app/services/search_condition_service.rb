@@ -1,13 +1,13 @@
 # search_condition_service
 class SearchConditionService
   # -----------------------------------------------------------------
-  # Read
+  # Create, Read, Update, Delete
   # -----------------------------------------------------------------
   # called by TaleService#list
   def self.request(user, search_form)
     # param
     save_flag, name, query_string = params_from_form(search_form)
-    present_list = SearchConditionRepository.select_by_user(user.id)
+    present_list = SearchConditionRepository.list(user.id)
 
     # validation
     return present_list if query_string.blank?
@@ -17,7 +17,18 @@ class SearchConditionService
     add_saved(user, query_string, save_flag, name, present_list)
 
     # return all records
-    SearchConditionRepository.select_by_user(user.id)
+    SearchConditionRepository.list(user.id)
+  end
+
+  # -----------------------------------------------------------------
+  # Read
+  # -----------------------------------------------------------------
+  def self.list(user_id)
+    SearchConditionRepository.list(user_id)
+  end
+
+  def self.detail(user_id, view_number)
+    SearchConditionRepository.detail(user_id, view_number)
   end
 
   # -----------------------------------------------------------------
