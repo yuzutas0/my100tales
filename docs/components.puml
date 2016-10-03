@@ -19,10 +19,11 @@ cloud Public {
 }
 
 node "CentOS (production) / MacOSX (development)" {
-  Public -- [nginx/unicorn]
+  Public -- [nginx]
+  nginx -- [unicorn]
 
   package "View" {
-    [view] -> [nginx/unicorn]
+    [view] -> unicorn
 
     package "Style" {
       view -> Style
@@ -38,7 +39,7 @@ node "CentOS (production) / MacOSX (development)" {
   }
 
   package "Controller" {
-    [nginx/unicorn] --> [controller]
+    unicorn --> [controller]
     controller --> view
     controller <|.. [handler]
 
