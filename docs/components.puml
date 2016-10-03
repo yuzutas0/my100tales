@@ -18,63 +18,71 @@ cloud Public {
   browser -- Public
 }
 
-package "View" {
-  Public --> [view]
+node "CentOS (production) / MacOSX (development)" {
+  Public -- [nginx/unicorn]
 
-  package "Style" {
-    view -> Style
-    [layout] <|.. [module]
-    layout <|.. [base]
-    module <|.. base
+  package "View" {
+    [view] -> [nginx/unicorn]
+
+    package "Style" {
+      view -> Style
+      [layout] <|.. [module]
+      layout <|.. [base]
+      module <|.. base
+    }
+
+    package "Script" {
+      view -> Script
+      [main] <|.. [util]
+    }
   }
 
-  package "Script" {
-    view -> Script
-    [main] <|.. [util]
-  }
-}
+  package "Controller" {
+    [nginx/unicorn] --> [controller]
+    controller --> view
+    controller <|.. [handler]
 
-package "Controller" {
-  view --> [controller]
-  controller <|.. [handler]
-
-  package "ViewObject" {
-    view --> [helper]
-    controller --> [decorator]
-  }
-}
-
-package "Model" {
-
-  package "DTO" {
-    [form]
+    package "ViewObject" {
+      view --> [helper]
+      controller --> [decorator]
+    }
   }
 
-  package "BusinessLogic" {
-    controller --> [service]
-    service --> [repository]
-    service --> [factory]
+  package "Model" {
+
+    package "DTO" {
+      [form]
+    }
+
+    package "BusinessLogic" {
+      controller --> [service]
+      service --> [repository]
+      service --> [factory]
+    }
+
+    package "DAO" {
+      [model]
+      model <|.. [searchable]
+      model <|.. [finder]
+      factory --> model
+      repository --> model
+    }
   }
 
-  package "DAO" {
-    [model]
-    model <|.. [searchable]
-    model <|.. [finder]
-    factory --> model
-    repository --> model
+  node "Docker (only development environment)" {
+
+    database "Database" {
+      model --> [mariadb]
+    }
+
+    database "KVS" {
+      model --> [redis]
+    }
+
+    database "SearchEngine" {
+      model --> [elasticsearch]
+    }
   }
-}
-
-database "Database" {
-  model --> [mariadb]
-}
-
-database "KVS" {
-  model --> [redis]
-}
-
-database "SearchEngine" {
-  model --> [elasticsearch]
 }
 
 @enduml
