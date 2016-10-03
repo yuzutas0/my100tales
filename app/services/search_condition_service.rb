@@ -37,9 +37,9 @@ class SearchConditionService
     # logic for history (save_flag == false)
     def add_history(user, query_string, present_list)
       # get the records to be updated
-      to_be_updated = (present_list.select { |item|
+      to_be_updated = (present_list.select do |item|
         !item.save_flag && item.query_string == query_string
-      }).first
+      end).first
 
       # update or create
       if to_be_updated.present?

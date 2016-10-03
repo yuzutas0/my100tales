@@ -4,7 +4,7 @@ class SearchForm
 
   DEFAULT_PAGE = 1
   DEFAULT_KEYWORD = nil
-  DEFAULT_TAGS = []
+  DEFAULT_TAGS = [].freeze
   DEFAULT_SORT = 0
 
   # -----------------------------------------------------------------
@@ -60,7 +60,7 @@ class SearchForm
   end
 
   def add_query(query, key, value)
-    query = query + '&' if query.present?
+    query += '&' if query.present?
     query + key + '=' + value
   end
 end
