@@ -18,7 +18,9 @@ module Constants
   EDIT_TALE_PATH_NAME = 'EditTale'.freeze
 
   TAG_INDEX_PATH_NAME = 'TagList'.freeze
-  SEARCH_CONDITION_INDEX_PATH_NAME = 'SearchConditionList'.freeze
+
+  CONDITIONS_INDEX_PATH_NAME = 'SearchConditionList'.freeze
+  EDIT_CONDITIONS_PATH_NAME = 'Edit List'.freeze
 
   # message
   SEQUEL_NOT_EXISTS = 'There is no sequel.'.freeze

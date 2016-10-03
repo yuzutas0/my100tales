@@ -1,10 +1,12 @@
+<h2><%= topic_name.capitalize %></h2>
 <div class="module__list">
-  <% search_conditions.each_with_index do |condition, index| %>
+  <% conditions.each_with_index do |condition, index| %>
     <div id="script__conditions__<%= index %>" class="module__list__item">
-      <p class="module__label"><%= condition.name %></p>
+      <% if condition.name.present? %>
+        <p><%= condition.name %></p>
+      <% end %>
+      <p><a href="<%= tales_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a></p>
       <p class="module__list__item__content">
-        <a href="<%= tales_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a>
-        |
         <a v-on:click="showModal">Edit</a>
         |
         <%= link_to 'Delete', condition,

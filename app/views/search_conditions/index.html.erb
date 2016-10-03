@@ -1,8 +1,11 @@
-<% @page_title = Constants::SEARCH_CONDITION_INDEX_PATH_NAME %>
+<% @page_title = Constants::CONDITIONS_INDEX_PATH_NAME %>
 <div class="layout__conditions__index">
   <p class="layout__conditions__index__header">
-    <%= render 'layouts/breadcrumb_tale_2', third_page: Constants::SEARCH_CONDITION_INDEX_PATH_NAME %>
+    <%= render 'layouts/breadcrumb_tale_2', third_page: Constants::CONDITIONS_INDEX_PATH_NAME %>
   </p>
   <hr>
-  <%= render 'search_conditions/list', search_conditions: @search_conditions %>
+  <% saved_conditions = @search_conditions.select(&:save_flag) %>
+  <%= render 'search_conditions/list', conditions: saved_conditions, topic_name: 'saved' %>
+  <% history_conditions = @search_conditions.reject(&:save_flag) %>
+  <%= render 'search_conditions/list', conditions: history_conditions, topic_name: 'history' %>
 </div>

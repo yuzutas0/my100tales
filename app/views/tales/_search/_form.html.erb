@@ -70,7 +70,8 @@
   <% end %>
 
   <div id="script__tale__search__condition__tab__content" class="hidden">
-    <%= link_to search_conditions_path do %><%= fa_icon 'list' %> Edit List.<% end %>
+    <%= fa_icon 'list' %>
+    <%= link_to Constants::EDIT_CONDITIONS_PATH_NAME, search_conditions_path %>
     <hr>
     <div class="layout__tale__search__conditions">
       <% saved_conditions = search_conditions.select(&:save_flag) %>
