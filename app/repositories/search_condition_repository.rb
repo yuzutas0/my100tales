@@ -1,11 +1,6 @@
 # search_condition_repository
 class SearchConditionRepository
   # -----------------------------------------------------------------
-  # Const
-  # -----------------------------------------------------------------
-  RECORD_SIZE = 10
-
-  # -----------------------------------------------------------------
   # Read
   # -----------------------------------------------------------------
   def self.list(user_id)
@@ -29,7 +24,7 @@ class SearchConditionRepository
   # the records count = 5 after this query
   def self.delete_to_size(user_id, save_flag, present_size)
     # validate
-    delete_size = present_size - RECORD_SIZE
+    delete_size = present_size - Constants::SEARCH_CONDITION_RECORD_SIZE
     return unless delete_size > 0
     # query
     query = <<-'SQL'.freeze

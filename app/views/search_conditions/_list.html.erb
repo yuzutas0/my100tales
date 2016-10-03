@@ -1,4 +1,8 @@
-<h2><%= topic_name.capitalize %></h2>
+<p>
+  <%= topic_name.capitalize %>
+  (<%= conditions.length %>/<%= Constants::SEARCH_CONDITION_RECORD_SIZE %>)
+</p>
+
 <div class="module__list">
   <% conditions.each_with_index do |condition, index| %>
     <div id="script__conditions__<%= index %>" class="module__list__item">

@@ -1,0 +1,16 @@
+// tags index
+
+// import
+@import "base/const";
+@import "base/util";
+@import "module/list";
+
+// main
+.layout__conditions__index {
+  @extend .container;
+  @include util__layout;
+
+  .layout__conditions__index__header {
+    margin-top: $margin_size_xx_small; // => same as tale view header
+  }
+}
