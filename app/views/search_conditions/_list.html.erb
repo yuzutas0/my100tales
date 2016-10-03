@@ -5,7 +5,7 @@
 
 <div class="module__list">
   <% conditions.each_with_index do |condition, index| %>
-    <div id="script__conditions__<%= index %>" class="module__list__item">
+    <div id="script__condition__<%= index %>" class="module__list__item">
       <% if condition.name.present? %>
         <p><%= condition.name %></p>
       <% end %>
@@ -30,7 +30,12 @@
             <div class="module__modal__inner">
               <%= form_for condition, html: { class: 'module__form' } do |f| %>
                 <div class="module__form__field">
+                  <%= f.label 'Name' %>
                   <%= f.text_area :name, class: 'module__form__field__text module__form__field__text--fixed' %>
+                </div>
+                <div class="module__form__field">
+                  <%= f.label 'Query' %>
+                  <%= f.text_area :query_string, class: 'module__form__field__text module__form__field__text--fixed' %>
                 </div>
                 <%= f.hidden_field :view_number %>
                 <%= f.submit 'Update', class: 'module__button module__button--small' %>

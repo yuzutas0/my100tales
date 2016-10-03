@@ -25,7 +25,7 @@ class SearchConditionsController < ApplicationController
     else
       flash[:alert] = SearchConditionDecorator.flash(@search_condition, flash)
     end
-    redirect_to searches_url
+    redirect_to search_conditions_url
   end
 
   # -----------------------------------------------------------------
@@ -38,7 +38,7 @@ class SearchConditionsController < ApplicationController
     else
       flash[:alert] = SearchConditionDecorator.flash(@search_condition, flash)
     end
-    redirect_to searches_url
+    redirect_to search_conditions_url
   end
 
   # -----------------------------------------------------------------
@@ -54,6 +54,6 @@ class SearchConditionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def search_condition_params
-    params.require(:search_condition).permit(:name)
+    params.require(:search_condition).permit(:name, :query_string, :view_number)
   end
 end
