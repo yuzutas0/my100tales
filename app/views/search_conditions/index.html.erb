@@ -4,41 +4,5 @@
     <%= render 'layouts/breadcrumb_tale_2', third_page: Constants::SEARCH_CONDITION_INDEX_PATH_NAME %>
   </p>
   <hr>
-
-  <div class="module__list">
-    <% @search_conditions.each_with_index do |condition, index| %>
-      <div id="script__conditions__<%= index %>" class="module__list__item">
-        <p class="module__label"><%= condition.name %></p>
-        <p class="module__list__item__content">
-          <a href="<%= tales_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a>
-          |
-          <a v-on:click="showModal">Edit</a>
-          |
-          <%= link_to 'Delete', condition,
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' },
-                      title: 'Delete',
-                      class: 'layout__conditions__index__item__delete'
-          %>
-        </p>
-
-        <div v-cloak>
-          <div class="module__modal__outer" v-show="display">
-            <div class="module__modal__background" v-on:click="closeModal"></div>
-            <div class="module__modal">
-              <div class="module__modal__inner">
-                <%= form_for condition, html: { class: 'module__form' } do |f| %>
-                  <div class="module__form__field">
-                    <%= f.text_area :name, class: 'module__form__field__text module__form__field__text--fixed' %>
-                  </div>
-                  <%= f.hidden_field :view_number %>
-                  <%= f.submit 'Update', class: 'module__button module__button--small' %>
-              <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'search_conditions/list', search_conditions: @search_conditions %>
 </div>

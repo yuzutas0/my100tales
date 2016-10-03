@@ -69,11 +69,15 @@
     </div>
   <% end %>
 
-  <div id="script__tale__search__condition__tab__content" class="layout__tale__search__conditions hidden">
-    <% saved_conditions = search_conditions.select(&:save_flag) %>
-    <%= render 'tales/_search/conditions', conditions: saved_conditions, topic_name: 'saved' %>
-    <% history_conditions = search_conditions.reject(&:save_flag) %>
-    <%= render 'tales/_search/conditions', conditions: history_conditions, topic_name: 'history' %>
+  <div id="script__tale__search__condition__tab__content" class="hidden">
+    <%= link_to search_conditions_path do %><%= fa_icon 'list' %> Edit List.<% end %>
+    <hr>
+    <div class="layout__tale__search__conditions">
+      <% saved_conditions = search_conditions.select(&:save_flag) %>
+      <%= render 'tales/_search/conditions', conditions: saved_conditions, topic_name: 'saved' %>
+      <% history_conditions = search_conditions.reject(&:save_flag) %>
+      <%= render 'tales/_search/conditions', conditions: history_conditions, topic_name: 'history' %>
+    </div>
     <hr class="layout__tale__search__conditions__end">
   </div>
 </div>
