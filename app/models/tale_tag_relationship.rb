@@ -12,6 +12,7 @@ class TaleTagRelationship < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
+  validates :tale_id, presence: true, uniqueness: { scope: [:tag_id] }
   validates :tale, presence: true
   validates :tag, presence: true
 

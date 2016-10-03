@@ -23,9 +23,10 @@ class Tale < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :user, presence: true
   validates :title, presence: true, length: { minimum: 1, maximum: 255 }
   validates :content, presence: true, length: { minimum: 1, maximum: 15_000 }
+  validates :view_number, presence: true, uniqueness: { scope: [:user_id] }
+  validates :user, presence: true
 
   # -----------------------------------------------------------------
   # elasticsearch

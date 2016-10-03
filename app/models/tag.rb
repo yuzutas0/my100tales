@@ -22,6 +22,7 @@ class Tag < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :user, presence: true
   validates :name, presence: true, length: { minimum: 1, maximum: 100 }
+  validates :view_number, presence: true, uniqueness: { scope: [:user_id] }
+  validates :user, presence: true
 end

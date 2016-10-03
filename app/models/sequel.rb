@@ -17,6 +17,7 @@ class Sequel < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :tale, presence: true
   validates :content, presence: true, length: { minimum: 1, maximum: 15_000 }
+  validates :view_number, presence: true, uniqueness: { scope: [:tale_id] }
+  validates :tale, presence: true
 end

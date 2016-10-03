@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   # -----------------------------------------------------------------
   # relation
   # -----------------------------------------------------------------
+  has_many :search_conditions, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_many :tales, dependent: :destroy
 
   # -----------------------------------------------------------------
