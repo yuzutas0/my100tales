@@ -1,0 +1,44 @@
+                  Prefix Verb   URI Pattern                               Controller#Action
+                    root GET    /                                         home#index
+              home_index GET    /home/index(.:format)                     home#index
+        new_user_session GET    /users/login(.:format)                    devise/sessions#new
+            user_session POST   /users/login(.:format)                    devise/sessions#create
+    destroy_user_session DELETE /users/logout(.:format)                   devise/sessions#destroy
+           user_password POST   /users/password(.:format)                 devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)             devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format)            devise/passwords#edit
+                         PATCH  /users/password(.:format)                 devise/passwords#update
+                         PUT    /users/password(.:format)                 devise/passwords#update
+cancel_user_registration GET    /users/cancel(.:format)                   devise/registrations#cancel
+       user_registration POST   /users(.:format)                          devise/registrations#create
+   new_user_registration GET    /users/signup(.:format)                   devise/registrations#new
+  edit_user_registration GET    /users/edit(.:format)                     devise/registrations#edit
+                         PATCH  /users(.:format)                          devise/registrations#update
+                         PUT    /users(.:format)                          devise/registrations#update
+                         DELETE /users(.:format)                          devise/registrations#destroy
+                   tales GET    /mypage(.:format)                         tales#index
+             create_tale POST   /tales(.:format)                          tales#create
+                new_tale GET    /tales/new(.:format)                      tales#new
+                         GET    /tales(.:format)                          tales#new
+               edit_tale GET    /tales/:view_number/edit(.:format)        tales#edit
+                    tale GET    /tales/:view_number(.:format)             tales#show
+             update_tale PATCH  /tales/:view_number(.:format)             tales#update
+                         PUT    /tales/:view_number(.:format)             tales#update
+                         DELETE /tales/:view_number(.:format)             tales#destroy
+           create_sequel POST   /sequels(.:format)                        sequels#create
+           update_sequel PATCH  /sequels(.:format)                        sequels#update
+                 sequels PUT    /sequels(.:format)                        sequels#update
+                         DELETE /sequels(.:format)                        sequels#destroy
+                    tags GET    /tags(.:format)                           tags#index
+                     tag PATCH  /tags/:view_number(.:format)              tags#update
+                         PUT    /tags/:view_number(.:format)              tags#update
+                         DELETE /tags/:view_number(.:format)              tags#destroy
+       search_conditions GET    /searches(.:format)                       search_conditions#index
+        search_condition PATCH  /search_conditions/:view_number(.:format) search_conditions#update
+                         PUT    /search_conditions/:view_number(.:format) search_conditions#update
+                         DELETE /search_conditions/:view_number(.:format) search_conditions#update
+                         GET    /*all(.:format)                           application#routing_error
+                         POST   /*all(.:format)                           application#routing_error
+                         PATCH  /*all(.:format)                           application#routing_error
+                         PUT    /*all(.:format)                           application#routing_error
+                         DELETE /*all(.:format)                           application#routing_error

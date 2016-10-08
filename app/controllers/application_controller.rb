@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   # -----------------------------------------------------------------
+  # locale
+  # -----------------------------------------------------------------
+  before_filter :set_locale
+
+  # -----------------------------------------------------------------
   # devise
   # -----------------------------------------------------------------
   # Prevent CSRF attacks by raising an exception.
@@ -32,6 +37,22 @@ class ApplicationController < ActionController::Base
   # -----------------------------------------------------------------
   protected
 
+  # -----------------------------------------------------------------
+  # for locale
+  # -----------------------------------------------------------------
+  # set information
+  def default_url_options(options={})
+    { locale: I18n.locale }
+  end
+
+  # set request parameter
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  # -----------------------------------------------------------------
+  # for devise
+  # -----------------------------------------------------------------
   # params for Devise
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
