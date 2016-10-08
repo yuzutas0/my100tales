@@ -26,8 +26,8 @@
             <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
         <li>
-          <%= link_to 'English', url_for(locale: 'en', only_path: false) unless I18n.locale.to_s == 'en' %>
-          <%= link_to 'Japanese', url_for(locale: 'ja', only_path: false) unless I18n.locale.to_s == 'ja' %>
+          <%= link_to 'English', url_for(locale: 'en', only_path: false) unless I18n.locale == :en %>
+          <%= link_to 'Japanese', url_for(locale: 'ja', only_path: false) unless I18n.locale == :ja %>
         </li>
       </ul>
     </div>
