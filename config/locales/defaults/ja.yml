@@ -19,34 +19,28 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+ja:
+  hello: "こんにちは,世界"
   views:
     path:
       name:
-        home: 'Top'
-        login: 'LogIn'
-        signup: 'SignUp'
-        unlock: 'Unlock'
-        account: 'Account'
-        password: 'Password'
-        tags:  "TagList"
+        home: 'トップ'
+        login: 'ログイン'
+        signup: '登録'
+        unlock: 'ロック解除'
+        account: 'アカウント'
+        password: 'パスワード'
+        tags:  "タグ一覧"
         conditions:
-          index: 'SearchConditionList'
-          edit: 'Edit List'
-        tales: 'MyPage'
+          index: '検索条件一覧'
+          edit: '編集'
+        tales: 'マイページ'
         tale:
-          new: 'NewTale'
-          show: 'YourTale'
-          edit: 'EditTale'
+          new: '新規投稿'
+          show: '詳細'
+          edit: '編集'
     message:
       blank:
-        sequel: 'There is no sequel.'
-        tag: 'There is no tag.'
-        conditions: 'There is no search'
-    pagination:
-      first: "&laquo;"
-      last: "&raquo;"
-      previous: "&lsaquo;"
-      next: "&rsaquo;"
-      truncate: "..."
+        sequel: '投稿がありません.'
+        tag: '登録がありません.'
+        conditions: '検索条件がありません.'
