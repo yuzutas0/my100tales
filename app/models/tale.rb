@@ -37,4 +37,9 @@ class Tale < ActiveRecord::Base
   # connect
   index_name TaleSearchable::INDEX_NAME
   __elasticsearch__.client = TaleSearchable::CLIENT
+
+  # -----------------------------------------------------------------
+  # pagination
+  # -----------------------------------------------------------------
+  paginates_per 10
 end
