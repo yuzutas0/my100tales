@@ -6,7 +6,7 @@
       <% tale.tags.each do |label| %>
         <%= link_to "#{label.name}", tales_path('tags':{'id':[label.view_number]}), class: 'module__label' %>
       <% end %>
-      <%= link_to Constants::EDIT_TALE_PATH_NAME, edit_tale_path(tale) if tale.tags.blank? %>
+      <%= link_to t('views.path.name.tale.edit'), edit_tale_path(tale) if tale.tags.blank? %>
     </div>
   </div>
 

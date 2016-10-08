@@ -1,6 +1,6 @@
-<% @page_title = Constants::NEW_TALE_PATH_NAME %>
+<% @page_title = t('views.path.name.tale.new') %>
 <div class="layout__tale__new">
-  <p><%= render 'layouts/breadcrumb_tale_2', third_page: Constants::NEW_TALE_PATH_NAME %></p>
+  <p><%= render 'layouts/breadcrumb_tale_2', third_page: @page_title %></p>
 
   <%= form_for(@tale, url: create_tale_path) do |f| %>
     <%= render 'form', f: f, tags: @tags %>
