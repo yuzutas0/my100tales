@@ -180,3 +180,4 @@ tmp/*
 db/data.yml
 public/images/emoji/**/*.png
 *.iml
+railways.cache
