@@ -50,3 +50,12 @@ ja:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "..."
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name}は見つかりません"
+          one: "<b>1</b> 件の%{entry_name}を表示"
+          other: "全 <b>%{count}</b> 件の%{entry_name}を表示"
+      more_pages:
+        display_entries: "%{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> 件目を表示(全 <b>%{total}</b> 件)"
