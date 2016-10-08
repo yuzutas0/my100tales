@@ -3,9 +3,18 @@
 <head>
   <title><%= page_title %></title>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta content="utf-8" name="charset">
+  <!-- assets -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- locales -->
+  <link rel="alternate" href="<%= url_for(locale: 'en', only_path: false) %>" hreflang="en">
+  <link rel="alternate" href="<%= url_for(locale: 'ja', only_path: false) %>" hreflang="ja">
+  <% case I18n.locale %>
+  <% when :ja then %><meta http-equiv="Content-Language" content="ja">
+  <% else %><meta http-equiv="Content-Language" content="en">
+  <% end %>
 </head>
 <body>
 
