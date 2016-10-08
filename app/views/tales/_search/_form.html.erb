@@ -16,7 +16,7 @@
 
       <p>Tag</p>
       <div class="module__form__checkbox">
-        <%= Constants::TAG_NOT_EXISTS if tags.blank? %>
+        <%= t('views.message.blank.tag') if tags.blank? %>
         <% tags.each do |tag| %>
           <% next unless tags_attached[tag.view_number] > 0 %>
           <%= check_box_tag 'tags[id][]',

@@ -39,6 +39,11 @@ en:
           new: 'NewTale'
           show: 'YourTale'
           edit: 'EditTale'
+    message:
+      blank:
+        sequel: 'There is no sequel.'
+        tag: 'There is no tag.'
+        conditions: 'There is no search'
     pagination:
       first: "&laquo;"
       last: "&raquo;"

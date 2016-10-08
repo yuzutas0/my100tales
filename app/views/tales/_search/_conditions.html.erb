@@ -8,7 +8,7 @@
       <% end %>
     </ul>
   <% else %>
-  <p><%= Constants::SEARCH_CONDITION_NOT_EXISTS + ' ' + topic_name.downcase + '.' %></p>
+  <p><%= t('views.message.blank.conditions') + ' ' + topic_name.downcase + '.' %></p>
   <% end %>
   <hr class="layout__tale__search__conditions__item__end">
 </div>
