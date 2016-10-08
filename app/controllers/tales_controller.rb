@@ -24,6 +24,7 @@ class TalesController < ApplicationController
       redirect_to @tale, notice: 'Tale was successfully created.'
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
+      ready_form(@tale, current_user.id)
       render :new
     end
   end
@@ -60,6 +61,7 @@ class TalesController < ApplicationController
       redirect_to @tale, notice: 'Tale was successfully updated.'
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
+      ready_form(@tale, current_user.id)
       render :edit
     end
   end
