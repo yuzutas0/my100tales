@@ -1,7 +1,7 @@
-<% @page_title = Constants::CONDITIONS_INDEX_PATH_NAME %>
+<% @page_title = t('views.path.name.conditions.index') %>
 <div class="layout__conditions__index">
   <p class="layout__conditions__index__header">
-    <%= render 'layouts/breadcrumb_tale_2', third_page: Constants::CONDITIONS_INDEX_PATH_NAME %>
+    <%= render 'layouts/breadcrumb_tale_2', third_page: @page_title %>
   </p>
   <hr>
   <% saved_conditions = @search_conditions.select(&:save_flag) %>

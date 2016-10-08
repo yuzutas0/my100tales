@@ -31,6 +31,9 @@ en:
         account: 'Account'
         password: 'Password'
         tags:  "TagList"
+        conditions:
+          index: 'SearchConditionList'
+          edit: 'Edit List'
         tales: 'MyPage'
         tale:
           new: 'NewTale'
