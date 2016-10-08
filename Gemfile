@@ -47,6 +47,7 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
 
 group :development do
   # Performance
+  gem 'activerecord-cause' # tell caller_location
   gem 'bullet' # validate N+1 query
   gem 'spring' # preload application
 
