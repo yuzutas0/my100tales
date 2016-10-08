@@ -42,9 +42,8 @@ gem 'vuejs-rails'
 # View Performance
 gem 'turbolinks'
 
-group :development, :test do
-  gem 'byebug'
-end
+# View Locale
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
 
 group :development do
   # Performance
@@ -54,6 +53,7 @@ group :development do
   # Debug
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
+  gem 'byebug'
 
   # Data
   gem 'yaml_db'
