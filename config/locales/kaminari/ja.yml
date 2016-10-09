@@ -11,7 +11,7 @@ ja:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "%{entry_name}は見つかりません"
+          zero: "%{entry_name}は見つけられませんでした"
           one: "<b>1</b> 件の%{entry_name}を表示"
           other: "全 <b>%{count}</b> 件の%{entry_name}を表示"
       more_pages:

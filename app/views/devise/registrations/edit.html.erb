@@ -21,6 +21,11 @@
     </div>
 
     <div class="module__form__field">
+      <%= f.label :timezone %><br />
+      <%= f.select :timezone, TZInfo::Timezone.all_identifiers, {}, class: 'module__form__field__text' %>
+    </div>
+
+    <div class="module__form__field">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>

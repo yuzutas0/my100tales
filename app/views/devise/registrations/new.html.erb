@@ -3,6 +3,9 @@
   <h2><%= @page_title %></h2>
   <hr>
 
+  <% # logic to override devise %>
+  <% resource.timezone = default_timezone %>
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'module__form' }) do |f| %>
     <%= devise_error_messages! %>
 
@@ -14,6 +17,11 @@
     <div class="module__form__field">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true, class: 'module__form__field__text' %>
+    </div>
+
+    <div class="module__form__field">
+      <%= f.label :timezone %><br />
+      <%= f.select :timezone, TZInfo::Timezone.all_identifiers, {}, class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
