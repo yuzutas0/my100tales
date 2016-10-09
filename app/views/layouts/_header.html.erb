@@ -25,6 +25,7 @@
       <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
             <li><p class="layout__shared__header__inner__menu__list__item">Logged in as <%= current_user.name %>.</p></li>
+            <li><%= link_to fa_icon('tags') + ' ' + t('views.path.name.tags'), tags_path %></li>
             <li><%= link_to fa_icon('cog') + ' ' + t('.settings'), edit_user_registration_path %></li>
             <li><%= link_to fa_icon('sign-out') + ' ' + t('.logout'), destroy_user_session_path, method: :delete %></li>
         <% else %>

@@ -6,9 +6,6 @@
   <%= link_to new_tale_path, class: 'module__button module__button--small' do %>
     <%= fa_icon 'pencil' %>
   <% end %>
-  <%= link_to tags_path, class: 'module__button module__button--small' do %>
-    <%= fa_icon 'tags' %>
-  <% end %>
   <%= render 'tales/_search/modal',
              queries: queries,
              tags: tags,
