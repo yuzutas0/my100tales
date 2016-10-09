@@ -1,6 +1,7 @@
 <% @page_title = t('views.path.name.login') %>
 <div class="layout__devise">
-  <h2>Log in</h2>
+  <h2><%= @page_title %></h2>
+  <hr>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'module__form' }) do |f| %>
 
@@ -21,8 +22,10 @@
       </div>
     <% end -%>
 
-    <div><%= f.submit 'Log in', class: 'module__button' %></div>
+    <hr>
+    <div><%= f.submit @page_title, class: 'module__button' %></div>
   <% end %>
 
+  <hr>
   <%= render 'devise/shared/links' %>
 </div>

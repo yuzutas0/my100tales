@@ -21,15 +21,15 @@
 
     <!-- navbar contents -->
     <div id="shared__header__burger__menu" class="layout__shared__header__inner__menu collapse">
-      <% # パフォーマンス観点による .collapse の直指定 %>
+      <% # .collapse の直指定 : パフォーマンス観点 %>
       <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
             <li><p class="layout__shared__header__inner__menu__list__item">Logged in as <%= current_user.name %>.</p></li>
             <li><%= link_to 'Settings', edit_user_registration_path %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <% else %>
-            <li><%= link_to 'Signup', new_user_registration_path %></li>
-            <li><%= link_to 'Login', new_user_session_path %></li>
+            <li><%= link_to t('views.path.name.signup'), new_user_registration_path %></li>
+            <li><%= link_to t('views.path.name.login'), new_user_session_path %></li>
         <% end %>
         <li>
           <% another_lang_list.each do |key, value| %>

@@ -26,7 +26,7 @@ ja:
       name:
         home: 'トップ'
         login: 'ログイン'
-        signup: '登録'
+        signup: '新規登録'
         unlock: 'ロック解除'
         account: 'アカウント'
         password: 'パスワード'

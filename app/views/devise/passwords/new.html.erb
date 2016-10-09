@@ -1,6 +1,7 @@
 <% @page_title = t('views.path.name.password') %>
 <div class="layout__devise">
   <h2>Forgot your password?</h2>
+  <hr>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'module__form' }) do |f| %>
     <%= devise_error_messages! %>
@@ -10,8 +11,10 @@
       <%= f.email_field :email, autofocus: true, class: 'module__form__field__text' %>
     </div>
 
+    <hr>
     <div><%= f.submit 'Send me reset password instructions', class: 'module__button' %></div>
   <% end %>
 
+  <hr>
   <%= render 'devise/shared/links' %>
 </div>

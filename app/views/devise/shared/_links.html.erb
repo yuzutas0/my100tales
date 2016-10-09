@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-    <div>or <%= link_to "Log in", new_session_path(resource_name) %>, when you have account.</div>
+  <div><%= link_to t('views.path.name.login'), new_session_path(resource_name) %></div>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <div><%= link_to "Sign up", new_registration_path(resource_name) %></div>
+  <div><%= link_to t('views.path.name.signup'), new_registration_path(resource_name) %></div>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

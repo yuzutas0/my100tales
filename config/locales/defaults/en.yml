@@ -25,7 +25,7 @@ en:
     path:
       name:
         home: 'Top'
-        login: 'LogIn'
+        login: 'Login'
         signup: 'SignUp'
         unlock: 'Unlock'
         account: 'Account'
