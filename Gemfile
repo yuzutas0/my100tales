@@ -49,6 +49,7 @@ group :development do
   # Performance
   gem 'activerecord-cause' # tell caller_location
   gem 'bullet' # validate N+1 query
+  gem 'stackprof' # call-stack profiler
   gem 'spring' # preload application
 
   # Debug
