@@ -26,8 +26,7 @@ module ApplicationHelper
   # time
   # -----------------------------------------------------------------
   def local_time(time)
-    timezone = user_signed_in? ? current_user.timezone : TZInfo::Timezone.get('Etc/GMT').identifier
-    time.in_time_zone(timezone).strftime('%Y-%m-%d %H:%M')
+    time.in_time_zone(user_timezone).strftime('%Y-%m-%d %H:%M')
   end
 
   # -----------------------------------------------------------------
@@ -40,5 +39,15 @@ module ApplicationHelper
       en: 'English',
       ja: '日本語'
     }
+  end
+
+  def user_timezone
+    tz = current_user.timezone
+    tz = user_signed_in? && right_timezone?(tz) ? tz : 'Etc/GMT'
+    TZInfo::Timezone.get(tz).identifier
+  end
+
+  def right_timezone?(timezone)
+    TZInfo::Timezone.all_identifiers.include?(timezone)
   end
 end
