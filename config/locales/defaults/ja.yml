@@ -33,7 +33,7 @@ ja:
         tags:  "タグ一覧"
         conditions:
           index: '検索条件一覧'
-          edit: '編集'
+          edit: '検索条件を編集'
         tales: 'マイページ'
         tale:
           new: '新規投稿'

@@ -22,3 +22,5 @@
 en:
   layouts:
     header:
+      settings: 'Settings'
+      logout: 'Logout'

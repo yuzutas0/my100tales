@@ -22,3 +22,5 @@
 ja:
   layouts:
     header:
+      settings: '設定'
+      logout: 'ログアウト'

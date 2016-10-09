@@ -25,19 +25,18 @@
       <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
             <li><p class="layout__shared__header__inner__menu__list__item">Logged in as <%= current_user.name %>.</p></li>
-            <li><%= link_to 'Settings', edit_user_registration_path %></li>
-            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to fa_icon('cog') + ' ' + t('.settings'), edit_user_registration_path %></li>
+            <li><%= link_to fa_icon('sign-out') + ' ' + t('.logout'), destroy_user_session_path, method: :delete %></li>
         <% else %>
-            <li><%= link_to t('views.path.name.signup'), new_user_registration_path %></li>
-            <li><%= link_to t('views.path.name.login'), new_user_session_path %></li>
+            <li><%= link_to fa_icon('pencil') + ' ' + t('views.path.name.signup'), new_user_registration_path %></li>
+            <li><%= link_to fa_icon('sign-in') + ' ' + t('views.path.name.login'), new_user_session_path %></li>
         <% end %>
         <li>
           <% another_lang_list.each do |key, value| %>
-            <%= link_to value, url_for(locale: key, only_path: false) %>
+            <%= link_to fa_icon('language') + ' ' + value, url_for(locale: key, only_path: false) %>
           <% end %>
         </li>
       </ul>
     </div>
-
   </div>
 </nav>

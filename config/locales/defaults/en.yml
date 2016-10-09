@@ -33,7 +33,7 @@ en:
         tags:  "TagList"
         conditions:
           index: 'SearchConditionList'
-          edit: 'Edit List'
+          edit: 'Edit Search Condition List'
         tales: 'MyPage'
         tale:
           new: 'NewTale'
