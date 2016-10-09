@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   protected
 
   # -----------------------------------------------------------------
-  # for locale
+  # for locale : lang, timezone
   # -----------------------------------------------------------------
   # set information
   def default_url_options(options={})
@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
   # set request parameter
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+    @timezone = 'Asia/Tokyo'
   end
 
   # -----------------------------------------------------------------

@@ -9,13 +9,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
   <!-- locales -->
-  <% case I18n.locale %>
-  <% when :ja then %>
-    <meta http-equiv="Content-Language" content="ja">
-    <link rel="alternate" href="<%= url_for(locale: 'en', only_path: false) %>" hreflang="en">
-  <% else %>
-    <meta http-equiv="Content-Language" content="en">
-    <link rel="alternate" href="<%= url_for(locale: 'ja', only_path: false) %>" hreflang="ja">
+  <meta http-equiv="Content-Language" content="<%= present_lang[:key] %>">
+  <% another_lang_list.values.each do |value| %>
+  <link rel="alternate" href="<%= url_for(locale: value, only_path: false) %>" hreflang="<%= value %>">
   <% end %>
 </head>
 <body>

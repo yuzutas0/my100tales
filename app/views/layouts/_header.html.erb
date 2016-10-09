@@ -4,12 +4,11 @@
     <div class="layout__shared__header__inner__layout">
       <!-- burger menu at right -->
       <button type="button" class="layout__shared__header__inner__layout__menu" data-toggle="collapse" data-target="#shared__header__burger__menu">
-        <span class="layout__shared__header__inner__layout__menu__inner"></span>
-        <span class="layout__shared__header__inner__layout__menu__inner"></span>
-        <span class="layout__shared__header__inner__layout__menu__inner"></span>
+        <% 3.times { %><span class="layout__shared__header__inner__layout__menu__inner"></span><% } %>
       </button>
       <!-- application logo at left -->
-      <%= link_to tales_path, class: 'layout__shared__header__inner__layout__logo' do %>
+      <% logo_link = user_signed_in? ? tales_path : root_path %>
+      <%= link_to logo_link, class: 'layout__shared__header__inner__layout__logo' do %>
           <h1 class="layout__shared__header__inner__layout__logo__inner"><%= fa_icon 'fire' %> My 100 tales</h1>
       <% end %>
     </div>
@@ -26,8 +25,9 @@
             <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
         <li>
-          <%= link_to 'English', url_for(locale: 'en', only_path: false) unless I18n.locale == :en %>
-          <%= link_to 'Japanese', url_for(locale: 'ja', only_path: false) unless I18n.locale == :ja %>
+          <% another_lang_list.each do |key, value| %>
+            <%= link_to value, url_for(locale: key, only_path: false) %>
+          <% end %>
         </li>
       </ul>
     </div>
