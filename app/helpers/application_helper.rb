@@ -15,11 +15,11 @@ module ApplicationHelper
   # lang
   # -----------------------------------------------------------------
   def present_lang
-    lang_list.select { |k, v| k == I18n.locale }
+    lang_list.select { |k, _v| k == I18n.locale }
   end
 
   def another_lang_list
-    lang_list.reject { |k, v| k == I18n.locale }
+    lang_list.reject { |k, _v| k == I18n.locale }
   end
 
   # -----------------------------------------------------------------
@@ -38,8 +38,8 @@ module ApplicationHelper
 
   def lang_list
     {
-        :en => 'English',
-        :ja => '日本語'
+      en: 'English',
+      ja: '日本語'
     }
   end
 end

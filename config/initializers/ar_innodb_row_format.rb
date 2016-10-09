@@ -1,5 +1,7 @@
 ActiveSupport.on_load :active_record do
+  # module
   module ActiveRecord::ConnectionAdapters
+    # class
     class AbstractMysqlAdapter
       def create_table_with_innodb_row_format(table_name, options = {})
         table_options = options.merge(options: 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC')

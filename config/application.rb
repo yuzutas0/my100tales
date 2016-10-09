@@ -4,6 +4,7 @@ require 'rails/all'
 
 # https://github.com/zdennis/activerecord-import/issues/149
 require 'activerecord-import/base'
+# override
 class ActiveRecord::Base
   class << self
     alias bulk_import import
