@@ -1,8 +1,6 @@
 <% @page_title = t('views.path.name.tale.show') %>
 <div class="layout__tale__show">
 
-  <%= local_time @tale.created_at %><!-- todo: delete -->
-
   <div class="layout__tale__show__header">
     <p class="layout__tale__show__header__left">
       <%= render 'layouts/breadcrumb_tale_2', third_page: @page_title%>

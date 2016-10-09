@@ -27,9 +27,9 @@
         %>
 
         <div class="layout__sequels__index__item__information">
-          created at <%= sequel.created_at.strftime('%Y-%b-%d %H:%M') %>
+          created at <%= local_time(sequel.created_at) %>
           <% unless sequel.created_at == sequel.updated_at %>
-              | updated at <%= sequel.updated_at.strftime('%Y-%b-%d %H:%M') %>
+              | updated at <%= local_time(sequel.updated_at) %>
           <% end %>
         </div>
 

@@ -11,7 +11,7 @@
       <% end %>
       <p><a href="<%= tales_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a></p>
       <p class="module__list__item__content">
-        <%= condition.updated_at.strftime('%Y-%b-%d %H:%M') %>
+        <%= local_time(condition.updated_at) %>
         |
         <a v-on:click="showModal">Edit</a>
         |

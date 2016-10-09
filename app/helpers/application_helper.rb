@@ -25,8 +25,10 @@ module ApplicationHelper
   # -----------------------------------------------------------------
   # time
   # -----------------------------------------------------------------
-  def local_time(obj)
-    obj.in_time_zone(@timezone).strftime('%Y-%m-%d %H:%M')
+  def local_time(time)
+    # p current_user.id if user_signed_in?
+    timezone = 'Asia/Tokyo'
+    time.in_time_zone(timezone).strftime('%Y-%m-%d %H:%M')
   end
 
   # -----------------------------------------------------------------
