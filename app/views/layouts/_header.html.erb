@@ -3,18 +3,25 @@
 
     <div class="layout__shared__header__inner__layout">
       <!-- burger menu at right -->
-      <button type="button" class="layout__shared__header__inner__layout__menu" data-toggle="collapse" data-target="#shared__header__burger__menu">
+      <button type="button"
+              class="layout__shared__header__inner__layout__menu"
+              data-toggle="collapse"
+              data-target="#shared__header__burger__menu"
+      >
         <% 3.times { %><span class="layout__shared__header__inner__layout__menu__inner"></span><% } %>
       </button>
       <!-- application logo at left -->
       <% logo_link = user_signed_in? ? tales_path : root_path %>
       <%= link_to logo_link, class: 'layout__shared__header__inner__layout__logo' do %>
-          <h1 class="layout__shared__header__inner__layout__logo__inner"><%= fa_icon 'fire' %> My 100 tales</h1>
+          <h1 class="layout__shared__header__inner__layout__logo__inner">
+            <%= fa_icon('fire') + Constants::PRODUCT_NAME_FOR_HEADER %>
+          </h1>
       <% end %>
     </div>
 
     <!-- navbar contents -->
-    <div id="shared__header__burger__menu" class="layout__shared__header__inner__menu collapse"><%# パフォーマンス観点による .collapse の直指定 %>
+    <div id="shared__header__burger__menu" class="layout__shared__header__inner__menu collapse">
+      <% # パフォーマンス観点による .collapse の直指定 %>
       <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
             <li><p class="layout__shared__header__inner__menu__list__item">Logged in as <%= current_user.name %>.</p></li>
