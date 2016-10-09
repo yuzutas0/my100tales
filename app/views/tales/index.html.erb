@@ -17,7 +17,7 @@
     <div class="module__list__item">
 
       <p class="layout__tales__index__list__item__created">
-        created at <%= local_time(tale.created_at) %>
+        <%= t('views.time.create', time: local_time(tale.created_at)) %>
       </p>
 
       <p class="layout__tales__index__list__item__sequels module__badge">

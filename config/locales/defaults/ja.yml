@@ -44,3 +44,6 @@ ja:
         sequel: '投稿がありません.'
         tag: '登録がありません.'
         conditions: '検索条件がありません.'
+    time:
+      create: '%{time} に投稿'
+      update: '%{time} に更新 '

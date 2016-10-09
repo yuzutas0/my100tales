@@ -44,3 +44,6 @@ en:
         sequel: 'There is no sequel.'
         tag: 'There is no tag.'
         conditions: 'There is no search'
+    time:
+      create: 'posted at %{time}'
+      update: 'updated at %{time}'

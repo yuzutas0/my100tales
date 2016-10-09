@@ -27,9 +27,9 @@
         %>
 
         <div class="layout__sequels__index__item__information">
-          created at <%= local_time(sequel.created_at) %>
+          <%= t('views.time.create', time: local_time(sequel.created_at)) %>
           <% unless sequel.created_at == sequel.updated_at %>
-              | updated at <%= local_time(sequel.updated_at) %>
+              | <%= t('views.time.update', time: local_time(sequel.updated_at)) %>
           <% end %>
         </div>
 
