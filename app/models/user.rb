@@ -21,4 +21,5 @@ class User < ActiveRecord::Base
   # validation
   # -----------------------------------------------------------------
   validates :name, presence: true, length: { minimum: 1, maximum: 255 }
+  validates :timezone, presence: true, inclusion: { in: TZInfo::Timezone.all_identifiers }
 end

@@ -26,8 +26,7 @@ module ApplicationHelper
   # time
   # -----------------------------------------------------------------
   def local_time(time)
-    # p current_user.id if user_signed_in?
-    timezone = 'Asia/Tokyo'
+    timezone = user_signed_in? ? current_user.timezone : TZInfo::Timezone.get('Etc/GMT').identifier
     time.in_time_zone(timezone).strftime('%Y-%m-%d %H:%M')
   end
 

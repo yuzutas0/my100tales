@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20_160_925_081_554) do
   end
 
   add_index 'search_conditions', ['user_id'], name: 'index_search_conditions_on_user_id', using: :btree
+  add_index 'search_conditions', %w(view_number user_id), name: 'index_search_conditions_on_view_number_and_user_id', unique: true, using: :btree
   add_index 'search_conditions', ['view_number'], name: 'index_search_conditions_on_view_number', using: :btree
 
   create_table 'sequels', force: :cascade do |t|
@@ -85,7 +86,8 @@ ActiveRecord::Schema.define(version: 20_160_925_081_554) do
     t.string   'last_sign_in_ip',        limit: 255
     t.datetime 'created_at',                                      null: false
     t.datetime 'updated_at',                                      null: false
-    t.string   'name', limit: 255, default: '', null: false
+    t.string   'name',                   limit: 255, default: '', null: false
+    t.string   'timezone',               limit: 255,              null: false
   end
 
   add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
