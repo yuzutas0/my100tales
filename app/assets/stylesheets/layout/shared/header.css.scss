@@ -46,9 +46,21 @@
       .layout__shared__header__inner__menu__list {
         @extend .nav;
         @extend .navbar-nav;
+        width: auto;
+        position: relative;
+        left: 50%;
+
+        @media (max-width: $screen-xs-max) {
+          left: 0;
+        }
 
         .layout__shared__header__inner__menu__list__item {
-          @extend a;
+          position: relative;
+          left: -25%;
+
+          @media (max-width: $screen-xs-max) {
+            left: 0;
+          }
         }
       }
     }
