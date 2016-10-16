@@ -1,15 +1,14 @@
 <% @page_title = t('views.path.name.home') %>
+<% login_link = link_to t('views.path.name.login'), new_user_session_path %>
 <div class="layout__home">
 
   <div class="layout__home__impress">
     <div class="layout__home__impress__inner">
       <h1 class="layout__home__impress__inner__message"><%= t('.message') %></h1>
       <p class="layout__home__impress__inner__description"><%= t('.description_html') %></p>
-      <%= link_to t('views.path.name.signup'),
-                  new_user_registration_path,
+      <%= link_to t('views.path.name.signup'), new_user_registration_path,
                   class: 'layout__home__impress__inner__signup module__button' %>
       <div class="layout__home__impress__inner__login">
-        <% login_link = link_to t('views.path.name.login'), new_user_session_path %>
         <p><%= t('views.message.or_login_html', login: login_link) %></p>
       </div>
     </div>
@@ -19,33 +18,29 @@
 
     <div class="layout__home__explain__inner1">
       <div class="layout__home__explain__inner1__title">
-        <h2><%= t('.explain.title') %></h2>
+        <h2><%= t('.explain.inner1.title') %></h2>
       </div>
       <% %w(pencil-square-o list-alt comments-o).each.with_index(1) do |icon, idx| %>
-        <% inner1_content_class = "layout__home__explain__inner1__content#{idx}" %>
+        <% inner1_content_class = 'layout__home__explain__inner1__content' %>
         <div class="<%= inner1_content_class %>">
           <div class="<%= inner1_content_class %>__icon"><%= fa_icon icon %></div>
-          <h3 class="<%= inner1_content_class %>__title"><%= t(".explain.content#{idx}.title") %></h3>
-          <p><%= t(".explain.content#{idx}.text_html") %></p>
+          <h3 class="<%= inner1_content_class %>__title"><%= t(".explain.inner1.content#{idx}.title") %></h3>
+          <p><%= t(".explain.inner1.content#{idx}.text_html") %></p>
         </div>
       <% end %>
     </div>
 
     <hr>
     <div class="layout__home__explain__inner2">
-      <div class="layout__home__explain__inner2__title"><h2>Signup for free</h2></div>
+      <div class="layout__home__explain__inner2__title"><h2><%= t('.explain.inner2.title') %></h2></div>
       <div class="layout__home__explain__inner2__description">
-        <p class="layout__home__explain__inner2__description__text">
-          We request your signup to provide secret space for each accounts,
-          and email is required to send backup file.
-        </p>
-        <p class="layout__home__explain__inner2__description__text">
-          In addition, signup is going to be completed without time and money.
-        </p>
+        <p class="layout__home__explain__inner2__description__text"><%= t('.explain.inner2.text1_html') %></p>
+        <p class="layout__home__explain__inner2__description__text"><%= t('.explain.inner2.text2') %></p>
       </div>
-      <%= link_to 'Sign up', new_user_registration_path, class: 'layout__home__explain__inner2__signup module__button' %>
+      <%= link_to t('views.path.name.signup'), new_user_registration_path,
+                  class: 'layout__home__explain__inner2__signup module__button' %>
       <div class="layout__home__explain__inner2__login">
-        <p>or <%= link_to 'Log in', new_user_session_path %>, when you have account.</p>
+        <p><%= t('views.message.or_login_html', login: login_link) %></p>
       </div>
     </div>
 

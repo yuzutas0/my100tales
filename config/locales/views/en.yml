@@ -28,16 +28,23 @@ en:
         Here's the best place to list the will in your mind.<br />
         They're no longer fairy tales with 100 ideas put out.
       explain:
-        title: 'Usage of this app'
-        content1:
-          title: '1. Write'
-          text_html: 'write down your thinking<br />with simple markdown editor.'
-        content2:
-          title: '2. List'
-          text_html: 'manage your wish list<br />with tagging and scoring.'
-        content3:
-          title: '3. Sequel'
-          text_html: 'make your ideas deeper and<br />bigger with additional comments.'
+        inner1:
+          title: 'Usage of this app'
+          content1:
+            title: '1. Write'
+            text_html: 'write down your thinking<br />with simple markdown editor.'
+          content2:
+            title: '2. List'
+            text_html: 'manage your wish list<br />with tagging and scoring.'
+          content3:
+            title: '3. Sequel'
+            text_html: 'make your ideas deeper and<br />bigger with additional comments.'
+        inner2:
+          title: 'Signup for free'
+          text1_html: >
+            We request your signup to provide secret space for each accounts,
+            and email is required to send backup file.
+          text2: 'Signup is going to be completed without time and money.'
   layouts:
     header:
       settings: 'Settings'
