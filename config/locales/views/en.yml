@@ -20,6 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  home:
+    index:
+      message: 'a list of 100 dreams'
+      description_html: >
+        Day-to-day thinking makes your dreams come true.<br />
+        Here's the best place to list the will in your mind.<br />
+        They're no longer fairy tales with 100 ideas put out.
+      explain:
+        title: 'Usage of this app'
+        content1:
+          title: '1. Write'
+          text_html: 'write down your thinking<br />with simple markdown editor.'
+        content2:
+          title: '2. List'
+          text_html: 'manage your wish list<br />with tagging and scoring.'
+        content3:
+          title: '3. Sequel'
+          text_html: 'make your ideas deeper and<br />bigger with additional comments.'
   layouts:
     header:
       settings: 'Settings'

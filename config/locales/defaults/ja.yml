@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
-  hello: "こんにちは,世界"
   views:
     path:
       name:
@@ -40,6 +39,7 @@ ja:
           show: '詳細'
           edit: '編集'
     message:
+      or_login_html: '既に登録済みの方は %{login}'
       blank:
         sequel: '投稿がありません.'
         tag: '登録がありません.'

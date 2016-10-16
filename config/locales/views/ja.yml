@@ -20,6 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
+  home:
+    index:
+      message: 'やりたいことリスト100'
+      description_html: >
+        目標を日頃から意識することが実現の近道です。<br />
+        ここでは夢を書き出すための機能を提供します。<br />
+        100つ挙がる頃には、1つは実現しているでしょう！
+      explain:
+        title: 'サービスの使い方'
+        content1:
+          title: '1. 書き出す'
+          text_html: '簡素なマークダウンエディターで<br />やりたいことを書き出しましょう.'
+        content2:
+          title: '2. 一覧管理'
+          text_html: 'タグやスコア機能を活用して<br />リストを効果的に管理しましょう.'
+        content3:
+          title: '3. 追記'
+          text_html: '少しずつコメントを付け加えて<br />アイデアを深めていきましょう.'
   layouts:
     header:
       settings: '設定'

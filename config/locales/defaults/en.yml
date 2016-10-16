@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   views:
     path:
       name:
@@ -40,6 +39,7 @@ en:
           show: 'YourTale'
           edit: 'EditTale'
     message:
+      or_login_html: 'or %{login}, when you have account.'
       blank:
         sequel: 'There is no sequel.'
         tag: 'There is no tag.'
