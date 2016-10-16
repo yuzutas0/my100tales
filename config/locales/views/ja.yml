@@ -42,7 +42,8 @@ ja:
         inner2:
           title: '登録は無料です'
           text1_html: >
-            他人に投稿内容が見られないよう、<br class="visible-xs-block" />アカウント毎に投稿を管理します。<br />
+            他人に投稿内容が見られないよう、<br class="visible-xs-block" />アカウント毎に投稿を管理します。
+            <br class="hidden-sm" />
             また、バックアップを届けるために<br class="visible-xs-block" />メールアドレスが必要となります。
           text2: 'アカウント登録は1分で完了します。'
   layouts:
