@@ -50,6 +50,9 @@ ja:
     header:
       settings: '設定'
       logout: 'ログアウト'
+  sequels:
+    new:
+      button: '新規投稿'
   tales:
     show:
       information:

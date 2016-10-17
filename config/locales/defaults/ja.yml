@@ -41,7 +41,7 @@ ja:
     message:
       or_login_html: '既に登録済みの方は %{login}'
       blank:
-        sequel: '投稿がありません.'
+        sequel: '追記はありません.'
         tag: '登録がありません.'
         conditions: '検索条件がありません.'
     time:

@@ -49,6 +49,9 @@ en:
     header:
       settings: 'Settings'
       logout: 'Logout'
+  sequels:
+    new:
+      button: '新規投稿'
   tales:
     show:
       information:
