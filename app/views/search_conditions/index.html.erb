@@ -6,6 +6,7 @@
   <hr>
   <% saved_conditions = @search_conditions.select(&:save_flag) %>
   <%= render 'search_conditions/list', conditions: saved_conditions, topic_name: t('.saved') %>
+  <hr>
   <% history_conditions = @search_conditions.reject(&:save_flag) %>
   <%= render 'search_conditions/list', conditions: history_conditions, topic_name: t('.history') %>
 </div>
