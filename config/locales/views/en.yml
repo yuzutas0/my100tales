@@ -79,6 +79,9 @@ en:
           confirm: 'Are you sure?'
           verify: 'Please type in the title of this tale to confirm.'
     search:
+      form:
+        saved: 'saved'
+        history: 'history'
       header:
         searched: 'Searched'
     form:

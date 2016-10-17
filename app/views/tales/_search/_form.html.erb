@@ -75,9 +75,9 @@
     <hr>
     <div class="layout__tale__search__conditions">
       <% saved_conditions = search_conditions.select(&:save_flag) %>
-      <%= render 'tales/_search/conditions', conditions: saved_conditions, topic_name: 'saved' %>
+      <%= render 'tales/_search/conditions', conditions: saved_conditions, topic_name: t('.saved') %>
       <% history_conditions = search_conditions.reject(&:save_flag) %>
-      <%= render 'tales/_search/conditions', conditions: history_conditions, topic_name: 'history' %>
+      <%= render 'tales/_search/conditions', conditions: history_conditions, topic_name: t('.history') %>
     </div>
   </div>
 </div>
