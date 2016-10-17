@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= page_title %></title>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta content="utf-8" name="charset">
-  <!-- assets -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
-  <!-- locales -->
-  <meta http-equiv="Content-Language" content="<%= present_lang.keys.first %>">
-  <% another_lang_list.values.each do |value| %>
-  <link rel="alternate" href="<%= url_for(locale: value, only_path: false) %>" hreflang="<%= value %>">
-  <% end %>
-</head>
-<body>
-
-<%= render 'layouts/header' %>
-<%= yield %>
-<%= render 'layouts/footer' %>
-
-</body>
+  <head>
+    <%= render 'layouts/meta' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </body>
 </html>
