@@ -34,27 +34,25 @@ node "CentOS (production) / MacOSX (development)" {
 
     package "Script" {
       view -> Script
-      [main] <|.. [util]
-      [main] <|.. [template]
+      [main] --> [util]
+      [main] -> [template]
     }
   }
 
   package "Controller" {
     unicorn --> [controller]
     controller --> view
-    controller <|.. [handler]
+
+    package "Interceptor" {
+      controller <|.. [handler]
+    }
 
     package "ViewObject" {
-      view --> [helper]
       controller --> [decorator]
     }
   }
 
   package "Model" {
-
-    package "DTO" {
-      [form]
-    }
 
     package "BusinessLogic" {
       controller --> [service]
@@ -69,11 +67,19 @@ node "CentOS (production) / MacOSX (development)" {
       factory --> model
       repository --> model
     }
+
+    package "DTO" {
+      [form]
+    }
+
+    package "Util" {
+      [helper]
+    }
   }
 
   node "Docker (only development environment)" {
 
-    database "Database" {
+    database "RDB" {
       model --> [mariadb]
     }
 
