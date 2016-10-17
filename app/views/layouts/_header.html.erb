@@ -23,18 +23,16 @@
       <% # .collapse の直指定 : パフォーマンス観点 %>
       <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
-          <% [
-                 (link_to fa_icon('list') + ' ' + t('views.path.name.tales'), tales_path),
-                 (link_to fa_icon('tags') + ' ' + t('views.path.name.tags'), tags_path),
-                 (link_to fa_icon('cog') + ' ' + t('.settings'), edit_user_registration_path),
-                 (link_to fa_icon('sign-out') + ' ' + t('.logout'), destroy_user_session_path, method: :delete)
+          <% [(link_to fa_icon('list') + ' ' + t('views.path.name.tales'), tales_path),
+              (link_to fa_icon('tags') + ' ' + t('views.path.name.tags'), tags_path),
+              (link_to fa_icon('cog') + ' ' + t('.settings'), edit_user_registration_path),
+              (link_to fa_icon('sign-out') + ' ' + t('.logout'), destroy_user_session_path, method: :delete)
              ].each do |link| %>
             <li class="layout__shared__header__inner__menu__list__item"><%= link %></li>
           <% end %>
         <% else %>
-          <% [
-                 (link_to fa_icon('pencil') + ' ' + t('views.path.name.signup'), new_user_registration_path),
-                 (link_to fa_icon('sign-in') + ' ' + t('views.path.name.login'), new_user_session_path),
+          <% [(link_to fa_icon('pencil') + ' ' + t('views.path.name.signup'), new_user_registration_path),
+              (link_to fa_icon('sign-in') + ' ' + t('views.path.name.login'), new_user_session_path)
              ].each do |link| %>
             <li class="layout__shared__header__inner__menu__list__item"><%= link %></li>
           <% end %>
