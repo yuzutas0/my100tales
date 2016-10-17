@@ -27,10 +27,10 @@ class SearchForm
   # -----------------------------------------------------------------
 
   # refs. config/locales/defaults/en.yml
-  # 0: Newer Create
-  # 1: Older Create
-  # 2: Newer Update
-  # 3: Older Update
+  # 0: Newer Create - t('master.sort.option_0')
+  # 1: Older Create - t('master.sort.option_1')
+  # 2: Newer Update - t('master.sort.option_2')
+  # 3: Older Update - t('master.sort.option_3')
   def self.sort_master
     [
         { created_at: :desc }, # 0
