@@ -85,6 +85,10 @@ en:
         keyword: 'Keyword'
         tag: 'Tag'
         sort: 'Sort'
+        save_title: 'Search Condition (up to %{max})'
+        save_flag: 'Save'
+        save_name: 'name'
+        search: 'Search'
         saved: 'saved'
         history: 'history'
       header:

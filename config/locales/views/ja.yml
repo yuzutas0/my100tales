@@ -86,6 +86,10 @@ ja:
         keyword: 'キーワード'
         tag: 'タグ'
         sort: '表示順'
+        save_title: '条件保存 (%{max}件まで保存可能)'
+        save_flag: '保存'
+        save_name: '名前をつける'
+        search: '検索する'
         saved: '保存条件'
         history: '検索履歴'
       header:

@@ -45,18 +45,18 @@
       </div>
       <hr>
 
-      <p>Search Condition (up to <%= Constants::SEARCH_CONDITION_RECORD_SIZE %>)</p>
+      <p><%= t('.save_title', max: Constants::SEARCH_CONDITION_RECORD_SIZE) %></p>
       <div class="module__form__checkbox layout__tale__search__condition__save">
         <%= check_box_tag 'save', true, queries.save, id: 'input_condition_save' %>
         <%= label_tag 'input_condition_save', class: 'module__form__checkbox__label' do %>
-          <p class="module__form__checkbox__label__inner">Save</p>
+          <p class="module__form__checkbox__label__inner"><%= t('.save_flag') %></p>
         <% end %>
       </div>
       <div class="module__form__field layout__tale__search__condition__name">
         <%= text_field_tag 'name', queries.name,
                            class: 'module__form__field__text',
                            id: 'script__tale__search__condition__name',
-                           placeholder: 'name',
+                           placeholder: t('.save_name'),
                            disabled: true
         %>
       </div>
@@ -64,8 +64,9 @@
       <hr>
 
       <div>
-        <%= submit_tag 'Search', name: nil, class: 'module__button module__button--small module__button--wide' %>
+        <%= submit_tag t('.search'), name: nil, class: 'module__button module__button--small module__button--wide' %>
       </div>
+      <hr>
     </div>
   <% end %>
 
