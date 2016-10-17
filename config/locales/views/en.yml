@@ -63,7 +63,7 @@ en:
     new:
       button: 'New Sequel'
   tales:
-    show:
+    detail:
       information:
         delete:
           title: 'Delete'

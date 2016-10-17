@@ -64,7 +64,7 @@ ja:
     new:
       button: '新規投稿'
   tales:
-    show:
+    detail:
       information:
         delete:
           title: '削除'
