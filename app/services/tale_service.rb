@@ -32,12 +32,11 @@ class TaleService
   # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
   # because avoid to throw query about tag records twice
   def self.list(user_id, queries)
-    is_searched = queries.keyword.present?
-    tales = search(is_searched, user_id, queries)
+    tales = search(user_id, queries)
     sequels_attached = sequels_attached(tales)
     tags = TagRepository.list(user_id)
     tags_attached = TagRepository.view_number_and_attached_count(user_id)
-    [is_searched, tales, tags, tags_attached, sequels_attached]
+    [tales, tags, tags_attached, sequels_attached]
   end
 
   # -----------------------------------------------------------------
@@ -84,8 +83,8 @@ class TaleService
     # -----------------------------------------------------------------
 
     # get list with keyword
-    def search(is_searched, user_id, queries)
-      return TaleRepository.list(user_id, queries.tags, queries.sort, queries.page) unless is_searched
+    def search(user_id, queries)
+      return TaleRepository.list(user_id, queries.tags, queries.sort, queries.page) unless queries.keyword.present?
       TaleRepository.search_by_es(search_args(user_id, queries))
     rescue => e
       Rails.logger.warn "failure to request Elasticsearch: #{e.message}"

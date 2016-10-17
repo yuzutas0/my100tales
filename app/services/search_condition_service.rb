@@ -10,14 +10,14 @@ class SearchConditionService
     present_list = SearchConditionRepository.list(user.id)
 
     # validation
-    return present_list if query_string.blank?
+    return [false, present_list] if query_string.blank?
 
     # update or create
     add_history(user, query_string, present_list)
     add_saved(user, query_string, save_flag, name, present_list)
 
     # return all records
-    SearchConditionRepository.list(user.id)
+    [true, SearchConditionRepository.list(user.id)]
   end
 
   # -----------------------------------------------------------------
