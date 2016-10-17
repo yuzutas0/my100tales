@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
   <!-- locales -->
-  <meta http-equiv="Content-Language" content="<%= present_lang[:key] %>">
+  <meta http-equiv="Content-Language" content="<%= present_lang.keys.first %>">
   <% another_lang_list.values.each do |value| %>
   <link rel="alternate" href="<%= url_for(locale: value, only_path: false) %>" hreflang="<%= value %>">
   <% end %>
