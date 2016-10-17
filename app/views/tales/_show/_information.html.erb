@@ -32,14 +32,14 @@
   </div>
 
   <hr>
-  <%= link_to t('tales.show.information.delete.title'), tale,
+  <%= link_to t('.delete.title'), tale,
               method: :delete,
               data: {
-                  confirm: t('tales.show.information.delete.confirm'),
+                  confirm: t('.delete.confirm'),
                   verify: tale.title,
-                  'verify-text': t('tales.show.information.delete.verify')
+                  'verify-text': t('.delete.verify')
               },
-              title: t('tales.show.information.delete.title'),
+              title: t('.delete.title'),
               class: 'text-danger'
   %>
 </div>
