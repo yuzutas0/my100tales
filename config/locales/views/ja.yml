@@ -79,6 +79,9 @@ ja:
           title: '削除'
           confirm: '削除したら戻すことはできません。本当に削除してもよろしいですか？'
           verify: '確認のために、この投稿のタイトルを入力してください。'
+    search:
+      header:
+        searched: '検索結果'
     form:
       tag_placeholder: 'タグ1 タグ2'
       content_placeholder: 'マークダウンで記入してください'

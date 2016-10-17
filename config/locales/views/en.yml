@@ -78,6 +78,9 @@ en:
           title: 'Delete'
           confirm: 'Are you sure?'
           verify: 'Please type in the title of this tale to confirm.'
+    search:
+      header:
+        searched: 'Searched'
     form:
       tag_placeholder: 'tag1 tag2'
       content_placeholder: 'Write down by markdown'
