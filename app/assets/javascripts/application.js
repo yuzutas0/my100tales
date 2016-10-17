@@ -29,4 +29,5 @@
 //= require typeahead.js/dist/bloodhound.min
 // Custom
 //= require_tree ./util
+//= require_tree ./template
 //= require_tree ./main

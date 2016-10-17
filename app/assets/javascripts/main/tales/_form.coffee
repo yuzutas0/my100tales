@@ -74,12 +74,8 @@
     bloodhound.initialize
 
     # ready tag form
-    templates = {
-      suggestion: (data) ->
-        return '<div class="layout__tale__form__suggest">' + data.value +
-            '<span class="layout__tale__form__suggest__count">' + data.countlist + '</span></div>'
-    }
-    tagClass = 'module__label layout__tale__form__tag__item'
+    templates = { suggestion: (data) -> return My100TalesTemplateTaleForm.suggestion(data.value, data.countlist) }
+    tagClass = My100TalesTemplateTaleForm.tagClass()
 
     # set tag form
     My100TalesUtilTagsinput.setTagForm(FORM_INPUT_DOM, bloodhound, templates, tagClass)
