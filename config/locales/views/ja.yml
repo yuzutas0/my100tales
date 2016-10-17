@@ -50,3 +50,10 @@ ja:
     header:
       settings: '設定'
       logout: 'ログアウト'
+  tales:
+    show:
+      information:
+        delete:
+          title: '削除'
+          confirm: '削除したら戻すことはできません。本当に削除してもよろしいですか？'
+          verify: '確認のために、この投稿のタイトルを入力してください。'

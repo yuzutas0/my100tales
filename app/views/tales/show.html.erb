@@ -11,10 +11,9 @@
     <% end %>
     <div class="layout__tale__show__header__end"></div>
   </div>
-
   <hr>
-  <h2><%= @tale.title %></h2>
 
+  <h2><%= @tale.title %></h2>
   <ul id="script__tale__detail" class="module__tab">
     <li class=<%= @tab_class[0][0] %>>
       <a id="script__tale__detail__tab1" href="#tab__first" data-toggle="tab">Content</a>
@@ -35,7 +34,7 @@
     </li>
   </ul>
 
-  <div class="tab-content"> <!-- tab -->
+  <div class="tab-content">
     <%= render 'tales/_show/content', tab_class: @tab_class, tale: @tale %>
     <%= render 'tales/_show/information', tab_class: @tab_class, tale: @tale %>
     <%= render 'tales/_show/sequels', tab_class: @tab_class, new_sequel: @new_sequel, sequels: @sequels, tale: @tale %>

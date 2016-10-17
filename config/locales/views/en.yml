@@ -49,3 +49,10 @@ en:
     header:
       settings: 'Settings'
       logout: 'Logout'
+  tales:
+    show:
+      information:
+        delete:
+          title: 'Delete'
+          confirm: 'Are you sure?'
+          verify: 'Please type in the title of this tale to confirm.'

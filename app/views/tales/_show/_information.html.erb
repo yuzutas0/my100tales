@@ -13,7 +13,7 @@
   <div class="layout__tale__show__information__star">
     <p class="layout__tale__show__information__star__heading">Score</p>
     <div>
-      <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
+      <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %><!-- FIXME : sample data -->
           <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
       <% end %>
     </div>
@@ -32,14 +32,14 @@
   </div>
 
   <hr>
-  <%= link_to 'Delete', tale,
+  <%= link_to t('tales.show.information.delete.title'), tale,
               method: :delete,
               data: {
-                  confirm: 'Are you sure?',
+                  confirm: t('tales.show.information.delete.confirm'),
                   verify: tale.title,
-                  'verify-text': 'Please type in the title of this tale to confirm.'
+                  'verify-text': t('tales.show.information.delete.verify')
               },
-              title: 'Delete',
+              title: t('tales.show.information.delete.title'),
               class: 'text-danger'
   %>
 </div>
