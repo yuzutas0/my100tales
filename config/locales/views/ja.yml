@@ -51,6 +51,11 @@ ja:
       settings: '設定'
       logout: 'ログアウト'
   sequels:
+    index:
+      edit: '編集'
+      delete:
+        title: '削除'
+        confirm: '本当に削除してもよろしいですか？'
     new:
       button: '新規投稿'
   tales:

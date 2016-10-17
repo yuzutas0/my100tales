@@ -50,8 +50,13 @@ en:
       settings: 'Settings'
       logout: 'Logout'
   sequels:
+    index:
+      edit: 'Edit'
+      delete:
+        title: 'Delete'
+        confirm: 'Are you sure?'
     new:
-      button: '新規投稿'
+      button: 'New Sequel'
   tales:
     show:
       information:

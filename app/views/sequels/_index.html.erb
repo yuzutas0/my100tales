@@ -16,13 +16,13 @@
 
         <hr class="layout__sequels__index__item__divide"/>
 
-        <a v-on:click="showModal" class="layout__sequels__index__item__edit">Edit</a>
+        <a v-on:click="showModal" class="layout__sequels__index__item__edit"><%= t('.edit') %></a>
 
-        <%= link_to 'Delete',
+        <%= link_to t('.delete.title'),
                     sequels_path(sequel_view_number: sequel.view_number, view_number: tale.view_number),
                     method: :delete,
-                    data: { confirm: 'Are you sure?' },
-                    title: 'Delete',
+                    data: { confirm: t('.delete.confirm') },
+                    title: t('.delete.title'),
                     class: 'layout__sequels__index__item__delete'
         %>
 
