@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
+  master:
+    sort:
+      option_0: '作成が新しい順'
+      option_1: '作成が古い順'
+      option_2: '更新が新しい順'
+      option_3: '更新が古い順'
   views:
     path:
       name:

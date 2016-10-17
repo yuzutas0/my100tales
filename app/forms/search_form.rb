@@ -25,12 +25,17 @@ class SearchForm
   # -----------------------------------------------------------------
   # Master Enum
   # -----------------------------------------------------------------
-  # 0: Newer_Create
-  # 1: Older_Create
-  # 2: Newer_Update
-  # 3: Older_Update
+
+  # refs. config/locales/defaults/en.yml
+  # 0: Newer Create
+  # 1: Older Create
+  # 2: Newer Update
+  # 3: Older Update
   def self.sort_master
-    %w(Newer_Create Older_Create Newer_Update Older_Update)
+    master = []
+    prefix = 'master.sort.option_'
+    (0..3).map(&:to_s).each { |i| master << ApplicationController.helpers.t(prefix + i) }
+    master
   end
 
   # -----------------------------------------------------------------

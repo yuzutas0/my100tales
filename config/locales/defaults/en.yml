@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  master:
+    sort:
+      option_0: 'Newer Create'
+      option_1: 'Older Create'
+      option_2: 'Newer Update'
+      option_3: 'Older Update'
   views:
     path:
       name:
