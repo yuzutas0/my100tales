@@ -13,12 +13,12 @@
       <p class="module__list__item__content">
         <%= local_time(condition.updated_at) %>
         |
-        <a v-on:click="showModal">Edit</a>
+        <a v-on:click="showModal"><%= t('.edit') %></a>
         |
-        <%= link_to 'Delete', condition,
+        <%= link_to t('.delete.title'), condition,
                     method: :delete,
-                    data: { confirm: 'Are you sure?' },
-                    title: 'Delete',
+                    data: { confirm: t('.delete.confirm') },
+                    title: t('.delete.title'),
                     class: 'layout__conditions__index__item__delete'
         %>
       </p>
