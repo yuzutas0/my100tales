@@ -5,8 +5,8 @@
       <div id="script__sequel__form__<%= index %>" class="layout__sequels__form module__form">
 
         <ul class="nav nav-tabs">
-          <li class="active"><a id="script__sequel__form__<%= index %>__editor__tab__switch">Editor</a></li>
-          <li><a id="script__sequel__form__<%= index %>__preview__tab__switch">Preview</a></li>
+          <li class="active"><a id="script__sequel__form__<%= index %>__editor__tab__switch"><%= t('.editor') %></a></li>
+          <li><a id="script__sequel__form__<%= index %>__preview__tab__switch"><%= t('.preview') %></a></li>
         </ul>
 
         <div id="script__sequel__form__<%= index %>__editor__tab__content" class="module__form__field">
@@ -14,7 +14,7 @@
                           id: "script__sequel__form__#{index}__editor",
                           class: 'layout__sequels__form__content module__form__field__text module__form__field__text--fixed',
                           'v-model' => 'content',
-                          placeholder: 'Write down by markdown'
+                          placeholder: t('.placeholder')
           %>
         </div>
 
@@ -28,7 +28,7 @@
 
         <div>
           <%= hidden_field_tag :view_number, tale.view_number %>
-          <%= f.submit 'Post', class: 'module__button module__button--small module__button--wide' %>
+          <%= f.submit t('.post'), class: 'module__button module__button--small module__button--wide' %>
         </div>
       </div>
 

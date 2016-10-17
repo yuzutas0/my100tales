@@ -51,6 +51,11 @@ ja:
       settings: '設定'
       logout: 'ログアウト'
   sequels:
+    form:
+      editor: '編集'
+      preview: 'プレビュー'
+      placeholder: 'マークダウンで記入してください'
+      post: '投稿する'
     index:
       edit: '編集'
       delete:

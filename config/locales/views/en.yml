@@ -50,6 +50,11 @@ en:
       settings: 'Settings'
       logout: 'Logout'
   sequels:
+    form:
+      editor: 'Editor'
+      preview: 'Preview'
+      placeholder: 'Write down by markdown'
+      post: 'Post'
     index:
       edit: 'Edit'
       delete:
