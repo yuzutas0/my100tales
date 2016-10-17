@@ -36,10 +36,10 @@
 
       <p><%= t('.sort') %></p>
       <div class="module__form__radiobutton">
-        <% sort_master.each_with_index do |sort_item, index| %>
+        <% sort_master.each_with_index do |_item, index| %>
           <%= radio_button_tag 'sort', index, queries.sort == index, id: "input_sort_#{index}" %>
           <%= label_tag "input_sort_#{index}", class: 'module__form__radiobutton__label' do %>
-            <p class="module__form__radiobutton__label__inner"><%= sort_item %></p>
+            <p class="module__form__radiobutton__label__inner"><%= t('master.sort.option_' + index.to_s) %></p>
           <% end %>
         <% end %>
       </div>

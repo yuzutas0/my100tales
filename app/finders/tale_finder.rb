@@ -67,12 +67,8 @@ module TaleFinder
 
     # refs. SearchForm#sort_master
     def custom_sort(sort)
-      case sort
-      when 1 then { created_at: :asc }
-      when 2 then { updated_at: :desc }
-      when 3 then { updated_at: :asc }
-      else { created_at: :desc }
-      end
+      sort = 0 unless 0 <= sort && sort < SearchForm.sort_master.length
+      SearchForm.sort_master[sort]
     end
 
     # keyword search by elasticsearch

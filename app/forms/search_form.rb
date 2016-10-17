@@ -32,10 +32,12 @@ class SearchForm
   # 2: Newer Update
   # 3: Older Update
   def self.sort_master
-    master = []
-    prefix = 'master.sort.option_'
-    (0..3).map(&:to_s).each { |i| master << ApplicationController.helpers.t(prefix + i) }
-    master
+    [
+        { created_at: :desc }, # 0
+        { created_at: :asc  }, # 1
+        { updated_at: :desc }, # 2
+        { updated_at: :asc  }, # 3
+    ]
   end
 
   # -----------------------------------------------------------------
