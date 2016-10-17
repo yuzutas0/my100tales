@@ -80,6 +80,11 @@ en:
           verify: 'Please type in the title of this tale to confirm.'
     search:
       form:
+        input: 'Input'
+        condition: 'Condition'
+        keyword: 'Keyword'
+        tag: 'Tag'
+        sort: 'Sort'
         saved: 'saved'
         history: 'history'
       header:

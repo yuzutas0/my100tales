@@ -1,20 +1,20 @@
 <div class="layout__tale__search">
 
   <div class="module__tab">
-    <li class="active"><a id="script__tale__search__input__tab__switch">Input</a></li>
-    <li><a id="script__tale__search__condition__tab__switch">Condition</a></li>
+    <li class="active"><a id="script__tale__search__input__tab__switch"><%= t('.input') %></a></li>
+    <li><a id="script__tale__search__condition__tab__switch"><%= t('.condition') %></a></li>
   </div>
 
   <%= form_tag tales_path, method: :get do %>
     <div id="script__tale__search__input__tab__content" class="module__form">
 
       <div class="module__form__field">
-        <p>Keyword</p>
-        <%= text_field_tag 'keyword', queries.keyword, class: 'module__form__field__text', placeholder: 'Keyword' %>
+        <p><%= t('.keyword') %></p>
+        <%= text_field_tag 'keyword', queries.keyword, class: 'module__form__field__text', placeholder: t('.keyword') %>
       </div>
       <hr>
 
-      <p>Tag</p>
+      <p><%= t('.tag') %></p>
       <div class="module__form__checkbox">
         <%= t('views.message.blank.tag') if tags.blank? %>
         <% tags.each do |tag| %>
@@ -34,7 +34,7 @@
       </div>
       <hr>
 
-      <p>Sort</p>
+      <p><%= t('.sort') %></p>
       <div class="module__form__radiobutton">
         <% sort_master.each_with_index do |sort_item, index| %>
           <%= radio_button_tag 'sort', index, queries.sort == index, id: "input_sort_#{index}" %>
