@@ -70,3 +70,7 @@ ja:
           title: '削除'
           confirm: '削除したら戻すことはできません。本当に削除してもよろしいですか？'
           verify: '確認のために、この投稿のタイトルを入力してください。'
+    show:
+      content: '投稿内容'
+      information: '情報'
+      sequels: '追記'

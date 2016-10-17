@@ -69,3 +69,7 @@ en:
           title: 'Delete'
           confirm: 'Are you sure?'
           verify: 'Please type in the title of this tale to confirm.'
+    show:
+      content: 'Content'
+      information: 'Information'
+      sequels: 'Sequels'
