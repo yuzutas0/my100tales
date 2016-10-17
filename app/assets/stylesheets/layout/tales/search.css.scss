@@ -29,9 +29,9 @@
         @extend .visible-xs;
       }
     }
+  }
 
-    .layout__tale__search__conditions__end {
-      @extend .hidden-xs;
-    }
+  .layout__tale__search__conditions__end {
+    @extend .hidden-xs;
   }
 }
