@@ -8,7 +8,7 @@
     <div class="module__form__field__text layout__tale__form__tags">
     <%= text_field :form, :tags,
                    id: 'script__tale__form__input',
-                   placeholder: 'tag1 tag2',
+                   placeholder: t('.tag_placeholder'),
                    autocomplete: :off
     %>
     </div>
@@ -22,8 +22,8 @@
   <div id="script__tale" class="module__form__field">
 
     <div class="layout__tale__form__tab module__tab">
-      <li class="active"><a id="script__tale__editor__tab__switch">Editor</a></li>
-      <li><a id="script__tale__preview__tab__switch">Preview</a></li>
+      <li class="active"><a id="script__tale__editor__tab__switch"><%= t('.editor') %></a></li>
+      <li><a id="script__tale__preview__tab__switch"><%= t('.preview') %></a></li>
     </div>
 
     <div class="layout__tale__form__content">
@@ -33,7 +33,7 @@
                         id: 'script__tale__editor',
                         class: 'layout__tale__form__content__editor__inner module__form__field__text module__form__field__text--fixed',
                         'v-model' => 'content',
-                        placeholder: 'Write down by markdown'
+                        placeholder: t('.content_placeholder')
         %>
       </div>
 

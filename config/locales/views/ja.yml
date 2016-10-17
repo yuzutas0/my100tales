@@ -70,6 +70,11 @@ ja:
           title: '削除'
           confirm: '削除したら戻すことはできません。本当に削除してもよろしいですか？'
           verify: '確認のために、この投稿のタイトルを入力してください。'
+    form:
+      tag_placeholder: 'タグ1 タグ2'
+      content_placeholder: 'マークダウンで記入してください'
+      editor: '編集'
+      preview: 'プレビュー'
     show:
       content: '投稿内容'
       information: '情報'

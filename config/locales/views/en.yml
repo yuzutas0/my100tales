@@ -69,6 +69,11 @@ en:
           title: 'Delete'
           confirm: 'Are you sure?'
           verify: 'Please type in the title of this tale to confirm.'
+    form:
+      tag_placeholder: 'tag1 tag2'
+      content_placeholder: 'Write down by markdown'
+      editor: 'Editor'
+      preview: 'Preview'
     show:
       content: 'Content'
       information: 'Information'
