@@ -1,20 +1,15 @@
-#
-# Tag
-#
-class Tag < ActiveRecord::Base
+class Score < ActiveRecord::Base
   # -----------------------------------------------------------------
   # relation
   # -----------------------------------------------------------------
   belongs_to :user
-  has_many :tale_tag_relationships, dependent: :destroy
-  has_many :tales, through: :tale_tag_relationships
 
   # -----------------------------------------------------------------
-  # routing path (tags/:id => tags/:view_number)
+  # routing path (scores/:id => scores/:view_number)
   # -----------------------------------------------------------------
   # needs two params with request
-  # user.id, tag.view_number
-  # (user.id + tag.view_number => tag.id)
+  # user.id, score.view_number
+  # (user.id + score.view_number => score.id)
   def to_param
     view_number.to_s
   end
@@ -22,7 +17,12 @@ class Tag < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :name,
+  validates :key,
+            presence: true,
+            length: { minimum: 1, maximum: 100 },
+            uniqueness: { scope: [:value, :user_id] }
+
+  validates :value,
             presence: true,
             length: { minimum: 1, maximum: 100 }
 
