@@ -16,7 +16,7 @@ class TaleService
     Tale.transaction do
       tale = TaleFactory.instance(params, user)
       success = tale.save
-      change_tags(tale.id, option_form, user)
+      TagService.change_tags(tale.id, option_form, user)
       return tale, success
     end
   end
@@ -56,7 +56,7 @@ class TaleService
   def self.update(tale, tale_params, option_form, user)
     Tale.transaction do
       success = tale.update(tale_params)
-      change_tags(tale.id, option_form, user)
+      TagService.change_tags(tale.id, option_form, user)
       return tale, success
     end
   end
@@ -66,17 +66,6 @@ class TaleService
   # -----------------------------------------------------------------
   class << self
     private
-
-    # -----------------------------------------------------------------
-    # Create, Update
-    # -----------------------------------------------------------------
-
-    # *** use transaction ***
-    # change tags and relation between tale and tags
-    def change_tags(tale_id, option_form, user)
-      TagFactory.create_only_new_name(user, option_form.tags)
-      TaleTagRelationshipService.update(tale_id, option_form.tags)
-    end
 
     # -----------------------------------------------------------------
     # Read

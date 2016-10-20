@@ -24,7 +24,7 @@ class TalesController < ApplicationController
       redirect_to @tale, notice: 'Tale was successfully created.'
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
-      ready_form(@tale, current_user.id)
+      ready_form(@tale, current_user.id, tags_params_string)
       render :new
     end
   end
@@ -61,7 +61,7 @@ class TalesController < ApplicationController
       redirect_to @tale, notice: 'Tale was successfully updated.'
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
-      ready_form(@tale, current_user.id)
+      ready_form(@tale, current_user.id, tags_params_string)
       render :edit
     end
   end
@@ -95,8 +95,8 @@ class TalesController < ApplicationController
   end
 
   # set some params for tale form
-  def ready_form(tale, user_id)
-    @form = TaleDecorator.option_form(tale)
+  def ready_form(tale, user_id, tags = '')
+    @form = TaleDecorator.option_form(tale, tags)
     @tags = TagService.name_and_attached_count(user_id)
   end
 
@@ -106,6 +106,10 @@ class TalesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def tale_params
     params.require(:tale).permit(:title, :content)
+  end
+
+  def tags_params_string
+    params.require(:form).permit(:tags)[:tags]
   end
 
   # Get option form
