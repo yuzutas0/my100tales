@@ -1,0 +1,3 @@
+# tale_score_relationship_service
+class TaleScoreRelationshipService
+end
