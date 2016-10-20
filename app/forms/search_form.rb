@@ -33,10 +33,10 @@ class SearchForm
   # 3: Older Update - t('master.sort.option_3')
   def self.sort_master
     [
-        { created_at: :desc }, # 0
-        { created_at: :asc  }, # 1
-        { updated_at: :desc }, # 2
-        { updated_at: :asc  }, # 3
+      { created_at: :desc }, # 0
+      { created_at: :asc  }, # 1
+      { updated_at: :desc }, # 2
+      { updated_at: :asc  }, # 3
     ]
   end
 
