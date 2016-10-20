@@ -1,8 +1,13 @@
+#
+# Score
+#
 class Score < ActiveRecord::Base
   # -----------------------------------------------------------------
   # relation
   # -----------------------------------------------------------------
   belongs_to :user
+  has_many :tale_score_relationships, dependent: destroy
+  has_many :tales, through: :tale_score_relationships
 
   # -----------------------------------------------------------------
   # routing path (scores/:id => scores/:view_number)
