@@ -62,4 +62,27 @@ class ScoreRepository
     # execute
     CommonRepository.select_hash_with_user_id(user_id, query)
   end
+
+  # -----------------------------------------------------------------
+  # Update
+  # -----------------------------------------------------------------
+
+  def self.update_key(score, key, user_id)
+    # query
+    query = <<-'SQL'.freeze
+      UPDATE
+        Scores S
+      SET
+        S.key = ?
+      WHERE
+        S.key = ?
+        AND S.user_id = ?
+        AND S.user_id = ?
+    SQL
+
+    args = [query, key, score.key, score.user_id, user_id]
+    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
+    result = ActiveRecord::Base.connection.execute(sql)
+    result > 0
+  end
 end

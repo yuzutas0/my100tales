@@ -12,6 +12,17 @@ class ScoreService
   end
 
   # -----------------------------------------------------------------
+  # Update
+  # -----------------------------------------------------------------
+
+  # called ScoresController#update
+  def self.update(score, params, user_id)
+    key = params[:key]
+    return ScoreRepository.update_key(score, key, user_id) if score.key != key
+    score.update(params)
+  end
+
+  # -----------------------------------------------------------------
   # Read
   # -----------------------------------------------------------------
 
