@@ -21,7 +21,7 @@ class TalesController < ApplicationController
   def create
     @tale, success = TaleService.create(tale_params, option_form_params, current_user)
     if success
-      redirect_to @tale, notice: 'Tale was successfully created.'
+      redirect_to @tale, notice: t('views.message.create.success')
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
       ready_form(@tale, current_user.id, tags_params_string)
@@ -58,7 +58,7 @@ class TalesController < ApplicationController
   def update
     @tale, success = TaleService.update(@tale, tale_params, option_form_params, current_user)
     if success
-      redirect_to @tale, notice: 'Tale was successfully updated.'
+      redirect_to @tale, notice: t('views.message.update.success')
     else
       flash.now[:alert] = TaleDecorator.flash(@tale, flash)
       ready_form(@tale, current_user.id, tags_params_string)
@@ -72,7 +72,7 @@ class TalesController < ApplicationController
   # DELETE /tales/1
   def destroy
     @tale.destroy
-    redirect_to tales_url, notice: 'Tale was successfully destroyed.'
+    redirect_to tales_url, notice: t('views.message.destroy.success')
   end
 
   # -----------------------------------------------------------------

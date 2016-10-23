@@ -21,7 +21,7 @@ class SearchConditionsController < ApplicationController
   # PATCH /searches/:view_number
   def update
     if @search_condition.update(search_condition_params)
-      flash[:notice] = 'Search condition was successfully updated.'
+      flash[:notice] = t('views.message.update.success')
     else
       flash[:alert] = SearchConditionDecorator.flash(@search_condition, flash)
     end
@@ -34,7 +34,7 @@ class SearchConditionsController < ApplicationController
   # DELETE /searches/:view_number
   def destroy
     if @search_condition.destroy
-      flash[:notice] = 'Search condition was successfully destroyed.'
+      flash[:notice] = t('views.message.destroy.success')
     else
       flash[:alert] = SearchConditionDecorator.flash(@search_condition, flash)
     end

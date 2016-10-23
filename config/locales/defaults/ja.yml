@@ -45,6 +45,12 @@ ja:
           show: '詳細'
           edit: '編集'
     message:
+      create:
+        success: '作成に成功しました.'
+      update:
+        success: '更新に成功しました.'
+      destroy:
+        success: '削除に成功しました.'
       or_login_html: '既に登録済みの方は %{login}'
       blank:
         sequel: '追記はありません.'

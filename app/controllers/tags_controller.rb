@@ -21,7 +21,7 @@ class TagsController < ApplicationController
   # PATCH /tags/:view_number
   def update
     if @tag.update(tag_params)
-      flash[:notice] = 'Tag was successfully updated.'
+      flash[:notice] = t('views.message.update.success')
     else
       flash[:alert] = TagDecorator.flash(@tag, flash)
     end
@@ -34,7 +34,7 @@ class TagsController < ApplicationController
   # DELETE /tags/:view_number
   def destroy
     if @tag.destroy
-      flash[:notice] = 'Tag was successfully destroyed.'
+      flash[:notice] = t('views.message.destroy.success')
     else
       flash[:alert] = TagDecorator.flash(@tag, flash)
     end

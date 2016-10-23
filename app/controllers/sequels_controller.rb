@@ -14,7 +14,7 @@ class SequelsController < ApplicationController
   def create
     @tale, @sequel, success = SequelService.create(sequel_params, params[:view_number], current_user.id)
     if success
-      flash[:notice] = 'Sequel was successfully created.'
+      flash[:notice] = t('views.message.create.success')
     else
       flash[:alert] = SequelDecorator.flash(@sequel, flash)
     end
@@ -27,7 +27,7 @@ class SequelsController < ApplicationController
   # PATCH /sequels
   def update
     if @sequel.update(sequel_params)
-      flash[:notice] = 'Sequel was successfully updated.'
+      flash[:notice] = t('views.message.update.success')
     else
       flash[:alert] = SequelDecorator.flash(@sequel, flash)
     end
@@ -40,7 +40,7 @@ class SequelsController < ApplicationController
   # DELETE /sequels
   def destroy
     if @sequel.destroy
-      flash[:notice] = 'Sequel was successfully destroyed.'
+      flash[:notice] = t('views.message.destroy.success')
     else
       flash[:alert] = SequelDecorator.flash(@sequel, flash)
     end
