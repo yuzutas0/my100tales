@@ -13,8 +13,8 @@
   <div class="layout__tale__show__information__star">
     <p class="layout__tale__show__information__star__heading">Score</p>
     <div>
-      <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %><!-- FIXME : sample data -->
-          <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
+      <% tale.scores.each do |score| %>
+        <a href="#" class="module__label"><%= score.key + ' : ' + score.value %></a>
       <% end %>
     </div>
   </div>

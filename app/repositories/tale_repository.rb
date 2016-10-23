@@ -33,6 +33,7 @@ class TaleRepository
   def self.detail_with_options(view_number, user_id)
     Tale.where('view_number = ? AND user_id = ?', view_number, user_id)
         .includes(:tags)
+        .includes(:scores)
         .includes(:sequels)
         .first
   end

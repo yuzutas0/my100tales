@@ -9,6 +9,8 @@ class Tale < ActiveRecord::Base
   has_many :sequels, dependent: :destroy
   has_many :tale_tag_relationships, dependent: :destroy
   has_many :tags, through: :tale_tag_relationships
+  has_many :tale_score_relationships, dependent: :destroy
+  has_many :scores, through: :tale_score_relationships
 
   # -----------------------------------------------------------------
   # routing path (tales/:id => tales/:view_number)
