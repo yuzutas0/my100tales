@@ -31,6 +31,12 @@ Rails.application.routes.draw do
     put    '/tags/:view_number', to: 'tags#update'
     delete '/tags/:view_number', to: 'tags#destroy'
 
+    # score
+    get    '/scores',              to: 'scores#index',  as: 'scores'
+    patch  '/scores/:view_number', to: 'scores#update', as: 'score'
+    put    '/scores/:view_number', to: 'scores#update'
+    delete '/scores/:view_number', to: 'scores#destroy'
+
     # search condition
     get    '/searches',                       to: 'search_conditions#index',  as: 'search_conditions'
     patch  '/search_conditions/:view_number', to: 'search_conditions#update', as: 'search_condition'
