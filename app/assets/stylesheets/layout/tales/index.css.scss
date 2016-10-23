@@ -43,6 +43,11 @@
     @extend .clearfix;
   }
 
+  .layout__tales__index__list__item__tags,
+  .layout__tales__index__list__item__scores{
+    margin-right: $margin_size_xx_small;
+  }
+
   .layout__tales__index__list__item__content {
     margin-top: $margin_size_x_small;
   }

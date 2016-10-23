@@ -63,6 +63,7 @@ module TaleFinder
         .per(DB_LIMIT_SIZE)
         .order(custom_sort(sort))
         .includes(:tale_tag_relationships)
+        .includes(:tale_score_relationships)
     end
 
     # refs. SearchForm#sort_master

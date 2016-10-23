@@ -40,11 +40,17 @@
       <div>
         <% tale.tale_tag_relationships.each do |relation| %>
           <% tag = (@tags.select { |tag| tag.id == relation.tag_id }).first %>
-          <%= link_to "#{tag.name}", tales_path('tags':{'id':[tag.view_number]}), class: 'module__label' %>
+          <% path = tales_path('tags':{'id':[tag.view_number]}) %>
+          <%= link_to path, class: 'module__label layout__tales__index__list__item__tags' do %>
+            <%= fa_icon('tag') + ' ' + tag.name %>
+          <% end %>
         <% end %>
 
-        <% {'Star1':3, 'Star2':1, 'Star3':5}.each do |axis, score| %> <!-- FIXME : sample data -->
-          <a href="#" class="module__label"><%= axis %>:<% (1..score).each do %><%= fa_icon 'star' %><% end %></a>
+        <% tale.tale_score_relationships.each do |relation| %>
+          <% score = (@scores.select { |score| score.id == relation.score_id }).first %>
+          <%= link_to '#', class: 'module__label layout__tales__index__list__item__scores' do %>
+            <%= fa_icon('star') + ' ' + score.key + ' : ' + score.value %>
+          <% end %>
         <% end %>
       </div>
 
