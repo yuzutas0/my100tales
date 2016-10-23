@@ -16,8 +16,7 @@ class TaleService
     Tale.transaction do
       tale = TaleFactory.instance(params, user)
       success = tale.save
-      TagService.change_tags(tale.id, option_form, user) if success
-      return tale, success
+      return change_records(tale, option_form, user, success)
     end
   end
 
@@ -56,8 +55,7 @@ class TaleService
   def self.update(tale, tale_params, option_form, user)
     Tale.transaction do
       success = tale.update(tale_params)
-      TagService.change_tags(tale.id, option_form, user) if success
-      return tale, success
+      return change_records(tale, option_form, user, success)
     end
   end
 
@@ -66,6 +64,14 @@ class TaleService
   # -----------------------------------------------------------------
   class << self
     private
+
+    # -----------------------------------------------------------------
+    # Create, Update
+    # -----------------------------------------------------------------
+    def change_records(tale, option_form, user, success)
+      TagService.change_tags(tale.id, option_form, user) if success
+      return tale, success
+    end
 
     # -----------------------------------------------------------------
     # Read
