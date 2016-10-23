@@ -20,6 +20,7 @@ class ScoresController < ApplicationController
   # -----------------------------------------------------------------
   # PATCH /scores/:view_number
   def update
+    # FIXME about key update
     if @score.update(score_params)
       flash[:notice] = t('views.message.update.success')
     else

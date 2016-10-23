@@ -9,6 +9,11 @@ class ScoreRepository
     Score.where('user_id = ?', user_id) || []
   end
 
+  # SELECT * FROM scores WHERE user_id = #{user_id} AND view_number = #{view_number}
+  def self.detail(user_id, view_number)
+    Score.where('user_id = ? AND view_number = ?', user_id, view_number).first
+  end
+
   # get hash about score's view_number and how many tales the score is attached to
   # => { view_number: size, ... }
   # => e.g. { 1: 21, 2: 15, 3: 23 }

@@ -23,6 +23,11 @@ class ScoreService
     [scores, scores_attached]
   end
 
+  # called by ScoresController#set_score to throw query about score
+  def self.detail(user_id, view_number)
+    ScoreRepository.detail(user_id, view_number)
+  end
+
   # called by TaleController#ready_form to show suggestion
   def self.key_and_attached_count(user_id)
     ScoreRepository.key_and_attached_count(user_id)
