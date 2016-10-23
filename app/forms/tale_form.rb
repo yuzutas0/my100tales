@@ -15,8 +15,8 @@ class TaleForm
     score_list = all_list.grep(/.+:.+/)
     @tags = all_list - score_list
     score_list.each do |score|
-      score_content = score.split(':', 2)
-      @scores << { score_content[0] => score_content[1] }
+      score_content = score.partition(':')
+      @scores << { score_content[0] => score_content[2] }
     end
     self
   end
