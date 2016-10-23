@@ -6,9 +6,9 @@ class TagService
 
   # *** use transaction ***
   # change tags and relation between tale and tags
-  def self.change_tags(tale_id, option_form, user)
-    TagFactory.create_only_new_name(user, option_form.tags)
-    TaleTagRelationshipService.update(tale_id, option_form.tags)
+  def self.change_tags(tale_id, tags, user)
+    TagFactory.create_only_new_name(user, tags)
+    TaleTagRelationshipService.update(tale_id, tags)
   end
 
   # -----------------------------------------------------------------
