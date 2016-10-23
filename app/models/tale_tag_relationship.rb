@@ -15,13 +15,4 @@ class TaleTagRelationship < ActiveRecord::Base
   validates :tale_id, presence: true, uniqueness: { scope: [:tag_id] }
   validates :tale, presence: true
   validates :tag, presence: true
-
-  # -----------------------------------------------------------------
-  # elasticsearch
-  # -----------------------------------------------------------------
-  # include
-  include TaleTagRelationshipSearchable
-  # connect
-  index_name TaleTagRelationshipSearchable::INDEX_NAME
-  __elasticsearch__.client = TaleTagRelationshipSearchable::CLIENT
 end

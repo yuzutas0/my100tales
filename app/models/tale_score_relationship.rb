@@ -15,13 +15,4 @@ class TaleScoreRelationship < ActiveRecord::Base
   validates :tale_id, presence: true, uniqueness: { scope: [:score_id] }
   validates :tale, presence: true
   validates :score, presence: true
-
-  # -----------------------------------------------------------------
-  # elasticsearch
-  # -----------------------------------------------------------------
-  # include
-  include TaleScoreRelationshipSearchable
-  # connect
-  index_name TaleScoreRelationshipSearchable::INDEX_NAME
-  __elasticsearch__.client = TaleScoreRelationshipSearchable::CLIENT
 end
