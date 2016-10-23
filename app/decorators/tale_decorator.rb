@@ -34,13 +34,26 @@ class TaleDecorator < BaseDecorator
   # -----------------------------------------------------------------
 
   # set option form
-  def self.option_form(tale, tags = '')
-    tale_tags = ''
-    tale_tags += tale.tags.pluck(:name).join(',') if tale.tags.present?
-    tale_tags += ',' if tale.tags.present? && tags.present?
-    tale_tags += tags if tags.present?
+  def self.option_form(tale, showing_tags = '')
     params = {}
-    params[:tags] = tale_tags
+    params[:tags] = tale_tags_for_form(tale, showing_tags)
     TaleForm.new(params)
+  end
+
+  # -----------------------------------------------------------------
+  # Support
+  # -----------------------------------------------------------------
+  class << self
+    private
+
+    def tale_tags_for_form(tale, showing_tags)
+      # top priority
+      return showing_tags if showing_tags.present?
+      # merge tags and scores
+      list = []
+      list << tale.tags.pluck(:name) if tale.tags.present?
+      list << tale.scores.map { |i| i.key + ':' + i.value } if tale.scores.present?
+      list.join(',')
+    end
   end
 end
