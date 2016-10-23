@@ -15,7 +15,7 @@ class TagService
   # Read
   # -----------------------------------------------------------------
 
-  # bind TagsController#index
+  # called TagsController#index, TalesController#index
   # [tags, tags_attached]
   def self.list(user_id)
     tags = TagRepository.list(user_id)

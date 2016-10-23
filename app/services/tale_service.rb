@@ -25,18 +25,11 @@ class TaleService
   # Read - index
   # -----------------------------------------------------------------
 
-  # return [is_searched, tales, tags, tags_attached, sequels_attached]
-  #
-  # *** attention ***
-  # combine tales.tale_tag_relationships with tag as necessary!
-  # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
-  # because avoid to throw query about tag records twice
+  # return tale list
   def self.list(user_id, queries)
     tales = search(user_id, queries)
     sequels_attached = sequels_attached(tales)
-    tags = TagRepository.list(user_id)
-    tags_attached = TagRepository.view_number_and_attached_count(user_id)
-    [tales, tags, tags_attached, sequels_attached]
+    [tales, sequels_attached]
   end
 
   # -----------------------------------------------------------------

@@ -32,11 +32,18 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - read
   # -----------------------------------------------------------------
+
   # GET /tales
+  #
+  # *** attention ***
+  # combine tales.tale_tag_relationships with tag as necessary!
+  # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
+  # because avoid to throw query about tag records twice
   def index
     @queries = SearchForm.new(params, request.fullpath)
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
-    @tales, @tags, @tags_attached, @sequels_attached = TaleService.list(current_user.id, @queries)
+    @tales, @sequels_attached = TaleService.list(current_user.id, @queries)
+    @tags, @tags_attached = TagService.list(current_user.id)
     @sort_master = SearchForm.sort_master
   end
 
