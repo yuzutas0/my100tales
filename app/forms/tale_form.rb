@@ -12,8 +12,9 @@ class TaleForm
   # => @scores = [{'score':'value1'},{'score':'value2'}]
   def form_to_object
     all_list = @tags.split(',').map(&:html_safe)
-    score_list = all_list.grep(/.+:.+/)
-    @tags = all_list - score_list
+    remove_list = all_list.grep(/\A.+:\z/) # 'score:'
+    score_list = all_list.grep(/\A.+:.+\z/) # 'score:value'
+    @tags = all_list - score_list - remove_list
     score_list.each do |score|
       score_content = score.partition(':')
       @scores << { score_content[0] => score_content[2] }

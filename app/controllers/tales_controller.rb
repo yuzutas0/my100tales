@@ -106,6 +106,7 @@ class TalesController < ApplicationController
   def ready_form(tale, user_id, showing_tags = '')
     @form = TaleDecorator.option_form(tale, showing_tags)
     @tags = TagService.name_and_attached_count(user_id)
+    @tags.merge!(ScoreService.key_and_attached_count(user_id))
   end
 
   # -----------------------------------------------------------------

@@ -22,4 +22,9 @@ class ScoreService
     scores_attached = ScoreRepository.view_number_and_attached_count(user_id)
     [scores, scores_attached]
   end
+
+  # called by TaleController#ready_form to show suggestion
+  def self.key_and_attached_count(user_id)
+    ScoreRepository.key_and_attached_count(user_id)
+  end
 end

@@ -17,7 +17,7 @@ class ScoreRepository
     query = <<-'SQL'.freeze
       SELECT
         S.view_number,
-        count(R.id) AS size
+        COUNT(R.id)
       FROM
         scores S
       LEFT OUTER JOIN -- count for zero attached record
@@ -29,6 +29,31 @@ class ScoreRepository
       GROUP BY
         S.id
     SQL
+    # execute
+    CommonRepository.select_hash_with_user_id(user_id, query)
+  end
+
+  # get hash about score's key: and how many tales the score is attached to
+  # => { 'key:': size, ... }
+  # => e.g. { 'testOne:': 21, 'test2:': 15, 'test_three:': 23 }
+  def self.key_and_attached_count(user_id)
+    # query
+    query = <<-'SQL'.freeze
+      SELECT
+        CONCAT(S.key, ':'),
+        count(R.id)
+      FROM
+        scores S
+      LEFT OUTER JOIN -- count for zero attached record
+        tale_score_relationships R
+      ON
+        S.id = R.score_id
+      WHERE
+        S.user_id = ?
+      GROUP BY
+        S.key
+    SQL
+
     # execute
     CommonRepository.select_hash_with_user_id(user_id, query)
   end

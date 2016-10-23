@@ -22,7 +22,7 @@ class TagRepository
     query = <<-'SQL'.freeze
       SELECT
         T.view_number,
-        count(R.id) AS size
+        COUNT(R.id)
       FROM
         tags T
       LEFT OUTER JOIN -- count for zero attached record
@@ -39,15 +39,15 @@ class TagRepository
     CommonRepository.select_hash_with_user_id(user_id, query)
   end
 
-  # get hash about tag's name and how many tales tag is attached to
+  # get hash about tag's name and how many tales the tag is attached to
   # => { name: size, ... }
-  # => e.g. { 'testOne': 21, 'test2': 15, ''test_three'': 23 }
+  # => e.g. { 'testOne': 21, 'test2': 15, 'test_three': 23 }
   def self.name_and_attached_count(user_id)
     # query
     query = <<-'SQL'.freeze
       SELECT
         T.name,
-        count(R.id) AS size
+        COUNT(R.id)
       FROM
         tags T
       LEFT OUTER JOIN -- count for zero attached record
