@@ -7,6 +7,7 @@ class TagFactory
   # *** use transaction ***
   # create only new tags for the user without already exist tags
   def self.create_only_new_name(user, tag_name_list)
+    return if tag_name_list.blank?
     # ready params
     only_new_name_list = diff_list(user.id, tag_name_list)
     records = []
@@ -34,7 +35,7 @@ class TagFactory
     end
 
     # SELECT MAX(view_number) FROM tags WHERE user_id = #{user_id}
-    # => return 1 if the result is blank
+    # => return 1 if the result is blank (0 + 1 at create_only_new_name method)
     def max_view_number(user_id)
       number = Tag.where('user_id = ?', user_id).maximum(:view_number)
       number.present? ? number : 0

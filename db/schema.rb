@@ -13,8 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20_161_020_115_143) do
   create_table 'scores', force: :cascade do |t|
-    t.string   'key',         limit: 255
-    t.string   'value',       limit: 255
+    t.string   'key',         limit: 255,             null: false
+    t.string   'value',       limit: 255,             null: false
     t.integer  'view_number', limit: 4, default: 0, null: false
     t.integer  'user_id',     limit: 4,               null: false
     t.datetime 'created_at',                          null: false
@@ -68,10 +68,8 @@ ActiveRecord::Schema.define(version: 20_161_020_115_143) do
   add_index 'tags', ['view_number'], name: 'index_tags_on_view_number', using: :btree
 
   create_table 'tale_score_relationships', force: :cascade do |t|
-    t.integer  'tale_id',    limit: 4, null: false
-    t.integer  'score_id',   limit: 4, null: false
-    t.datetime 'created_at',           null: false
-    t.datetime 'updated_at',           null: false
+    t.integer 'tale_id',  limit: 4, null: false
+    t.integer 'score_id', limit: 4, null: false
   end
 
   add_index 'tale_score_relationships', ['score_id'], name: 'index_tale_score_relationships_on_score_id', using: :btree

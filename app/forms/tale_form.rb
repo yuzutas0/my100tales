@@ -16,7 +16,7 @@ class TaleForm
     @tags = all_list - score_list
     score_list.each do |score|
       score_content = score.split(':')
-      @scores << { score_content[0] => score_content[1]}
+      @scores << { score_content[0] => score_content[1] }
     end
     self
   end
