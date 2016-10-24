@@ -20,8 +20,7 @@ class ScoresController < ApplicationController
   # -----------------------------------------------------------------
   # PATCH /scores/:view_number
   def update
-    # FIXME about key update
-    if @score.update(score_params)
+    if ScoreService.update(@score, score_params, current_user.id)
       flash[:notice] = t('views.message.update.success')
     else
       flash[:alert] = ScoreDecorator.flash(@score, flash)

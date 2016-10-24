@@ -15,18 +15,19 @@ class ScoreService
   # Update
   # -----------------------------------------------------------------
 
-  # called ScoresController#update
+  # called by ScoresController#update
+  # one request can update only one column, whether key or value
   def self.update(score, params, user_id)
     key = params[:key]
     return ScoreRepository.update_key(score, key, user_id) if score.key != key
-    score.update(params)
+    ScoreRepository.update(score, params)
   end
 
   # -----------------------------------------------------------------
   # Read
   # -----------------------------------------------------------------
 
-  # called TalesController#index
+  # called by TalesController#index
   # [scores, scores_attached]
   def self.list(user_id)
     scores = ScoreRepository.list(user_id)

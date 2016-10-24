@@ -67,6 +67,10 @@ class ScoreRepository
   # Update
   # -----------------------------------------------------------------
 
+  def self.update(score, params)
+    score.update(params)
+  end
+
   def self.update_key(score, key, user_id)
     # query
     query = <<-'SQL'.freeze
