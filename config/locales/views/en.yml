@@ -71,6 +71,15 @@ en:
         confirm: 'Are you sure?'
     new:
       button: 'New Sequel'
+  tags:
+    index:
+      attached_html: 'is attached to %{link}'
+      link_html: '%{count} tales'
+      edit: 'Edit'
+      delete:
+        title: 'Delete'
+        confirm: 'Are you sure?'
+      update: 'Update'
   tales:
     detail:
       information:
