@@ -20,12 +20,9 @@ class ScoresController < ApplicationController
   # -----------------------------------------------------------------
   # PATCH /scores/:view_number
   def update
-    if ScoreService.update(@score, score_params, current_user.id)
-      flash[:notice] = t('views.message.update.success')
-    else
-      flash[:alert] = ScoreDecorator.flash(@score, flash)
-    end
-    redirect_to scores_url
+    success = ScoreService.update(@score, score_params, current_user.id)
+    message = t('views.message.destroy.success')
+    render_scores(success, message)
   end
 
   # -----------------------------------------------------------------
@@ -33,12 +30,16 @@ class ScoresController < ApplicationController
   # -----------------------------------------------------------------
   # DELETE /scores/:view_number
   def destroy
-    if @score.destroy
-      flash[:notice] = t('views.message.destroy.success')
-    else
-      flash[:alert] = ScoreDecorator.flash(@score, flash)
-    end
-    redirect_to scores_url
+    success = @score.destroy
+    message = t('views.message.destroy.success')
+    render_scores(success, message)
+  end
+
+  # DELETE /scores/key/:key
+  def destroy_by_key
+    success = ScoreRepository.delete_by_key(current_user.id, params[:key])
+    message = t('views.message.destroy.success')
+    render_scores(success, message)
   end
 
   # -----------------------------------------------------------------
@@ -55,5 +56,15 @@ class ScoresController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def score_params
     params.require(:score).permit(:key, :value, :view_number)
+  end
+
+  # common logic called by update, delete
+  def render_scores(success, message)
+    if success
+      flash[:notice] = message
+    else
+      flash[:alert] = ScoreDecorator.flash(@score, flash)
+    end
+    redirect_to scores_url
   end
 end

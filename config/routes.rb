@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     patch  '/scores/:view_number', to: 'scores#update', as: 'score'
     put    '/scores/:view_number', to: 'scores#update'
     delete '/scores/:view_number', to: 'scores#destroy'
+    delete '/scores/key/:key'    , to: 'scores#destory_by_key'
 
     # search condition
     get    '/searches',                       to: 'search_conditions#index',  as: 'search_conditions'

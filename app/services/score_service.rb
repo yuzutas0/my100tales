@@ -44,4 +44,13 @@ class ScoreService
   def self.key_and_attached_count(user_id)
     ScoreRepository.key_and_attached_count(user_id)
   end
+
+  # -----------------------------------------------------------------
+  # Delete
+  # -----------------------------------------------------------------
+
+  # called by ScoresController#destroy_by_key
+  def self.delete_by_key(user_id, key)
+    ScoreRepository.delete_by_key(user_id, key)
+  end
 end

@@ -89,4 +89,12 @@ class ScoreRepository
     result = ActiveRecord::Base.connection.execute(sql)
     result > 0
   end
+
+  # -----------------------------------------------------------------
+  # Delete
+  # -----------------------------------------------------------------
+
+  def self.delete_by_key(user_id, key)
+    Score.where('user_id = ? AND key = ?', user_id, key).delete_all
+  end
 end
