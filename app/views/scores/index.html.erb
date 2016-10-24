@@ -10,15 +10,16 @@
       <div id="script__tag__<%= index %>" class="module__list__item">
         <p class="module__label"><%= score.key + ' : ' + score.value %></p>
         <p class="module__list__item__content">
-          is attached to
-          <%= link_to "#{@scores_attached[score.view_number]} tales", tales_path('scores':{'id':[score.view_number]}) %>
+          <% link = link_to t('.link_html', count: @scores_attached[score.view_number]),
+                            tales_path('tags':{'id':[score.view_number]}) %>
+          <%= t('.attached_html', link: link) %>
           |
-          <a v-on:click="showModal">Edit</a>
+          <a v-on:click="showModal"><%= t('.edit') %></a>
           |
-          <%= link_to 'Delete', score,
+          <%= link_to t('.delete.title'), score,
                       method: :delete,
-                      data: { confirm: 'Are you sure?' },
-                      title: 'Delete',
+                      data: { confirm: t('.delete.confirm') },
+                      title: t('.delete.title'),
                       class: 'layout__tags__index__item__delete'
           %>
         </p>
@@ -33,7 +34,7 @@
                     <%= f.text_area :name, class: 'module__form__field__text module__form__field__text--fixed' %>
                   </div>
                   <%= f.hidden_field :view_number %>
-                  <%= f.submit 'Update', class: 'module__button module__button--small' %>
+                  <%= f.submit t('.update'), class: 'module__button module__button--small' %>
               <% end %>
               </div>
             </div>
