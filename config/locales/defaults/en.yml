@@ -35,7 +35,8 @@ en:
         unlock: 'Unlock'
         account: 'Account'
         password: 'Password'
-        tags:  "TagList"
+        tags: 'TagList'
+        scores: 'ScoreList'
         conditions:
           index: 'SearchConditionList'
           edit: 'Edit Search Condition List'

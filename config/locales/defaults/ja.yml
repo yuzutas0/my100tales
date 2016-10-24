@@ -35,7 +35,8 @@ ja:
         unlock: 'ロック解除'
         account: 'アカウント'
         password: 'パスワード'
-        tags:  "タグ一覧"
+        tags: 'タグ一覧'
+        scores: 'スコア一覧'
         conditions:
           index: '検索条件一覧'
           edit: '検索条件を編集'

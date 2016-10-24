@@ -1,0 +1,45 @@
+<% @page_title = t('views.path.name.scores') %>
+<div class="layout__tags__index">
+  <p class="layout__tags__index__header">
+    <%= render 'layouts/breadcrumb_tale_2', third_page: @page_title %>
+  </p>
+  <hr>
+
+  <div class="module__list">
+    <% @scores.each_with_index do |score, index| %>
+      <div id="script__tag__<%= index %>" class="module__list__item">
+        <p class="module__label"><%= score.key + ' : ' + score.value %></p>
+        <p class="module__list__item__content">
+          is attached to
+          <%= link_to "#{@scores_attached[score.view_number]} tales", tales_path('scores':{'id':[score.view_number]}) %>
+          |
+          <a v-on:click="showModal">Edit</a>
+          |
+          <%= link_to 'Delete', score,
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' },
+                      title: 'Delete',
+                      class: 'layout__tags__index__item__delete'
+          %>
+        </p>
+
+        <div v-cloak>
+          <div class="module__modal__outer" v-show="display">
+            <div class="module__modal__background" v-on:click="closeModal"></div>
+            <div class="module__modal">
+              <div class="module__modal__inner">
+                <%= form_for score, html: { class: 'module__form' } do |f| %>
+                  <div class="module__form__field">
+                    <%= f.text_area :name, class: 'module__form__field__text module__form__field__text--fixed' %>
+                  </div>
+                  <%= f.hidden_field :view_number %>
+                  <%= f.submit 'Update', class: 'module__button module__button--small' %>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -35,6 +35,7 @@ class ScoresController < ApplicationController
     render_scores(success, message)
   end
 
+  # FIXME: use this endpoint!!
   # DELETE /scores/key/:key
   def destroy_by_key
     success = ScoreRepository.delete_by_key(current_user.id, params[:key])
