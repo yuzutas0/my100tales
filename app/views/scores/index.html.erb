@@ -5,41 +5,61 @@
   </p>
   <hr>
 
-  <div class="module__list">
-    <% @scores.each_with_index do |score, index| %>
-      <div id="script__tag__<%= index %>" class="module__list__item">
-        <p class="module__label"><%= score.key + ' : ' + score.value %></p>
-        <p class="module__list__item__content">
-          <% link = link_to t('.link_html', count: @scores_attached[score.view_number]),
-                            tales_path('tags':{'id':[score.view_number]}) %>
-          <%= t('.attached_html', link: link) %>
-          |
-          <a v-on:click="showModal"><%= t('.edit') %></a>
-          |
-          <%= link_to t('.delete.title'), score,
-                      method: :delete,
-                      data: { confirm: t('.delete.confirm') },
-                      title: t('.delete.title'),
-                      class: 'layout__tags__index__item__delete'
-          %>
-        </p>
+  <div>
+    <% index = 0.to_s %>
+    <% @scores.map(&:key).uniq.each do |key| %>
+      <div class="module__list">
 
-        <div v-cloak>
-          <div class="module__modal__outer" v-show="display">
-            <div class="module__modal__background" v-on:click="closeModal"></div>
-            <div class="module__modal">
-              <div class="module__modal__inner">
-                <%= form_for score, html: { class: 'module__form' } do |f| %>
-                  <div class="module__form__field">
-                    <%= f.text_area :key, class: 'module__form__field__text module__form__field__text--fixed' %>
+        <div id="script__tag__<%= index.next! %>" class="module__list__item">
+          <p class="layout__scores__index__key"><%= key %></p>
+          <p class="module__list__item__content">
+            <a v-on:click="showModal"><%= t('.edit_all') %></a>
+            |
+            <%= link_to t('.delete_all'), nil,
+                        method: :delete,
+                        data: { confirm: t('.delete.confirm') },
+                        title: t('.delete.title'),
+                        class: 'layout__tags__index__item__delete'
+            %>
+          </p>
+        </div>
+
+        <% (@scores.select { |score| score.key == key }).each do |score| %>
+          <div id="script__tag__<%= index.next! %>" class="module__list__item">
+            <p class="module__label"><%= score.key + ' : ' + score.value %></p>
+            <p class="module__list__item__content layout__tags__index__content">
+              <% link = link_to t('.link_html', count: @scores_attached[score.view_number]),
+                                tales_path('tags':{'id':[score.view_number]}) %>
+              <%= t('.attached_html', link: link) %>
+              |
+              <a v-on:click="showModal"><%= t('.edit') %></a>
+              |
+              <%= link_to t('.delete.title'), score,
+                          method: :delete,
+                          data: { confirm: t('.delete.confirm') },
+                          title: t('.delete.title'),
+                          class: 'layout__tags__index__item__delete'
+              %>
+            </p>
+
+            <div v-cloak>
+              <div class="module__modal__outer" v-show="display">
+                <div class="module__modal__background" v-on:click="closeModal"></div>
+                <div class="module__modal">
+                  <div class="module__modal__inner">
+                    <%= form_for score, html: { class: 'module__form' } do |f| %>
+                      <div class="module__form__field">
+                        <%= f.text_area :key, class: 'module__form__field__text module__form__field__text--fixed' %>
+                      </div>
+                      <%= f.hidden_field :view_number %>
+                      <%= f.submit t('.update'), class: 'module__button module__button--small' %>
+                    <% end %>
                   </div>
-                  <%= f.hidden_field :view_number %>
-                  <%= f.submit t('.update'), class: 'module__button module__button--small' %>
-              <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

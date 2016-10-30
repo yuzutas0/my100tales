@@ -85,9 +85,11 @@ en:
       attached_html: 'is attached to %{link}'
       link_html: '%{count} tales'
       edit: 'Edit'
+      edit_all: 'Edit all'
       delete:
         title: 'Delete'
         confirm: 'Are you sure?'
+      delete_all: 'Delete all'
       update: 'Update'
   tales:
     detail:

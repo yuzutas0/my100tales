@@ -1,0 +1,13 @@
+// scores index
+
+// import
+@import "base/const";
+@import "base/util";
+@import "module/button";
+@import "module/list";
+
+// main
+.layout__scores__index__key {
+  font-size: $font-size-large;
+  margin-bottom: $margin_size_xx_small;
+}

@@ -9,7 +9,7 @@
     <% @tags.each_with_index do |tag, index| %>
       <div id="script__tag__<%= index %>" class="module__list__item">
         <p class="module__label"><%= tag.name %></p>
-        <p class="module__list__item__content">
+        <p class="module__list__item__content layout__tags__index__content">
           <% link = link_to t('.link_html', count: @tags_attached[tag.view_number]),
                             tales_path('tags':{'id':[tag.view_number]}) %>
           <%= t('.attached_html', link: link) %>
