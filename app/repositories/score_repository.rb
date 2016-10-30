@@ -75,9 +75,9 @@ class ScoreRepository
     # query
     query = <<-'SQL'.freeze
       UPDATE
-        Scores S
+        scores S
       SET
-        S.key = ?
+        S.key_name = ?
       WHERE
         S.key_name = ?
         AND S.user_id = ?

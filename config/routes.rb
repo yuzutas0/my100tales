@@ -35,8 +35,6 @@ Rails.application.routes.draw do
     get    '/scores',              to: 'scores#index',          as: 'scores'
     patch  '/scores/:view_number', to: 'scores#update',         as: 'score'
     put    '/scores/:view_number', to: 'scores#update'
-    patch  '/scores/key/:key',     to: 'scores#update_by_key',  as: 'update_scores'
-    put    '/scores/key/:key',     to: 'scores#update_by_key'
     delete '/scores/:view_number', to: 'scores#destroy'
     delete '/scores/key/:key',     to: 'scores#destroy_by_key', as: 'delete_scores'
 

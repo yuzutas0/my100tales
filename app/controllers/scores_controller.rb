@@ -25,13 +25,6 @@ class ScoresController < ApplicationController
     render_scores(success, message)
   end
 
-  # PATCH /scores/key/:key
-  def update_by_key
-    p params
-    # TODO implement
-    redirect_to scores_url
-  end
-
   # -----------------------------------------------------------------
   # endpoint - delete
   # -----------------------------------------------------------------
@@ -62,7 +55,7 @@ class ScoresController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def score_params
-    params.require(:score).permit(:key, :value, :view_number)
+    params.require(:score).permit(:key_name, :value, :view_number)
   end
 
   # common logic called by update, delete
