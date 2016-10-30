@@ -58,7 +58,6 @@ class ScoreRepository
       GROUP BY
         S.key_name
     SQL
-
     # execute
     CommonRepository.select_hash_with_user_id(user_id, query)
   end
@@ -72,8 +71,8 @@ class ScoreRepository
   end
 
   def self.update_key(score, key, user_id)
+    # valid
     return false if key.blank?
-
     # query
     query = <<-'SQL'.freeze
       UPDATE
@@ -85,10 +84,11 @@ class ScoreRepository
         AND S.user_id = ?
         AND S.user_id = ?
     SQL
-
+    # execute
     args = [query, key, score.key_name, score.user_id, user_id]
     sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
     result = ActiveRecord::Base.connection.update(sql)
+    # return
     result > 0
   end
 
