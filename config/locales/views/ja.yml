@@ -91,6 +91,7 @@ ja:
         confirm: '本当に削除してもよろしいですか？'
       delete_all: '一括削除'
       update: '更新'
+      update_all: '一括更新'
   tales:
     detail:
       information:

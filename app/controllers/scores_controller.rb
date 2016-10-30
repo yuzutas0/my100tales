@@ -25,6 +25,13 @@ class ScoresController < ApplicationController
     render_scores(success, message)
   end
 
+  # PATCH /scores/key/:key
+  def update_by_key
+    p params
+    # TODO implement
+    redirect_to scores_url
+  end
+
   # -----------------------------------------------------------------
   # endpoint - delete
   # -----------------------------------------------------------------
@@ -35,7 +42,6 @@ class ScoresController < ApplicationController
     render_scores(success, message)
   end
 
-  # FIXME: use this endpoint!!
   # DELETE /scores/key/:key
   def destroy_by_key
     success = ScoreService.delete_by_key(current_user.id, params[:key])

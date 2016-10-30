@@ -90,6 +90,7 @@ en:
         confirm: 'Are you sure?'
       delete_all: 'Delete all'
       update: 'Update'
+      update_all: 'Update all'
   tales:
     detail:
       information:
