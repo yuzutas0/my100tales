@@ -7,7 +7,20 @@
 @import "module/list";
 
 // main
-.layout__scores__index__key {
-  font-size: $font-size-large;
-  margin-bottom: $margin_size_xx_small;
+.layout__scores__index {
+  @extend .container;
+  @include util__layout;
+
+  .layout__scores__index__header {
+    margin-top: $margin_size_xx_small; // => same as tale view header
+  }
+
+  .layout__scores__index__content {
+    margin-top: $margin_size_xx_small;
+  }
+
+  .layout__scores__index__key {
+    font-size: $font-size-large;
+    margin-bottom: $margin_size_xx_small;
+  }
 }

@@ -1,6 +1,6 @@
 <% @page_title = t('views.path.name.scores') %>
-<div class="layout__tags__index">
-  <p class="layout__tags__index__header">
+<div class="layout__scores__index">
+  <p class="layout__scores__index__header">
     <%= render 'layouts/breadcrumb_tale_2', third_page: @page_title %>
   </p>
   <hr>
@@ -20,7 +20,7 @@
                         method: :delete,
                         data: { confirm: t('.delete.confirm') },
                         title: t('.delete_all'),
-                        class: 'layout__tags__index__item__delete'
+                        class: 'layout__scores__index__item__delete'
             %>
           </p>
 
@@ -45,9 +45,10 @@
         <% (@scores.select { |score| score.key_name == key }).each do |score| %>
           <div id="script__score__<%= index.next! %>" class="module__list__item">
             <p class="module__label"><%= score.key_name + ' : ' + score.value %></p>
-            <p class="module__list__item__content layout__tags__index__content">
+            <p class="module__list__item__content layout__scores__index__content">
+              <!-- FIXME url -->
               <% link = link_to t('.link_html', count: @scores_attached[score.view_number]),
-                                tales_path('tags':{'id':[score.view_number]}) %>
+                                tales_path('scores':{'id':[score.view_number]}) %>
               <%= t('.attached_html', link: link) %>
               |
               <a v-on:click="showModal"><%= t('.edit') %></a>
@@ -56,7 +57,7 @@
                           method: :delete,
                           data: { confirm: t('.delete.confirm') },
                           title: t('.delete.title'),
-                          class: 'layout__tags__index__item__delete'
+                          class: 'layout__scores__index__item__delete'
               %>
             </p>
 
