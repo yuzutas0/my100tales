@@ -25,6 +25,7 @@
         <% if user_signed_in? %>
           <% [(link_to fa_icon('list') + ' ' + t('views.path.name.tales'), tales_path),
               (link_to fa_icon('tags') + ' ' + t('views.path.name.tags'), tags_path),
+              (link_to fa_icon('star') + ' ' + t('views.path.name.scores'), scores_path),
               (link_to fa_icon('cog') + ' ' + t('.settings'), edit_user_registration_path),
               (link_to fa_icon('sign-out') + ' ' + t('.logout'), destroy_user_session_path, method: :delete)
              ].each do |link| %>
