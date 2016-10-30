@@ -48,7 +48,6 @@ ja:
           text2: 'アカウント登録は1分で完了します。'
   layouts:
     header:
-      settings: '設定'
       logout: 'ログアウト'
   search_conditions:
     index:

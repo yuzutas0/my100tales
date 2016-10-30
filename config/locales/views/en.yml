@@ -47,7 +47,6 @@ en:
           text2: 'Signup is going to be completed without time and money.'
   layouts:
     header:
-      settings: 'Settings'
       logout: 'Logout'
   search_conditions:
     index:
