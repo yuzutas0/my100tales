@@ -40,4 +40,11 @@ class Score < ActiveRecord::Base
 
   validates :user,
             presence: true
+
+  # -----------------------------------------------------------------
+  # message
+  # -----------------------------------------------------------------
+  def add_error_blank_key_name
+    errors[:base] << I18n.t('models.score.error.blank.key_name')
+  end
 end

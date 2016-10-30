@@ -26,6 +26,11 @@ en:
       option_1: 'Older Create'
       option_2: 'Newer Update'
       option_3: 'Older Update'
+  models:
+    score:
+      error:
+        blank:
+          key_name: "Key can't be blank"
   views:
     path:
       name:

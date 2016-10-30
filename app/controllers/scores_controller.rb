@@ -21,7 +21,8 @@ class ScoresController < ApplicationController
   # PATCH /scores/:view_number
   def update
     success = ScoreService.update(@score, score_params, current_user.id)
-    message = t('views.message.destroy.success')
+    message = t('views.message.update.success')
+    @score.add_error_blank_key_name if !success && score_params[:key_name].blank?
     render_scores(success, message)
   end
 

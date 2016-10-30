@@ -26,6 +26,11 @@ ja:
       option_1: '作成が古い順'
       option_2: '更新が新しい順'
       option_3: '更新が古い順'
+  models:
+    score:
+      error:
+        blank:
+          key_name: 'Keyを入力してください'
   views:
     path:
       name:

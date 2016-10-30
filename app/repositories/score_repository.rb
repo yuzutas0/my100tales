@@ -72,6 +72,8 @@ class ScoreRepository
   end
 
   def self.update_key(score, key, user_id)
+    return false if key.blank?
+
     # query
     query = <<-'SQL'.freeze
       UPDATE
@@ -86,7 +88,7 @@ class ScoreRepository
 
     args = [query, key, score.key_name, score.user_id, user_id]
     sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
-    result = ActiveRecord::Base.connection.execute(sql)
+    result = ActiveRecord::Base.connection.update(sql)
     result > 0
   end
 
