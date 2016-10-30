@@ -10,6 +10,7 @@ module TaleFinder
   QUERY = {
     user: 'tales.user_id = ?',
     tags: 'tags.user_id = ? AND tags.view_number IN (?)',
+    scores: 'scores.user_id = ? AND scores.view_number IN (?)',
     keyword: '(tales.title LIKE ? OR tales.content LIKE ?)'
   }.freeze
 
@@ -18,25 +19,25 @@ module TaleFinder
   # -----------------------------------------------------------------
   module ClassMethods
     # called by TaleRepository#list
-    def index_by_db(user_id, tags, sort, page)
+    def index_by_db(user_id, tags, scores, sort, page)
       condition = condition_for_db(user_id)
-      read(condition, user_id, tags, sort, page)
+      read(condition, user_id, tags, scores, sort, page)
     end
 
     # called by TaleRepository#search_by_db only when keywords are present
-    def search_by_db(user_id, keywords, tags, sort, page)
+    def search_by_db(user_id, keywords, tags, scores, sort, page)
       condition = condition_for_db(user_id)
       keywords.each do |keyword|
         keyword = '%' + keyword + '%'
         condition = condition.where(QUERY[:keyword], keyword, keyword)
       end
-      read(condition, user_id, tags, sort, page)
+      read(condition, user_id, tags, scores, sort, page)
     end
 
     # called by TaleRepository#search_by_es
-    def search_by_es(user_id, keywords, tags, sort, page)
+    def search_by_es(user_id, keywords, tags, scores, sort, page)
       condition = search_request(user_id, keywords).records
-      read(condition, user_id, tags, sort, page)
+      read(condition, user_id, tags, scores, sort, page)
     end
 
     # -----------------------------------------------------------------
@@ -49,6 +50,10 @@ module TaleFinder
       Tale.where(QUERY[:user], user_id)
     end
 
+    def condition_for_tag_and_score(condition, user_id, tags, scores)
+      condition_for_score(condition_for_tag(condition, user_id, tags), user_id, scores)
+    end
+
     def condition_for_tag(condition, user_id, tags)
       return condition if tags.blank?
       condition
@@ -56,8 +61,15 @@ module TaleFinder
         .where(QUERY[:tags], user_id, tags)
     end
 
-    def read(condition, user_id, tags, sort, page)
-      condition_for_tag(condition, user_id, tags)
+    def condition_for_score(condition, user_id, scores)
+      return condition if scores.blank?
+      condition
+        .joins(:scores)
+        .where(QUERY[:scores], user_id, scores)
+    end
+
+    def read(condition, user_id, tags, scores, sort, page)
+      condition_for_tag_and_score(condition, user_id, tags, scores)
         .uniq
         .page(page)
         .per(DB_LIMIT_SIZE)

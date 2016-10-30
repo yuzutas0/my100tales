@@ -75,21 +75,26 @@ class TaleService
 
     # get list with keyword
     def search(user_id, queries)
-      return TaleRepository.list(user_id, queries.tags, queries.sort, queries.page) unless queries.keyword.present?
-      TaleRepository.search_by_es(search_args(user_id, queries))
+      return TaleRepository.list(search_args_without_keyword(user_id, queries)) if queries.keyword.blank?
+      TaleRepository.search_by_es(search_args_with_keyword(user_id, queries))
     rescue => e
       Rails.logger.warn "failure to request Elasticsearch: #{e.message}"
-      TaleRepository.search_by_db(search_args(user_id, queries))
+      TaleRepository.search_by_db(search_args_with_keyword(user_id, queries))
     end
 
-    def search_args(user_id, queries)
+    def search_args_without_keyword(user_id, queries)
       {
         user_id: user_id,
-        keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq,
         tags: queries.tags,
+        scores: queries.scores,
         sort: queries.sort,
         page: queries.page
       }
+    end
+
+    def search_args_with_keyword(user_id, queries)
+      hash = search_args_without_keyword(user_id, queries)
+      hash.merge({ keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq })
     end
 
     def sequels_attached(tales)
