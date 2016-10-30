@@ -52,7 +52,7 @@ class TaleDecorator < BaseDecorator
       # merge tags and scores
       list = []
       list << tale.tags.pluck(:name) if tale.tags.present?
-      list << tale.scores.map { |i| i.key + ':' + i.value } if tale.scores.present?
+      list << tale.scores.map { |i| i.key_name + ':' + i.value } if tale.scores.present?
       list.join(',')
     end
   end

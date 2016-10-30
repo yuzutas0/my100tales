@@ -7,9 +7,9 @@ class Tale < ActiveRecord::Base
   # -----------------------------------------------------------------
   belongs_to :user
   has_many :sequels, dependent: :destroy
-  has_many :tale_tag_relationships, dependent: :destroy
+  has_many :tale_tag_relationships, dependent: :delete_all
   has_many :tags, through: :tale_tag_relationships
-  has_many :tale_score_relationships, dependent: :destroy
+  has_many :tale_score_relationships, dependent: :delete_all
   has_many :scores, through: :tale_score_relationships
 
   # -----------------------------------------------------------------

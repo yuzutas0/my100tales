@@ -51,6 +51,9 @@ class ScoreService
 
   # called by ScoresController#destroy_by_key
   def self.delete_by_key(user_id, key)
-    ScoreRepository.delete_by_key(user_id, key)
+    Score.transaction do
+      TaleScoreRelationshipRepository.delete_by_score_key(user_id, key)
+      ScoreRepository.delete_by_key(user_id, key)
+    end
   end
 end

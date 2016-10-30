@@ -45,7 +45,7 @@ class ScoreRepository
     # query
     query = <<-'SQL'.freeze
       SELECT
-        CONCAT(S.key, ':'),
+        CONCAT(S.key_name, ':'),
         count(R.id)
       FROM
         scores S
@@ -56,7 +56,7 @@ class ScoreRepository
       WHERE
         S.user_id = ?
       GROUP BY
-        S.key
+        S.key_name
     SQL
 
     # execute
@@ -79,12 +79,12 @@ class ScoreRepository
       SET
         S.key = ?
       WHERE
-        S.key = ?
+        S.key_name = ?
         AND S.user_id = ?
         AND S.user_id = ?
     SQL
 
-    args = [query, key, score.key, score.user_id, user_id]
+    args = [query, key, score.key_name, score.user_id, user_id]
     sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
     result = ActiveRecord::Base.connection.execute(sql)
     result > 0
@@ -94,7 +94,11 @@ class ScoreRepository
   # Delete
   # -----------------------------------------------------------------
 
+  # *** use transaction ***
+  # *** call after TaleScoreRelationshipRepository#delete_by_score_keys
+  # in order to avoid constraint error at database
   def self.delete_by_key(user_id, key)
-    Score.where('user_id = ? AND key = ?', user_id, key).delete_all
+    return if key.blank?
+    Score.where('user_id = ? AND key_name = ?', user_id, key).delete_all
   end
 end

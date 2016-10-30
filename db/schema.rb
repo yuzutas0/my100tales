@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20_161_020_115_143) do
   create_table 'scores', force: :cascade do |t|
-    t.string   'key',         limit: 255,             null: false
+    t.string   'key_name',    limit: 255,             null: false
     t.string   'value',       limit: 255,             null: false
     t.integer  'view_number', limit: 4, default: 0, null: false
     t.integer  'user_id',     limit: 4,               null: false
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20_161_020_115_143) do
     t.datetime 'updated_at',                          null: false
   end
 
-  add_index 'scores', %w(key value user_id), name: 'index_scores_on_key_and_value_and_user_id', unique: true, using: :btree
-  add_index 'scores', ['key'], name: 'index_scores_on_key', using: :btree
+  add_index 'scores', %w(key_name value user_id), name: 'index_scores_on_key_name_and_value_and_user_id', unique: true, using: :btree
+  add_index 'scores', ['key_name'], name: 'index_scores_on_key_name', using: :btree
   add_index 'scores', ['user_id'], name: 'index_scores_on_user_id', using: :btree
   add_index 'scores', ['value'], name: 'index_scores_on_value', using: :btree
   add_index 'scores', %w(view_number user_id), name: 'index_scores_on_view_number_and_user_id', unique: true, using: :btree

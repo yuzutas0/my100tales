@@ -49,7 +49,7 @@
         <% tale.tale_score_relationships.each do |relation| %>
           <% score = (@scores.select { |score| score.id == relation.score_id }).first %>
           <%= link_to '#', class: 'module__label layout__tales__index__list__item__scores' do %>
-            <%= fa_icon('star') + ' ' + score.key + ' : ' + score.value %>
+            <%= fa_icon('star') + ' ' + score.key_name + ' : ' + score.value %>
           <% end %>
         <% end %>
       </div>

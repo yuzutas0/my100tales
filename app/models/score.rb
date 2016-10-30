@@ -8,7 +8,7 @@ class Score < ActiveRecord::Base
   # relation
   # -----------------------------------------------------------------
   belongs_to :user
-  has_many :tale_score_relationships, dependent: :destroy
+  has_many :tale_score_relationships, dependent: :delete_all
   has_many :tales, through: :tale_score_relationships
 
   # -----------------------------------------------------------------
@@ -24,7 +24,7 @@ class Score < ActiveRecord::Base
   # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :key,
+  validates :key_name,
             presence: true,
             length: { minimum: 1, maximum: 100 },
             uniqueness: { scope: [:value, :user_id] }

@@ -6,7 +6,7 @@ class TaleScoreRelationshipFactory
 
   # INSERT INTO tale_score_relationships (tale_id, score_id)
   # SELECT #{tale_id}, S.id FROM scores S
-  # WHERE CONCAT(S.key, ':', S.value)
+  # WHERE CONCAT(S.key_name, ':', S.value)
   # IN (#{score_hash_list[0][key] + ':' + score_hash_list[0][value]}, ...)
   def self.create_by_score_hash_list(tale_id, score_hash_list)
     # validate
@@ -25,7 +25,7 @@ class TaleScoreRelationshipFactory
         FROM
             scores S
         WHERE
-            CONCAT(S.key, ':', S.value) IN (?)
+            CONCAT(S.key_name, ':', S.value) IN (?)
     SQL
 
     # execute

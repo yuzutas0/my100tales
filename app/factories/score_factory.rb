@@ -15,7 +15,7 @@ class ScoreFactory
     # ready query
     only_new_hash_list.each.with_index(1) do |hash, index|
       records << Score.new(user: user,
-                           key: hash.keys.first,
+                           key_name: hash.keys.first,
                            value: hash.values.first,
                            view_number: max_view_number + index)
     end
@@ -31,7 +31,7 @@ class ScoreFactory
 
     # get only new scores for the user without already exist scores
     def diff_list(user_id, score_hash)
-      exist_list = Score.where('user_id = ?', user_id).pluck(:key, :value)
+      exist_list = Score.where('user_id = ?', user_id).pluck(:key_name, :value)
       exist_hash_list = exist_list.map { |exist| { exist[0] => exist[1] } }
       score_hash - exist_hash_list
     end
