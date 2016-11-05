@@ -50,39 +50,70 @@ module TaleFinder
       Tale.where(QUERY[:user], user_id)
     end
 
-    def condition_for_tag_and_score(condition, user_id, tags, scores)
-      condition_for_score(condition_for_tag(condition, user_id, tags), user_id, scores)
+    def read(condition, user_id, tags, scores, sort, page)
+      pre_read(condition, user_id, tags, scores, sort)
+        .distinct
+        .page(page)
+        .per(DB_LIMIT_SIZE)
+        .includes(:tale_tag_relationships)
+        .includes(:tale_score_relationships)
+    end
+
+    def pre_read(condition, user_id, tags, scores, sort)
+      custom_sort(
+        condition_for_score(
+          condition_for_tag(
+            condition,
+            user_id,
+            tags
+          ),
+          user_id,
+          scores
+        ),
+        ScoreService.sort_master(user_id),
+        sort
+      )
     end
 
     def condition_for_tag(condition, user_id, tags)
       return condition if tags.blank?
       condition
-        .joins(:tags)
-        .where(QUERY[:tags], user_id, tags)
+          .joins(:tags)
+          .where(QUERY[:tags], user_id, tags)
     end
 
     def condition_for_score(condition, user_id, scores)
       return condition if scores.blank?
       condition
-        .joins(:scores)
-        .where(QUERY[:scores], user_id, scores)
+          .joins(:scores)
+          .where(QUERY[:scores], user_id, scores)
     end
 
-    def read(condition, user_id, tags, scores, sort, page)
-      condition_for_tag_and_score(condition, user_id, tags, scores)
-        .uniq
-        .page(page)
-        .per(DB_LIMIT_SIZE)
-        .order(custom_sort(sort))
-        .includes(:tale_tag_relationships)
-        .includes(:tale_score_relationships)
+    # refs. SearchForm#sort_master or ScoreService#sort_master
+    def custom_sort(condition, score_sort_master, sort)
+      # param
+      origin_sort_master = SearchForm.sort_master
+      sort = 0 unless 0 <= sort && sort < (origin_sort_master + score_sort_master).length
+      # order by
+      if sort < origin_sort_master.length
+        origin_sort(condition, origin_sort_master, sort)
+      else
+        score_sort(condition, score_sort_master, sort - origin_sort_master.length)
+      end
     end
 
-    # refs. SearchForm#sort_master
-    def custom_sort(sort)
-      sort_master = SearchForm.sort_master
-      sort = 0 unless 0 <= sort && sort < sort_master.length
-      sort_master[sort]
+    def origin_sort(condition, sort_master, sort)
+      condition.order(sort_master[sort])
+    end
+
+    def score_sort(condition, sort_master, sort)
+      order = sort_master[sort]
+      key = order.keys.first.to_s
+      value = order.values.first.to_s
+      condition
+          .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
+          .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
+          .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '' END) #{value}")
     end
 
     # keyword search by elasticsearch
