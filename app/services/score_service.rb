@@ -45,6 +45,15 @@ class ScoreService
     ScoreRepository.key_and_attached_count(user_id)
   end
 
+  # called by SearchForm#sort_master
+  def self.sort_master(user_id)
+    master = []
+    ScoreRepository.key_names(user_id).each do |key|
+      [:desc, :asc].each { |value| master << { key => value } }
+    end
+    master
+  end
+
   # -----------------------------------------------------------------
   # Delete
   # -----------------------------------------------------------------

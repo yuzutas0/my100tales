@@ -14,6 +14,11 @@ class ScoreRepository
     Score.where('user_id = ? AND view_number = ?', user_id, view_number).first
   end
 
+  # SELECT DISTINCT key_name FROM scores WHERE user_id = #{user_id} ORDER BY view_number
+  def self.key_names(user_id)
+    Score.where('user_id = ?', user_id).order(:view_number).distinct.pluck(:key_name)
+  end
+
   # get hash about score's view_number and how many tales the score is attached to
   # => { view_number: size, ... }
   # => e.g. { 1: 21, 2: 15, 3: 23 }

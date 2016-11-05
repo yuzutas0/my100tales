@@ -80,8 +80,9 @@ module TaleFinder
 
     # refs. SearchForm#sort_master
     def custom_sort(sort)
-      sort = 0 unless 0 <= sort && sort < SearchForm.sort_master.length
-      SearchForm.sort_master[sort]
+      sort_master = SearchForm.sort_master
+      sort = 0 unless 0 <= sort && sort < sort_master.length
+      sort_master[sort]
     end
 
     # keyword search by elasticsearch

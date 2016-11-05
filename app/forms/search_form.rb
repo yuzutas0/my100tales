@@ -11,13 +11,13 @@ class SearchForm
   # -----------------------------------------------------------------
   # Constructor
   # -----------------------------------------------------------------
-  def initialize(params = {}, request_path = '')
+  def initialize(params = {}, request_path = '', score_master = [])
     # for search
     @page = params[:page] || DEFAULT_PAGE
     @keyword = params[:keyword].present? ? params[:keyword].html_safe : DEFAULT_KEYWORD
     @tags = valid_tags?(params[:tags]) ? convert_tags(params[:tags]) : DEFAULT_TAGS
     @scores = valid_scores?(params[:scores]) ? convert_scores(params[:scores]) : DEFAULT_SCORES
-    @sort = valid_sort?(params[:sort]) ? params[:sort].to_i : DEFAULT_SORT
+    @sort = valid_sort?(params[:sort], score_master) ? params[:sort].to_i : DEFAULT_SORT
     # for save
     @save = params[:save] == true.to_s
     @name = params[:name].html_safe if params[:name].present?
@@ -28,6 +28,7 @@ class SearchForm
   # Master Enum
   # -----------------------------------------------------------------
 
+  # *** use with ScoreService#sort_master ***
   # refs. config/locales/defaults/en.yml
   # 0: Newer Create - t('master.sort.option_0')
   # 1: Older Create - t('master.sort.option_1')
@@ -63,8 +64,8 @@ class SearchForm
     scores[:id].map(&:to_i)
   end
 
-  def valid_sort?(sort)
-    value_range = [*0..(self.class.sort_master.length - 1)]
+  def valid_sort?(sort, score_master)
+    value_range = [*0..(self.class.sort_master.length + score_master.length - 1)]
     sort.present? && value_range.include?(sort.to_i)
   end
 

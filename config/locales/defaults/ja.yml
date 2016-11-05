@@ -22,10 +22,12 @@
 ja:
   master:
     sort:
-      option_0: '作成：新しい順'
-      option_1: '作成：古い順'
-      option_2: '更新：新しい順'
-      option_3: '更新：古い順'
+      option_0: '作成が新しい順'
+      option_1: '作成が古い順'
+      option_2: '更新が新しい順'
+      option_3: '更新が古い順'
+      option_odd_suffix: '%{key}：降順'
+      option_even_suffix: '%{key}：昇順'
   models:
     score:
       error:

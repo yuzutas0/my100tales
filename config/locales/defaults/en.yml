@@ -26,6 +26,8 @@ en:
       option_1: 'Older Create'
       option_2: 'Newer Update'
       option_3: 'Older Update'
+      option_odd_suffix: 'Bigger %{key}'
+      option_even_suffix: 'Smaller %{key}'
   models:
     score:
       error:
