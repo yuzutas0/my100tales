@@ -61,6 +61,7 @@ ja:
       blank:
         sequel: '追記はありません.'
         tag: '登録がありません.'
+        score: '登録がありません.'
         conditions: '検索条件がありません.'
     time:
       create: '%{time} に投稿'

@@ -1,5 +1,4 @@
 <div class="layout__tale__search">
-
   <div class="module__tab">
     <li class="active"><a id="script__tale__search__input__tab__switch"><%= t('.input') %></a></li>
     <li><a id="script__tale__search__condition__tab__switch"><%= t('.condition') %></a></li>
@@ -19,11 +18,10 @@
         <%= t('views.message.blank.tag') if tags.blank? %>
         <% tags.each do |tag| %>
           <% next unless tags_attached[tag.view_number] > 0 %>
-          <%= check_box_tag 'tags[id][]',
-                            tag.view_number,
-                            queries.tags.include?(tag.view_number),
-                            id: "input_tags_#{tag.view_number}" %>
-          <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox__label' do %>
+          <% id = "input_tags_#{tag.view_number}" %>
+          <% checked = queries.tags.include?(tag.view_number) %>
+          <%= check_box_tag 'tags[id][]', tag.view_number, checked, id: id %>
+          <%= label_tag id, class: 'module__form__checkbox__label' do %>
             <p class="module__form__checkbox__label__inner">
               <%= tag.name %>
               <span class="module__badge"><%= tags_attached[tag.view_number] %></span>
@@ -34,8 +32,27 @@
       <hr>
 
       <p><%= t('.score') %></p>
-      <div>
-        <!-- todo implement -->
+      <div class="module__form__checkbox">
+        <%= t('views.message.blank.score') if scores.blank? %>
+        <% scores.map(&:key_name).uniq.each do |key| %>
+          <div class="module__list">
+            <div class="module__list__item"><%= key %></div>
+            <div class="module__list__item">
+              <% (scores.select { |score| score.key_name == key }).each do |score| %>
+                <% next unless scores_attached[score.view_number] > 0 %>
+                <% id = "input_scores_#{score.view_number}" %>
+                <% checked = queries.scores.include?(score.view_number) %>
+                <%= check_box_tag 'scores[id][]', score.view_number, checked, id: id %>
+                <%= label_tag id, class: 'module__form__checkbox__label' do %>
+                  <p class="module__form__checkbox__label__inner">
+                    <%= score.value %>
+                    <span class="module__badge"><%= scores_attached[score.view_number] %></span>
+                  </p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
       <hr>
 
