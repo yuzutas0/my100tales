@@ -22,8 +22,7 @@
           <%= check_box_tag 'tags[id][]',
                             tag.view_number,
                             queries.tags.include?(tag.view_number),
-                            id: "input_tags_#{tag.view_number}"
-          %>
+                            id: "input_tags_#{tag.view_number}" %>
           <%= label_tag "input_tags_#{tag.view_number}", class: 'module__form__checkbox__label' do %>
             <p class="module__form__checkbox__label__inner">
               <%= tag.name %>
@@ -31,6 +30,12 @@
             </p>
           <% end %>
         <% end %>
+      </div>
+      <hr>
+
+      <p><%= t('.score') %></p>
+      <div>
+        <!-- todo implement -->
       </div>
       <hr>
 
@@ -57,8 +62,7 @@
                            class: 'module__form__field__text',
                            id: 'script__tale__search__condition__name',
                            placeholder: t('.save_name'),
-                           disabled: true
-        %>
+                           disabled: true %>
       </div>
       <span class="layout__tale__search__condition__end"></span>
       <hr>

@@ -105,6 +105,7 @@ ja:
         condition: '過去の条件'
         keyword: 'キーワード'
         tag: 'タグ'
+        score: 'スコア'
         sort: '表示順'
         save_title: '条件保存 (%{max}件まで保存可能)'
         save_flag: '保存'

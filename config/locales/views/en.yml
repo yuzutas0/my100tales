@@ -104,6 +104,7 @@ en:
         condition: 'Condition'
         keyword: 'Keyword'
         tag: 'Tag'
+        score: 'Score'
         sort: 'Sort'
         save_title: 'Search Condition (up to %{max})'
         save_flag: 'Save'
