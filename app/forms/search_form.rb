@@ -22,7 +22,6 @@ class SearchForm
     @save = params[:save] == true.to_s
     @name = params[:name].html_safe if params[:name].present?
     @query_string = request_path.include?('?') ? convert_query_string : ''
-    p @scores
   end
 
   # -----------------------------------------------------------------
