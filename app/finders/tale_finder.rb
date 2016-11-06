@@ -10,7 +10,7 @@ module TaleFinder
   QUERY = {
     user: 'tales.user_id = ?',
     tags: 'tags.user_id = ? AND tags.view_number IN (?)',
-    scores: 'scores.user_id = ? AND scores.view_number IN (?)',
+    scores: 'scores.user_id = ? AND scores.key_name = ? AND scores.value',
     keyword: '(tales.title LIKE ? OR tales.content LIKE ?)'
   }.freeze
 
@@ -86,7 +86,12 @@ module TaleFinder
       return condition if scores.blank?
       condition
           .joins(:scores)
-          .where(QUERY[:scores], user_id, scores)
+          .where(
+              QUERY[:scores] + SearchForm.compare_to_query(scores[:co].first.split(':', 2)[1]) + ' ? ',
+              user_id,
+              scores[:key].first,
+              scores[:val].first.split(':', 2)[1]
+          )
     end
 
     # refs. SearchForm#sort_master or ScoreService#sort_master

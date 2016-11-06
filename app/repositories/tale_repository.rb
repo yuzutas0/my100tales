@@ -15,7 +15,7 @@ class TaleRepository
   end
 
   # search by Elasticsearch
-  def self.search_by_es(user_id: nil, keywords: nil, tags: nil, scores:nil, sort: nil, page: nil)
+  def self.search_by_es(user_id: nil, keywords: nil, tags: nil, scores: nil, sort: nil, page: nil)
     Tale.search_by_es(user_id, keywords, tags, scores, sort, page)
   end
 

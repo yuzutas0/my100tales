@@ -16,7 +16,7 @@ class ScoreRepository
 
   # SELECT DISTINCT key_name FROM scores WHERE user_id = #{user_id} ORDER BY view_number
   def self.key_names(user_id)
-    Score.where('user_id = ?', user_id).order(:view_number).distinct.pluck(:key_name)
+d    Score.where('user_id = ?', user_id).order(:view_number).distinct.pluck(:key_name)
   end
 
   # get hash about score's view_number and how many tales the score is attached to
