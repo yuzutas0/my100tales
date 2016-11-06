@@ -46,9 +46,12 @@
           <div id="script__score__<%= index.next! %>" class="module__list__item">
             <p class="module__label"><%= score.key_name + ' : ' + score.value %></p>
             <p class="module__list__item__content layout__scores__index__content">
-              <!-- FIXME url -->
               <% link = link_to t('.link_html', count: @scores_attached[score.view_number]),
-                                tales_path('scores':{'id':[score.view_number]}) %>
+                                tales_path('scores': {
+                                    'key': [score.key_name],
+                                    'co': [score.key_name + ':eq'],
+                                    'val': [score.key_name + ':' + score.value]
+                                }) %>
               <%= t('.attached_html', link: link) %>
               |
               <a v-on:click="showModal"><%= t('.edit') %></a>
