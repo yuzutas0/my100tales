@@ -84,14 +84,14 @@ module TaleFinder
 
     def condition_for_score(condition, user_id, scores)
       return condition if scores.blank?
+      condition = condition.joins(:scores)
+      scores[:key].each do |key|
+        co = (scores[:co].find { |co| co.split(':', 2)[0] == key }).split(':', 2)[1]
+        query = QUERY[:scores] + SearchForm.compare_to_query(co) + ' ? '
+        val = (scores[:val].find { |val| val.split(':', 2)[0] == key }).split(':', 2)[1]
+        condition = condition.where(query, user_id, key, val)
+      end
       condition
-          .joins(:scores)
-          .where(
-              QUERY[:scores] + SearchForm.compare_to_query(scores[:co].first.split(':', 2)[1]) + ' ? ',
-              user_id,
-              scores[:key].first,
-              scores[:val].first.split(':', 2)[1]
-          )
     end
 
     # refs. SearchForm#sort_master or ScoreService#sort_master
