@@ -78,8 +78,8 @@ module TaleFinder
     def condition_for_tag(condition, user_id, tags)
       return condition if tags.blank?
       condition
-          .joins(:tags)
-          .where(QUERY[:tags], user_id, tags)
+        .joins(:tags)
+        .where(QUERY[:tags], user_id, tags)
     end
 
     def condition_for_score(condition, user_id, scores)
@@ -124,9 +124,9 @@ module TaleFinder
       key = order.keys.first.to_s
       value = order.values.first.to_s
       condition
-          .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
-          .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
-          .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '' END) #{value}")
+        .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
+        .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
+        .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '' END) #{value}")
     end
 
     # keyword search by elasticsearch

@@ -94,7 +94,7 @@ class TaleService
 
     def search_args_with_keyword(user_id, queries)
       hash = search_args_without_keyword(user_id, queries)
-      hash.merge({ keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq })
+      hash.merge(keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq)
     end
 
     def sequels_attached(tales)

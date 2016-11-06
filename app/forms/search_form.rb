@@ -75,27 +75,27 @@ class SearchForm
 
   def valid_scores?(scores, score_master)
     scores.present? &&
-        scores[:key].is_a?(Array) &&
-        scores[:co].is_a?(Array) &&
-        scores[:val].is_a?(Array) &&
-        scores[:key].length == scores[:co].length &&
-        scores[:key].length == scores[:val].length &&
-        scores[:key].all? { |key| array_of(score_master).include?(key) } &&
-        scores[:co].all? do |co|
-          divided(co).length == 2 &&
-              divided(co)[1].present? &&
-              scores[:key].include?(divided(co)[0]) &&
-              array_of(self.class.compare_master).include?(divided(co)[1])
-        end &&
-        scores[:val].all? do |val|
-          divided(val).length == 2 &&
-              divided(val)[1].present? &&
-              scores[:key].include?(divided(val)[0])
-        end &&
-        scores[:key].all? do |key|
-          (scores[:co].map { |co| divided(co)[0] }).include?(key) &&
+      scores[:key].is_a?(Array) &&
+      scores[:co].is_a?(Array) &&
+      scores[:val].is_a?(Array) &&
+      scores[:key].length == scores[:co].length &&
+      scores[:key].length == scores[:val].length &&
+      scores[:key].all? { |key| array_of(score_master).include?(key) } &&
+      scores[:co].all? do |co|
+        divided(co).length == 2 &&
+          divided(co)[1].present? &&
+          scores[:key].include?(divided(co)[0]) &&
+          array_of(self.class.compare_master).include?(divided(co)[1])
+      end &&
+      scores[:val].all? do |val|
+        divided(val).length == 2 &&
+          divided(val)[1].present? &&
+          scores[:key].include?(divided(val)[0])
+      end &&
+      scores[:key].all? do |key|
+        (scores[:co].map { |co| divided(co)[0] }).include?(key) &&
           (scores[:val].map { |val| divided(val)[0] }).include?(key)
-        end
+      end
   end
 
   def array_of(hash_array)
@@ -108,9 +108,9 @@ class SearchForm
 
   def convert_scores(scores)
     {
-        key: scores[:key].map(&:html_safe),
-        co: scores[:co],
-        val: scores[:val].map(&:html_safe)
+      key: scores[:key].map(&:html_safe),
+      co: scores[:co],
+      val: scores[:val].map(&:html_safe)
     }
   end
 

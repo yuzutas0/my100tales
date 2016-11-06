@@ -15,8 +15,8 @@ class TaleScoreRelationshipRepository
   def self.delete_by_score_key(user_id, key)
     return if key.blank?
     TaleScoreRelationship
-        .joins(:score)
-        .merge(Score.where('user_id = ? AND key_name = ?', user_id, key))
-        .delete_all
+      .joins(:score)
+      .merge(Score.where('user_id = ? AND key_name = ?', user_id, key))
+      .delete_all
   end
 end
