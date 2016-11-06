@@ -15,6 +15,11 @@
       &--fixed {
         resize: none;
       }
+
+      &--inline {
+        display: inline-block !important; // cancel bootstrap
+        width: auto !important; // cancel bootstrap
+      }
     }
   }
 

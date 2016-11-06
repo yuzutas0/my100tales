@@ -9,6 +9,18 @@
 .layout__tale__search {
 
   // input tab
+  .layout__tale__search__condition__score {
+    display: inline-block;
+    border: 1px solid $btn-default-border;
+    border-radius: $margin_size_xx_small;
+    padding: $margin_size_xx_small;
+    margin-bottom: $margin_size_xx_small;
+
+    .layout__tale__search__condition__score__key {
+      margin-right: 0 !important; // cancel bootstrap
+    }
+  }
+
   .layout__tale__search__condition__save,
   .layout__tale__search__condition__name {
     @extend .pull-left;

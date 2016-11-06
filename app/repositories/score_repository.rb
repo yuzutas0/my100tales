@@ -4,9 +4,9 @@ class ScoreRepository
   # Read
   # -----------------------------------------------------------------
 
-  # SELECT * FROM scores WHERE user_id = #{user_id}
+  # SELECT * FROM scores WHERE user_id = #{user_id} ORDER BY key_name, value
   def self.list(user_id)
-    Score.where('user_id = ?', user_id) || []
+    Score.where('user_id = ?', user_id).order(:key_name, value: :asc) || []
   end
 
   # SELECT * FROM scores WHERE user_id = #{user_id} AND view_number = #{view_number}

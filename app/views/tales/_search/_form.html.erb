@@ -32,25 +32,23 @@
       <hr>
 
       <p><%= t('.score') %></p>
-      <div class="module__form__checkbox">
+      <div class="module__form__checkbox module__form__field">
         <%= t('views.message.blank.score') if scores.blank? %>
         <% scores.map(&:key_name).uniq.each do |key| %>
-          <div class="module__list">
-            <div class="module__list__item"><%= key %></div>
-            <div class="module__list__item">
-              <% (scores.select { |score| score.key_name == key }).each do |score| %>
-                <% next unless scores_attached[score.view_number] > 0 %>
-                <% id = "input_scores_#{score.view_number}" %>
-                <% checked = queries.scores.include?(score.view_number) %>
-                <%= check_box_tag 'scores[id][]', score.view_number, checked, id: id %>
-                <%= label_tag id, class: 'module__form__checkbox__label' do %>
-                  <p class="module__form__checkbox__label__inner">
-                    <%= score.value %>
-                    <span class="module__badge"><%= scores_attached[score.view_number] %></span>
-                  </p>
-                <% end %>
-              <% end %>
+          <div class="layout__tale__search__condition__score">
+            <div class="module__form__checkbox__label layout__tale__search__condition__score__key">
+              <%= key %>
             </div>
+            <select disabled name="test" class="module__form__field__text module__form__field__text--inline">
+              <option>>=</option>
+              <option>=</option>
+              <option><=</option>
+            </select>
+            <select disabled name="test2" class="module__form__field__text module__form__field__text--inline">
+              <% (scores.select { |score| score.key_name == key }).each do |score| %>
+                <option><%= score.value %>(<%= scores_attached[score.view_number] %>)</option>
+              <% end %>
+            </select>
           </div>
         <% end %>
       </div>
