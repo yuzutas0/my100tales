@@ -10,7 +10,7 @@ module TaleFinder
   QUERY = {
     user: 'tales.user_id = ?',
     tags: 'tags.user_id = ? AND tags.view_number IN (?)',
-    scores: 'scores.user_id = ? AND scores.key_name = ? AND scores.value',
+    scores: '(scores.user_id = ? AND scores.key_name = ? AND scores.value ',
     keyword: '(tales.title LIKE ? OR tales.content LIKE ?)'
   }.freeze
 
@@ -85,13 +85,21 @@ module TaleFinder
     def condition_for_score(condition, user_id, scores)
       return condition if scores.blank?
       condition = condition.joins(:scores)
+      args = ['']
       scores[:key].each do |key|
-        co = (scores[:co].find { |co| co.split(':', 2)[0] == key }).split(':', 2)[1]
-        query = QUERY[:scores] + SearchForm.compare_to_query(co) + ' ? '
-        val = (scores[:val].find { |val| val.split(':', 2)[0] == key }).split(':', 2)[1]
-        condition = condition.where(query, user_id, key, val)
+        query, val = extract_score(scores, key)
+        args[0] += ' OR ' if args[0].present?
+        args[0] += query
+        args += [user_id, key, val]
       end
-      condition
+      condition.where(args)
+    end
+
+    def extract_score(scores, key)
+      co = (scores[:co].find { |co| co.split(':', 2)[0] == key }).split(':', 2)[1]
+      query = QUERY[:scores] + SearchForm.compare_to_query(co) + ' ?)'
+      val = (scores[:val].find { |val| val.split(':', 2)[0] == key }).split(':', 2)[1]
+      [query, val]
     end
 
     # refs. SearchForm#sort_master or ScoreService#sort_master
