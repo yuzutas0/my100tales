@@ -40,13 +40,17 @@
               <%= key %>
             </div>
             <select disabled name="test" class="module__form__field__text module__form__field__text--inline">
-              <option>>=</option>
-              <option>=</option>
-              <option><=</option>
+              <% compare_master.each do |compare| %>
+                <option value="<%= key + ':' + compare.keys.first.to_s %>">
+                  <%= compare.values.first %>
+                </option>
+              <% end %>
             </select>
             <select disabled name="test2" class="module__form__field__text module__form__field__text--inline">
               <% (scores.select { |score| score.key_name == key }).each do |score| %>
-                <option><%= score.value %>(<%= scores_attached[score.view_number] %>)</option>
+                <option value="<%= key + ':' + score.value %>">
+                  <%= score.value %>(<%= scores_attached[score.view_number] %>)
+                </option>
               <% end %>
             </select>
           </div>

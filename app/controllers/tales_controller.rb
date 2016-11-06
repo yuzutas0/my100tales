@@ -47,6 +47,7 @@ class TalesController < ApplicationController
     @tags, @tags_attached = TagService.list(current_user.id)
     @scores, @scores_attached = ScoreService.list(current_user.id)
     @sort_master = SearchForm.sort_master + score_sort_master
+    @compare_master = SearchForm.compare_master
   end
 
   # GET /tales/1
