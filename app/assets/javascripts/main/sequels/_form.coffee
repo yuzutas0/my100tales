@@ -3,7 +3,7 @@
 
   # loop for sequel index length - 0 for new
   index = -1
-  while true
+  loop
     index++
 
     # DOM
