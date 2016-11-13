@@ -19,6 +19,10 @@ class ScoreRepository
     Score.where('user_id = ?', user_id).order(:view_number).distinct.pluck(:key_name)
   end
 
+  def self.max_value(user_id, key)
+    Score.maximum('value', conditions: { user_id: user_id, key_name: key })
+  end
+
   # get hash about score's view_number and how many tales the score is attached to
   # => { view_number: size, ... }
   # => e.g. { 1: 21, 2: 15, 3: 23 }

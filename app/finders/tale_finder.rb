@@ -71,7 +71,8 @@ module TaleFinder
           scores
         ),
         ScoreService.sort_master(user_id),
-        sort
+        sort,
+        user_id
       )
     end
 
@@ -102,7 +103,7 @@ module TaleFinder
     end
 
     # refs. SearchForm#sort_master or ScoreService#sort_master
-    def custom_sort(condition, score_sort_master, sort)
+    def custom_sort(condition, score_sort_master, sort, user_id)
       # param
       origin_sort_master = SearchForm.sort_master
       sort = 0 unless 0 <= sort && sort < (origin_sort_master + score_sort_master).length
@@ -110,7 +111,7 @@ module TaleFinder
       if sort < origin_sort_master.length
         origin_sort(condition, origin_sort_master, sort)
       else
-        score_sort(condition, score_sort_master, sort - origin_sort_master.length)
+        score_sort(condition, score_sort_master, sort - origin_sort_master.length, user_id)
       end
     end
 
@@ -118,14 +119,15 @@ module TaleFinder
       condition.order(sort_master[sort])
     end
 
-    def score_sort(condition, sort_master, sort)
+    def score_sort(condition, sort_master, sort, user_id)
       order = sort_master[sort]
       key = order.keys.first.to_s
       value = order.values.first.to_s
+      default = value == :DESC.to_s ? '' : ScoreRepository.max_value(user_id, key) + '0'
       condition
         .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
         .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
-        .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '' END) #{value}")
+        .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '#{default}' END) #{value}")
         .includes(:scores)
     end
 
