@@ -38,7 +38,7 @@
           <div class="layout__tale__search__condition__score">
 
             <% id = "input_condition_score_#{index}" %>
-            <%= check_box_tag 'scores[key][]', key, queries.scores.include?(key), id: id %>
+            <%= check_box_tag 'scores[key][]', key, queries.scores[:key].present? && queries.scores[:key].include?(key), id: id %>
             <%= label_tag id, class: 'module__form__checkbox__label layout__tale__search__condition__score__key' do %>
               <p class="module__form__checkbox__label__inner"><%= key %></p>
             <% end %>
@@ -47,7 +47,11 @@
                     class="module__form__field__text module__form__field__text--inline"
                     id="script__tale__search__condition__compare__<%= index %>">
               <% compare_master.each do |compare| %>
-                <option value="<%= key + ':' + compare.keys.first.to_s %>">
+                <% co = '' %>
+                <% co = queries.scores[:co].find { |item| item.split(':', 2)[0] == key } if queries.scores[:co].present? %>
+                <% co = co.split(':', 2)[1] if co.present? %>
+                <% selected = co == compare.keys.first.to_s %>
+                <option value="<%= key + ':' + compare.keys.first.to_s %>" <% if selected %>selected<% end %>>
                   <%= compare.values.first %>
                 </option>
               <% end %>
@@ -57,7 +61,11 @@
                     class="module__form__field__text module__form__field__text--inline"
                     id="script__tale__search__condition__value__<%= index %>">
               <% (scores.select { |score| score.key_name == key }).each do |score| %>
-                <option value="<%= key + ':' + score.value %>">
+                <% val = '' %>
+                <% val = queries.scores[:val].find { |item| item.split(':', 2)[0] == key } if queries.scores[:val].present? %>
+                <% val = val.split(':', 2)[1] if val.present? %>
+                <% selected = val == score.value %>
+                <option value="<%= key + ':' + score.value %>" <% if selected %>selected<% end %>>
                   <%= score.value %>(<%= scores_attached[score.view_number] %>)
                 </option>
               <% end %>
