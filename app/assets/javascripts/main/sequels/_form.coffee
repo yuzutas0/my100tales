@@ -11,8 +11,7 @@
     VUE_EDIT_ID = "script__sequel__" + index
     VUE_EDIT_DOM = "#" + VUE_EDIT_ID
     # check
-    if document.getElementById(VUE_EDIT_ID) == null
-      break
+    break if document.getElementById(VUE_EDIT_ID) == null
 
     # switch
     # const
