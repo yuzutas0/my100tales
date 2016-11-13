@@ -56,7 +56,9 @@ module TaleFinder
         .page(page)
         .per(DB_LIMIT_SIZE)
         .includes(:tale_tag_relationships)
+        .includes(:tags)
         .includes(:tale_score_relationships)
+        .includes(:scores)
     end
 
     def pre_read(condition, user_id, tags, scores, sort)
