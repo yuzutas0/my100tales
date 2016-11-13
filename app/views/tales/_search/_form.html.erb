@@ -43,7 +43,7 @@
               <p class="module__form__checkbox__label__inner"><%= key %></p>
             <% end %>
 
-            <select name="test"
+            <select name="scores[co][]"
                     class="module__form__field__text module__form__field__text--inline"
                     id="script__tale__search__condition__compare__<%= index %>">
               <% compare_master.each do |compare| %>
@@ -53,7 +53,7 @@
               <% end %>
             </select>
 
-            <select name="test2"
+            <select name="scores[val][]"
                     class="module__form__field__text module__form__field__text--inline"
                     id="script__tale__search__condition__value__<%= index %>">
               <% (scores.select { |score| score.key_name == key }).each do |score| %>
