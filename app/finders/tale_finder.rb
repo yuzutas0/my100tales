@@ -56,9 +56,7 @@ module TaleFinder
         .page(page)
         .per(DB_LIMIT_SIZE)
         .includes(:tale_tag_relationships)
-        .includes(:tags)
         .includes(:tale_score_relationships)
-        .includes(:scores)
     end
 
     def pre_read(condition, user_id, tags, scores, sort)
@@ -128,6 +126,7 @@ module TaleFinder
         .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
         .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
         .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '' END) #{value}")
+        .includes(:scores)
     end
 
     # keyword search by elasticsearch
