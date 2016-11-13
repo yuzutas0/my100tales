@@ -49,7 +49,7 @@ class ScoreService
   def self.sort_master(user_id)
     master = []
     ScoreRepository.key_names(user_id).each do |key|
-      [:DESC, :ASC].each { |value| master << { key => value } }
+      [:DESC, :ASC].each { |order| master << { key => order } }
     end
     master
   end

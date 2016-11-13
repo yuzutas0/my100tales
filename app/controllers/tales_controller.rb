@@ -40,13 +40,13 @@ class TalesController < ApplicationController
   # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
   # because avoid to throw query about tag records twice
   def index
-    score_sort_master = ScoreService.sort_master(current_user.id)
-    @queries = SearchForm.new(params, request.fullpath, score_sort_master)
+    @score_sort_master = ScoreService.sort_master(current_user.id)
+    @queries = SearchForm.new(params, request.fullpath, @score_sort_master)
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
     @tales, @sequels_attached = TaleService.list(current_user.id, @queries)
     @tags, @tags_attached = TagService.list(current_user.id)
     @scores, @scores_attached = ScoreService.list(current_user.id)
-    @sort_master = SearchForm.sort_master + score_sort_master
+    @default_sort_master = SearchForm.sort_master
     @compare_master = SearchForm.compare_master
   end
 

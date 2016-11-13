@@ -6,7 +6,7 @@ class SearchForm
   DEFAULT_KEYWORD = nil
   DEFAULT_TAGS = [].freeze
   DEFAULT_SCORES = {}.freeze
-  DEFAULT_SORT = 0
+  DEFAULT_SORT = -1.to_s
 
   # -----------------------------------------------------------------
   # Constructor
@@ -17,7 +17,7 @@ class SearchForm
     @keyword = params[:keyword].present? ? params[:keyword].html_safe : DEFAULT_KEYWORD
     @tags = valid_tags?(params[:tags]) ? convert_tags(params[:tags]) : DEFAULT_TAGS
     @scores = valid_scores?(params[:scores], score_master) ? convert_scores(params[:scores]) : DEFAULT_SCORES
-    @sort = valid_sort?(params[:sort], score_master) ? params[:sort].to_i : DEFAULT_SORT
+    @sort = valid_sort?(params[:sort], score_master) ? params[:sort] : DEFAULT_SORT
     # for save
     @save = params[:save] == true.to_s
     @name = params[:name].html_safe if params[:name].present?
@@ -30,16 +30,16 @@ class SearchForm
 
   # *** use with ScoreService#sort_master ***
   # refs. config/locales/defaults/en.yml
-  # 0: Newer Create - t('master.sort.option_0')
-  # 1: Older Create - t('master.sort.option_1')
-  # 2: Newer Update - t('master.sort.option_2')
-  # 3: Older Update - t('master.sort.option_3')
+  # -1: Newer Create - t('master.sort.option_0')
+  # -2: Older Create - t('master.sort.option_1')
+  # -3: Newer Update - t('master.sort.option_2')
+  # -4: Older Update - t('master.sort.option_3')
   def self.sort_master
     [
-      { created_at: :desc }, # 0
-      { created_at: :asc  }, # 1
-      { updated_at: :desc }, # 2
-      { updated_at: :asc  }, # 3
+      { created_at: :desc }, # -1
+      { created_at: :asc  }, # -2
+      { updated_at: :desc }, # -3
+      { updated_at: :asc  }, # -4
     ]
   end
 
@@ -115,8 +115,10 @@ class SearchForm
   end
 
   def valid_sort?(sort, score_master)
-    value_range = [*0..(self.class.sort_master.length + score_master.length - 1)]
-    sort.present? && value_range.include?(sort.to_i)
+    default_range = [*(-1 * (self.class.sort_master.length + 1))...(-1)].map(&:to_s)
+    score_range = score_master.map { |item| item.keys.first.to_s + ':' + item.values.first.to_s }
+    value_range = default_range + score_range
+    sort.present? && value_range.include?(sort.to_s)
   end
 
   def convert_query_string

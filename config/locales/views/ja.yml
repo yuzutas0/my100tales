@@ -107,6 +107,7 @@ ja:
         tag: 'タグ'
         score: 'スコア'
         sort: '表示順'
+        sort_attention: '* スコア順で並び変えるには範囲を指定してください'
         save_title: '条件保存 (%{max}件まで保存可能)'
         save_flag: '保存'
         save_name: '名前をつける'

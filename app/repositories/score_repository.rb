@@ -16,7 +16,7 @@ class ScoreRepository
 
   # SELECT DISTINCT key_name FROM scores WHERE user_id = #{user_id} ORDER BY view_number
   def self.key_names(user_id)
-    Score.where('user_id = ?', user_id).order(:view_number).distinct.pluck(:key_name)
+    Score.where('user_id = ?', user_id).order(:key_name).distinct.pluck(:key_name)
   end
 
   def self.max_value(user_id, key)

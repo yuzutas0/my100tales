@@ -22,12 +22,12 @@
 en:
   master:
     sort:
-      option_0: 'Newer Create'
-      option_1: 'Older Create'
-      option_2: 'Newer Update'
-      option_3: 'Older Update'
-      option_even_suffix: 'Bigger %{key}'
-      option_odd_suffix: 'Smaller %{key}'
+      option_-1: 'Newer Create'
+      option_-2: 'Older Create'
+      option_-3: 'Newer Update'
+      option_-4: 'Older Update'
+      option_bigger: 'Bigger %{key}'
+      option_smaller: 'Smaller %{key}'
   models:
     score:
       error:

@@ -106,6 +106,7 @@ en:
         tag: 'Tag'
         score: 'Score'
         sort: 'Sort'
+        sort_attention: '* select score range when you sort by score'
         save_title: 'Search Condition (up to %{max})'
         save_flag: 'Save'
         save_name: 'name'

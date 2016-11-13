@@ -70,7 +70,6 @@ module TaleFinder
           user_id,
           scores
         ),
-        ScoreService.sort_master(user_id),
         sort,
         user_id
       )
@@ -103,32 +102,32 @@ module TaleFinder
     end
 
     # refs. SearchForm#sort_master or ScoreService#sort_master
-    def custom_sort(condition, score_sort_master, sort, user_id)
+    def custom_sort(condition, sort, user_id)
       # param
-      origin_sort_master = SearchForm.sort_master
-      sort = 0 unless 0 <= sort && sort < (origin_sort_master + score_sort_master).length
+      default_sort_master = SearchForm.sort_master
+      is_default_sort = [*(-1 * (default_sort_master.length + 1))...(-1)].map(&:to_s).include?(sort)
       # order by
-      if sort < origin_sort_master.length
-        origin_sort(condition, origin_sort_master, sort)
+      if is_default_sort
+        default_sort(condition, default_sort_master, sort)
       else
-        score_sort(condition, score_sort_master, sort - origin_sort_master.length, user_id)
+        score_sort(condition, sort, user_id)
       end
     end
 
-    def origin_sort(condition, sort_master, sort)
+    def default_sort(condition, sort_master, sort)
+      sort = -1 * (sort.to_i - 1)
       condition.order(sort_master[sort])
     end
 
-    def score_sort(condition, sort_master, sort, user_id)
-      order = sort_master[sort]
-      key = order.keys.first.to_s
-      value = order.values.first.to_s
+    def score_sort(condition, sort, user_id)
+      key = sort.split(':', 2)[0]
+      value = sort.split(':', 2)[1]
       default = value == :DESC.to_s ? '' : ScoreRepository.max_value(user_id, key) + '0' # FIXME: REVERSE DEPENDENCY
       condition
         .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
         .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
-        .order("(CASE WHEN scores.key_name = '#{key}' THEN scores.value ELSE '#{default}' END) #{value}")
-        .includes(:scores)
+        .order("(CASE WHEN `scores`.`key_name` = '#{key}' THEN `scores`.`value` ELSE '#{default}' END) #{value}")
+        .references(:scores)
     end
 
     # keyword search by elasticsearch

@@ -77,18 +77,29 @@
 
       <p><%= t('.sort') %></p>
       <div class="module__form__radiobutton">
-        <% sort_master.each_with_index do |item, index| %>
+        <% default_sort_master.each_with_index do |_item, index| %>
+          <% index = (-1 * (index + 1)).to_s %>
           <%= radio_button_tag 'sort', index, queries.sort == index, id: "input_sort_#{index}" %>
           <%= label_tag "input_sort_#{index}", class: 'module__form__radiobutton__label' do %>
             <p class="module__form__radiobutton__label__inner">
-              <% odd_or_even = index.odd? ? 'odd' : 'even' %>
-              <% text_path = 'master.sort.option_' + odd_or_even + '_suffix' %>
-              <% text_for_score = t(text_path, key: item.keys.first.to_s) %>
-              <%= t('master.sort.option_' + index.to_s, default: text_for_score) %>
+              <%= t('master.sort.option_' + index.to_s) %>
+            </p>
+          <% end %>
+        <% end %>
+
+        <% score_sort_master.each_with_index do |item, index| %>
+          <% id_string = "#{item.keys.first}:#{item.values.first}" %>
+          <%= radio_button_tag 'sort', id_string, queries.sort == id_string, id: "input_sort_#{index}" %>
+          <%= label_tag "input_sort_#{index}", class: 'module__form__radiobutton__label' do %>
+            <p class="module__form__radiobutton__label__inner">
+              <% order = item.values.first == :DESC ? 'bigger' : 'smaller' %>
+              <% text_path = 'master.sort.option_' + order %>
+              <%= t(text_path, key: item.keys.first.to_s) %>
             </p>
           <% end %>
         <% end %>
       </div>
+      <p><%= t('.sort_attention') %></p>
       <hr>
 
       <p><%= t('.save_title', max: Constants::SEARCH_CONDITION_RECORD_SIZE) %></p>
