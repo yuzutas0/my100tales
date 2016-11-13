@@ -123,7 +123,7 @@ module TaleFinder
       order = sort_master[sort]
       key = order.keys.first.to_s
       value = order.values.first.to_s
-      default = value == :DESC.to_s ? '' : ScoreRepository.max_value(user_id, key) + '0'
+      default = value == :DESC.to_s ? '' : ScoreRepository.max_value(user_id, key) + '0' # FIXME: REVERSE DEPENDENCY
       condition
         .joins('LEFT OUTER JOIN `tale_score_relationships` ON `tale_score_relationships`.`tale_id` = `tales`.`id`')
         .joins('LEFT OUTER JOIN `scores` ON `scores`.`id` = `tale_score_relationships`.`score_id`')
