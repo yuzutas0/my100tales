@@ -46,3 +46,8 @@
         VUE_SEARCH_CONDITION_COMPARE_DOM_PREFIX + index,
         VUE_SEARCH_CONDITION_VALUE_DOM_PREFIX + index
       )
+    # sort
+    # input_sort_0, ..., input_sort_n
+    # => button.value = "#{item.keys.first}:#{item.values.first}"
+    # => #{item.keys.first}
+    # VUE_SEARCH_CONDITION_SCORE_ID_PREFIX clicked => change button disabled
