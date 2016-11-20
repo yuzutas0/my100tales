@@ -1,8 +1,6 @@
 #
 # Score
 #
-# Score
-#
 class Score < ActiveRecord::Base
   # -----------------------------------------------------------------
   # relation
