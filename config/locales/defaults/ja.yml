@@ -55,6 +55,7 @@ ja:
           edit: '編集'
     message:
       create:
+        doing: '作成中です.'
         success: '作成に成功しました.'
       update:
         success: '更新に成功しました.'

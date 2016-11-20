@@ -5,18 +5,18 @@ class BackupsController < ApplicationController
   # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
-  before_action :set_backup, only: [:download, :create]
+  before_action :set_backup
 
   # -----------------------------------------------------------------
   # endpoint - read
   # -----------------------------------------------------------------
   # GET /backup
   def index
-    @backup = BackupService.read(current_user.id)
   end
 
   # GET /backup/download
   def download
+    routing_error if @backup.blank?
     # todo: implement
   end
 
@@ -26,6 +26,9 @@ class BackupsController < ApplicationController
   # POST /backup
   def create
     # todo: implement
+    # validate when the user is creating file
+    flash[:notice] = t('views.message.create.doing')
+    redirect_to backups_path
   end
 
   # -----------------------------------------------------------------
@@ -36,6 +39,5 @@ class BackupsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_backup
     @backup = BackupService.read(current_user.id)
-    routing_error if @backup.blank?
   end
 end

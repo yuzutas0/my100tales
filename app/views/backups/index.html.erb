@@ -7,9 +7,7 @@
 
   <div>
     <div>
-      <button class="module__button">
-        <%= t('.create') %>
-      </button>
+      <%= button_to t('.create'), create_backup_path, class: 'module__button', method: :post %>
       <p><%= t('.update') %></p>
     </div>
     <hr>

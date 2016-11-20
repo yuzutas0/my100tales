@@ -55,6 +55,7 @@ en:
           edit: 'EditTale'
     message:
       create:
+        doing: 'Now creating.'
         success: 'Successfully created.'
       update:
         success: 'Successfully updated.'
