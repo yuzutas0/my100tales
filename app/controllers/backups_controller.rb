@@ -30,7 +30,7 @@ class BackupsController < ApplicationController
     # BackupService.create(current_user.id)
     # flash[:notice] = t('views.message.create.doing')
     # redirect_to backups_path
-    filename, zip_data = BackupService.create(current_user.id)
+    filename, zip_data = BackupService.create(current_user)
     send_data(zip_data, type: 'application/zip', filename: filename)
   end
 
