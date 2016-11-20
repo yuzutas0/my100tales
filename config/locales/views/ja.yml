@@ -51,6 +51,9 @@ ja:
       logout: 'ログアウト'
   backups:
     index:
+      create: '新規作成'
+      update: '* 新しいバックアップを作成すると、古いファイルは削除されます。'
+      download: 'ダウンロード'
       delete: '* 作成されたバックアップファイルはサービス退会時に自動削除されます。'
   search_conditions:
     index:
