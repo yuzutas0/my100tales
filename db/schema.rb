@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_161_020_115_143) do
+ActiveRecord::Schema.define(version: 20_161_120_074_129) do
+  create_table 'backups', force: :cascade do |t|
+    t.string   'filename',   limit: 255, null: false
+    t.integer  'user_id',    limit: 4,   null: false
+    t.datetime 'created_at',             null: false
+    t.datetime 'updated_at',             null: false
+  end
+
+  add_index 'backups', ['user_id'], name: 'index_backups_on_user_id', using: :btree
+
   create_table 'scores', force: :cascade do |t|
     t.string   'key_name',    limit: 255,             null: false
     t.string   'value',       limit: 255,             null: false
@@ -118,6 +127,7 @@ ActiveRecord::Schema.define(version: 20_161_020_115_143) do
   add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
   add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
+  add_foreign_key 'backups', 'users'
   add_foreign_key 'scores', 'users'
   add_foreign_key 'search_conditions', 'users'
   add_foreign_key 'sequels', 'tales'

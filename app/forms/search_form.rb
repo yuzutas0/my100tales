@@ -115,7 +115,7 @@ class SearchForm
   end
 
   def valid_sort?(sort, score_master)
-    default_range = [*(-1 * (self.class.sort_master.length + 1))...(-1)].map(&:to_s)
+    default_range = [*(-1 * self.class.sort_master.length...0)].map(&:to_s)
     score_range = score_master.map { |item| item.keys.first.to_s + ':' + item.values.first.to_s }
     value_range = default_range + score_range
     sort.present? && value_range.include?(sort.to_s)
