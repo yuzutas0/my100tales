@@ -10,7 +10,7 @@ class SearchConditionsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - read
   # -----------------------------------------------------------------
-  # GET /tags
+  # GET /searches
   def index
     @search_conditions = SearchConditionService.list(current_user.id)
   end

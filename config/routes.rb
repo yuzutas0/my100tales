@@ -44,6 +44,11 @@ Rails.application.routes.draw do
     put    '/search_conditions/:view_number', to: 'search_conditions#update'
     delete '/search_conditions/:view_number', to: 'search_conditions#update'
 
+    # backup
+    get  '/backup',          to: 'backups#index',    as: 'backups'
+    get  '/backup/download', to: 'backups#download', as: 'backup'
+    post '/backup',          to: 'backups#create',   as: 'create_backup'
+
     # no route error
     get    '*all', to: 'application#routing_error'
     post   '*all', to: 'application#routing_error'
