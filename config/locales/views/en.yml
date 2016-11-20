@@ -48,6 +48,9 @@ en:
   layouts:
     header:
       logout: 'Logout'
+  backups:
+    index:
+      delete: '* your backup files will be automatically deleted when you resign from this app.'
   search_conditions:
     index:
       saved: 'saved'
