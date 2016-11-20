@@ -13,10 +13,8 @@
     <hr>
 
     <div>
-      <button class="module__button" <%= 'disabled' if @backup.blank? %>>
-        <%= t('.download') %>
-      </button>
-      <p><%= @backup.present? ? t('.created_at') : t('.blank') %></p>
+      <%= button_to t('.download'), backup_path, class: 'module__button', disabled: @backup.blank? %>
+      <p><%= @backup.present? ? t('.created_at') + local_time(@backup.created_at) : t('.blank') %></p>
     </div>
     <hr>
 
