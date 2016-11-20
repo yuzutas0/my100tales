@@ -6,10 +6,22 @@
   <hr>
 
   <div>
-    <button class="module__button"><%= t('.create') %></button>
-    <p><%= t('.update') %></p>
-    <button class="module__button"><%= t('.download') %></button>
+    <div>
+      <button class="module__button">
+        <%= t('.create') %>
+      </button>
+      <p><%= t('.update') %></p>
+    </div>
     <hr>
+
+    <div>
+      <button class="module__button" <%= 'disabled' if @backup.blank? %>>
+        <%= t('.download') %>
+      </button>
+      <p><%= @backup.present? ? t('.created_at') : t('.blank') %></p>
+    </div>
+    <hr>
+
     <p><%= t('.delete') %></p>
   </div>
 </div>

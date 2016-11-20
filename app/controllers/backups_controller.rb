@@ -12,6 +12,7 @@ class BackupsController < ApplicationController
   # -----------------------------------------------------------------
   # GET /backup
   def index
+    @backup = BackupService.read(current_user.id)
   end
 
   # GET /backup/download
@@ -34,7 +35,7 @@ class BackupsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_backup
-    @backup = nil # todo: implement with current_user.id
+    @backup = BackupService.read(current_user.id)
     routing_error if @backup.blank?
   end
 end
