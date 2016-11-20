@@ -105,7 +105,7 @@ module TaleFinder
     def custom_sort(condition, sort, user_id)
       # param
       default_sort_master = SearchForm.sort_master
-      is_default_sort = [*(-1 * (default_sort_master.length + 1))...(-1)].map(&:to_s).include?(sort)
+      is_default_sort = [*(-1 * default_sort_master.length...0)].map(&:to_s).include?(sort)
       # order by
       if is_default_sort
         default_sort(condition, default_sort_master, sort)
@@ -115,7 +115,7 @@ module TaleFinder
     end
 
     def default_sort(condition, sort_master, sort)
-      sort = -1 * (sort.to_i - 1)
+      sort = -1 * sort.to_i - 1
       condition.order(sort_master[sort])
     end
 
