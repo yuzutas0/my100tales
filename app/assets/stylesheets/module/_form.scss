@@ -42,8 +42,18 @@
       }
     }
 
-    input:checked+.module__form__checkbox__label, input:checked+.module__form__radiobutton__label {
-      @extend .btn-primary;
+    input:disabled {
+      +.module__form__checkbox__label,
+      +.module__form__radiobutton__label {
+        @extend .disabled;
+      }
+    }
+
+    input:checked {
+      +.module__form__checkbox__label,
+      +.module__form__radiobutton__label {
+        @extend .btn-primary;
+      }
     }
   }
 }

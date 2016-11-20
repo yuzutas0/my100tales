@@ -11,6 +11,8 @@
   VUE_SEARCH_CONDITION_COMPARE_DOM_PREFIX = '#script__tale__search__condition__compare__'
   VUE_SEARCH_CONDITION_VALUE_DOM_PREFIX = '#script__tale__search__condition__value__'
 
+  VUE_SEARCH_CONDITION_SORT_ID_PREFIX = 'input_sort_'
+
   LEFT_TAB_SWITCH_DOM = '#script__tale__search__input__tab__switch'
   RIGHT_TAB_SWITCH_DOM = '#script__tale__search__condition__tab__switch'
   LEFT_TAB_CONTENT_DOM = '#script__tale__search__input__tab__content'
@@ -38,16 +40,22 @@
     My100TalesUtilDisable.setDisabled(VUE_SEARCH_CONDITION_SAVE_DOM, VUE_SEARCH_CONDITION_NAME_DOM)
     # score (key, compare, value)
     index = -1
+    hashForSort = {}
     loop
       index++
       break if document.getElementById(VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index) == null
+      dom = '#' + VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index
+      hashForSort[$(dom).val()] = dom
       My100TalesUtilDisable.setDisabled(
-        '#' + VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index,
+        dom,
         VUE_SEARCH_CONDITION_COMPARE_DOM_PREFIX + index,
         VUE_SEARCH_CONDITION_VALUE_DOM_PREFIX + index
       )
     # sort
-    # input_sort_0, ..., input_sort_n
-    # => button.value = "#{item.keys.first}:#{item.values.first}"
-    # => #{item.keys.first}
-    # VUE_SEARCH_CONDITION_SCORE_ID_PREFIX clicked => change button disabled
+    index = -1
+    loop
+      index++
+      break if document.getElementById(VUE_SEARCH_CONDITION_SORT_ID_PREFIX + index) == null
+      dom = '#' + VUE_SEARCH_CONDITION_SORT_ID_PREFIX + index
+      key = $(dom).val().split(':')[0]
+      My100TalesUtilDisable.setDisabled(hashForSort[key], dom)
