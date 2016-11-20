@@ -27,8 +27,11 @@ class BackupsController < ApplicationController
   def create
     # todo: implement
     # validate when the user is creating file
-    flash[:notice] = t('views.message.create.doing')
-    redirect_to backups_path
+    # BackupService.create(current_user.id)
+    # flash[:notice] = t('views.message.create.doing')
+    # redirect_to backups_path
+    filename, zip_data = BackupService.create(current_user.id)
+    send_data(zip_data, type: 'application/zip', filename: filename)
   end
 
   # -----------------------------------------------------------------

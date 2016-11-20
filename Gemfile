@@ -22,6 +22,9 @@ gem 'activerecord-import'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 
+# FILE
+gem 'rubyzip'
+
 # View
 gem 'font-awesome-rails'
 gem 'kaminari'

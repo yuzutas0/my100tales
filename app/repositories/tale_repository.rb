@@ -19,6 +19,11 @@ class TaleRepository
     Tale.search_by_es(user_id, keywords, tags, scores, sort, page)
   end
 
+  # get all records
+  def self.all(user_id)
+    Tale.where(user_id: user_id).includes(:sequels, :tags, :scores)
+  end
+
   # -----------------------------------------------------------------
   # Read - detail
   # -----------------------------------------------------------------
