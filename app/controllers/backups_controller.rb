@@ -5,7 +5,7 @@ class BackupsController < ApplicationController
   # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
-  before_action :set_backup
+  before_action :set_backup, only: [:download, :create]
 
   # -----------------------------------------------------------------
   # endpoint - read

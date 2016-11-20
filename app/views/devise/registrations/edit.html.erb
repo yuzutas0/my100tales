@@ -45,8 +45,7 @@
   <% end %>
 
   <hr>
-  <p><%= link_to 'Create backup file', '#' %></p>
-  <p><%= link_to 'Download backup file', '#' %></p>
+  <%= link_to 'Backup file', backups_path %>
 
   <hr>
   <%= link_to 'delete ' + resource_name.to_s.humanize,
