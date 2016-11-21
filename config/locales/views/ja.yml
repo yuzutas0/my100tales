@@ -46,6 +46,10 @@ ja:
             <br class="hidden-sm" />
             また、バックアップを届けるために<br class="visible-xs-block" />メールアドレスが必要となります。
           text2: 'アカウント登録は1分で完了します。'
+  devise:
+    registrations:
+      edit:
+        delete_info: '* 過去の投稿内容はサービス退会後に自動で削除されます。'
   layouts:
     header:
       logout: 'ログアウト'

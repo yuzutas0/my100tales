@@ -45,6 +45,10 @@ en:
             We request your signup to provide secret space for each accounts,
             and email is required to send backup file.
           text2: 'Signup is going to be completed without time and money.'
+  devise:
+    registrations:
+      edit:
+        delete_info: '* Your post will be automatically deleted after you resign from this app.'
   layouts:
     header:
       logout: 'Logout'
