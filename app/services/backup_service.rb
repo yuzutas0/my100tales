@@ -1,12 +1,17 @@
 # backup_service
 class BackupService
   # -----------------------------------------------------------------
+  # Library
+  # -----------------------------------------------------------------
+  require 'zip'
+
+  # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
   ZIP_FILE_NAME_SUFFIX = '.zip'.freeze
-  DIR_NAME = 'your_tales'.freeze
+  DIR_NAME = 'my100tales'.freeze # todo: use conf value
   TEXT_FILE_SUFFIX = '.txt'.freeze
-  CONTENT_SEPARATOR = ('-' * 32).freeze
+  CONTENT_SEPARATOR = ('-' * 64).freeze
 
   # -----------------------------------------------------------------
   # Create
@@ -38,12 +43,13 @@ class BackupService
     private
 
     def pre_create(user_id)
-      filename = zip_file_name
+      filename = DIR_NAME + ZIP_FILE_NAME_SUFFIX
       temp_file = Tempfile.new(filename)
       tales = TaleRepository.all(user_id)
       [filename, temp_file, tales]
     end
 
+    # todo: delete
     def zip_file_name
       name = ''
       condition = true
@@ -79,10 +85,15 @@ class BackupService
       # todo implement
       [
           CONTENT_SEPARATOR,
-          'title : ' + tale.title,
+          '[title] ' + tale.title,
           CONTENT_SEPARATOR,
-          'created at : ' + local_time(tale.created_at, user),
-          'updated at : ' + local_time(tale.updated_at, user),
+          '[created at] ' + local_time(tale.created_at, user),
+          '[updated at] ' + local_time(tale.updated_at, user),
+          CONTENT_SEPARATOR,
+          '[tag] ',
+          '[score] ',
+          CONTENT_SEPARATOR,
+          '[content]',
           CONTENT_SEPARATOR,
           tale.content,
           CONTENT_SEPARATOR
