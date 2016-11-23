@@ -52,14 +52,6 @@ en:
   layouts:
     header:
       logout: 'Logout'
-  backups:
-    index:
-      create: 'Create'
-      update: 'Old backup file will be deleted after you create new one.'
-      download: 'Download'
-      created_at: 'Created at '
-      blank: 'There is not backup files.'
-      delete: '* Your backup file will be automatically deleted when you resign from this app.'
   search_conditions:
     index:
       saved: 'saved'

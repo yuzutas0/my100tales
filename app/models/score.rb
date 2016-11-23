@@ -50,6 +50,6 @@ class Score < ActiveRecord::Base
   # converter
   # -----------------------------------------------------------------
   def record_to_text
-    self.key_name + ':' + self.value
+    key_name + ':' + value
   end
 end

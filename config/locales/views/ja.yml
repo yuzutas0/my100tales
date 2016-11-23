@@ -53,14 +53,6 @@ ja:
   layouts:
     header:
       logout: 'ログアウト'
-  backups:
-    index:
-      create: '新規作成'
-      update: '新しいバックアップを作成すると、古いファイルは削除されます。'
-      download: 'ダウンロード'
-      created_at: '作成日時：'
-      blank: 'まだバックアップは作成されていません。'
-      delete: '* 作成されたバックアップファイルはサービス退会時に自動削除されます。'
   search_conditions:
     index:
       saved: '保存条件'

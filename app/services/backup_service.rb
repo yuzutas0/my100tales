@@ -14,26 +14,16 @@ class BackupService
   CONTENT_SEPARATOR = ('-' * 64).freeze
 
   # -----------------------------------------------------------------
-  # Create
+  # Facade
   # -----------------------------------------------------------------
   def self.create(user)
-    file_name, zip_data = '', nil
-    Backup.transaction do
-      file_name, temp_file, tales = pre_create(user.id)
-      begin
-        zip_data = make_zip_file(temp_file, tales, user)
-      ensure
-        file_delete(temp_file)
-      end
+    file_name, temp_file, tales = ready(user.id)
+    begin
+      zip_data = make_zip_file(temp_file, tales, user)
+    ensure
+      file_delete(temp_file)
     end
     [file_name, zip_data]
-  end
-
-  # -----------------------------------------------------------------
-  # Read
-  # -----------------------------------------------------------------
-  def self.read(user_id)
-    BackupRepository.latest(user_id)
   end
 
   # -----------------------------------------------------------------
@@ -42,31 +32,11 @@ class BackupService
   class << self
     private
 
-    def pre_create(user_id)
+    def ready(user_id)
       filename = DIR_NAME + ZIP_FILE_NAME_SUFFIX
       temp_file = Tempfile.new(filename)
       tales = TaleRepository.all(user_id)
       [filename, temp_file, tales]
-    end
-
-    # todo: delete
-    def zip_file_name
-      name = ''
-      condition = true
-      index = 0
-      while condition
-        index += 1
-        name = digest_token(32)
-        condition = BackupRepository.exists(name)
-        raise Exception if index >= 10
-      end
-      name + ZIP_FILE_NAME_SUFFIX
-    end
-
-    def digest_token(length)
-      tmp_token = SecureRandom.urlsafe_base64
-      digest_token = Digest::MD5::hexdigest(tmp_token.to_s)
-      digest_token[0..(length - 1)]
     end
 
     def make_zip_file(temp_file, tales, user)
@@ -83,13 +53,13 @@ class BackupService
 
     def tale_file_content(s, tale, user)
       [
-          CONTENT_SEPARATOR, '[title] ' + tale.title, CONTENT_SEPARATOR,
-          '[tag] ' + tale.tags.map(&:name).join(','),
-          '[score] ' + tale.scores.map(&:record_to_text).join(','),
-          CONTENT_SEPARATOR,
-          '[created at] ' + local_time(tale.created_at, user),
-          '[updated at] ' + local_time(tale.updated_at, user),
-          CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content, CONTENT_SEPARATOR
+        CONTENT_SEPARATOR, '[title] ' + tale.title, CONTENT_SEPARATOR,
+        '[tag] ' + tale.tags.map(&:name).join(','),
+        '[score] ' + tale.scores.map(&:record_to_text).join(','),
+        CONTENT_SEPARATOR,
+        '[created at] ' + local_time(tale.created_at, user),
+        '[updated at] ' + local_time(tale.updated_at, user),
+        CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content, CONTENT_SEPARATOR
       ].each { |i| s.puts(i) }
     end
 
