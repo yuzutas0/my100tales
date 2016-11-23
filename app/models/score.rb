@@ -45,4 +45,11 @@ class Score < ActiveRecord::Base
   def add_error_blank_key_name
     errors[:base] << I18n.t('models.score.error.blank.key_name')
   end
+
+  # -----------------------------------------------------------------
+  # converter
+  # -----------------------------------------------------------------
+  def record_to_text
+    self.key_name + ':' + self.value
+  end
 end

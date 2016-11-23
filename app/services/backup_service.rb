@@ -82,21 +82,14 @@ class BackupService
     end
 
     def tale_file_content(s, tale, user)
-      # todo implement
       [
-          CONTENT_SEPARATOR,
-          '[title] ' + tale.title,
+          CONTENT_SEPARATOR, '[title] ' + tale.title, CONTENT_SEPARATOR,
+          '[tag] ' + tale.tags.map(&:name).join(','),
+          '[score] ' + tale.scores.map(&:record_to_text).join(','),
           CONTENT_SEPARATOR,
           '[created at] ' + local_time(tale.created_at, user),
           '[updated at] ' + local_time(tale.updated_at, user),
-          CONTENT_SEPARATOR,
-          '[tag] ',
-          '[score] ',
-          CONTENT_SEPARATOR,
-          '[content]',
-          CONTENT_SEPARATOR,
-          tale.content,
-          CONTENT_SEPARATOR
+          CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content, CONTENT_SEPARATOR
       ].each { |i| s.puts(i) }
     end
 
