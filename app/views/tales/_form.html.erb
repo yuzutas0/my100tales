@@ -1,7 +1,9 @@
 <div class="layout__tale__form module__form">
 
   <div class="module__form__field">
-    <%= f.text_field :title, class: 'module__form__field__text', placeholder: 'Title' %>
+    <%= f.text_field :title,
+                     class: 'module__form__field__text',
+                     placeholder: t('.title_placeholder') %>
   </div>
 
   <div class="module__form__field">
@@ -9,8 +11,7 @@
     <%= text_field :form, :tags,
                    id: 'script__tale__form__input',
                    placeholder: t('.tag_placeholder'),
-                   autocomplete: :off
-    %>
+                   autocomplete: :off %>
     </div>
     <ul id="script__tale__form__suggest__options" class="layout__tale__form__suggest__options">
       <% tags.each_with_index do | (name, size), index | %>

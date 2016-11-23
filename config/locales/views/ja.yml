@@ -40,6 +40,8 @@ ja:
             title: '3. 追記'
             text_html: '少しずつコメントを付け加えて<br />アイデアを深めていきましょう。'
         inner2:
+          title: 'スクリーンショット'
+        inner3:
           title: '登録は無料です'
           text1_html: >
             他人に投稿内容が見られないよう、<br class="visible-xs-block" />アカウント毎に投稿を管理します。
@@ -121,7 +123,8 @@ ja:
       header:
         searched: '検索結果'
     form:
-      tag_placeholder: 'タグ1 タグ2'
+      title_placeholder: 'タイトル'
+      tag_placeholder: 'タグ1 タグ2 スコア:値'
       content_placeholder: 'マークダウンで記入してください'
       editor: '編集'
       preview: 'プレビュー'

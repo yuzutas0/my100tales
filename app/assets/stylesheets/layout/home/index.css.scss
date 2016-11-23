@@ -98,21 +98,40 @@
         @include layout__home__explain__inner__title;
       }
 
-      .layout__home__explain__inner2__description {
+      .layout__home__explain__inner2__image {
+        width: auto;
+        max-width: 40%;
+        height: auto;
+        border: 1px solid darken($brand-primary, 20%);
+
+        @media (max-width: $screen-xs-max) {
+          max-width: 90%;
+        }
+      }
+    }
+
+    .layout__home__explain__inner3 {
+      @include layout__home__explain__inner;
+
+      .layout__home__explain__inner3__title {
+        @include layout__home__explain__inner__title;
+      }
+
+      .layout__home__explain__inner3__description {
         @extend .row;
 
-        .layout__home__explain__inner2__description__text {
+        .layout__home__explain__inner3__description__text {
           @extend .col-sm-6;
           @extend .col-sm-offset-3;
           @extend .col-xs-12;
         }
       }
 
-      .layout__home__explain__inner2__signup {
+      .layout__home__explain__inner3__signup {
         @include layout__home__signup;
       }
 
-      .layout__home__explain__inner2__login {
+      .layout__home__explain__inner3__login {
         @include layout__home__login;
       }
     }

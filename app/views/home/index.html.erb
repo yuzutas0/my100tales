@@ -15,7 +15,6 @@
   </div>
 
   <div class="layout__home__explain">
-
     <div class="layout__home__explain__inner1">
       <div class="layout__home__explain__inner1__title">
         <h2><%= t('.explain.inner1.title') %></h2>
@@ -33,13 +32,19 @@
     <hr>
     <div class="layout__home__explain__inner2">
       <div class="layout__home__explain__inner2__title"><h2><%= t('.explain.inner2.title') %></h2></div>
-      <div class="layout__home__explain__inner2__description">
-        <p class="layout__home__explain__inner2__description__text"><%= t('.explain.inner2.text1_html') %></p>
-        <p class="layout__home__explain__inner2__description__text"><%= t('.explain.inner2.text2') %></p>
+      <%= image_tag image_url('screenshot.jpg'), class: 'layout__home__explain__inner2__image' %>
+    </div>
+
+    <hr>
+    <div class="layout__home__explain__inner3">
+      <div class="layout__home__explain__inner3__title"><h2><%= t('.explain.inner3.title') %></h2></div>
+      <div class="layout__home__explain__inner3__description">
+        <p class="layout__home__explain__inner3__description__text"><%= t('.explain.inner3.text1_html') %></p>
+        <p class="layout__home__explain__inner3__description__text"><%= t('.explain.inner3.text2') %></p>
       </div>
       <%= link_to t('views.path.name.signup'), new_user_registration_path,
-                  class: 'layout__home__explain__inner2__signup module__button' %>
-      <div class="layout__home__explain__inner2__login">
+                  class: 'layout__home__explain__inner3__signup module__button' %>
+      <div class="layout__home__explain__inner3__login">
         <p><%= t('views.message.or_login_html', login: login_link) %></p>
       </div>
     </div>

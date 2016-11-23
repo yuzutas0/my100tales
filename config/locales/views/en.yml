@@ -40,6 +40,8 @@ en:
             title: '3. Sequel'
             text_html: 'make your ideas deeper and<br />bigger with additional comments.'
         inner2:
+          title: 'Screenshot'
+        inner3:
           title: 'Signup for free'
           text1_html: >
             We request your signup to provide the secret space for each accounts,
@@ -120,7 +122,8 @@ en:
       header:
         searched: 'Searched'
     form:
-      tag_placeholder: 'tag1 tag2'
+      title_placeholder: 'Title'
+      tag_placeholder: 'Tag1 Tag2 Score:Value'
       content_placeholder: 'Write down by markdown'
       editor: 'Editor'
       preview: 'Preview'
