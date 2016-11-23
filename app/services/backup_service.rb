@@ -8,8 +8,8 @@ class BackupService
   # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
+  DIR_NAME = Constants::PRODUCT_NAME_FOR_HEADER.downcase.freeze
   ZIP_FILE_NAME_SUFFIX = '.zip'.freeze
-  DIR_NAME = 'my100tales'.freeze # todo: use conf value
   TEXT_FILE_SUFFIX = '.txt'.freeze
   CONTENT_SEPARATOR = ('-' * 64).freeze
 
