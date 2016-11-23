@@ -3,9 +3,14 @@
 #
 class BackupsController < ApplicationController
   # -----------------------------------------------------------------
-  # filter
+  # Filter
   # -----------------------------------------------------------------
-  before_action :set_backup
+  # before_action :set_backup
+
+  # -----------------------------------------------------------------
+  # Const
+  # -----------------------------------------------------------------
+  RESPONSE_TYPE = 'application/zip'.freeze
 
   # -----------------------------------------------------------------
   # endpoint - read
@@ -14,10 +19,10 @@ class BackupsController < ApplicationController
   def index
   end
 
-  # GET /backup/download
+  # GET /backup
   def download
-    routing_error if @backup.blank?
-    # todo: implement
+    filename, zip_data = BackupService.create(current_user)
+    send_data(zip_data, type: RESPONSE_TYPE, filename: filename)
   end
 
   # -----------------------------------------------------------------
@@ -30,8 +35,6 @@ class BackupsController < ApplicationController
     # BackupService.create(current_user.id)
     # flash[:notice] = t('views.message.create.doing')
     # redirect_to backups_path
-    filename, zip_data = BackupService.create(current_user)
-    send_data(zip_data, type: 'application/zip', filename: filename)
   end
 
   # -----------------------------------------------------------------

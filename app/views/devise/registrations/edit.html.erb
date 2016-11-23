@@ -45,7 +45,7 @@
   <% end %>
 
   <hr>
-  <%= link_to 'Backup file', backups_path %>
+  <%= button_to 'Download Backup file', backup_path, class: 'module__button', method: :post %>
 
   <hr>
   <%= link_to 'Delete ' + resource_name.to_s.humanize,
