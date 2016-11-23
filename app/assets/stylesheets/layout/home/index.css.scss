@@ -20,6 +20,7 @@
   .layout__home__impress {
     padding: $margin_size_xx_large 0;
     background-image: image-url('top.jpg');
+    background-size: cover;
 
     .layout__home__impress__inner {
       @extend .container;
@@ -27,6 +28,7 @@
       .layout__home__impress__inner__message {
         margin: 0;
         font-size: $font_size_x_large;
+        font-weight: bold;
       }
 
       .layout__home__impress__inner__description {
@@ -71,6 +73,7 @@
         .layout__home__explain__inner1__content__icon {
           font-size: $icon_size_large;
           padding-right: $margin_size_x_small;
+          color: darken($brand-primary, 20%);
 
           @media (max-width: $screen-xs-max) {
             padding-right: 0;
