@@ -19,7 +19,7 @@
 
   .layout__home__impress {
     padding: $margin_size_xx_large 0;
-    background-color: $mock_color; // FIXME: picture
+    background-image: image-url('top.jpg');
 
     .layout__home__impress__inner {
       @extend .container;
