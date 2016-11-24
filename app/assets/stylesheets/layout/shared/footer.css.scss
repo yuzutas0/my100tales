@@ -9,6 +9,29 @@
     @extend .container;
     @extend .text-muted;
 
-    margin-bottom: 22px;
+    text-align: center;
+    margin-bottom: $margin_size_middle;
+
+    .layout__shared__footer__inner__copyright {
+      float: left;
+
+      @media (max-width: $screen-xs-max) {
+        float: none;
+        display: block;
+        margin-bottom: $margin_size_xx_small;
+      }
+    }
+
+    .layout__shared__footer__inner__links {
+      float: right;
+
+      @media (max-width: $screen-xs-max) {
+        float: none;
+      }
+
+      .layout__shared__footer__inner__link {
+        margin-left: $margin_size_x_small;
+      }
+    }
   }
 }
