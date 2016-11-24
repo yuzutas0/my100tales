@@ -8,7 +8,7 @@ class BackupService
   # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
-  DIR_NAME = Constants::PRODUCT_NAME_FOR_TITLE.downcase.freeze
+  DIR_NAME_PREFIX = Constants::PRODUCT_NAME_FOR_TITLE.downcase.freeze
   ZIP_FILE_NAME_SUFFIX = '.zip'.freeze
   TEXT_FILE_SUFFIX = '.txt'.freeze
   CONTENT_SEPARATOR = ('-' * 64).freeze
@@ -17,7 +17,7 @@ class BackupService
   # Facade
   # -----------------------------------------------------------------
   def self.create(user)
-    file_name, temp_file, tales = ready(user.id)
+    file_name, temp_file, tales = ready(user)
     begin
       zip_data = make_zip_file(temp_file, tales, user)
     ensure
@@ -32,23 +32,30 @@ class BackupService
   class << self
     private
 
-    def ready(user_id)
-      filename = DIR_NAME + ZIP_FILE_NAME_SUFFIX
+    def ready(user)
+      filename = dir_name(user) + ZIP_FILE_NAME_SUFFIX
       temp_file = Tempfile.new(filename)
-      tales = TaleRepository.all(user_id)
+      tales = TaleRepository.all(user.id)
       [filename, temp_file, tales]
+    end
+
+    def dir_name(user)
+      DIR_NAME_PREFIX + '_' + local_time_shorten(Time.now, user)
     end
 
     def make_zip_file(temp_file, tales, user)
       Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip|
-        zip.mkdir(DIR_NAME)
-        tales.each { |tale| zip.get_output_stream(tale_file_name(tale)) { |s| tale_file_content(s, tale, user) } }
+        zip.mkdir(dir_name(user))
+        tales.each do |tale|
+          file_name = tale_file_name(tale, user)
+          zip.get_output_stream(file_name) { |s| tale_file_content(s, tale, user) }
+        end
       end
       File.read(temp_file.path)
     end
 
-    def tale_file_name(tale)
-      DIR_NAME + File::SEPARATOR + tale.view_number.to_s + TEXT_FILE_SUFFIX
+    def tale_file_name(tale, user)
+      dir_name(user) + File::SEPARATOR + tale.view_number.to_s + TEXT_FILE_SUFFIX
     end
 
     def tale_file_content(s, tale, user)
@@ -74,6 +81,10 @@ class BackupService
         ]
       end
       sequels.present? ? array : array.concat([CONTENT_SEPARATOR])
+    end
+
+    def local_time_shorten(time, user)
+      time.in_time_zone(user_timezone(user)).strftime('%Y%m%d%H%M')
     end
 
     # refs. ApplicationHelper#local_time
