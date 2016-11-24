@@ -21,7 +21,11 @@ class TaleRepository
 
   # get all records
   def self.all(user_id)
-    Tale.where(user_id: user_id).includes(:sequels, :tags, :scores)
+    Tale.where(user_id: user_id)
+        .includes(:sequels, :tags, :scores)
+        .merge(Sequel.order('sequels.view_number DESC'))
+        .merge(Tag.order('tags.view_number DESC'))
+        .merge(Score.order('scores.view_number DESC'))
   end
 
   # -----------------------------------------------------------------

@@ -8,7 +8,7 @@ class BackupService
   # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
-  DIR_NAME = Constants::PRODUCT_NAME_FOR_HEADER.downcase.freeze
+  DIR_NAME = Constants::PRODUCT_NAME_FOR_TITLE.downcase.freeze
   ZIP_FILE_NAME_SUFFIX = '.zip'.freeze
   TEXT_FILE_SUFFIX = '.txt'.freeze
   CONTENT_SEPARATOR = ('-' * 64).freeze
@@ -59,8 +59,21 @@ class BackupService
         CONTENT_SEPARATOR,
         '[created at] ' + local_time(tale.created_at, user),
         '[updated at] ' + local_time(tale.updated_at, user),
-        CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content, CONTENT_SEPARATOR
-      ].each { |i| s.puts(i) }
+        CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content
+      ].concat(sequel_file_content(tale.sequels, user)).each { |i| s.puts(i) }
+    end
+
+    def sequel_file_content(sequels, user)
+      array = [CONTENT_SEPARATOR, '[sequel]', CONTENT_SEPARATOR]
+      sequels.each do |sequel|
+        array << [
+          '[number] ' + sequel.view_number.to_s,
+          '[created at] ' + local_time(sequel.created_at, user),
+          '[updated at] ' + local_time(sequel.updated_at, user),
+          CONTENT_SEPARATOR, sequel.content, CONTENT_SEPARATOR
+        ]
+      end
+      sequels.present? ? array : array.concat([CONTENT_SEPARATOR])
     end
 
     # refs. ApplicationHelper#local_time
