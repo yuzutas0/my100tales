@@ -1,0 +1,15 @@
+// home
+
+// import
+@import "base/const";
+@import "base/util";
+
+// main
+.layout__static {
+  @extend .container;
+  @include util__layout;
+
+  .layout__static__header {
+    margin-top: $margin_size_xx_small; // => same as tale view header
+  }
+}
