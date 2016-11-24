@@ -37,11 +37,14 @@ en:
     path:
       name:
         home: 'Top'
+        terms: 'Terms'
+        privacy: 'Privacy'
+        about: 'About'
+        contact: 'Contact'
         login: 'Login'
         signup: 'SignUp'
         unlock: 'Unlock'
         account: 'Account'
-        backup: 'Backup'
         password: 'Password'
         tags: 'TagList'
         scores: 'ScoreList'

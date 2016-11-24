@@ -37,11 +37,14 @@ ja:
     path:
       name:
         home: 'トップ'
+        terms: '利用規約'
+        privacy: 'プライバシーポリシー'
+        about: 'コンセプト'
+        contact: '問い合わせ'
         login: 'ログイン'
         signup: '新規登録'
         unlock: 'ロック解除'
         account: 'アカウント'
-        backup: 'バックアップ'
         password: 'パスワード'
         tags: 'タグ一覧'
         scores: 'スコア一覧'

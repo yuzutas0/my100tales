@@ -3,12 +3,12 @@
   <div class="layout__shared__footer__inner">
     <p>
       <span class="layout__shared__footer__inner__copyright">© 2016 My100Tales.</span>
-      <span class="layout__shared__footer__inner__links">
-        <%= link_to 'Terms', '#', class: 'layout__shared__footer__inner__link' %>
-        <%= link_to 'Privacy', '#', class: 'layout__shared__footer__inner__link' %>
-        <%= link_to 'About', '#', class: 'layout__shared__footer__inner__link' %>
-        <%= link_to 'Contact', '#', class: 'layout__shared__footer__inner__link' %>
-      </span>
+      <ul class="layout__shared__footer__inner__links">
+        <li class="layout__shared__footer__inner__link"><%= link_to t('views.path.name.terms'), '#' %></li>
+        <li class="layout__shared__footer__inner__link"><%= link_to t('views.path.name.privacy'), '#' %></li>
+        <li class="layout__shared__footer__inner__link"><%= link_to t('views.path.name.about'), '#' %></li>
+        <li class="layout__shared__footer__inner__link"><%= link_to t('views.path.name.contact'), '#' %></li>
+      </ul>
     </p>
   </div>
   <%= render 'layouts/message' %>

@@ -23,6 +23,9 @@
     }
 
     .layout__shared__footer__inner__links {
+      display: inline-block;
+      list-style: none;
+      padding: 0;
       float: right;
 
       @media (max-width: $screen-xs-max) {
@@ -30,6 +33,7 @@
       }
 
       .layout__shared__footer__inner__link {
+        display: inline-block;
         margin-left: $margin_size_x_small;
       }
     }
