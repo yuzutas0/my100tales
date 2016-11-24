@@ -3,9 +3,14 @@
 #
 class HomeController < ApplicationController
   # -----------------------------------------------------------------
+  # const
+  # -----------------------------------------------------------------
+  ENDPOINTS = [:index, :terms, :privacy, :about, :contact]
+
+  # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
-  skip_before_action :authenticate_user!, only: [:index, :privacy]
+  skip_before_action :authenticate_user!, only: ENDPOINTS
 
   # -----------------------------------------------------------------
   # endpoint
@@ -13,6 +18,15 @@ class HomeController < ApplicationController
   def index
   end
 
+  def terms
+  end
+
   def privacy
+  end
+
+  def about
+  end
+
+  def contact
   end
 end

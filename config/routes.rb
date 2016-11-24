@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     get  'home/index'
 
     # static pages
-    get 'privacy', to: 'home#privacy'
+    get 'terms',   to: 'home#terms',   as: 'terms'
+    get 'privacy', to: 'home#privacy', as: 'privacy'
+    get 'about',   to: 'home#about',   as: 'about'
+    get 'contact', to: 'home#contact', as: 'contact'
 
     # user
     devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
