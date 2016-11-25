@@ -47,6 +47,8 @@ en:
             We request your signup to provide the secret space for each accounts,
             and email is required to authenticate the account.
           text2: 'Signup is going to be completed without time and money.'
+    contact:
+      message: 'Please contact me with any questions or comments.'
   devise:
     registrations:
       edit:

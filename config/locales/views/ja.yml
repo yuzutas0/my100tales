@@ -48,6 +48,8 @@ ja:
             <br class="hidden-sm" />
             アカウントを認証するために<br class="visible-xs-block" />メールアドレスが必要となります。
           text2: 'アカウント登録は1分で完了します。'
+    contact:
+      message: 'お気付きの点がありましたら、お気軽にお問い合わせください。'
   devise:
     registrations:
       edit:
