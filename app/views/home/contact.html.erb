@@ -2,5 +2,19 @@
 <div class="layout__static">
   <p class="layout__static__header"><%= render 'layouts/breadcrumb_1', second_page: @page_title %></p>
   <hr>
-  <p><%= t('.message') %></p>
+  <div class="layout__static__contact">
+    <p><%= t('.message_html') %></p>
+    <p>
+      <a>
+      <%= fa_icon('twitter', class: 'layout__static__contact__twitter') %>
+      Developer's Twitter
+      </a>
+    </p>
+    <p>
+      <a>
+        <%= fa_icon('github', class: 'layout__static__contact__github') %>
+        GitHub Repository
+      </a>
+    </p>
+  </div>
 </div>

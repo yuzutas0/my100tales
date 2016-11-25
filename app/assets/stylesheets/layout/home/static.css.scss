@@ -12,4 +12,22 @@
   .layout__static__header {
     margin-top: $margin_size_xx_small; // => same as tale view header
   }
+
+  .layout__static__contact {
+    text-align: center;
+
+    .layout__static__contact__twitter {
+      display: block;
+      margin-top: $margin_size_middle;
+      font-size: $font_size_x_large * 2;
+      color: #00aced; // twitter theme
+    }
+
+    .layout__static__contact__github {
+      display: block;
+      margin-top: $margin_size_middle;
+      font-size: $font_size_x_large * 2;
+      color: #87c040; // github theme
+    }
+  }
 }
