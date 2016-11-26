@@ -13,6 +13,19 @@
     margin-top: $margin_size_xx_small; // => same as tale view header
   }
 
+  .layout__static__about {
+    .layout__static__about__image {
+      display: none;
+
+      @media (max-width: $screen-xs-max) {
+        display: block;
+        margin: auto;
+        height: auto;
+        width: 90%;
+      }
+    }
+  }
+
   .layout__static__contact {
     text-align: center;
 

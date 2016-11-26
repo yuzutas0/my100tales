@@ -2,5 +2,13 @@
 <div class="layout__static">
   <p class="layout__static__header"><%= render 'layouts/breadcrumb_1', second_page: @page_title %></p>
   <hr>
-  <p>TODO: Write down concept of application here.</p>
+
+  <div class="layout__static__about">
+    <%= image_tag image_url('top.jpg'), class: 'layout__static__about__image' %>
+    <h3><%= t('.name_title') %></h3>
+    <p><%= t('.name_description_html') %></p>
+    <hr>
+    <h3><%= t('.concept_title') %></h3>
+    <p><%= t('.concept_description_html') %></p>
+  </div>
 </div>

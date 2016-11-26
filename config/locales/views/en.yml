@@ -47,6 +47,13 @@ en:
             We request your signup to provide the secret space for each accounts,
             and email is required to authenticate the account.
           text2: 'Signup is going to be completed without time and money.'
+    about:
+      name_title: 'Meaning of name'
+      name_description_html: >
+        TODO: Write down here.
+      concept_title: 'Service Concept'
+      concept_description_html: >
+        TODO: Write down here.
     contact:
       message_html: >
         Please contact me <br class="visible-xs-block" />with any questions or comments.
