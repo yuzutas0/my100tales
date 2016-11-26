@@ -16,18 +16,33 @@
   .layout__static__contact {
     text-align: center;
 
-    .layout__static__contact__twitter {
-      display: block;
+    @mixin contact_button() {
+      width: 150px; // FIXME
       margin-top: $margin_size_middle;
-      font-size: $font_size_x_large * 2;
-      color: #00aced; // twitter theme
+      padding: $margin_size_x_small;
+      border: none;
+      border-radius: $margin_size_xx_small;
+      color: white;
+
+      .fa {
+        margin-bottom: $margin_size_xx_small;
+        font-size: $font_size_x_large * 2;
+      }
+    }
+
+    .layout__static__contact__twitter {
+      @include contact_button();
+      background-color: #00aced; // twitter theme
     }
 
     .layout__static__contact__github {
-      display: block;
-      margin-top: $margin_size_middle;
-      font-size: $font_size_x_large * 2;
-      color: #87c040; // github theme
+      @include contact_button();
+      background-color: #87c040; // github theme
+      margin-left: $margin_size_small;
+
+      @media (max-width: $screen-xs-max) {
+        margin-left: 0;
+      }
     }
   }
 }

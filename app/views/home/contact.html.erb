@@ -4,17 +4,13 @@
   <hr>
   <div class="layout__static__contact">
     <p><%= t('.message_html') %></p>
-    <p>
-      <a>
-      <%= fa_icon('twitter', class: 'layout__static__contact__twitter') %>
-      Developer's Twitter
-      </a>
-    </p>
-    <p>
-      <a>
-        <%= fa_icon('github', class: 'layout__static__contact__github') %>
-        GitHub Repository
-      </a>
-    </p>
+    <button type="button" class="layout__static__contact__twitter"
+            onclick="window.location.href='http://twitter.com/yuzutas0/'">
+      <%= fa_icon('twitter') %><br/>Developer's Twitter
+    </button>
+    <button type="button" class="layout__static__contact__github"
+            onclick="window.location.href='http://github.com/yuzutas0/my100tales/'">
+      <%= fa_icon('github') %><br/>GitHub Repository
+    </button>
   </div>
 </div>
