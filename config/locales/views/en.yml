@@ -50,10 +50,20 @@ en:
     about:
       name_title: 'Meaning of name'
       name_description_html: >
-        TODO: Write down here.
+        "100 tales" is one of the styles to talk about ghost stories in Japan.<br />
+        <br />
+        It was popular in Muromachi to Edo period.<br />
+        It is said that a psychic phenomenon occurs after telling 100 tales and blowing out 100 candles.<br />
+        <br />
+        Also, "tales" is associated with fantasy like "fairy-tale", "a pipe dream".
       concept_title: 'Service Concept'
       concept_description_html: >
-        TODO: Write down here.
+        You can write down your ideas like a pipe dream to this application.<br />
+        <br />
+        Writing is the best way to change your "fairy-tale" to feasible plans.<br />
+        And daily thinking the plan will give you energy to go ahead.<br />
+        <br />
+        Don't you think one of your dreams come true after telling 100 tales?
     contact:
       message_html: >
         Please contact me <br class="visible-xs-block" />with any questions or comments.
