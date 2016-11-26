@@ -14,7 +14,11 @@
     <p class="layout__tale__show__information__star__heading">Score</p>
     <div>
       <% tale.scores.each do |score| %>
-        <a href="#" class="module__label"><%= score.key_name + ' : ' + score.value %></a>
+        <%= link_to score.key_name + ' : ' + score.value, tales_path('scores': {
+            'key': [score.key_name],
+            'co': [score.key_name + ':eq'],
+            'val': [score.key_name + ':' + score.value]
+        }), class: 'module__label' %>
       <% end %>
     </div>
   </div>
