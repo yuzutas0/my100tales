@@ -1,11 +1,25 @@
-## My 100 Tales
+# My 100 Tales
 
 This application manages your inspirations by save, edit, search.
 So, my100tales grows your ideas in order to make dreams come true.
 
+## Components
+
 ![Components](docs/components.png)
 
+## Services (job queues, cache servers, search engines, etc.)
+
+- Nginx
+- MariaDB
+- Redis
+- ElasticSearch
+- Postfix
+
 ## Ruby version
+
+```
+2.3.0
+```
 
 ## System dependencies
 
@@ -20,6 +34,8 @@ $ npm install -g bower
 $ bundle install --path vendor/bundle --without=production
 $ bundle exec rake bower:install
 ```
+
+# Local environment
 
 ## Database creation
 
@@ -89,21 +105,25 @@ $ bundle exec rake emoji
 
 ## How to run the test suite
 
+sorry for inadequate test code...
+
 ```
+# use static code analysis before commit
 $ rake rubocop
 $ rake rubocop:auto_correct
 $ rubocop --auto-gen-config # => make source code better!
 $ rails_best_practices # => make source code better!
 ```
 
-## Services (job queues, cache servers, search engines, etc.)
-
-- MariaDB
-- Redis
-- ElasticSearch
-
 ## Deployment instructions
 
 ```
 $ DB_USERNAME=[username] DB_PASSWORD=[password] REDIS_DB=[db number] rails s
+```
+
+# Staging environment
+
+```
+$ cd infrastructure/staging/vagrant
+$ ./setup.sh
 ```
