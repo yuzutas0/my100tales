@@ -1,39 +1,36 @@
 <% @page_title = t('views.path.name.signup') %>
+<% resource.timezone = default_timezone # logic to override devise %>
 <div class="layout__devise">
   <h2><%= @page_title %></h2>
   <hr>
 
-  <% # logic to override devise %>
-  <% resource.timezone = default_timezone %>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'module__form' }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+               html: { class: 'module__form' }) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="module__form__field">
-      <%= f.label :email %><br />
+      <%= f.label :email, t('.email') %><br />
       <%= f.email_field :email, autofocus: true, class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :name %><br />
+      <%= f.label :name, t('.name') %><br />
       <%= f.text_field :name, autofocus: true, class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :timezone %><br />
+      <%= f.label :timezone, t('.timezone') %><br />
       <%= f.select :timezone, TZInfo::Timezone.all_identifiers, {}, class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
+      <%= f.label :password, t('.password') %><br />
+      <%= t('.minimum_length_html', length: @minimum_password_length) if @minimum_password_length %>
       <%= f.password_field :password, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation, t('.confirm') %><br />
       <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 

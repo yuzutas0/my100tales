@@ -119,6 +119,13 @@ en:
         delete_confirm_html: 'Are you absolutely sure you want to delete your account <strong>%{name}</strong>?'
         delete_verify: 'This action cannot be undone. Please type in the name of your account to confirm.'
         delete_info: '* Your post will be automatically deleted after you resign from this app.'
+      new:
+        email: 'Email'
+        name: 'Name'
+        timezone: 'Timezone'
+        password: 'Password'
+        minimum_length_html: '* %{length} characters minimum.<br />'
+        confirm: 'Confirm password'
   layouts:
     header:
       logout: 'Logout'

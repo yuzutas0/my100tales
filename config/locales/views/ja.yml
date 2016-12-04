@@ -105,7 +105,7 @@ ja:
       edit:
         email: 'メールアドレス'
         pending_reconfirmation: 'ただいま %{email} の確認待ちです。'
-        name: 'ユーザー名'
+        name: 'アカウント名'
         timezone: 'タイムゾーン'
         password: '新しいパスワード'
         password_info: '* パスワードを変更しない場合は空欄'
@@ -120,6 +120,13 @@ ja:
         delete_confirm_html: 'あなたのアカウント <strong>%{name}</strong> を削除してもよろしいですか?'
         delete_verify: '退会したら元には戻せません。確認のために、アカウント名を入力してください。'
         delete_info: '* 過去の投稿内容はサービス退会後に自動で削除されます。'
+      new:
+        email: 'メールアドレス'
+        name: 'アカウント名'
+        timezone: 'タイムゾーン'
+        password: 'パスワード'
+        minimum_length_html: '* %{length}文字以上で入力してください。<br />'
+        confirm: 'パスワード(確認用)'
   layouts:
     header:
       logout: 'ログアウト'
