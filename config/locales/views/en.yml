@@ -136,6 +136,10 @@ en:
         forgot: 'Forgot your password?'
         confirmation: "Didn't receive confirmation instructions?"
         unlock: "Didn't receive unlock instructions?"
+    unlocks:
+      new:
+        title: 'Resend unlock instructions'
+        email: 'Email'
   layouts:
     header:
       logout: 'Logout'

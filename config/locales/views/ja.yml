@@ -137,6 +137,10 @@ ja:
         forgot: 'パスワード忘れはこちら'
         confirmation: '確認メールの再送信'
         unlock: 'アカウント凍結解除メールの再送信'
+    unlocks:
+      new:
+        title: 'アカウント凍結解除メールの再送信'
+        email: 'メールアドレス'
   layouts:
     header:
       logout: 'ログアウト'

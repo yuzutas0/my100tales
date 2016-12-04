@@ -43,7 +43,6 @@ en:
         contact: 'Contact'
         login: 'Login'
         signup: 'SignUp'
-        unlock: 'Unlock'
         account: 'Account'
         tags: 'TagList'
         scores: 'ScoreList'
