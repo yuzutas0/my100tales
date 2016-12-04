@@ -131,6 +131,11 @@ en:
         email: 'Email'
         password: 'Password'
         remember: 'Remember me'
+    shared:
+      links:
+        forgot: 'Forgot your password?'
+        confirmation: "Didn't receive confirmation instructions?"
+        unlock: "Didn't receive unlock instructions?"
   layouts:
     header:
       logout: 'Logout'

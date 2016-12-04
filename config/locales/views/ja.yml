@@ -132,6 +132,11 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         remember: 'パスワードを記憶する'
+    shared:
+      links:
+        forgot: 'パスワード忘れはこちら'
+        confirmation: '確認メールの再送信'
+        unlock: 'アカウント凍結解除メールの再送信'
   layouts:
     header:
       logout: 'ログアウト'
