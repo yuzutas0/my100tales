@@ -97,6 +97,10 @@ ja:
         new: '新しいパスワード'
         minimum_length_html: '* %{length}文字以上必須<br />'
         confirm: '新しいパスワード(確認用)'
+      new:
+        title: 'パスワード忘れはこちら'
+        email: 'メールアドレス'
+        submit: 'パスワード再発行'
     registrations:
       edit:
         delete_info: '* 過去の投稿内容はサービス退会後に自動で削除されます。'

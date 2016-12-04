@@ -96,6 +96,10 @@ en:
         new: 'New password'
         minimum_length_html: '* %{length} characters minimum<br />'
         confirm: 'Confirm new password'
+      new:
+        title: 'Forgot your password?'
+        email: 'email'
+        submit: 'Send me reset password instructions'
     registrations:
       edit:
         delete_info: '* Your post will be automatically deleted after you resign from this app.'
