@@ -94,14 +94,30 @@ en:
       edit:
         title: 'Change your password'
         new: 'New password'
-        minimum_length_html: '* %{length} characters minimum<br />'
+        minimum_length_html: '* %{length} characters minimum.<br />'
         confirm: 'Confirm new password'
       new:
         title: 'Forgot your password?'
-        email: 'email'
+        email: 'Email'
         submit: 'Send me reset password instructions'
     registrations:
       edit:
+        email: 'Email'
+        pending_reconfirmation: '* Currently waiting confirmation for: %{email} .'
+        name: 'Name'
+        timezone: 'Timezone'
+        password: 'New password'
+        password_info: "* Leave blank if you don't want to change it."
+        confirm: 'Confirm new password'
+        current: 'Current password'
+        current_info: '* We need your current password to confirm your changes.'
+        update: 'Update your account info'
+        backup: 'Download Backup file'
+        backup_info: '* There are tales, tags, scores, and sequels you posted in backup file.'
+        delete: 'Delete Account (Resign from this app)'
+        delete_title: 'Verify the deletion'
+        delete_confirm_html: 'Are you absolutely sure you want to delete your account <strong>%{name}</strong>?'
+        delete_verify: 'This action cannot be undone. Please type in the name of your account to confirm.'
         delete_info: '* Your post will be automatically deleted after you resign from this app.'
   layouts:
     header:

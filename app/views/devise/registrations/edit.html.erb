@@ -4,59 +4,60 @@
   <hr>
   <h2><%= @page_title %></h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'module__form' }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+               html: { method: :put, class: 'module__form' }) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="module__form__field">
-      <%= f.label :email %><br />
+      <%= f.label :email, t('.email') %><br />
       <%= f.email_field :email, autofocus: true, class: 'module__form__field__text' %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div><%= t('.pending_reconfirmation', email: resource.unconfirmed_email) %></div>
     <% end %>
 
     <div class="module__form__field">
-      <%= f.label :name %><br />
+      <%= f.label :name, t('.name') %><br />
       <%= f.text_field :name, autofocus: true, class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :timezone %><br />
+      <%= f.label :timezone, t('.timezone')%><br />
       <%= f.select :timezone, TZInfo::Timezone.all_identifiers, {}, class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :password, t('.password') %><br />
+      <i><%= t('.password_info') %></i><br />
       <%= f.password_field :password, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation, t('.confirm') %><br />
       <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 
     <div class="module__form__field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.label :current_password, t('.current') %><br />
+      <i><%= t('.current_info') %></i><br />
       <%= f.password_field :current_password, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 
-    <div><%= f.submit 'Update', class: 'module__button' %></div>
+    <div><%= f.submit t('.update'), class: 'module__button' %></div>
   <% end %>
 
   <hr>
-  <%= button_to 'Download Backup file', backup_path, class: 'module__button', method: :post %>
+  <%= button_to t('.backup'), backup_path, class: 'module__button', method: :post %>
+  <p><%= t('.backup_info') %></p>
 
   <hr>
-  <%= link_to 'Delete ' + resource_name.to_s.humanize,
-              registration_path(resource_name),
-              method: :delete,
+  <%= link_to t('.delete'), registration_path(resource_name), method: :delete, title: t('.delete_title'),
               data: {
-                  confirm: "Are you absolutely sure you want to delete your account <strong>#{current_user.name}</strong>?",
+                  confirm: t('.delete_confirm_html', name: current_user.name),
                   verify: current_user.name,
-                  'verify-text' => 'This action cannot be undone. Please type in the name of your account to confirm.'
-              },
-              title: 'Verify the deletion'
+                  'verify-text' => t('.delete_verify')
+              }
   %>
   <p><%= t('.delete_info') %></p>
 </div>
