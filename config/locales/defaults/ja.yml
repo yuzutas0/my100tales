@@ -45,7 +45,6 @@ ja:
         signup: '新規登録'
         unlock: 'ロック解除'
         account: 'アカウント'
-        password: 'パスワード'
         tags: 'タグ一覧'
         scores: 'スコア一覧'
         conditions:

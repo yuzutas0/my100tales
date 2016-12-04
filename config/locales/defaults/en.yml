@@ -45,7 +45,6 @@ en:
         signup: 'SignUp'
         unlock: 'Unlock'
         account: 'Account'
-        password: 'Password'
         tags: 'TagList'
         scores: 'ScoreList'
         conditions:

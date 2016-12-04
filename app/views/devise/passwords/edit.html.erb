@@ -1,29 +1,26 @@
-<% @page_title = t('views.path.name.password') %>
+<% @page_title = t('.title') %>
 <div class="layout__devise">
-  <p><%= render 'layouts/breadcrumb_tale_2', third_page: 'Change your password' %></p>
+  <p><%= render 'layouts/breadcrumb_tale_2', third_page: @page_title %></p>
   <hr>
-  <h2>Change your password</h2>
+  <h2><%= @page_title %></h2>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+               html: { method: :put, class: 'module__form' }) do |f| %>
     <%= devise_error_messages! %>
     <%= f.hidden_field :reset_password_token %>
 
-    <div class="field form-group">
-      <%= f.label :password, 'New password' %><br />
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-      <% end %>
-      <%= f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control' %>
+    <div class="module__form__field">
+      <%= f.label :password, t('.new') %><br />
+      <%= t('.minimum_length_html', length: @minimum_password_length) if @minimum_password_length %>
+      <%= f.password_field :password, autofocus: true, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation, 'Confirm new password' %><br />
-      <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
+    <div class="module__form__field">
+      <%= f.label :password_confirmation, t('.confirm') %><br />
+      <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'module__form__field__text' %>
     </div>
 
-    <div class="actions">
-      <%= f.submit 'Change my password', class: 'btn btn-primary' %>
-    </div>
+    <div><%= f.submit @page_title, class: 'module__button' %></div>
   <% end %>
 
   <%= render 'devise/shared/links' %>

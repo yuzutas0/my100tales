@@ -91,6 +91,12 @@ ja:
         description_1: 'ログインの失敗が連続したため、アカウントをロックしました。'
         description_2: 'アカウントロックを解除するには以下のリンクをクリックしてください。'
         submit: 'アカウントロックを解除する'
+    passwords:
+      edit:
+        title: 'パスワード変更'
+        new: '新しいパスワード'
+        minimum_length_html: '* %{length}文字以上必須<br />'
+        confirm: '新しいパスワード(確認用)'
     registrations:
       edit:
         delete_info: '* 過去の投稿内容はサービス退会後に自動で削除されます。'
