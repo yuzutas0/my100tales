@@ -181,3 +181,5 @@ db/data.yml
 public/images/emoji/**/*.png
 *.iml
 railways.cache
+infrastructure/staging/vagrant/Vagrantfile
+infrastructure/staging/vagrant/.vagrant/*
