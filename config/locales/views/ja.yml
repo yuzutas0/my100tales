@@ -127,6 +127,11 @@ ja:
         password: 'パスワード'
         minimum_length_html: '* %{length}文字以上で入力してください。<br />'
         confirm: 'パスワード(確認用)'
+    sessions:
+      new:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        remember: 'パスワードを記憶する'
   layouts:
     header:
       logout: 'ログアウト'

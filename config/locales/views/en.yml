@@ -126,6 +126,11 @@ en:
         password: 'Password'
         minimum_length_html: '* %{length} characters minimum.<br />'
         confirm: 'Confirm password'
+    sessions:
+      new:
+        email: 'Email'
+        password: 'Password'
+        remember: 'Remember me'
   layouts:
     header:
       logout: 'Logout'
