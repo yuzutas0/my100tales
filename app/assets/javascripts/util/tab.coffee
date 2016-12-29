@@ -30,13 +30,13 @@ class @My100TalesUtilTab
   # rewrite query
   @rewriteQuery = (buttons, queries) ->
     # validate
-    return if buttons.length != queries.length
-    return unless history.state != undefined
+    return if buttons.length != queries.length # args
+    return unless history.state != undefined # browther (e.g. Android 3.x)
     # function
     action = (button, query) ->
       $(button).on CLICK, ->
         path = location.pathname + query
-        history.replaceState(null, null, path)
+        history.replaceState(history.state, null, path)
     # button -> query
     for i in [0..buttons.length-1]
       action(buttons[i], queries[i])
