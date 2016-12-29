@@ -39,7 +39,7 @@ echo "--------------"
 vagrant status;
 
 echo "------------------------------------------------"
-echo "[TODO] 1) check the settings about ~/.ssh.config"
+echo "[TODO] 1) check the settings about ~/.ssh/config"
 echo "------------------------------------------------"
 
 echo "------------------------------------------------"

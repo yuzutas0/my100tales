@@ -171,15 +171,15 @@ fabric.properties
 
 # custom
 .idea
+*.iml
 bundle_bin
-log/*
+log/
 !log/.keep
-tmp/*
+tmp/
 !tmp/.keep
 .rubocop_todo.yml
 db/data.yml
-public/images/emoji/**/*.png
-*.iml
+public/images/emoji/
 railways.cache
 infrastructure/staging/vagrant/Vagrantfile
-infrastructure/staging/vagrant/.vagrant/*
+infrastructure/staging/vagrant/.vagrant/
