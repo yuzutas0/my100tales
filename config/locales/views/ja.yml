@@ -20,54 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
-  home:
-    index:
-      message: 'やりたいことリスト100'
-      description_html: >
-        目標を日頃から意識することが実現の近道です。<br />
-        ここでは夢を書き出すための機能を提供します。<br />
-        100つ挙がる頃には、1つは実現しているでしょう！
-      explain:
-        inner1:
-          title: 'サービスの使い方'
-          content1:
-            title: '1. 書き出す'
-            text_html: '簡素なマークダウンエディターで<br />やりたいことを書き出しましょう。'
-          content2:
-            title: '2. 一覧管理'
-            text_html: 'タグやスコア機能を活用して<br />リストを効果的に管理しましょう。'
-          content3:
-            title: '3. 追記'
-            text_html: '少しずつコメントを付け加えて<br />アイデアを深めていきましょう。'
-        inner2:
-          title: 'スクリーンショット'
-        inner3:
-          title: '登録は無料です'
-          text1_html: >
-            他人に投稿内容が見られないよう、<br class="visible-xs-block" />アカウント毎に投稿を管理します。
-            <br class="hidden-sm" />
-            アカウントを認証するために<br class="visible-xs-block" />メールアドレスが必要となります。
-          text2: 'アカウント登録は1分で完了します。'
-    about:
-      name_title: '名前の由来'
-      name_description_html: >
-        サービス名は「私だけの百物語」という意味です。<br />
-        <br />
-        百物語とは、怪談会の形式のことで、室町時代から江戸時代にかけて流行したものです。<br />
-        百の怪談を語り終えて、最後の蝋燭の火を消したとき、本当に怪奇現象が起きると言われています。<br />
-        <br />
-        なお、"tale"は「怪談」だけでなく「夢物語」「おとぎ話」といった意味を持ちます。
-      concept_title: 'コンセプト'
-      concept_description_html: >
-        利用者が自分だけの「夢物語」（＝やりたいこと）を書き出す場所です。<br />
-        <br />
-        最初は漠然とした欲求だったとしても、書き出すことによって具体的な目標になります。<br />
-        また、目標を日頃から意識することで、実現のためのエネルギーを得ることができます。<br />
-        <br />
-        このサービスに百個の夢物語を書き出したとき、きっと何か1つは実現しているのではないでしょうか。
-    contact:
-      message_html: >
-        お気付きの点がありましたら、<br class="visible-xs-block" />お気軽にお問い合わせください。
   layouts:
     header:
       logout: 'ログアウト'

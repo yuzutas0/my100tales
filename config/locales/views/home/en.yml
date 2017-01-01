@@ -1,0 +1,50 @@
+# home view
+
+en:
+  home:
+    index:
+      message: 'a list of 100 dreams'
+      description_html: >
+        Day-to-day thinking makes your dreams come true.<br />
+        Here's the best place to list the will in your mind.<br />
+        They're no longer fairy tales with 100 ideas put out.
+      explain:
+        inner1:
+          title: 'Usage of this app'
+          content1:
+            title: '1. Write'
+            text_html: 'write down your thinking<br />with simple markdown editor.'
+          content2:
+            title: '2. List'
+            text_html: 'manage your wish list<br />with tagging and scoring.'
+          content3:
+            title: '3. Sequel'
+            text_html: 'make your ideas deeper and<br />bigger with additional comments.'
+        inner2:
+          title: 'Screenshot'
+        inner3:
+          title: 'Signup for free'
+          text1_html: >
+            We request your signup to provide the secret space for each accounts,
+            and email is required to authenticate the account.
+          text2: 'Signup is going to be completed without time and money.'
+    about:
+      name_title: 'Meaning of name'
+      name_description_html: >
+        "100 tales" is one of the styles to talk about ghost stories in Japan.<br />
+        <br />
+        It was popular in Muromachi to Edo period.<br />
+        It is said that a psychic phenomenon occurs after telling 100 tales and blowing out 100 candles.<br />
+        <br />
+        Also, "tales" is associated with fantasy like "fairy-tale", "a pipe dream".
+      concept_title: 'Service Concept'
+      concept_description_html: >
+        You can write down your ideas like a pipe dream to this application.<br />
+        <br />
+        Writing is the best way to change your "fairy-tale" to feasible plans.<br />
+        And daily thinking the plan will give you energy to go ahead.<br />
+        <br />
+        Don't you think one of your dreams come true after telling 100 tales?
+    contact:
+      message_html: >
+        Please contact me <br class="visible-xs-block" />with any questions or comments.
