@@ -20,10 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  views:
-    time:
-      create: 'posted at %{time}'
-      update: 'updated at %{time}'
   home:
     index:
       message: 'a list of 100 dreams'

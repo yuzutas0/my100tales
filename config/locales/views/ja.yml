@@ -20,10 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
-  views:
-    time:
-      create: '%{time} に投稿'
-      update: '%{time} に更新'
   home:
     index:
       message: 'やりたいことリスト100'
