@@ -1,0 +1,6 @@
+# layout view
+
+en:
+  layouts:
+    header:
+      logout: 'Logout'
