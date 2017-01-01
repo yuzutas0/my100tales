@@ -1,0 +1,12 @@
+# tags view
+
+ja:
+  tags:
+    index:
+      attached_html: '%{link} に紐付きます'
+      link_html: '%{count} 件の投稿'
+      edit: '編集'
+      delete:
+        title: '削除'
+        confirm: '本当に削除してもよろしいですか？'
+      update: '更新'

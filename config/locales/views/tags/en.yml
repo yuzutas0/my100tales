@@ -1,0 +1,12 @@
+# tags view
+
+en:
+  tags:
+    index:
+      attached_html: 'is attached to %{link}'
+      link_html: '%{count} tales'
+      edit: 'Edit'
+      delete:
+        title: 'Delete'
+        confirm: 'Are you sure?'
+      update: 'Update'
