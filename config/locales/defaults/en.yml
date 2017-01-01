@@ -28,11 +28,6 @@ en:
       option_-4: 'Older Update'
       option_bigger: 'Bigger %{key}'
       option_smaller: 'Smaller %{key}'
-  models:
-    score:
-      error:
-        blank:
-          key_name: "Key can't be blank"
   views:
     path:
       name:

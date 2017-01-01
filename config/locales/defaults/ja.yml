@@ -28,11 +28,6 @@ ja:
       option_-4: '更新が古い順'
       option_bigger: '%{key}：降順'
       option_smaller: '%{key}：昇順'
-  models:
-    score:
-      error:
-        blank:
-          key_name: 'Keyを入力してください'
   views:
     path:
       name:
