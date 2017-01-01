@@ -1,0 +1,16 @@
+# sequels view
+
+en:
+  sequels:
+    form:
+      editor: 'Editor'
+      preview: 'Preview'
+      placeholder: 'Write down by markdown'
+      post: 'Post'
+    index:
+      edit: 'Edit'
+      delete:
+        title: 'Delete'
+        confirm: 'Are you sure?'
+    new:
+      button: 'New Sequel'

@@ -1,19 +1,6 @@
 # xxx view
 
 ja:
-  sequels:
-    form:
-      editor: '編集'
-      preview: 'プレビュー'
-      placeholder: 'マークダウンで記入してください'
-      post: '投稿する'
-    index:
-      edit: '編集'
-      delete:
-        title: '削除'
-        confirm: '本当に削除してもよろしいですか？'
-    new:
-      button: '新規投稿'
   tags:
     index:
       attached_html: '%{link} に紐付きます'
