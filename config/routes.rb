@@ -12,7 +12,15 @@ Rails.application.routes.draw do
     get 'contact', to: 'home#contact', as: 'contact'
 
     # user
-    devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
+    devise_for :users,
+               path_names: {
+                   sign_in: 'login',
+                   sign_out: 'logout',
+                   sign_up: 'signup'
+               },
+               controllers: {
+                   registrations: 'registrations'
+               }
 
     # tale
     get    '/mypage',                  to: 'tales#index',  as: 'tales'
