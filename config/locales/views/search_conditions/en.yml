@@ -1,0 +1,12 @@
+# search_conditions view
+
+en:
+  search_conditions:
+    index:
+      saved: 'saved'
+      history: 'history'
+    list:
+      edit: 'Edit'
+      delete:
+        title: 'Delete'
+        confirm: 'Are you sure?'

@@ -1,15 +1,6 @@
 # xxx view
 
 ja:
-  search_conditions:
-    index:
-      saved: '保存条件'
-      history: '検索履歴'
-    list:
-      edit: '編集'
-      delete:
-        title: '削除'
-        confirm: '本当に削除してもよろしいですか？'
   sequels:
     form:
       editor: '編集'
