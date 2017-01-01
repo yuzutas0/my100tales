@@ -1,0 +1,76 @@
+# custom settings
+
+en:
+  devise:
+    confirmations:
+      new:
+        title: 'Resend confirmation instructions'
+    mailer:
+      confirmation_instructions:
+        welcome: 'Welcome %{email}!'
+        description: 'You can confirm your account email through the link below:'
+        submit: 'Confirm my account'
+      password_change:
+        hello: 'Hello %{email}!'
+        message: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        hello: 'Hello %{email}!'
+        description_1: 'Someone has requested a link to change your password. You can do this through the link below.'
+        submit: 'Change my password'
+        description_2: "If you didn't request this, please ignore this email."
+        description_3: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        hello: 'Hello %{email}!'
+        description_1: 'Your account has been locked due to an excessive number of unsuccessful sign in attempts.'
+        description_2: 'Click the link below to unlock your account:'
+        submit: 'Unlock my account'
+    passwords:
+      edit:
+        title: 'Change your password'
+        new: 'New password'
+        minimum_length_html: '* %{length} characters minimum.<br />'
+        confirm: 'Confirm new password'
+      new:
+        title: 'Forgot your password?'
+        email: 'Email'
+        submit: 'Send me reset password instructions'
+    registrations:
+      edit:
+        email: 'Email'
+        pending_reconfirmation: '* Currently waiting confirmation for: %{email} .'
+        name: 'Name'
+        timezone: 'Timezone'
+        password: 'New password'
+        password_info: "* Leave blank if you don't want to change it."
+        confirm: 'Confirm new password'
+        current: 'Current password'
+        current_info: '* We need your current password to confirm your changes.'
+        update: 'Update your account info'
+        backup: 'Download Backup file'
+        backup_info: '* There are tales, tags, scores, and sequels you posted in backup file.'
+        delete: 'Delete Account (Resign from this app)'
+        delete_title: 'Verify the deletion'
+        delete_confirm_html: 'Are you absolutely sure you want to delete your account <strong>%{name}</strong>?'
+        delete_verify: 'This action cannot be undone. Please type in the name of your account to confirm.'
+        delete_info: '* Your post will be automatically deleted after you resign from this app.'
+      new:
+        email: 'Email'
+        name: 'Name'
+        timezone: 'Timezone'
+        password: 'Password'
+        minimum_length_html: '* %{length} characters minimum.<br />'
+        confirm: 'Confirm password'
+    sessions:
+      new:
+        email: 'Email'
+        password: 'Password'
+        remember: 'Remember me'
+    shared:
+      links:
+        forgot: 'Forgot your password?'
+        confirmation: "Didn't receive confirmation instructions?"
+        unlock: "Didn't receive unlock instructions?"
+    unlocks:
+      new:
+        title: 'Resend unlock instructions'
+        email: 'Email'

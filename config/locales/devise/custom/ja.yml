@@ -1,0 +1,76 @@
+# custom settings
+
+ja:
+  devise:
+    confirmations:
+      new:
+        title: '確認メールの再送信'
+    mailer:
+      confirmation_instructions:
+        welcome: 'ようこそ %{email} さん!'
+        description: '以下のリンクをクリックすることでメールアドレスを認証できます。'
+        submit: 'アカウント認証'
+      password_change:
+        hello: 'こんにちは %{email} さん!'
+        message: 'パスワードが変更されたことをお知らせします。'
+      reset_password_instructions:
+        hello: 'こんにちは %{email} さん!'
+        description_1: 'パスワード変更依頼を受け付けました。以下のリンクから変更することができます。'
+        submit: 'パスワードを変更する'
+        description_2: 'このメールに身に覚えがなければ無視してください。'
+        description_3: '上記リンクにアクセスして新しいパスワードを作成しない限り、パスワードは変更されません。'
+      unlock_instructions:
+        hello: 'こんにちは %{email} さん!'
+        description_1: 'ログインの失敗が連続したため、アカウントをロックしました。'
+        description_2: 'アカウントロックを解除するには以下のリンクをクリックしてください。'
+        submit: 'アカウントロックを解除する'
+    passwords:
+      edit:
+        title: 'パスワード変更'
+        new: '新しいパスワード'
+        minimum_length_html: '* %{length}文字以上で入力してください。<br />'
+        confirm: '新しいパスワード(確認用)'
+      new:
+        title: 'パスワード忘れはこちら'
+        email: 'メールアドレス'
+        submit: 'パスワード再発行'
+    registrations:
+      edit:
+        email: 'メールアドレス'
+        pending_reconfirmation: 'ただいま %{email} の確認待ちです。'
+        name: 'アカウント名'
+        timezone: 'タイムゾーン'
+        password: '新しいパスワード'
+        password_info: '* パスワードを変更しない場合は空欄'
+        confirm: '新しいパスワード(確認用)'
+        current: '現在のパスワード'
+        current_info: '* パスワードの変更時には入力必須'
+        update: 'アカウント情報の更新'
+        backup: 'バックアップのダウンロード'
+        backup_info: '* バックアップファイルには、各種投稿とタグ・スコア情報が含まれています。'
+        delete: 'アカウントの削除 (サービスを退会する)'
+        delete_title: '本当に削除しますか'
+        delete_confirm_html: 'あなたのアカウント <strong>%{name}</strong> を削除してもよろしいですか?'
+        delete_verify: '退会したら元には戻せません。確認のために、アカウント名を入力してください。'
+        delete_info: '* 過去の投稿内容はサービス退会後に自動で削除されます。'
+      new:
+        email: 'メールアドレス'
+        name: 'アカウント名'
+        timezone: 'タイムゾーン'
+        password: 'パスワード'
+        minimum_length_html: '* %{length}文字以上で入力してください。<br />'
+        confirm: 'パスワード(確認用)'
+    sessions:
+      new:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        remember: 'パスワードを記憶する'
+    shared:
+      links:
+        forgot: 'パスワード忘れはこちら'
+        confirmation: '確認メールの再送信'
+        unlock: 'アカウント凍結解除メールの再送信'
+    unlocks:
+      new:
+        title: 'アカウント凍結解除メールの再送信'
+        email: 'メールアドレス'
