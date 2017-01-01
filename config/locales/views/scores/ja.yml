@@ -1,0 +1,15 @@
+# scores view
+
+ja:
+  scores:
+    index:
+      attached_html: '%{link} に紐付きます'
+      link_html: '%{count} 件の投稿'
+      edit: '編集'
+      edit_all: '一括編集'
+      delete:
+        title: '削除'
+        confirm: '本当に削除してもよろしいですか？'
+      delete_all: '一括削除'
+      update: '更新'
+      update_all: '一括更新'
