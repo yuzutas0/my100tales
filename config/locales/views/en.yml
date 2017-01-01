@@ -21,26 +21,6 @@
 
 en:
   views:
-    path:
-      name:
-        home: 'Top'
-        terms: 'Terms'
-        privacy: 'Privacy'
-        about: 'About'
-        contact: 'Contact'
-        login: 'Login'
-        signup: 'SignUp'
-        account: 'Account'
-        tags: 'TagList'
-        scores: 'ScoreList'
-        conditions:
-          index: 'SearchConditionList'
-          edit: 'Edit Search Condition List'
-        tales: 'MyPage'
-        tale:
-          new: 'NewTale'
-          show: 'YourTale'
-          edit: 'EditTale'
     message:
       create:
         doing: 'Now creating.'
