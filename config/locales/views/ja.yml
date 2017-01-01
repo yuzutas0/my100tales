@@ -21,20 +21,6 @@
 
 ja:
   views:
-    message:
-      create:
-        doing: '作成中です.'
-        success: '作成に成功しました.'
-      update:
-        success: '更新に成功しました.'
-      destroy:
-        success: '削除に成功しました.'
-      or_login_html: '既に登録済みの方は %{login}'
-      blank:
-        sequel: '追記はありません.'
-        tag: '登録がありません.'
-        score: '登録がありません.'
-        conditions: '検索条件がありません.'
     time:
       create: '%{time} に投稿'
       update: '%{time} に更新'

@@ -21,20 +21,6 @@
 
 en:
   views:
-    message:
-      create:
-        doing: 'Now creating.'
-        success: 'Successfully created.'
-      update:
-        success: 'Successfully updated.'
-      destroy:
-        success: 'Successfully destroyed.'
-      or_login_html: 'or %{login}, when you have account.'
-      blank:
-        sequel: 'There is no sequel.'
-        tag: 'There is no tag.'
-        score: 'There is no score.'
-        conditions: 'There is no search'
     time:
       create: 'posted at %{time}'
       update: 'updated at %{time}'
