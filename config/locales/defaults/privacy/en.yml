@@ -1,0 +1,7 @@
+# terms view
+
+en:
+  views:
+    privacy:
+      text_html: |
+        TODO: Write down privacy policy here.
