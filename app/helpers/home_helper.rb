@@ -2,8 +2,12 @@
 # HomeHelper
 #
 module HomeHelper
-  def i18n_text_format(html_text)
-    raw '<p>' + html_text.gsub(/(\d+\..+)/, '<b>\1</b>').gsub(/\r\n|\r|\n/, '<br />') + '</p>'
+  def i18n_terms_format(html_text)
+    raw '<p>' + html_text.gsub(/(\n第\d+条.+)/, '<b>\1</b>').gsub(/\r\n|\r|\n/, '<br />') + '</p>'
+  end
+
+  def i18n_privacy_format(html_text)
+    raw '<p>' + html_text.gsub(/(\n\d+\..+)/, '<b>\1</b>').gsub(/\r\n|\r|\n/, '<br />') + '</p>'
   end
 
   def i18n_table_format(html_text)
