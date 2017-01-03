@@ -3,5 +3,9 @@
 en:
   views:
     privacy:
-      text_html: |
+      text1_html: |
+        TODO: Write down privacy policy here.
+      text2_html: |
+        TODO: Write down privacy policy here.
+      text3_html: |
         TODO: Write down privacy policy here.
