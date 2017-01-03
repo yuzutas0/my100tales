@@ -2,11 +2,5 @@
 <div class="layout__static">
   <p class="layout__static__header"><%= render 'layouts/breadcrumb_1', second_page: @page_title %></p>
   <hr>
-  <p><%= raw(t('views.privacy.text_html')
-                 .gsub(/>(\r\n|\r|\n)/, '>')
-                 .gsub(/<th>/, '<th><p>')
-                 .gsub(/<\/th>/, '<p></th>')
-                 .gsub(/<td>/, '<td><p>')
-                 .gsub(/<\/td>/, '<p></td>')
-                 .gsub(/\r\n|\r|\n/, '<br />')) %></p>
+  <p><%= render_i18n t('views.privacy.text_html') %></p>
 </div>
