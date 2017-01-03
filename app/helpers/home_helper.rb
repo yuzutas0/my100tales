@@ -3,20 +3,28 @@
 #
 module HomeHelper
   def i18n_terms_format(html_text)
-    raw '<p>' + html_text.gsub(/(\n第\d+条.+)/, '<b>\1</b>').gsub(/\r\n|\r|\n/, '<br />') + '</p>'
+    i18n_text_format(html_text, /(\n第\d+条.+)/)
   end
 
   def i18n_privacy_format(html_text)
-    raw '<p>' + html_text.gsub(/(\n\d+\..+)/, '<b>\1</b>').gsub(/\r\n|\r|\n/, '<br />') + '</p>'
+    i18n_text_format(html_text, /(\n\d+\..+)/)
   end
 
   def i18n_table_format(html_text)
-    raw html_text
-            .gsub(/>(\r\n|\r|\n)/, '>')
-            .gsub(/<th>/, '<th><p>')
-            .gsub(/<\/th>/, '<p></th>')
-            .gsub(/<td>/, '<td><p>')
-            .gsub(/<\/td>/, '<p></td>')
-            .gsub(/\r\n|\r|\n/, '<br />')
+    raw i18n_format html_text
+                        .gsub(/>(\r\n|\r|\n)/, '>')
+                        .gsub(/<th>/, '<th><p>')
+                        .gsub(/<\/th>/, '<p></th>')
+                        .gsub(/<td>/, '<td><p>')
+                        .gsub(/<\/td>/, '<p></td>')
   end
+
+  private
+    def i18n_text_format(html_text, regex)
+      raw '<p>' + i18n_format(html_text.gsub(regex, '<b>\1</b>')) + '</p>'
+    end
+
+    def i18n_format(html_text)
+      html_text.gsub(/\r\n|\r|\n/, '<br />')
+    end
 end
