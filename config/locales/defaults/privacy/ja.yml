@@ -38,13 +38,13 @@ ja:
 
         2-3 上記2-2以外の利用目的は以下のとおりです。
 
-        <table class="module__table" style="table-layout: fixed;">
+        <table>
           <tbody>
-            <tr style="width:50%;">
+            <tr>
               <th>利用目的</th>
               <th>対応する利用者情報の項目</th>
             </tr>
-            <tr style="width:50%;">
+            <tr>
               <td>⑴ 運営者のサービスに関連して、個人を識別できない形式に加工した統計データを作成するため</td>
               <td>
                 ・端末情報

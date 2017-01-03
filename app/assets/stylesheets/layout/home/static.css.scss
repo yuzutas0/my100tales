@@ -3,6 +3,7 @@
 // import
 @import "base/const";
 @import "base/util";
+@import "module/table";
 
 // main
 .layout__static {
@@ -56,6 +57,17 @@
       @media (max-width: $screen-xs-max) {
         margin-left: 0;
       }
+    }
+  }
+
+  .layout__static__privacy {
+    table {
+      @extend .module__table;
+      table-layout: fixed;
+    }
+
+    tr {
+      width: 50%;
     }
   }
 }
