@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# -----------------------
+# variables
+# -----------------------
+# [root password]
+# [user]
+# [user password]
+# [scheme]
+# [backup file]
+# -----------------------
+
 su
 
 yum install mariadb mariadb-server
