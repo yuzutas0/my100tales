@@ -3,7 +3,7 @@ worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3) # 2-4 * CPU Core
 timeout 15
 preload_app true
 
-listen '/tmp/unicorn.sock'
+listen '/var/run/nginx-rails.sock' # listen '/tmp/unicorn.sock'
 pid '/tmp/unicorn.pid'
 
 before_fork do |_server, _worker|
