@@ -5,7 +5,10 @@ su
 yum install mariadb mariadb-server
 
 vi /etc/my.conf
+# [mysqld]
 # character-set-server=utf8mb4
+# [client]
+# default-character-set=utf8mb4
 
 systemctl start mariadb.service
 systemctl enable mariadb.service
