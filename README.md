@@ -42,7 +42,7 @@ $ bundle exec rake bower:install
 set up MariaDB
 
 ```
-$ docker build -t [image name] ./infrastructure/local/docker/mariadb/
+$ docker build -t [image name] ./server/local/docker/mariadb/
 $ docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[root password] [image name] \
     --name [container name] \
     --character-set-server=utf8mb4 \
@@ -80,14 +80,14 @@ $ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate:rese
 ## Key Value Store creation
 
 ```
-$ docker build -t [image name] ./infrastructure/local/docker/redis/
+$ docker build -t [image name] ./server/local/docker/redis/
 $ docker run -d -p 6379:6379 --name [container name] [image name]
 ```
 
 ## Search engine creation
 
 ```
-$ docker build -t [image name] ./infrastructure/local/docker/elasticsearch/
+$ docker build -t [image name] ./server/local/docker/elasticsearch/
 $ docker run -d -p 9200:9200 -p 9300:9300 --name [container name] [image name]
 ```
 

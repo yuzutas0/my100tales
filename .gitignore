@@ -181,5 +181,5 @@ tmp/
 db/data.yml
 public/images/emoji/
 railways.cache
-infrastructure/staging/vagrant/Vagrantfile
-infrastructure/staging/vagrant/.vagrant/
+server/staging/vagrant/Vagrantfile
+server/staging/vagrant/.vagrant/
