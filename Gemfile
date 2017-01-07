@@ -71,5 +71,8 @@ group :development do
   gem 'bower-rails'
 end
 
+# Application server
+gem 'unicorn', group: :production
+
 # TODO: document
 gem 'sdoc', '~> 0.4.0', group: :doc
