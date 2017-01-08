@@ -35,7 +35,22 @@
     </div>
 
     <hr>
-    <div><%= f.submit @page_title, class: 'module__button' %></div>
+
+    <div class="module__form__checkbox">
+      <% id = 'script__devise__signup__agreement' %>
+      <%= check_box_tag 'agreement', true, false, id: id %>
+      <%= label_tag id, class: 'module__form__checkbox__label' do %>
+        <p class="module__form__checkbox__label__inner">
+          <% terms = link_to t('.terms'), terms_path, target: '_new' %>
+          <% privacy = link_to t('.privacy'), privacy_path, target: '_new' %>
+          <%= t('.agreement_html', terms: terms, privacy: privacy) %>
+        </p>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <div><%= f.submit @page_title, class: 'module__button', id: 'script__devise__signup__submit' %></div>
   <% end %>
 
   <hr>

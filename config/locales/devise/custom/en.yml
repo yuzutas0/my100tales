@@ -60,6 +60,9 @@ en:
         password: 'Password'
         minimum_length_html: '* %{length} characters minimum.<br />'
         confirm: 'Confirm password'
+        terms: 'the terms and conditions'
+        privacy: 'the privacy policy'
+        agreement_html: 'I have read and accept %{terms} and %{privacy}.'
     sessions:
       new:
         email: 'Email'

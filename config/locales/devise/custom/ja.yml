@@ -60,6 +60,9 @@ ja:
         password: 'パスワード'
         minimum_length_html: '* %{length}文字以上で入力してください。<br />'
         confirm: 'パスワード(確認用)'
+        terms: '利用規約'
+        privacy: 'プライバシーポリシー'
+        agreement_html: '%{terms} と %{privacy} に同意します。'
     sessions:
       new:
         email: 'メールアドレス'
