@@ -118,5 +118,5 @@ $ rails_best_practices # => make source code better!
 ## Deployment instructions
 
 ```
-$ DB_USERNAME=[username] DB_PASSWORD=[password] REDIS_DB=[db number] rails s
+$ DB_USERNAME=[username] DB_PASSWORD=[password] REDIS_DB=[db number] SECRET_KEY_BASE=`bundle exec rake secret` rails s
 ```
