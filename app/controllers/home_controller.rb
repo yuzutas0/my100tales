@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   # -----------------------------------------------------------------
   # const
   # -----------------------------------------------------------------
-  ENDPOINTS = [:index, :terms, :privacy, :about, :contact]
+  ENDPOINTS = [:index, :terms, :privacy, :about, :contact].freeze
 
   # -----------------------------------------------------------------
   # filter

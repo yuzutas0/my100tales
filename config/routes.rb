@@ -14,12 +14,12 @@ Rails.application.routes.draw do
     # user
     devise_for :users,
                path_names: {
-                   sign_in: 'login',
-                   sign_out: 'logout',
-                   sign_up: 'signup'
+                 sign_in: 'login',
+                 sign_out: 'logout',
+                 sign_up: 'signup'
                },
                controllers: {
-                   registrations: 'registrations'
+                 registrations: 'registrations'
                }
 
     # tale

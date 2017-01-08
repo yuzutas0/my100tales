@@ -6,7 +6,7 @@ preload_app true
 listen '/var/run/nginx-rails.sock' # listen '/tmp/unicorn.sock'
 pid '/tmp/unicorn.pid'
 
-before_fork do |server, worker|
+before_fork do |_server, _worker|
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid
