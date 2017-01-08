@@ -1,13 +1,8 @@
 source 'https://rubygems.org'
 
+# Base
 gem 'rails', '4.2.6'
-
-# gem 'therubyracer', platforms: :ruby
-# gem 'unicorn'
-# gem 'capistrano-rails', group: :development
-
-# Log
-gem 'quiet_assets'
+gem 'sdoc', '~> 0.4.0', group: :doc # TODO: document
 
 # M/W
 gem 'mysql2'
@@ -45,6 +40,9 @@ gem 'vuejs-rails'
 # View Performance
 gem 'turbolinks'
 
+# View Log
+gem 'quiet_assets'
+
 # View Locale
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
 
@@ -71,8 +69,11 @@ group :development do
   gem 'bower-rails'
 end
 
-# Application server
-gem 'unicorn', group: :production
+# Server
+group :test, :production do
+  gem 'therubyracer', platforms: :ruby
+  gem 'unicorn'
+end
 
-# TODO: document
-gem 'sdoc', '~> 0.4.0', group: :doc
+# Deploy
+gem 'capistrano-rails', group: :development

@@ -20,3 +20,4 @@ systemctl start yum-cron
 systemctl enable yum-cron
 
 yum -y groupinstall base "Development tools"
+yum install vim
