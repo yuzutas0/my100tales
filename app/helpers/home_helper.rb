@@ -14,9 +14,9 @@ module HomeHelper
     raw i18n_format html_text
       .gsub(/>(\r\n|\r|\n)/, '>')
       .gsub(/<th>/, '<th><p>')
-      .gsub(/<\/th>/, '<p></th>')
+      .gsub(%r{</th>}, '<p></th>')
       .gsub(/<td>/, '<td><p>')
-      .gsub(/<\/td>/, '<p></td>')
+      .gsub(%r{</td>}, '<p></td>')
   end
 
   private
