@@ -11,3 +11,5 @@ git clone [repository]
 cd [application name]
 
 bundle install --path vendor/bundle
+
+bundle exec unicorn_rails -l 3000 -E production
