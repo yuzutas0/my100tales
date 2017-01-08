@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# [ruby version] = 2.3.0
-# [domain] = yuzutas0.com
+ruby_version=2.3.0
+domain=yuzutas0.com
 
 ruby -v
 sudo yum remove ruby # if ruby has already installed
 
 sudo yum install git
 git config --global user.name "[admin]"
-git config --global user.email "[admin@" + [domain] + "]"
+git config --global user.email "[admin@${domain}]"
 
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
@@ -19,9 +19,9 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 sudo ~/.rbenv/plugins/ruby-build/install.sh
 rbenv -v
 
-rbenv install [ruby version]
+rbenv install ${ruby_version}
 rbenv rehash
-rbenv global [ruby version]
+rbenv global ${ruby_version}
 
 ruby -v
 which ruby
