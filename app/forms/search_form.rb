@@ -47,11 +47,7 @@ class SearchForm
   # eq - '=='
   # le - '<='
   def self.compare_master
-    [
-      { ge: '>=' },
-      { eq: '=' },
-      { le: '<=' }
-    ]
+    [ { ge: '>=' }, { eq: '=' }, { le: '<=' } ]
   end
 
   def self.compare_to_query(compare)
