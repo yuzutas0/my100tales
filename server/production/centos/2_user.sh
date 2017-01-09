@@ -1,14 +1,21 @@
 #!/bin/bash
 
 # ================================
+# variables
+# ================================
+user=centos
+password=$1
+group=wheel
+
+# ================================
 # make wheel user
 # ================================
 
-useradd centos
-passwd centos
-# => set password
+useradd ${user}
+passwd ${user}
+# => ${password}
 
-usermod -G wheel centos
+usermod -G ${group} ${user}
 
 vi /etc/pam.d/su
 # => auth   required   pam_wheel.so use_uid
