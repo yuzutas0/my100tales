@@ -12,3 +12,5 @@ getenforce
 vim /etc/sysconfig/selinux
 # from: SELINUX=enforcing
 # to:   SELINUX=disabled
+
+# login count
