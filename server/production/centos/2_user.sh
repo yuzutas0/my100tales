@@ -3,6 +3,7 @@
 # ================================
 # variables
 # ================================
+
 user=centos
 password=$1
 group=wheel
@@ -20,6 +21,5 @@ passwd ${user}
 usermod -G ${group} ${user}
 
 vi /etc/pam.d/su
-# change
 # from: #auth   required   pam_wheel.so use_uid
 # to:   auth   required   pam_wheel.so use_uid
