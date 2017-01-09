@@ -4,8 +4,8 @@
 # variables
 # ================================
 
-user=centos
-password=$1
+user=$1
+password=$2
 group=wheel
 
 # ================================
