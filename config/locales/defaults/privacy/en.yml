@@ -4,7 +4,38 @@ en:
   views:
     privacy:
       text1_html: |
-        TODO: Write down privacy policy here.
+        [Company's full legal name] (the "Company") sets forth this Privacy Policy (this "Policy") with regard to the treatment of users' information, including but not limited to personal information, during the performance of services provided by the Company (the "Services"), as follows;
+
+
+        1 User's Information to be Collected and Method of Collection
+
+        For purposes of this Policy, "User's Information" means information that identifies users, history of actions on communication services and other information created or accumulated in relation to user or users' devices, which shall be collected by the Company pursuant to this Policy.
+        Depending on the method of collection, the User's Information that we may collect for a user to use the Services includes:
+
+        (i) information provided by the user, including:
+
+        * name:
+        * e-mail address;
+        * date of birth;
+        * credit card information;
+        * photographs: and
+        * other information entered by the user into such form as specified by the Company:
+
+        (ii) information provided from services outside the Services to the extent that the user permits for use with the Services;
+
+        The Company may collect the following information from services outside the Services, including but not limited to social network services, to the extent the user permits for use with the Services at that time:
+
+        *ID used by the user for such outside service; and other information that the user has authorized the other service provider to disclose through its privacy settings in such outside service;
+
+        (iii) information collected by the Company for the use by the user of the Services
+
+        The Company may collect information upon access to or use of the Services, including:
+
+        * terminal information;
+        * log information;
+        * cookies and anonymous ID: and
+        * location information.
+
       text2_html: |
         TODO: Write down privacy policy here.
       text3_html: |
