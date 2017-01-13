@@ -51,6 +51,21 @@ en:
         2.3 Purposes other than those specified in Section 2.2 above shall be as indicated below:
 
       text2_html: |
-        TODO: Write down privacy policy here.
+        <table>
+          <tbody>
+            <tr>
+              <th>Purpose of Use</th>
+              <th>Corresponding User's Information</th>
+            </tr>
+            <tr>
+              <td>(1) creating statistical data relating to the Services, in a form that cannot identify an individual;</td>
+              <td>
+                * log information
+                * Cookies and anonymous ID
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       text3_html: |
         TODO: Write down privacy policy here.
