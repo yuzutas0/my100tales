@@ -3,11 +3,15 @@
 #
 module HomeHelper
   def i18n_terms_format(html_text)
-    i18n_text_format(html_text, /(\n第\d+条.+)/)
+    regex = /(\nArticle\s\d+\s.+)/ # if I18n.locale == :en
+    regex = /(\n第\d+条.+)/ if I18n.locale == :ja
+    i18n_text_format(html_text, regex)
   end
 
   def i18n_privacy_format(html_text)
-    i18n_text_format(html_text, /(\n\d+\..+)/)
+    regex = /(\n\d+\s.+)/ # if I18n.locale == :en
+    regex = /(\n\d+\..+)/ if I18n.locale == :ja
+    i18n_text_format(html_text, regex)
   end
 
   def i18n_table_format(html_text)
