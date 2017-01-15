@@ -16,6 +16,10 @@ su
 
 yum install postfix # unless postfix has already been installed.
 
+# ================================
+# set sender domain
+# ================================
+
 vim /etc/postfix/main.cf
 # ------------------------------------------------------------------------------------------------------------
 # from: #myhostname = virtual.domain.tld
@@ -31,6 +35,13 @@ vim /etc/postfix/main.cf
 # from: #myorigin = $mydomain
 # to:   myorigin = $mydomain
 # ------------------------------------------------------------------------------------------------------------
+
+# ================================
+# enable SMTPS
+# ================================
+
+vim /etc/postfix/main.cf
+# ------------------------------------------------------------------------------------------------------------
 # from:
 # to:   # Enable SMTP Auth
 #       smtpd_sasl_auth_enable = yes
@@ -38,3 +49,4 @@ vim /etc/postfix/main.cf
 #       broken_sasl_auth_clients = yes
 #       smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
 # ------------------------------------------------------------------------------------------------------------
+
