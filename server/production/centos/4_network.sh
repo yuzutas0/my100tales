@@ -1,9 +1,29 @@
 #!/bin/bash
 
+# ================================
+# variables
+# ================================
+
+ssh_port=$1
+
+# ================================
+# check
+# ================================
+
 su
 
-firewall-cmd --permanent --add-service=ssh --zone=public
-firewall-cmd --reload
+firewall-cmd --list-all-zones
+firewall-cmd --zone=public --list-service
+firewall-cmd --get-services
 
-# ip (http/https, ssh, smtp*2)
+# ================================
+# port
+# ================================
+
+firewall-cmd --permanent --zone=public --remove-port=22/ssh # if port 22 is enabled.
+firewall-cmd --permanent --zone=public --add-port=${ssh_port}/ssh
+
+# http, https, smtp
 # v6
+
+firewall-cmd --reload
