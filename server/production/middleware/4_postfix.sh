@@ -2,5 +2,4 @@
 
 su
 
-yum install postfix
-# you maybe find that postfix has already installed.
+yum install postfix # unless postfix has already been installed.
