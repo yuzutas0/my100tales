@@ -21,7 +21,7 @@ systemctl restart sshd.service
 systemctl enable sshd.service
 
 slogin 127.0.0.1
-# check
+# Check whether login is success
 
 exit
 
