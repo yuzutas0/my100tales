@@ -4,11 +4,10 @@
 # variables
 # ================================
 
-host_user=$1
-key_name=$2
-passphrase=$3
-server_user=$4
-server_ip=$5
+key_name=$1
+passphrase=$2
+server_user=$3
+server_ip=$4
 
 # ================================
 # install OpenSSH
@@ -31,13 +30,13 @@ exit
 # ================================
 
 ssh-keygen
-# Enter file => /home/${host_user}/.ssh/${key_name}
+# Enter file => ~/.ssh/${key_name}
 # Enter passphrase => ${passphrase}
 # Confirm passphrase => ${passphrase}
 
-scp /home/${host_user}/.ssh/${key_name}.pub ${server_user}@${server_ip}
+scp ~/.ssh/${key_name}.pub ${server_user}@${server_ip}
 
-slogin ${host_user}@${server_ip}
+slogin ${server_user}@${server_ip}
 
 # ================================
 # use key (at server)
