@@ -7,6 +7,7 @@
 # refs. [settings](./../centos/0_network.sh)
 host_name=$1
 domain_name=$2
+smtps_passphrase=$3
 
 # ================================
 # install
@@ -50,3 +51,13 @@ vim /etc/postfix/main.cf
 #       smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
 # ------------------------------------------------------------------------------------------------------------
 
+openssl genrsa -des3 1024 > /etc/pki/tls/certs/mailserver.key
+# enter ${smtps_passphrase}
+# verify ${smtps_passphrase}
+
+chown root.root /etc/pki/tls/certs/mailserver.key
+
+chmod 640 /etc/pki/tls/certs/mailserver.key
+
+openssl rsa -in /etc/pki/tls/certs/mailserver.key -out /etc/pki/tls/certs/mailserver.key
+# enter ${smtps_passphrase}
