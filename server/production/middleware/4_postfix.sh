@@ -61,3 +61,12 @@ chmod 640 /etc/pki/tls/certs/mailserver.key
 
 openssl rsa -in /etc/pki/tls/certs/mailserver.key -out /etc/pki/tls/certs/mailserver.key
 # enter ${smtps_passphrase}
+
+openssl req -utf8 -new -key /etc/pki/tls/certs/mailserver.key -x509 -days 3650 -out /etc/pki/tls/certs/mailserver.pem -set_serial 0
+# country: e.g. JP
+# state: e.g. Tokyo
+# city: e.g. Chiyoda
+# Organization: e.g. yuzutas0
+# Unit: e.g. admin
+# hostname: ${host_name}
+# address: test@example.com
