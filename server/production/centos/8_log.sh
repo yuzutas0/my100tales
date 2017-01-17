@@ -14,8 +14,8 @@ df -h
 # login
 # ================================
 
-fail2ban-client status sshd
+last
 
-ipset --list
+fail2ban-client status sshd
 
 less /var/log/fail2ban.log

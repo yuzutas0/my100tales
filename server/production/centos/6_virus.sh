@@ -42,3 +42,11 @@ clamscan -r -i --move=/var/infected_virus
 echo "/usr/bin/clamscan -r --quiet --log=/var/log/clamav.log --move=/var/infected_virus" > /etc/cron.daily/clamav
 chmod +x /etc/cron.daily/clamav
 
+# ================================
+# rootkit
+# ================================
+
+yum -y install rkhunter
+rkhunter --update
+rkhunter --propupd
+rkhunter --check --skip-keypress
