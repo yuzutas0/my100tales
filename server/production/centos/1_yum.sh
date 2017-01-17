@@ -24,3 +24,21 @@ vim /etc/yum/yum-cron.conf
 
 systemctl start yum-cron
 systemctl enable yum-cron
+
+# ================================
+# version control
+# ================================
+
+yum -y install etckeeper
+
+touch /etc/.gitignore
+
+vim /etc/.gitignore
+# shadow*
+# gshadow*
+# passwd*
+# group*
+
+etckeeper init
+
+etckeeper commit "First Commit"
