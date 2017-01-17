@@ -26,7 +26,6 @@ firewall-cmd --permanent --zone=public --add-port=${ssh_port}/ssh
 
 # Postfix
 firewall-cmd --permanent --zone=public --add-service=smtp
-firewall-cmd --permanent --zone=public --add-port=465/tcp # for SMTPs
 
 # http, https
 # v6
