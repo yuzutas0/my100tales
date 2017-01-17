@@ -34,4 +34,23 @@ firewall-cmd --permanent --zone=public --add-service=smtp
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 
+# ================================
+# guard
+# ================================
+
+# Spoofing Private Address
+# Spoofing Broadcast Address
+# Spoofing Multicast Address
+# Fragment Packet Attack
+# Stealth Scan
+# DENT Port Probe
+# UDP Flood
+# ICMP Flood (Ping Flood)
+# SYN Flood
+# TCP Connection Flood
+# HTTP GET Flood
+# Ping of Death
+# ICMP BLOCK (only accept: echo-request、echo-reply)
+# Invalid Packet
+
 firewall-cmd --reload
