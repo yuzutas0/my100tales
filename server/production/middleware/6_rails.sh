@@ -1,14 +1,33 @@
 #!/bin/bash
 
-# [application name] = my100tales
-# [repository] = https://github.com/yuzutas0/my100tales.git
+# ================================
+# variables
+# ================================
+
+app_name=my100tales
+repository=https://github.com/yuzutas0/my100tales.git
+
+# ================================
+# bundler
+# ================================
 
 rbenv exec gem install bundler
+
 rbenv rehash
 
+# ================================
+# app
+# ================================
+
 cd /var/www/
-git clone [repository]
-cd [application name]
+
+git clone ${repository}
+
+cd ${app_name}
+
+# ================================
+# run
+# ================================
 
 bundle install --path vendor/bundle
 
