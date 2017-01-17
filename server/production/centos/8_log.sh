@@ -4,3 +4,6 @@
 #   server security
 #   nginx + application
 #   disksize
+
+# Disksize
+df -h

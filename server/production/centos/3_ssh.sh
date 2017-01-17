@@ -8,6 +8,7 @@ key_name=$1
 passphrase=$2
 server_user=$3
 server_ip=$4
+ssh_port=$5
 
 # ================================
 # install OpenSSH
@@ -65,3 +66,9 @@ systemctl restart sshd.service
 
 # TODO
 # login count (Brute-force attack)
+
+# ================================
+# the way to login
+# ================================
+
+ssh -i ~/.ssh/${key_name} -p ${ssh_port} ${server_user}@${server_ip}
