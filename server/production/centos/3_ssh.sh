@@ -70,6 +70,8 @@ systemctl restart sshd.service
 
 yum install fail2ban
 
+# check weather "port=ssh" is found at /etc/fail2ban/jail.conf
+
 cat << _EOF /etc/fail2ban/jail.local
 [DEFAULT]
 ignoreip = 127.0.0.1/8

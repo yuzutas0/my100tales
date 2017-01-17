@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================
-# install
+# virus
 # ================================
 
 su
@@ -17,10 +17,6 @@ vim /etc/freshclam.conf
 # to:   DatabaseMirror db.jp.clamav.net
 # -----------------------------------------
 
-# ================================
-# daily update
-# ================================
-
 freshclam
 # check whether database is updated.
 
@@ -30,16 +26,10 @@ vim /etc/sysconfig/freshclam
 # to:   #FRESHCLAM_DELAY=disabled.warn
 # -----------------------------------------
 
-# ================================
-# daily execute
-# ================================
+clamscan -r / -i --remove
+# check whether virus file is not found.
 
-mkdir /var/infected_virus
-
-clamscan -r -i --move=/var/infected_virus
-# be sure that there is no virus file
-
-echo "/usr/bin/clamscan -r --quiet --log=/var/log/clamav.log --move=/var/infected_virus" > /etc/cron.daily/clamav
+echo "/usr/bin/clamscan -r / --quiet --log=/var/log/clamav.log -i --remove" > /etc/cron.daily/clamav
 chmod +x /etc/cron.daily/clamav
 
 # ================================
