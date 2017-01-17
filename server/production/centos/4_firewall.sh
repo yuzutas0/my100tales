@@ -4,7 +4,7 @@
 # variables
 # ================================
 
-ssh_port=$1
+ssh_port=$1 # 49152 - 65535
 
 # ================================
 # check
@@ -25,7 +25,7 @@ firewall-cmd --get-services
 
 # OpenSSH
 firewall-cmd --permanent --remove-service=ssh # if port 22 is enabled.
-firewall-cmd --permanent --zone=public --add-port=${ssh_port}/ssh
+firewall-cmd --permanent --zone=public --add-port=${ssh_port}/tcp
 
 # Postfix
 firewall-cmd --permanent --zone=public --add-service=smtp

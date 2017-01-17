@@ -54,15 +54,33 @@ cat ~/${key_name}.pub >> ~/.ssh/authorized_keys
 su
 
 vim /etc/ssh/sshd_config
-# --------------------------------
+# -----------------------------------------
+# from: Protocol 1
+# to:   Protocol 2
+# -----------------------------------------
+# from: Port 22
+# to:   Port ${ssh_port}
+# -----------------------------------------
 # from: #PermitRootLogin yes
 # to:   PermitRootLogin no
-# --------------------------------
+# -----------------------------------------
 # from: PasswordAuthentication yes
 # to:   PasswordAuthentication no
-# --------------------------------
+# -----------------------------------------
+# from: ChallengeResponseAuthentication yes
+# to:   ChallengeResponseAuthentication no
+# -----------------------------------------
+# from: #AllowUsers root
+# to:   AllowUsers ${server_user}
+# -----------------------------------------
+# from: #LoginGraceTime 30
+# to:   LoginGraceTime 30
+# -----------------------------------------
+# from: #MaxAuthTries 3
+# to:   MaxAuthTries 3
+# -----------------------------------------
 
-systemctl restart sshd.service
+systemctl restart sshd
 
 # ================================
 # block brute-force attack
