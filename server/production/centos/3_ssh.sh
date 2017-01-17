@@ -64,8 +64,25 @@ vim /etc/ssh/sshd_config
 
 systemctl restart sshd.service
 
-# TODO
-# login count (Brute-force attack)
+# ================================
+# block brute-force attack
+# ================================
+
+yum install fail2ban
+
+cat << _EOF /etc/fail2ban/jail.local
+[DEFAULT]
+ignoreip = 127.0.0.1/8
+bantime = 86400
+findtime = 3600
+
+[sshd]
+enabled = true
+maxretry = 3
+_EOF
+
+systemctl start fail2ban
+systemctl enable fail2ban
 
 # ================================
 # the way to login
