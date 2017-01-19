@@ -67,7 +67,14 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 201 -p tcp ! --sy
 
 # TCP Connection Flood
 # HTTP GET Flood
+
 # Ping of Death
+firewall-cmd --permanent --direct --add-chain ipv4 filter ping-death
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 300 -i enp0 -p icmp --icmp-type echo-request -j ping-death
+firewall-cmd --permanent --direct --add-rule ipv4 filter ping-death 350 -m limit --limit 1/s --limit-burst 4 -j RETURN
+firewall-cmd --permanent --direct --add-rule ipv4 filter ping-death 351 -j LOG --log-prefix "IPTABLES PING-DEATH:"
+firewall-cmd --permanent --direct --add-rule ipv4 filter ping-death 352 -j DROP
+
 # ICMP BLOCK (only accept: echo-request、echo-reply)
 # Invalid Packet
 
