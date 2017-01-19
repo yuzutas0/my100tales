@@ -135,4 +135,7 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -m state --stat
 firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -m state --state INVALID -j DROP
 firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m state --state INVALID -j DROP
 
+# Out of Rule
+firewall-cmd --permanent --zone=public --set-target=DROP
+
 firewall-cmd --reload
