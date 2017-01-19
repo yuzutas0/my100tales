@@ -35,7 +35,15 @@ firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 
 # ================================
-# guard
+# disable IPv6
+# ================================
+
+echo "net.ipv6.conf.all.disable_ipv6 = 1" > /etc/sysctl.d/disableipv6.conf
+
+sysctl -p
+
+# ================================
+# Guard Attacks
 # ================================
 
 # Spoofing Private Address
