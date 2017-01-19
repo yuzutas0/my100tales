@@ -51,6 +51,7 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -m state --stat
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -i lo -j ACCEPT
 
 # Fragment Packet Attack
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -f -j DROP
 
 # DENT Port Probe
 # UDP Flood
