@@ -55,6 +55,9 @@ sysctl -p
 # UDP Flood
 # ICMP Flood (Ping Flood)
 
+# Blank Packet
+firewall-cmd  --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-flags ALL NONE -j DROP
+
 # SYN Flood
 firewall-cmd --permanent --direct --add-chain ipv4 filter syn-flood
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 100 -i enp0 -p icmp --icmp-type echo-request -j syn-flood
