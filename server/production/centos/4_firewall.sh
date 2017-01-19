@@ -52,10 +52,13 @@ sysctl -p
 
 # DENT Port Probe
 # UDP Flood
+
 # ICMP Flood (Ping Flood)
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p icmp --icmp-type 8 -m length --length :85 -m limit --limit 1/s --limit-burst 4 -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
 
 # Blank Packet
-firewall-cmd  --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-flags ALL NONE -j DROP
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-flags ALL NONE -j DROP
 
 # SYN Flood
 firewall-cmd --permanent --direct --add-chain ipv4 filter syn-flood
