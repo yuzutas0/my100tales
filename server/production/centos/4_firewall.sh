@@ -47,7 +47,7 @@ sysctl -p
 # ================================
 
 # Spoofing Private Address
-# Spoofing Broadcast Address
+
 # Spoofing Multicast Address
 # Fragment Packet Attack
 
@@ -71,6 +71,9 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 201 -p tcp ! --sy
 
 # Stealth Scan
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-flags ALL ALL -j DROP
+
+# Spoofing Broadcast Address
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -m pkttype --pkt-type broadcast -j DROP
 
 # TCP Connection Flood
 # HTTP GET Flood
