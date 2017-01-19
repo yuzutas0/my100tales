@@ -99,6 +99,15 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 511 -i enp0 -s 33
 firewall-cmd --permanent --direct --add-rule ipv4 filter spoofing 550 -j LOG --log-prefix "IPTABLES SPOOFING:"
 firewall-cmd --permanent --direct --add-rule ipv4 filter spoofing 551 -j DROP
 
+# Win Port
+firewall-cmd --permanent --direct --add-chain ipv4 filter win
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 600 -p tcp -m multiport --sport 135,137,138,139,445 -j win
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 601 -p udp -m multiport --sport 135,137,138,139,445 -j win
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 602 -p tcp -m multiport --dport 135,137,138,139,445 -j win
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 603 -p udp -m multiport --dport 135,137,138,139,445 -j win
+firewall-cmd --permanent --direct --add-rule ipv4 filter win 650 -j LOG --log-prefix "USING WIN PORT:"
+firewall-cmd --permanent --direct --add-rule ipv4 filter win 651 -j DROP
+
 # ICMP BLOCK (only accept: echo-request、echo-reply)
 # Invalid Packet
 
