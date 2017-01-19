@@ -131,5 +131,8 @@ firewall-cmd --permanent --add-icmp-block=source-quench
 firewall-cmd --permanent --add-icmp-block=time-exceeded
 
 # Invalid Packet
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -m state --state INVALID -j DROP
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -m state --state INVALID -j DROP
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m state --state INVALID -j DROP
 
 firewall-cmd --reload
