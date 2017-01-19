@@ -75,6 +75,13 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter ping-death 350 -m limit
 firewall-cmd --permanent --direct --add-rule ipv4 filter ping-death 351 -j LOG --log-prefix "IPTABLES PING-DEATH:"
 firewall-cmd --permanent --direct --add-rule ipv4 filter ping-death 352 -j DROP
 
+# Port Scan
+firewall-cmd --permanent --direct --add-chain ipv4 filter port-scan
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 400 -i enp0 -p tcp --tcp-flags SYN,ACK,FIN,RST RST -j port-scan
+firewall-cmd --permanent --direct --add-rule ipv4 filter port-scan 450 -m limit --limit 1/s --limit-burst 4 -j RETURN
+firewall-cmd --permanent --direct --add-rule ipv4 filter port-scan 451 -j LOG --log-prefix "IPTABLES PORT-SCAN:"
+firewall-cmd --permanent --direct --add-rule ipv4 filter port-scan 452 -j DROP
+
 # ICMP BLOCK (only accept: echo-request、echo-reply)
 # Invalid Packet
 
