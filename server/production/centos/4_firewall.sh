@@ -48,9 +48,7 @@ sysctl -p
 
 # Spoofing Private Address
 
-# Spoofing Multicast Address
 # Fragment Packet Attack
-
 
 # DENT Port Probe
 # UDP Flood
@@ -74,6 +72,9 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-fl
 
 # Spoofing Broadcast Address
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -m pkttype --pkt-type broadcast -j DROP
+
+# Spoofing Multicast Address
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -m pkttype --pkt-type multicast -j DROP
 
 # TCP Connection Flood
 # HTTP GET Flood
