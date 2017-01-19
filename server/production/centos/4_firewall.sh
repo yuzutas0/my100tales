@@ -54,7 +54,17 @@ sysctl -p
 # DENT Port Probe
 # UDP Flood
 # ICMP Flood (Ping Flood)
+
 # SYN Flood
+firewall-cmd --permanent --direct --add-chain ipv4 filter syn-flood
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 100 -i enp0 -p icmp --icmp-type echo-request -j syn-flood
+firewall-cmd --permanent --direct --add-rule ipv4 filter syn-flood 150 -m limit --limit 1/s --limit-burst 4 -j RETURN
+firewall-cmd --permanent --direct --add-rule ipv4 filter syn-flood 151 -j LOG --log-prefix "IPTABLES SYN-FLOOD:"
+firewall-cmd --permanent --direct --add-rule ipv4 filter syn-flood 152 -j DROP
+
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 200 -i enp0 -p tcp ! --syn -m state --state NEW -j LOG --log-prefix "IPTABLES SYN-FLOOD:"
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 201 -p tcp ! --syn -m state --state NEW -j DROP
+
 # TCP Connection Flood
 # HTTP GET Flood
 # Ping of Death
