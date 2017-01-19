@@ -50,7 +50,8 @@ sysctl -p
 # Spoofing Broadcast Address
 # Spoofing Multicast Address
 # Fragment Packet Attack
-# Stealth Scan
+
+
 # DENT Port Probe
 # UDP Flood
 # ICMP Flood (Ping Flood)
@@ -67,6 +68,9 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter syn-flood 152 -j DROP
 
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 200 -i enp0 -p tcp ! --syn -m state --state NEW -j LOG --log-prefix "IPTABLES SYN-FLOOD:"
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 201 -p tcp ! --syn -m state --state NEW -j DROP
+
+# Stealth Scan
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-flags ALL ALL -j DROP
 
 # TCP Connection Flood
 # HTTP GET Flood
