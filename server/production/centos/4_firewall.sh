@@ -82,6 +82,23 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter port-scan 450 -m limit 
 firewall-cmd --permanent --direct --add-rule ipv4 filter port-scan 451 -j LOG --log-prefix "IPTABLES PORT-SCAN:"
 firewall-cmd --permanent --direct --add-rule ipv4 filter port-scan 452 -j DROP
 
+# Spoofing
+firewall-cmd --permanent --direct --add-chain ipv4 filter spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 500 -i enp0 -s 127.0.0.0/8 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 501 -i enp0 -d 127.0.0.0/8 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 502 -i enp0 -s 10.0.0.0/8 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 503 -i enp0 -s 172.16.0.0/12 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 504 -i enp0 -s 192.168.0.0/16 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 505 -i enp0 -s 192.0.2.0/24 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 506 -i enp0 -s 169.254.0.0/16 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 507 -i enp0 -s 224.0.0.0/4 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 508 -i enp0 -s 240.0.0.0/5 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 509 -i enp0 -s 0.0.0.0/8 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 510 -i enp0 -s 255.255.255.255 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 511 -i enp0 -s 333.333.333.210 -j spoofing
+firewall-cmd --permanent --direct --add-rule ipv4 filter spoofing 550 -j LOG --log-prefix "IPTABLES SPOOFING:"
+firewall-cmd --permanent --direct --add-rule ipv4 filter spoofing 551 -j DROP
+
 # ICMP BLOCK (only accept: echo-request、echo-reply)
 # Invalid Packet
 
