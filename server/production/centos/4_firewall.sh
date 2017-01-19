@@ -122,6 +122,14 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter win 650 -j LOG --log-pr
 firewall-cmd --permanent --direct --add-rule ipv4 filter win 651 -j DROP
 
 # ICMP BLOCK (only accept: echo-request、echo-reply)
+firewall-cmd --permanent --add-icmp-block=destination-unreachable
+firewall-cmd --permanent --add-icmp-block=parameter-problem
+firewall-cmd --permanent --add-icmp-block=redirect
+firewall-cmd --permanent --add-icmp-block=router-advertisement
+firewall-cmd --permanent --add-icmp-block=router-solicitation
+firewall-cmd --permanent --add-icmp-block=source-quench
+firewall-cmd --permanent --add-icmp-block=time-exceeded
+
 # Invalid Packet
 
 firewall-cmd --reload
