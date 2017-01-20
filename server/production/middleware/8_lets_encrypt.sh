@@ -27,5 +27,5 @@ sudo certbot-auto certonly -m ${admin_mail} --agree-tos --non-interactive $* --w
 sudo certbot-auto certonly -m ${admin_mail} --agree-tos --non-interactive $* --webroot -w ${web_root} -d ${domain} --force-renewal
 
 # update automatically
-crontab -e
+sudo crontab -e
 # add: 50 3 * * 0 certbot-auto renew --post-hook "systemctl restart nginx" 1 > /dev/null 2 > /dev/null

@@ -135,4 +135,12 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m state --sta
 # Out of Rule
 firewall-cmd --permanent --zone=public --set-target=DROP
 
+# ================================
+# reload & check
+# ================================
+
 firewall-cmd --reload
+
+firewall-cmd --list-all-zones
+firewall-cmd --zone=public --list-service
+firewall-cmd --get-services
