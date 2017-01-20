@@ -21,6 +21,8 @@ sudo ./certbot-auto
 # ================================
 
 # test
-certbot-auto certonly -m ${admin_mail} --agree-tos --non-interactive $* --webroot -w ${web_root} -d ${domain} --test-cert
+sudo certbot-auto certonly -m ${admin_mail} --agree-tos --non-interactive $* --webroot -w ${web_root} -d ${domain} --test-cert
 # production
-certbot-auto certonly -m ${admin_mail} --agree-tos --non-interactive $* --webroot -w ${web_root} -d ${domain} --force-renewal
+sudo certbot-auto certonly -m ${admin_mail} --agree-tos --non-interactive $* --webroot -w ${web_root} -d ${domain} --force-renewal
+
+
