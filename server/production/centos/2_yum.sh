@@ -4,14 +4,20 @@
 # update packages
 # ================================
 
+su
+
 yum -y update
 
 # ================================
 # install packages
 # ================================
 
-yum -y groupinstall base "Development tools"
+yum -y groups mark install "Development Tools"
+yum -y groups mark convert "Development Tools"
+yum -y groupinstall "Development Tools"
+
 yum -y install vim
+
 yum -y install yum-cron
 
 # ================================
@@ -19,7 +25,7 @@ yum -y install yum-cron
 # ================================
 
 vim /etc/yum/yum-cron.conf
-# from: #apply_updates = yes
+# from: apply_updates = no
 # to:   apply_updates = yes
 
 systemctl start yum-cron
