@@ -4,22 +4,21 @@
 # disable SELinux
 # ================================
 
+su
+
 setenforce 0
 
 getenforce
-# check: Permissive
+# check: Disabled
 
 vim /etc/sysconfig/selinux
-# from: SELINUX=enforcing
-# to:   SELINUX=disabled
+# check: SELINUX=disabled
 
 # ================================
 # virus
 # ================================
 
-su
-
-yum install clamav clamav-update
+yum -y install clamav clamav-update
 
 vim /etc/freshclam.conf
 # -----------------------------------------
@@ -39,10 +38,10 @@ vim /etc/sysconfig/freshclam
 # to:   #FRESHCLAM_DELAY=disabled.warn
 # -----------------------------------------
 
-clamscan -r / -i --remove
+clamscan -r -i --remove
 # check whether virus file is not found.
 
-echo "/usr/bin/clamscan -r / --quiet --log=/var/log/clamav.log -i --remove" > /etc/cron.daily/clamav
+echo "/usr/bin/clamscan -r --quiet --log=/var/log/clamav.log -i --remove" > /etc/cron.daily/clamav
 chmod +x /etc/cron.daily/clamav
 
 # ================================
@@ -50,6 +49,17 @@ chmod +x /etc/cron.daily/clamav
 # ================================
 
 yum -y install rkhunter
+
 rkhunter --update
 rkhunter --propupd
-rkhunter --check --skip-keypress
+
+rkhunter --check --skip-keypress --report-warnings-only
+
+vim /etc/sysconfig/rkhunter
+# -----------------------------------------
+# from: ALLOW_SSH_ROOT_USER=unset
+# to:   ALLOW_SSH_ROOT_USER=no
+# -----------------------------------------
+# from: ALLOW_SSH_PROT_V1=2
+# to:   ALLOW_SSH_PROT_V1=0
+# -----------------------------------------
