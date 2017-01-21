@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set host & domain name at your server
+# set host & domain name at your server
 
 # ================================
 # variables
@@ -19,7 +19,7 @@ os_password=$4
 # ================================
 
 ssh root@${server_ip}
-# Enter ${root_password}
+# enter ${root_password}
 
 # ================================
 # make wheel user
@@ -34,7 +34,7 @@ passwd ${os_user}
 usermod -G wheel ${os_user}
 
 vi /etc/pam.d/su
-# from: #auth   required   pam_wheel.so use_uid
+# from: #auth  required   pam_wheel.so use_uid
 # to:   auth   required   pam_wheel.so use_uid
 
 # ================================
@@ -42,21 +42,28 @@ vi /etc/pam.d/su
 # ================================
 
 cat /etc/passwd
+# find ${os_user}
+
 cat /etc/group
+# find ${os_user}, wheel
+
 getent group wheel
+# find ${os_user}
 
 # ================================
-# change
+# change user
 # ================================
 
 su ${os_user}
 
 sudo echo hello
-# Enter ${os_password}
+# enter ${os_password}
 
-exit # from ${os_user}
+exit
+# from ${os_user}
 
-exit # from remote server
+exit
+# from remote server
 
 ssh ${os_user}@${server_ip}
-# Enter ${os_password}
+# enter ${os_password}
