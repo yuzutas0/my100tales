@@ -15,6 +15,10 @@ su
 systemctl start firewalld
 systemctl enable firewalld
 
+firewall-cmd --state
+systemctl status firewalld
+
+firewall-cmd --list-all
 firewall-cmd --list-all-zones
 firewall-cmd --zone=public --list-service
 firewall-cmd --get-services
@@ -25,7 +29,7 @@ firewall-cmd --get-services
 
 # OpenSSH
 firewall-cmd --permanent --remove-service=ssh # if port 22 is enabled.
-firewall-cmd --permanent --zone=public --add-port=${ssh_port}/tcp
+firewall-cmd --permanent --zone=public --add-port=${ssh_port}/tcp # if you don't set this port when sshd settings
 
 # Postfix
 firewall-cmd --permanent --zone=public --add-service=smtp
@@ -137,6 +141,6 @@ firewall-cmd --permanent --zone=public --set-target=DROP
 
 firewall-cmd --reload
 
+firewall-cmd --list-all
 firewall-cmd --list-all-zones
 firewall-cmd --zone=public --list-service
-firewall-cmd --get-services
