@@ -139,8 +139,10 @@ firewall-cmd --permanent --zone=public --set-target=DROP
 # reload & check
 # ================================
 
+# *** attention: it needs CPU high capacity ***
 firewall-cmd --reload
 
 firewall-cmd --list-all
 firewall-cmd --list-all-zones
 firewall-cmd --zone=public --list-service
+iptables-save
