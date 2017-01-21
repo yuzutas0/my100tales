@@ -56,8 +56,6 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -f -j DROP
 # IDENT Port Probe
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp -d 113 -j REJECT --reject-with tcp-reset
 
-# UDP Flood
-
 # ICMP Flood
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
 
@@ -75,8 +73,6 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-fl
 
 # Stealth Scan
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -p tcp --tcp-flags ALL ALL -j DROP
-
-# TCP Connection Flood
 
 # HTTP DoS/DDoS
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 tcp -m multiport -d 80 -m hashlimit --hashlimit 1/s --hashlimit-burst 100 --hashlimit-htable-expire 300000 --hashlimit-mode srcip --hashlimit-name t_HTTP_DOS -j ACCEPT
