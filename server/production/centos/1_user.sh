@@ -1,12 +1,26 @@
 #!/bin/bash
 
+# Set host & domain name at your server
+
 # ================================
 # variables
 # ================================
 
-user=$1
-password=$2
+# look at mail from hosting service
+server_ip=$1
+origin_password=$2
+
+# as you like
+user=$3
+password=$4
 group=wheel
+
+# ================================
+# first login
+# ================================
+
+ssh root@${server_ip}
+# Enter ${origin_password}
 
 # ================================
 # make wheel user
