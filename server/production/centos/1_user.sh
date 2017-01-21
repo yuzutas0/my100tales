@@ -8,32 +8,39 @@
 
 # look at mail from hosting service
 server_ip=$1
-origin_password=$2
+root_password=$2
 
 # as you like
-user=$3
-password=$4
-group=wheel
+os_user=$3
+os_password=$4
 
 # ================================
 # first login
 # ================================
 
 ssh root@${server_ip}
-# Enter ${origin_password}
+# Enter ${root_password}
 
 # ================================
 # make wheel user
 # ================================
 
-useradd ${user}
+useradd ${os_user}
 
-passwd ${user}
-# set ${password}
-# confirm ${password}
+passwd ${os_user}
+# set ${os_password}
+# confirm ${os_password}
 
-usermod -G ${group} ${user}
+usermod -G wheel ${os_user}
 
 vi /etc/pam.d/su
 # from: #auth   required   pam_wheel.so use_uid
 # to:   auth   required   pam_wheel.so use_uid
+
+# ================================
+# check
+# ================================
+
+cat /etc/passwd
+cat /etc/group
+getent group wheel
