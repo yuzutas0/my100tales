@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# set host & domain name at your server
-
 # ================================
 # variables
 # ================================
