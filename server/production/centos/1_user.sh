@@ -44,3 +44,19 @@ vi /etc/pam.d/su
 cat /etc/passwd
 cat /etc/group
 getent group wheel
+
+# ================================
+# change
+# ================================
+
+su ${os_user}
+
+sudo echo hello
+# Enter ${os_password}
+
+exit # from ${os_user}
+
+exit # from remote server
+
+ssh ${os_user}@${server_ip}
+# Enter ${os_password}
