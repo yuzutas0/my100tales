@@ -38,6 +38,9 @@ vim /etc/postfix/main.cf
 systemctl restart postfix
 systemctl enable postfix
 
+systemctl status postfix
+# check: active
+
 date | sendmail ${admin_email}
 # check: admin receives email from server
 

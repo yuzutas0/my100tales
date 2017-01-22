@@ -1,12 +1,15 @@
 #!/bin/bash
 
-wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+# -----------------------
+# install
+# -----------------------
 
 su
 
-yum install epel-release
-rpm -Uvh remi-release-7*.rpm
-yum --enablerepo=remi,remi-test,epel install redis
+yum -y install redis
 
-systemctl start redis.service
-systemctl enable redis.service
+systemctl start redis
+systemctl enable redis
+
+systemctl status redis
+# check: active

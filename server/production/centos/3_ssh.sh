@@ -23,8 +23,11 @@ yum -y install openssh openssh-clients openssh-server
 systemctl restart sshd
 systemctl enable sshd
 
+systemctl status sshd
+# check: active
+
 slogin 127.0.0.1
-# check whether login is success
+# check: login is success
 
 exit
 # from 127.0.0.1

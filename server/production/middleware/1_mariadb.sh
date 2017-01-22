@@ -28,6 +28,9 @@ _EOF
 systemctl start mariadb
 systemctl enable mariadb
 
+systemctl status mariadb
+# check: active
+
 mysql_secure_installation
 # current password => N/A (only push enter key)
 # set password => Y

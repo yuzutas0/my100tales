@@ -31,6 +31,9 @@ vim /etc/yum/yum-cron.conf
 systemctl start yum-cron
 systemctl enable yum-cron
 
+systemctl status yum-cron
+# check: active
+
 # ================================
 # version control
 # ================================

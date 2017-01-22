@@ -15,8 +15,10 @@ su
 systemctl start firewalld
 systemctl enable firewalld
 
-firewall-cmd --state
 systemctl status firewalld
+# check: active
+firewall-cmd --state
+# check: running
 
 firewall-cmd --list-all
 firewall-cmd --list-all-zones
@@ -139,8 +141,12 @@ firewall-cmd --permanent --zone=public --set-target=DROP
 # reload & check
 # ================================
 
-# *** attention: it needs CPU high capacity ***
 firewall-cmd --reload
+# *** attention: it needs CPU high capacity ***
+# systemctl restart firewalld <= when it occurs some troubles.
+
+firewall-cmd --state
+# check: running
 
 firewall-cmd --list-all
 firewall-cmd --list-all-zones
