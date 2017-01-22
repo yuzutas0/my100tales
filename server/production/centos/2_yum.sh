@@ -37,13 +37,12 @@ systemctl enable yum-cron
 
 yum -y install etckeeper
 
-touch /etc/.gitignore
-
-vim /etc/.gitignore
-# shadow*
-# gshadow*
-# passwd*
-# group*
+cat << _EOF > /etc/.gitignore
+shadow*
+gshadow*
+passwd*
+group*
+_EOF
 
 etckeeper init
 

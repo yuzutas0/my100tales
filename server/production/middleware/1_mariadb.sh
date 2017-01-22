@@ -4,10 +4,10 @@
 # variables
 # -----------------------
 
-root_password=$1
-db_user=$2
-db_user_password=$3
-scheme=$4
+db_root_password=$1
+app_scheme=$2
+db_user=$3
+db_user_password=$4
 #backup_file=$5
 
 # -----------------------
@@ -16,47 +16,56 @@ scheme=$4
 
 su
 
-yum install mariadb mariadb-server
+yum -y install mariadb mariadb-server
 
-vi /etc/my.conf
-# [mysqld]
-# character-set-server=utf8mb4
-# [client]
-# default-character-set=utf8mb4
+cat << _EOF > /etc/my.cnf.d/custom.cnf
+[mysqld]
+character-set-server=utf8mb4
+[client]
+default-character-set=utf8mb4
+_EOF
 
-systemctl start mariadb.service
-systemctl enable mariadb.service
+systemctl start mariadb
+systemctl enable mariadb
 
 mysql_secure_installation
 # current password => N/A (only push enter key)
 # set password => Y
-# new password & confirm password => ${root_password}
+# new password & confirm password => ${db_root_password}
 # remove anonymous => Y
 # disallow remote root login => Y
 # remove test => Y
 # reload => Y
 
+# -----------------------
+# scheme & user
+# -----------------------
+
 mysql -u root -p
-# enter ${root_password}
+# enter ${db_root_password}
 
-# create user ${db_user};
-# set password for ${db_user} = password('${db_user_password}');
-# create database ${schema};
-# grant all on ${schema}.* to ${db_user};
+# > create database ${app_scheme};
+# > show databases;
+# > use ${app_scheme};
+# > show variables like "chara%";
+#   => check: there's not 'utf8' except for character_set_system.
 
-# show databases
-# select User from mysql.user;
-# exit
+# > grant all privileges on ${app_scheme}.* to ${db_user}@localhost identified by '${db_user_password}';
+# > select Host,User from mysql.user;
+# > exit
 
-mysql -u ${db_user} -p
+mysql ${app_scheme} -u ${db_user} -p
 # enter ${db_user_password}
 
-# show databases;
-# use ${schema};
-# show variables like "chara%";
-#   => make sure there's not 'utf8'.
-# exit
+# > create table test (example varchar(255), sample text);
+# > show create table test;
+#   => check: DEFAULT CHARSET=utf8mb4
+# > drop table test;
+# > exit
 
+# -----------------------
 # todo: backup monthly
+# -----------------------
+
 # mysqldump --single-transaction -u root -p -x -all-database > ${backup_file}
-# enter ${root_password}
+# enter ${db_root_password}
