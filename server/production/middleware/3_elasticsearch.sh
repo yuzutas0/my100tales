@@ -4,6 +4,8 @@
 # install java
 # -----------------------
 
+su
+
 yum -y install java-1.8.0-openjdk-headless
 
 java -version
@@ -44,4 +46,4 @@ systemctl restart elasticsearch
 
 yum -y install jq
 curl -X GET 'http://localhost:9200/_nodes/plugins' | jq
-# check: ... "plugins": [{"name": "analysis-kuromoji" ...
+# check: "plugins": [{"name": "analysis-kuromoji"

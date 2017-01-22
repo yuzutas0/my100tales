@@ -4,20 +4,26 @@
 # variables
 # ================================
 
-admin_name=admin
-ruby_version=2.3.0
-domain=yuzutas0.com
+git_user_name=$1
+domain_name=$2
+ruby_version=$3
+
+# ================================
+# prepare
+# ================================
+
+exit # if you used 'su' command at previous operation
+
+ruby -v
+sudo yum remove ruby # if ruby has already installed
 
 # ================================
 # install git
 # ================================
 
-ruby -v
-sudo yum remove ruby # if ruby has already installed
-
-sudo yum install git
-git config --global user.name "${admin_name}"
-git config --global user.email "[${admin_name}@${domain}]"
+sudo yum -y install git
+git config --global user.name "${git_user_name}"
+git config --global user.email "[${git_user_name}@${domain_name}]"
 
 # ================================
 # install rbenv
@@ -35,6 +41,8 @@ rbenv -v
 # ================================
 # install ruby
 # ================================
+
+sudo yum install -y openssl-devel readline-devel zlib-devel
 
 rbenv install ${ruby_version}
 rbenv rehash
