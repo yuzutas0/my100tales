@@ -41,7 +41,7 @@ vim /etc/sysconfig/freshclam
 clamscan -r -i --remove
 # check whether virus file is not found.
 
-echo "/usr/bin/clamscan -r --quiet --log=/var/log/clamav.log -i --remove" > /etc/cron.daily/clamav
+echo "/usr/bin/clamscan -r --quiet --log=/var/log/clamav.log -i --remove --exclude-dir=^/dev --exclude-dir=^/proc --exclude-dir=^/sys" > /etc/cron.daily/clamav
 chmod +x /etc/cron.daily/clamav
 
 # ================================
