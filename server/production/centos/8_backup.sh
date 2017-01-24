@@ -11,6 +11,8 @@ cat << _EOF > /etc/rsync_exclude.lst
 + /var/www/***
 _EOF
 
+mkdir /var/backup
+
 cat << _EOF > /etc/cron.daily/rsync
 /usr/bin/rsync -avz --delete --exclude-from=/etc/rsync_exclude.lst / /var/backup
 _EOF
