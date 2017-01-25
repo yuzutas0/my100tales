@@ -13,3 +13,7 @@ systemctl enable redis
 
 systemctl status redis
 # check: active
+
+redis-cli -p 6379
+# > ping
+# check: PONG

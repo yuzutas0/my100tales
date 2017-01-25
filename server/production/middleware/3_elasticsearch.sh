@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# ================================
+# variables
+# ================================
+
+app_name=$1
+
 # -----------------------
 # install java
 # -----------------------
@@ -35,6 +41,40 @@ systemctl enable elasticsearch
 
 systemctl status elasticsearch
 # check: active
+
+# -----------------------
+# settings
+# -----------------------
+
+sed -i '$a cluster.name: ${app_name}' /etc/elasticsearch/elasticsearch.yml
+sed -i '$a node.name: ${HOSTNAME}' /etc/elasticsearch/elasticsearch.yml
+
+curl http://localhost:9200/_nodes/process?pretty
+# check: "mlockall" = false
+ps -aef | grep elasticsearch | grep -v grep
+# check: -Xms256m -Xmx1g
+free
+# check: Mem x total
+# calculate: Math.min((Mem x total / 2), 32GB) => ${memory}
+#   e.g. 256m, 1g
+sed -i '$a ES_HEAP_SIZE=${memory}' /etc/sysconfig/elasticsearch
+sed -i '$a MAX_LOCKED_MEMORY=unlimited' /etc/sysconfig/elasticsearch
+sed -i '$a bootstrap.memory_lock: true' /etc/elasticsearch/elasticsearch.yml
+
+mkdir /etc/systemd/system/elasticsearch.service.d/
+cat << _EOF > /etc/systemd/system/elasticsearch.service.d/limit.conf
+[Service]
+LimitMEMLOCK=infinity
+_EOF
+systemctl daemon-reload
+
+systemctl restart elasticsearch
+systemctl status elasticsearch
+
+curl http://localhost:9200/_nodes/process?pretty
+# check: cluster_name, node_name, memory_lock
+ps -aef | grep elasticsearch | grep -v grep
+# check: -Xms${memory} -Xmx${memory}
 
 # -----------------------
 # install plugin
