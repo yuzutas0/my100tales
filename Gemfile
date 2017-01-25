@@ -67,6 +67,12 @@ group :development do
 
   # Front Tools
   gem 'bower-rails'
+
+  # Deploy
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
 end
 
 # Server
@@ -74,6 +80,3 @@ group :test, :production do
   gem 'therubyracer', platforms: :ruby
   gem 'unicorn'
 end
-
-# Deploy
-gem 'capistrano-rails', group: :development
