@@ -9,6 +9,7 @@ set :repo_url, 'https://github.com/yuzutas0/my100tales.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, '/var/www/my100tales'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -31,3 +32,7 @@ set :repo_url, 'https://github.com/yuzutas0/my100tales.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+# capistrano/rbenv
+# set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.3.0'
