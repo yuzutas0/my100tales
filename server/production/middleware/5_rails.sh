@@ -17,6 +17,18 @@ rbenv rehash
 bundle -v
 
 # ================================
+# nmp & bower
+# ================================
+
+su
+yum install -y nodejs
+yum install -y npm
+npm install -g bower
+exit
+
+bower -v
+
+# ================================
 # app
 # ================================
 
