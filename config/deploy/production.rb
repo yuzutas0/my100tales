@@ -53,3 +53,17 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+server ENV['SERVER_IP'],
+       user: ENV['OS_USER'],
+       roles: %w{web app},
+       port: ENV['SSH_PORT']
+set :rails_env, 'production'
+set :stage, :production
+set :branch, :master
+set :unicorn_rack_env, 'production'
+set :ssh_options, {
+    keys: '~/.ssh/' + ENV['RSA_FILE_NAME'],
+    forward_agent: true,
+    auth_methods: %w(publickey)
+}
