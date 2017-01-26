@@ -29,10 +29,10 @@ set :deploy_to, '/var/www/my100tales'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-set :default_env, :production
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+set :keep_releases, 3
 
 # capistrano/rbenv
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
