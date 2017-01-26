@@ -23,12 +23,15 @@ set :deploy_to, '/var/www/my100tales'
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, %w{config/database.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -36,4 +39,5 @@ set :keep_releases, 3
 
 # capistrano/rbenv
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_type, :system
 set :rbenv_ruby, '2.3.0'
