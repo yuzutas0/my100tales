@@ -6,7 +6,6 @@ set :repo_url, 'https://github.com/yuzutas0/my100tales.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, 'master'
 set :scm, :git
 
 # Default deploy_to directory is /var/www/my_app_name
@@ -39,7 +38,7 @@ set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-set :keep_releases, 3
+set :keep_releases, 5
 
 # capistrano/rbenv
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
