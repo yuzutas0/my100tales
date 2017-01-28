@@ -56,7 +56,7 @@
 
 server ENV['SERVER_IP'],
        user: ENV['OS_USER'],
-       roles: %w{web app},
+       roles: %w{app},
        port: ENV['SSH_PORT']
 set :rails_env, 'production'
 set :stage, :production
