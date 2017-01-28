@@ -26,7 +26,7 @@ set :deploy_to, '/var/www/my100tales'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-append :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+append :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -38,12 +38,13 @@ set :keep_releases, 3
 
 # capistrano/rbenv
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_type, :system
+set :rbenv_type, :user
 set :rbenv_ruby, '2.3.0'
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
+  desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'unicorn:legacy_restart'
   end
 end
