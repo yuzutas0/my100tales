@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 gem 'sdoc', '~> 0.4.0', group: :doc # TODO: document
 
+# ENV
+gem 'dotenv-rails'
+
 # M/W
 gem 'mysql2'
 gem 'redis-rails'
@@ -73,6 +76,7 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 # Server
