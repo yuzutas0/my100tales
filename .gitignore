@@ -173,13 +173,14 @@ fabric.properties
 .idea
 *.iml
 bundle_bin
+.env
 log/
 !log/.keep
 tmp/
 !tmp/.keep
 .rubocop_todo.yml
+railways.cache
 db/data.yml
 public/images/emoji/
-railways.cache
 server/staging/vagrant/Vagrantfile
 server/staging/vagrant/.vagrant/

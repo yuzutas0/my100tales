@@ -40,3 +40,10 @@ set :keep_releases, 3
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_type, :system
 set :rbenv_ruby, '2.3.0'
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
