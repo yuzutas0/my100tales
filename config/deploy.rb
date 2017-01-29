@@ -14,6 +14,7 @@ set :repo_url, 'https://github.com/yuzutas0/my100tales.git'
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
 set :deploy_to, '/var/www/my100tales'
+set :deploy_via, :remote_cache
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -23,6 +24,9 @@ set :format, :airbrussh
 # These are the defaults.
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+
+# Defaults to false. If true, it's skip migration if files in db/migrate not modified
+set :conditionally_migrate, true
 
 # Default value for :pty is false
 # set :pty, true

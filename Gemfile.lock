@@ -75,6 +75,8 @@ GEM
     capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-faster-assets (1.0.2)
+      capistrano (>= 3.1)
     capistrano-harrow (0.5.3)
     capistrano-rails (1.2.1)
       capistrano (~> 3.1)
@@ -303,6 +305,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
+  capistrano-faster-assets
   capistrano-rails
   capistrano-rbenv
   capistrano3-unicorn
