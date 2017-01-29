@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-@app_path = '/var/www/' + ENV['APP_NAME']
+@app_path = "/var/www/#{ENV['APP_NAME']}"
 working_directory "#{@app_path}/current"
 
 worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3) # 2-4 * CPU Core

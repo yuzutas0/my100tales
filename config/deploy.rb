@@ -1,3 +1,7 @@
+# environment variables
+require 'dotenv'
+Dotenv.load '.env'
+
 # config valid only for current version of Capistrano
 lock '3.7.1'
 
@@ -46,19 +50,15 @@ set :rbenv_ruby, '2.3.0'
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'unicorn:legacy_restart'
-    end
+    invoke 'unicorn:restart'
   end
 
   desc 'Create database'
   task :db_create do
-    on roles(:db) do |_host|
-      with rails_env: fetch(:rails_env) do
-        within current_path do
-          execute :bundle, :exec, :rake, 'db:create'
-          execute :bundle, :exec, :rake, 'elasticsearch:create_index'
-        end
+    with rails_env: fetch(:rails_env) do
+      within current_path do
+        execute :bundle, :exec, :rake, 'db:create'
+        execute :bundle, :exec, :rake, 'elasticsearch:create_index'
       end
     end
   end
@@ -66,11 +66,9 @@ namespace :deploy do
   after :publishing, :restart
 
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
+    # Here we can do anything such as:
+    # within release_path do
+    #   execute :rake, 'cache:clear'
+    # end
   end
 end
