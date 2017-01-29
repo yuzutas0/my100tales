@@ -68,7 +68,7 @@ namespace :deploy do
   task :bower_install do
     with rails_env: fetch(:rails_env) do
       within current_path do
-        execute :bundle, :exec, :rake, 'bower:install'
+        execute :bundle, :exec, :rake, 'bower:dsl:install'
       end
     end
   end
