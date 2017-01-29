@@ -6,7 +6,6 @@ set :repo_url, 'https://github.com/yuzutas0/my100tales.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :scm, :git
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
@@ -27,15 +26,13 @@ set :pty, true
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_files, %w(config/database.yml config/secrets.yml .env)
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-append :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor/bundle}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -49,8 +46,11 @@ set :rbenv_ruby, '2.3.0'
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:legacy_restart'
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'unicorn:legacy_restart'
+    end
   end
+
   desc 'Create database'
   task :db_create do
     on roles(:db) do |_host|
@@ -62,7 +62,9 @@ namespace :deploy do
       end
     end
   end
+
   after :publishing, :restart
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:

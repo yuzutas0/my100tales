@@ -57,11 +57,13 @@
 set :rails_env, 'production'
 set :unicorn_rack_env, 'production'
 set :stage, :production
-set :branch, :master
-server ENV['SERVER_IP'], user: ENV['OS_USER'], roles: %w{app db web}, port: ENV['SSH_PORT']
 
-set :ssh_options, {
-    keys: '~/.ssh/' + ENV['RSA_FILE_NAME'],
-    forward_agent: false,
-    auth_methods: %w(publickey)
-}
+server ENV['SERVER_IP'],
+       user: ENV['OS_USER'],
+       roles: %w{app db web},
+       port: ENV['SSH_PORT'],
+       ssh_options: {
+           keys: "~/.ssh/#{ENV['RSA_FILE_NAME']}",
+           forward_agent: false,
+           auth_methods: %w(publickey)
+       }
