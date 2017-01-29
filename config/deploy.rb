@@ -81,3 +81,17 @@ namespace :deploy do
   before :publishing, :create_secret_key
   after :publishing, :clear_cache, :bower_install, :create_elasticsearch_index, :restart
 end
+
+namespace :bower do
+  desc 'Install bower'
+  task :install do
+    on roles(:web) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'bower:install CI=true'
+        end
+      end
+    end
+  end
+end
+before 'deploy:compile_assets', 'bower:install'

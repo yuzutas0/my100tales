@@ -1,0 +1,14 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "dompurify": "latest",
+    "markdown-it": "latest",
+    "markdown-it-task-lists": "git@github.com:revin/markdown-it-task-lists",
+    "markdown-it-footnote": "latest",
+    "markdown-it-sup": "latest",
+    "markdown-it-emoji": "latest",
+    "toastr": "latest",
+    "bootstrap-tagsinput": "latest",
+    "typeahead.js": "latest"
+  }
+}
