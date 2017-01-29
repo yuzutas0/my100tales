@@ -39,6 +39,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'vuejs-rails'
+gem 'bower-rails'
 
 # View Performance
 gem 'turbolinks'
@@ -67,9 +68,6 @@ group :development do
   # Static analysis
   gem 'rubocop', require: false
   gem 'rails_best_practices'
-
-  # Front Tools
-  gem 'bower-rails'
 
   # Deploy
   gem 'capistrano'
