@@ -1,5 +1,4 @@
 # setup unicorn
-
 namespace :unicorn do
   task :environment do
     set :unicorn_pid,    "#{current_path}/../shared/tmp/pids/unicorn.pid"

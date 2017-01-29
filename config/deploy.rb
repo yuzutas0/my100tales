@@ -53,22 +53,30 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-  desc 'Create database'
-  task :db_create do
+  desc 'Bower install'
+  task :bower_install do
     with rails_env: fetch(:rails_env) do
       within current_path do
-        execute :bundle, :exec, :rake, 'db:create'
+        execute :bundle, :exec, :rake, 'bower:install'
+      end
+    end
+  end
+
+  desc 'Create elasticsearch index'
+  task :create_elasticsearch_index do
+    with rails_env: fetch(:rails_env) do
+      within current_path do
         execute :bundle, :exec, :rake, 'elasticsearch:create_index'
       end
     end
   end
 
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    # Here we can do anything such as:
-    # within release_path do
-    #   execute :rake, 'cache:clear'
-    # end
+  desc 'Clear cache'
+  task :clear_cache do
+    on roles(:app) do
+      execute :rake, 'cache:clear'
+    end
   end
+
+  after :publishing, :clear_cache, :bower_install, :create_elasticsearch_index, :restart
 end
