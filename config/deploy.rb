@@ -53,6 +53,17 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
+  desc 'Create Secret Key'
+  task :create_secret_key do
+    with rails_env: fetch(:rails_env) do
+      within current_path do
+        secret = capture 'bundle exec rake secret'
+        execute "echo SECRET_KEY_BASE='#{secret}' > #{current_path}/.env"
+        execute :bundle, :exec, :rake, 'elasticsearch:create_index'
+      end
+    end
+  end
+
   desc 'Bower install'
   task :bower_install do
     with rails_env: fetch(:rails_env) do
