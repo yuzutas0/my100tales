@@ -46,8 +46,9 @@ sudo chown ${os_user} /var/www/${app_name}
 exit # from remote server
 
 # ================================
-# deployment after
+# deployment after nginx settings
 # ================================
 
+sed -i "" -e "s/SECRET_KEY_BASE=XXX/SECRET_KEY_BASE=`bundle exec rake secret`/" ./.env
 scp -i ~/.ssh/${key_name} -P ${ssh_port} .env ${os_user}@${server_ip}:/var/www/${app_name}/shared/
 bundle exec cap production deploy
