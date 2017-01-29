@@ -6,7 +6,9 @@
 
 app_name=$1
 os_user=$2
-app_repository=$3
+key_name=$3
+ssh_port=$4
+server_ip=$5
 
 # ================================
 # bundler
@@ -47,4 +49,5 @@ exit # from remote server
 # deployment after
 # ================================
 
+scp -i ~/.ssh/${key_name} -P ${ssh_port} .env ${os_user}@${server_ip}:/var/www/${app_name}/shared/
 bundle exec cap production deploy

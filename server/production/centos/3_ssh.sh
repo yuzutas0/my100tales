@@ -138,6 +138,6 @@ systemctl enable fail2ban
 ssh -i ~/.ssh/${key_name} -p ${ssh_port} ${server_user}@${server_ip}
 
 # send file from local to remote
-scp -i ~/.ssh/${key_name} -p ${ssh_port} ~/Desktop/example.txt ${server_user}@${server_ip}:/home/${server_user}/
+scp -i ~/.ssh/${key_name} -P ${ssh_port} ~/Desktop/example.txt ${server_user}@${server_ip}:/home/${server_user}/
 # send file from remote to local
-scp -i ~/.ssh/${key_name} -p ${ssh_port} ${server_user}@${server_ip}:/home/${server_user}/example.txt ~/Desktop/
+scp -i ~/.ssh/${key_name} -P ${ssh_port} ${server_user}@${server_ip}:/home/${server_user}/example.txt ~/Desktop/

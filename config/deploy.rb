@@ -1,6 +1,6 @@
 # environment variables
 require 'dotenv'
-Dotenv.load '.env'
+Dotenv.load '../../shared/.env'
 
 # config valid only for current version of Capistrano
 lock '3.7.1'
