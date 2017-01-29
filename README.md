@@ -48,7 +48,7 @@ $ docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=[root password] [image name]
     --character-set-server=utf8mb4 \
     --collation-server=utf8mb4_unicode_ci \
     --innodb-file-format=Barracuda \
-    --innodb-file-per-table=true \
+    --innodb-file-per-table=1 \
     --innodb-large-prefix=true
 ```
 

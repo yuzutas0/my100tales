@@ -21,6 +21,10 @@ yum -y install mariadb mariadb-server
 cat << _EOF > /etc/my.cnf.d/custom.cnf
 [mysqld]
 character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+innodb-file-format=Barracuda
+innodb-file-per-table=1
+innodb-large-prefix=true
 [client]
 default-character-set=utf8mb4
 _EOF
@@ -60,9 +64,9 @@ mysql -u root -p
 mysql ${app_scheme} -u ${db_user} -p
 # enter ${db_user_password}
 
-# > create table test (example varchar(255), sample text);
+# > create table test (example varchar(255), sample text, index (example)) ROW_FORMAT=DYNAMIC;
 # > show create table test;
-#   => check: DEFAULT CHARSET=utf8mb4
+#   => check: ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC
 # > drop table test;
 # > exit
 
