@@ -58,9 +58,7 @@ set :rails_env, 'production'
 set :unicorn_rack_env, 'production'
 set :stage, :production
 set :branch, :master
-
-role :app, "#{ENV['OS_USER']}@#{ENV['SERVER_IP']}"
-server ENV['SERVER_IP'], user: ENV['OS_USER'], roles: %w{app}, port: ENV['SSH_PORT']
+server ENV['SERVER_IP'], user: ENV['OS_USER'], roles: %w{app db web}, port: ENV['SSH_PORT']
 
 set :ssh_options, {
     keys: '~/.ssh/' + ENV['RSA_FILE_NAME'],
