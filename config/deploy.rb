@@ -1,6 +1,6 @@
 # environment variables
 require 'dotenv'
-Dotenv.load '../../shared/.env'
+Dotenv.load '.env'
 
 # config valid only for current version of Capistrano
 lock '3.7.1'
@@ -59,7 +59,6 @@ namespace :deploy do
       within current_path do
         secret = capture 'bundle exec rake secret'
         execute "echo SECRET_KEY_BASE='#{secret}' > #{current_path}/.env"
-        execute :bundle, :exec, :rake, 'elasticsearch:create_index'
       end
     end
   end
@@ -89,5 +88,6 @@ namespace :deploy do
     end
   end
 
+  before :publishing, :create_secret_key
   after :publishing, :clear_cache, :bower_install, :create_elasticsearch_index, :restart
 end
