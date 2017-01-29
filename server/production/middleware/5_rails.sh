@@ -29,19 +29,22 @@ exit
 bower -v
 
 # ================================
+# database connection
+# ================================
+
+yum install -y mysql-devel
+
+# ================================
 # app
 # ================================
 
 sudo mkdir -p /var/www/${app_name}
 sudo chown ${os_user} /var/www/${app_name}
 
-# TODO: capistrano
-git clone ${repository}
-cd ${app_name}
+exit # from remote server
 
 # ================================
-# run
+# deployment after
 # ================================
 
-bundle install --path vendor/bundle
-bundle exec unicorn_rails -l 3000 -E production
+bundle exec cap production deploy
