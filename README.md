@@ -118,5 +118,10 @@ $ rails_best_practices # => make source code better!
 ## Deployment instructions
 
 ```
-$ DB_USERNAME=[username] DB_PASSWORD=[password] REDIS_DB=[db number] SECRET_KEY_BASE=`bundle exec rake secret` rails s
+$ cp .env_template .env
+$ sed -i -e "s/DB_USERNAME=/DB_USERNAME=[username]/g" .env
+$ sed -i -e "s/DB_PASSWORD=/DB_PASSWORD=[password]/g" .env
+$ sed -i -e "s/REDIS_DB=/REDIS_DB=[db number]/g" .env
+$ sed -i -e "s/SECRET_KEY_BASE=/SECRET_KEY_BASE=`bundle exec rake secret`/g" .env
+$ rails s
 ```
