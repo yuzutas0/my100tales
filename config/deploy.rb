@@ -103,32 +103,27 @@ namespace :deploy do
     end
   end
 
-  after :updated, 'assets:precompile'
-  before :publishing, :create_secret_key
+  before :publishing, 'assets:precompile'
   after :publishing, :clear_cache, :create_elasticsearch_index, :restart
 end
 
 namespace :assets do
   desc 'Precompile assets locally and then rsync to web servers'
-  task :precompile do
-    on roles(:web) do
-      run_locally do
-        with rails_env: fetch(:stage) do
-          execute :rake, 'bower:install CI=true'
-          execute :rake, 'assets:precompile'
-        end
+  task precompile: [:set_rails_env] do
+    run_locally do
+      execute :rake, 'bower:install CI=true'
+      execute :rake, 'assets:precompile'
 
-        def command(path)
-          <<~EOS
-            rsync --rsh="ssh -i ~/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}" \
-                  -av --delete ./#{path} #{fetch(:user)}@#{host.to_s}:#{shared_path}/#{path}
-          EOS
-        end
-
-        execute command 'vendor/assets/bower_components/'
-        execute command 'public/assets/'
-        execute 'rm -rf public/assets'
+      def command(path)
+        <<~EOS
+          rsync --rsh="ssh -i ~/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}" \
+                -av --delete ./#{path} #{ENV['OS_USER']}@#{host.to_s}:#{shared_path}/#{path}
+        EOS
       end
+
+      execute command 'vendor/assets/bower_components/'
+      execute command 'public/assets/'
+      execute 'rm -rf public/assets'
     end
   end
 end
