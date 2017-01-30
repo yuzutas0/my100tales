@@ -182,6 +182,7 @@ tmp/
 railways.cache
 db/data.yml
 public/images/emoji/
+public/assets/
 !vendor/assets/bower.json
 !vendor/assets/.bowerrc
 server/staging/vagrant/Vagrantfile

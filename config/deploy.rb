@@ -87,7 +87,9 @@ namespace :deploy do
   desc 'Clear cache'
   task :clear_cache do
     on roles(:app) do
-      execute :rake, 'cache:clear'
+      within current_path do
+        execute :rake, 'tmp:cache:clear'
+      end
     end
   end
 
@@ -116,15 +118,15 @@ namespace :assets do
         execute 'bundle exec rake assets:precompile'
       end
 
-      def command(path)
+      def rsync_command(path)
         <<~EOS
-          rsync --rsh="ssh -i ~/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}" \
-                -av --delete ./#{path} #{ENV['OS_USER']}@#{host.to_s}:#{shared_path}/#{path}
+          rsync --rsh='ssh -i ~/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}' \
+                -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}
         EOS
       end
 
-      execute command 'vendor/assets/bower_components/'
-      execute command 'public/assets/'
+      execute rsync_command 'vendor/assets/bower_components/'
+      execute rsync_command 'public/assets/'
       execute 'rm -rf public/assets'
     end
   end
