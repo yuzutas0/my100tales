@@ -88,18 +88,6 @@ namespace :deploy do
     end
   end
 
-  # use 'bundle exec cap production deploy:db_create' only at first time
-  desc 'Create Database'
-  task :db_create do
-    on roles(:db) do
-      with rails_env: fetch(:rails_env) do
-        within current_path do
-          execute :bundle, :exec, :rake, 'db:create'
-        end
-      end
-    end
-  end
-
   before :publishing, 'assets:precompile'
   after :publishing, :create_elasticsearch_index, :restart, :clear_cache
 end
