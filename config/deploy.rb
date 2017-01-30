@@ -68,9 +68,11 @@ namespace :deploy do
 
   desc 'Create elasticsearch index'
   task :create_elasticsearch_index do
-    with rails_env: fetch(:rails_env) do
-      within current_path do
-        execute :bundle, :exec, :rake, 'elasticsearch:create_index'
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'elasticsearch:create_index'
+        end
       end
     end
   end
@@ -78,8 +80,10 @@ namespace :deploy do
   desc 'Clear cache'
   task :clear_cache do
     on roles(:app) do
-      within current_path do
-        execute :rake, 'tmp:cache:clear'
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :rake, 'tmp:cache:clear'
+        end
       end
     end
   end
@@ -97,7 +101,7 @@ namespace :deploy do
   end
 
   before :publishing, 'assets:precompile'
-  after :publishing, :clear_cache, :create_elasticsearch_index, :restart
+  after :publishing, :create_elasticsearch_index, :restart, :clear_cache
 end
 
 namespace :assets do
