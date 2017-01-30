@@ -107,12 +107,10 @@ namespace :deploy do
   task :test_env_value do
     on roles(:db) do |_host|
       with rails_env: fetch(:rails_env) do
-        within current_path do
-          p 'ENV1: ' + ENV['DB_USERNAME']
-          p 'ENV2: ' + ENV['DB_PASSWORD']
-          p 'CONF1: ' + Rails.configuration.database_configuration[Rails.env]['username']
-          p 'CONF2: ' + Rails.configuration.database_configuration[Rails.env]['password']
-        end
+        p 'ENV1: ' + ENV['DB_USERNAME']
+        p 'ENV2: ' + ENV['DB_PASSWORD']
+        p 'CONF1: ' + Rails.configuration.database_configuration[Rails.env]['username']
+        p 'CONF2: ' + Rails.configuration.database_configuration[Rails.env]['password']
       end
     end
   end
