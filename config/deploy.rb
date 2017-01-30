@@ -37,7 +37,7 @@ set :pty, true
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system vendor}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle vendor/assets public/system public/uploads}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -50,6 +50,15 @@ set :keep_releases, 5
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_type, :user
 set :rbenv_ruby, '2.3.0'
+
+# Defaults to :db role
+# Rails migrations are strictly related to the framework.
+# Therefore, it's recommended to set the role to :app instead of :db
+set :migration_role, :app
+
+# Defaults to false
+# Skip migration if files in db/migrate were not modified
+set :conditionally_migrate, true
 
 namespace :deploy do
   desc 'Restart application'
