@@ -109,10 +109,12 @@ end
 
 namespace :assets do
   desc 'Precompile assets locally and then rsync to web servers'
-  task precompile: [:set_rails_env] do
+  task :precompile do
     run_locally do
-      execute :rake, 'bower:install CI=true'
-      execute :rake, 'assets:precompile'
+      with rails_env: fetch(:stage) do
+        execute :rake, 'bower:install CI=true'
+        execute :rake, 'assets:precompile'
+      end
 
       def command(path)
         <<~EOS
