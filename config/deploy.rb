@@ -112,8 +112,8 @@ namespace :assets do
   task :precompile do
     run_locally do
       with rails_env: fetch(:stage) do
-        execute :rake, 'bower:install CI=true'
-        execute :rake, 'assets:precompile'
+        execute 'bundle exec rake bower:install CI=true'
+        execute 'bundle exec rake assets:precompile'
       end
 
       def command(path)
