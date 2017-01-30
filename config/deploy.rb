@@ -53,6 +53,9 @@ set :rbenv_ruby, '2.3.0'
 # Therefore, it's recommended to set the role to :app instead of :db
 set :migration_role, :app
 
+# Defaults to the primary :db server
+set :migration_servers, -> { primary(fetch(:migration_role)) }
+
 # Defaults to false. If true, it's skip migration if files in db/migrate not modified
 set :conditionally_migrate, true
 
