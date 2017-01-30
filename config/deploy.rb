@@ -96,7 +96,7 @@ namespace :deploy do
   # use 'bundle exec cap production deploy:db_create' only at first time
   desc 'Create Database'
   task :db_create do
-    on roles(:db) do |_host|
+    on roles(:db) do
       with rails_env: fetch(:rails_env) do
         within current_path do
           execute :bundle, :exec, :rake, 'db:create'
@@ -118,9 +118,12 @@ namespace :assets do
         execute 'bundle exec rake assets:precompile'
       end
 
+      execute 'find ./public/assets/ -name "*.js" | xargs rm -f'
+      execute 'find ./public/assets/ -name "*.css" | xargs rm -f'
+
       def rsync_command(path)
         <<~EOS
-          rsync --rsh='ssh -i ~/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}' \
+          rsync --rsh="ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}" \
                 -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}
         EOS
       end
@@ -128,6 +131,13 @@ namespace :assets do
       execute rsync_command 'vendor/assets/bower_components/'
       execute rsync_command 'public/assets/'
       execute 'rm -rf public/assets'
+    end
+
+    on roles(:app) do
+      within current_path do
+        execute 'find ./public/assets/ -name "*.js.gz" | xargs tar -zxvf'
+        execute 'find ./public/assets/ -name "*.css.gz" | xargs tar -zxvf'
+      end
     end
   end
 end

@@ -187,3 +187,4 @@ public/assets/
 !vendor/assets/.bowerrc
 server/staging/vagrant/Vagrantfile
 server/staging/vagrant/.vagrant/
+work.md
