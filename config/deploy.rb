@@ -66,15 +66,6 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-  desc 'Bower install'
-  task :bower_install do
-    with rails_env: fetch(:rails_env) do
-      within current_path do
-        execute :bundle, :exec, :rake, 'bower:dsl:install'
-      end
-    end
-  end
-
   desc 'Create elasticsearch index'
   task :create_elasticsearch_index do
     with rails_env: fetch(:rails_env) do
