@@ -54,8 +54,8 @@
 #     # password: "please use keys"
 #   }
 
-set :rails_env, 'production'
-set :unicorn_rack_env, 'production'
+set :rails_env, :production
+set :unicorn_rack_env, :production
 set :stage, :production
 
 server ENV['SERVER_IP'],

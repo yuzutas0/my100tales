@@ -25,9 +25,6 @@ set :format, :airbrussh
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 
-# Defaults to false. If true, it's skip migration if files in db/migrate not modified
-set :conditionally_migrate, true
-
 # Default value for :pty is false
 # set :pty, true
 set :pty, true
@@ -56,8 +53,7 @@ set :rbenv_ruby, '2.3.0'
 # Therefore, it's recommended to set the role to :app instead of :db
 set :migration_role, :app
 
-# Defaults to false
-# Skip migration if files in db/migrate were not modified
+# Defaults to false. If true, it's skip migration if files in db/migrate not modified
 set :conditionally_migrate, true
 
 namespace :deploy do
