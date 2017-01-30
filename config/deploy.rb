@@ -138,6 +138,7 @@ namespace :assets do
   task :extract do
     on roles(:app) do
       within shared_path do
+        execute 'pwd'
         execute 'find ./public/assets/ -name "*.js.gz" | xargs tar -zxvf'
         execute 'find ./public/assets/ -name "*.css.gz" | xargs tar -zxvf'
       end
