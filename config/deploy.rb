@@ -132,12 +132,16 @@ namespace :assets do
       execute rsync_command 'public/assets/'
       execute 'rm -rf public/assets'
     end
+  end
 
+  desc 'Extract assets at web servers'
+  task :extract do
     on roles(:app) do
-      within current_path do
+      within shared_path do
         execute 'find ./public/assets/ -name "*.js.gz" | xargs tar -zxvf'
         execute 'find ./public/assets/ -name "*.css.gz" | xargs tar -zxvf'
       end
     end
   end
+  after :precompile, :extract
 end
