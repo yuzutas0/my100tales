@@ -91,6 +91,33 @@ namespace :deploy do
     end
   end
 
+  # use 'bundle exec cap production deploy:db_create' only at first time
+  desc 'Create Database'
+  task :db_create do
+    on roles(:db) do |_host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:create'
+        end
+      end
+    end
+  end
+
+  desc 'Test Env Value'
+  task :test_env_value do
+    on roles(:db) do |_host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          p 'ENV1: ' + ENV['DB_USERNAME']
+          p 'ENV2: ' + ENV['DB_PASSWORD']
+          p 'CONF1: ' + Rails.configuration.database_configuration[Rails.env]['username']
+          p 'CONF2: ' + Rails.configuration.database_configuration[Rails.env]['password']
+        end
+      end
+    end
+  end
+  before :migrate, :test_env_value
+
   after :updated, 'assets:precompile'
   before :publishing, :create_secret_key
   after :publishing, :clear_cache, :create_elasticsearch_index, :restart
