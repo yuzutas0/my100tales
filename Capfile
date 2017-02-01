@@ -39,5 +39,5 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 
-# custom settings
-require 'lib/tasks/unicorn.rake'
+# Load custom tasks
+Dir.glob('lib/tasks/*.rake').each { |r| import r }
