@@ -10,4 +10,4 @@ bundle exec cap production unicorn:restart
 bundle exec cap production unicorn:stop
 
 # force stop at remote server
-ps -ef | grep unicorn | grep master | awk '{ print $2 }' | kill -QUIT
+ps -ef | grep unicorn | grep master | awk '{ print $2 }' | xargs kill -QUIT

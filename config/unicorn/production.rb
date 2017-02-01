@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 app_path = '/var/www/my100tales'
+shared_path = "#{app_path}/shared"
 current_path = "#{app_path}/current"
 
-working_directory "#{app_path}/current"
+working_directory current_path
 worker_processes Integer(ENV['WEB_CONCURRENCY'] || 2) # 2-4 * CPU Core
 preload_app true
 timeout 15
 
-listen '/tmp/unicorn.sock'
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
-stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+listen File.expand_path('tmp/sockets/unicorn.sock', shared_path)
+pid File.expand_path('tmp/pids/unicorn.pid', shared_path)
+
+stderr_path File.expand_path('log/unicorn.stderr.log', shared_path)
+stdout_path File.expand_path('log/unicorn.stdout.log', shared_path)
 
 before_exec do |_server|
   ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
