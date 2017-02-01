@@ -31,7 +31,7 @@ namespace :unicorn do
     end
   end
   desc 'Restart unicorn server gracefully'
-  task restart: :environment do
+  task stop_and_start: :environment do
     on roles(:app) do
       stop_unicorn if test("[ -f #{fetch(:unicorn_pid)} ]")
       start_unicorn

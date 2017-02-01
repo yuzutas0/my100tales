@@ -66,7 +66,7 @@ set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'unicorn:stop_and_start'
   end
 
   desc 'Create elasticsearch index'
