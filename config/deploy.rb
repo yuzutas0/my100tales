@@ -89,7 +89,9 @@ namespace :deploy do
   end
 
   before :publishing, 'assets:precompile'
-  after :publishing, :restart, :clear_cache, :create_elasticsearch_index
+  after :publishing, :restart
+  after :restart, :clear_cache
+  after :clear_cache, :create_elasticsearch_index
 end
 
 namespace :assets do
