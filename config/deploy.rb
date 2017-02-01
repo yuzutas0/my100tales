@@ -108,8 +108,8 @@ namespace :assets do
 
       def rsync_command(path)
           'rsync' +
-          + "--rsh=\"ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}\"" +
-          + "-av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}"
+          + " --rsh='ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}'" +
+          + " -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}"
       end
 
       execute rsync_command 'vendor/assets/bower_components/'
