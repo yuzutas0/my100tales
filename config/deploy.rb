@@ -31,11 +31,11 @@ set :pty, true
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", "config/secrets.yml"
-set :linked_files, %w{.env}
+set :linked_files, %w(.env)
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle vendor/assets public/system public/uploads}
+set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle vendor/assets public/system public/uploads)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -110,7 +110,7 @@ namespace :assets do
       execute 'find ./public/assets/ -name "*.css" | xargs rm -f'
 
       def rsync_command(path)
-          'rsync' +
+        'rsync' +
           + " --rsh='ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}'" +
           + " -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}"
       end

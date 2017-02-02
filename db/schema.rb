@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_161_120_074_129) do
+ActiveRecord::Schema.define(version: 20_161_020_115_143) do
   create_table 'scores', force: :cascade do |t|
     t.string   'key_name',    limit: 255,             null: false
     t.string   'value',       limit: 255,             null: false
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20_161_120_074_129) do
   add_index 'tale_score_relationships', ['tale_id'], name: 'index_tale_score_relationships_on_tale_id', using: :btree
 
   create_table 'tale_tag_relationships', force: :cascade do |t|
-    t.integer 'tale_id', limit: 4
-    t.integer 'tag_id',  limit: 4
+    t.integer 'tale_id', limit: 4, null: false
+    t.integer 'tag_id',  limit: 4, null: false
   end
 
   add_index 'tale_tag_relationships', ['tag_id'], name: 'index_tale_tag_relationships_on_tag_id', using: :btree

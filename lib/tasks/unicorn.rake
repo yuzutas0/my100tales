@@ -9,12 +9,15 @@ namespace :unicorn do
       execute :bundle, :exec, :unicorn, "-c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
     end
   end
+
   def stop_unicorn
     execute :kill, "-s QUIT $(< #{fetch(:unicorn_pid)})"
   end
+
   def reload_unicorn
     execute :kill, "-s USR2 $(< #{fetch(:unicorn_pid)})"
   end
+
   def force_stop_unicorn
     execute :kill, "$(< #{fetch(:unicorn_pid)})"
   end

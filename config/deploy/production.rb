@@ -62,10 +62,10 @@ set :unicorn_pid, File.expand_path('tmp/pids/unicorn.pid', shared_path)
 
 server ENV['SERVER_IP'],
        user: ENV['OS_USER'],
-       roles: %w{app db web},
+       roles: %w(app db web),
        port: ENV['SSH_PORT'],
        ssh_options: {
-           keys: "~/.ssh/#{ENV['RSA_FILE_NAME']}",
-           forward_agent: false,
-           auth_methods: %w(publickey)
+         keys: "~/.ssh/#{ENV['RSA_FILE_NAME']}",
+         forward_agent: false,
+         auth_methods: %w(publickey)
        }
