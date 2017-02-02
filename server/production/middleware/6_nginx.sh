@@ -61,7 +61,7 @@ systemctl reload nginx
 rm /etc/nginx/conf.d/${app_name}.conf
 vim /etc/nginx/conf.d/${app_name}.conf
 #  upstream unicorn_server {
-#    server unix:/tmp/unicorn.sock fail_timeout=0;
+#    server unix:/var/www/${app_name}/shared/tmp/sockets/unicorn.sock fail_timeout=0;
 #  }
 #
 #  server {
@@ -71,7 +71,7 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  }
 #
 #  server {
-#    set $app my100tales;
+#    set $app ${app_name};
 #    listen 443 ssl;
 #    listen [::]:443 ssl;
 #
