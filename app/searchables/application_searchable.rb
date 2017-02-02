@@ -51,7 +51,7 @@ module ApplicationSearchable
     def create_index
       # ready
       settings = SETTINGS.to_hash
-      mappings = Tale.mappings.to_hash.merge TaleTagRelationship.mappings.to_hash
+      mappings = Tale.mapping.to_hash
 
       # change index
       delete_index(force: true)

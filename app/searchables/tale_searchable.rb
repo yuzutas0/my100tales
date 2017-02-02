@@ -8,7 +8,7 @@ module TaleSearchable
     include Elasticsearch::Model::Callbacks
 
     # mapping
-    mappings dynamic: 'false' do
+    mapping dynamic: 'false' do
       indexes :id,          type: 'integer', index: 'not_analyzed'
       indexes :title,       type: 'string',  index: 'analyzed', analyzer: 'kuromoji_analyzer'
       indexes :content,     type: 'string',  index: 'analyzed', analyzer: 'kuromoji_analyzer'
