@@ -27,11 +27,11 @@ less /etc/nginx/nginx.conf
 
 vim /etc/nginx/conf.d/${app_name}.conf
 #  upstream unicorn_server {
-#    server unix:/tmp/unicorn.sock fail_timeout=0;
+#    server unix:/var/www/${app_name}/shared/tmp/sockets/unicorn.sock fail_timeout=0;
 #  }
 #
 #  server {
-#    set $app my100tales;
+#    set $app ${app_name};
 #    listen 80;
 #    listen [::]:80;
 #
