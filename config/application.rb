@@ -42,9 +42,5 @@ module My100tales
       g.helper false
       g.test_framework :rspec, view_specs: false, routing_specs: false
     end
-
-    # emoji
-    config.assets.paths << Emoji.images_path
-    config.assets.precompile << 'emoji/**/*.png'
   end
 end
