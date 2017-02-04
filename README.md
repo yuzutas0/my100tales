@@ -24,6 +24,7 @@ So, my100tales grows your ideas in order to make dreams come true.
 ## System dependencies
 
 ```
+$ brew install libsass
 $ brew install node
 $ npm install -g bower
 ```

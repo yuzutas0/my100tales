@@ -40,6 +40,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  # sassc-rails
+  config.sass.inline_source_maps = true
+
   # check n+1 query by bullet
   config.after_initialize do
     Bullet.enable = true

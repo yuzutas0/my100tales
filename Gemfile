@@ -31,7 +31,7 @@ gem 'gemoji'
 gem 'data-confirm-modal'
 
 # Stylesheet
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails' # gem 'sass-rails', '~> 5.0'
 gem 'honoka-rails' # gem 'bootstrap-sass'
 
 # JavaScript
