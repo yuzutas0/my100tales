@@ -58,8 +58,6 @@ set :rails_env, :production
 set :unicorn_rack_env, :production
 set :stage, :production
 
-set :unicorn_pid, File.expand_path('tmp/pids/unicorn.pid', shared_path)
-
 server ENV['SERVER_IP'],
        user: ENV['OS_USER'],
        roles: %w(app db web),

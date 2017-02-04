@@ -60,9 +60,6 @@ set :migration_servers, -> { primary(fetch(:migration_role)) }
 # Defaults to false. If true, it's skip migration if files in db/migrate not modified
 set :conditionally_migrate, true
 
-# Connect unicorn process
-set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
-
 namespace :deploy do
   desc 'Restart application'
   task :restart do
