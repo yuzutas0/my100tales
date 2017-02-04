@@ -4,8 +4,9 @@
 # variables
 # ================================
 
-app_name=$1
-root_url=$2
+root_url=$1
+app_name=$2
+domain_name=$3
 
 # ================================
 # operation
