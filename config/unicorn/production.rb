@@ -9,15 +9,13 @@ preload_app true
 timeout 15
 
 listen File.expand_path('tmp/sockets/unicorn.sock', shared_path)
+pid File.expand_path('tmp/pids/unicorn.pid', shared_path)
 
 stderr_path File.expand_path('log/unicorn.stderr.log', shared_path)
 stdout_path File.expand_path('log/unicorn.stdout.log', shared_path)
 
-before_exec do |_server|
-  ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
-end
-
 before_fork do |_server, _worker|
+  ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid
