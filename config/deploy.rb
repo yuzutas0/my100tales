@@ -115,6 +115,8 @@ namespace :assets do
       execute rsync_command 'vendor/assets/bower_components/'
       execute rsync_command 'public/assets/'
       execute 'rm -rf public/assets'
+      execute 'mkdir public/assets'
+      execute 'touch public/assets/.keep'
     end
   end
 
