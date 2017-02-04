@@ -4,7 +4,7 @@
 bundle exec cap production deploy --trace
 
 # restart
-bundle exec cap production unicorn:restart
+bundle exec cap production unicorn:re_start
 
 # stop
 bundle exec cap production unicorn:stop
