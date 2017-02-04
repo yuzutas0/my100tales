@@ -30,13 +30,15 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    server unix:/var/www/${app_name}/shared/tmp/sockets/unicorn.sock fail_timeout=0;
 #  }
 #
+#  server_tokens off;
+#
 #  server {
 #    set $app ${app_name};
 #    listen 80;
 #    listen [::]:80;
+#    server_name ${domain_name};
 #
-#    root /var/www/$app/shared/public;
-#    access_log /var/log/nginx/access.log main;
+#    root /var/www/$app/current/public;
 #
 #    error_page 404 /404.html;
 #    error_page 422 /422.html;
@@ -48,9 +50,17 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    gzip_types text/html text/css text/javascript application/x-javascript;
 #
 #    location / {
-#      try_files $uri $uri/ http://unicorn_server;
+#      try_files $uri @unicorn;
+#    }
+#
+#    location @unicorn {
+#      proxy_set_header X-Real-IP $remote_addr;
+#      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#      proxy_set_header Host $http_host;
+#      proxy_pass http://unicorn_server;
 #    }
 #  }
+
 
 
 
@@ -64,9 +74,12 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    server unix:/var/www/${app_name}/shared/tmp/sockets/unicorn.sock fail_timeout=0;
 #  }
 #
+#  server_tokens off;
+#
 #  server {
 #    listen 80;
 #    listen [::]:80;
+#    server_name ${domain_name};
 #    return 301 https://$host$request_uri;
 #  }
 #
@@ -83,8 +96,7 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    ssl_certificate /etc/letsencrypt/live/$host/cert.pem;
 #    ssl_certificate_key /etc/letsencrypt/live/$host/privkey.pem;
 #
-#    root /var/www/$app/shared/public;
-#    access_log /var/log/nginx/access.log main;
+#    root /var/www/$app/current/public;
 #
 #    error_page 404 /404.html;
 #    error_page 422 /422.html;
@@ -96,7 +108,14 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    gzip_types text/html text/css text/javascript application/x-javascript;
 #
 #    location / {
-#      try_files $uri $uri/ http://unicorn_server;
+#      try_files $uri @unicorn;
+#    }
+#
+#    location @unicorn {
+#      proxy_set_header X-Real-IP $remote_addr;
+#      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#      proxy_set_header Host $http_host;
+#      proxy_pass http://unicorn_server;
 #    }
 #  }
 
