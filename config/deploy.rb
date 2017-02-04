@@ -63,7 +63,7 @@ set :conditionally_migrate, true
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'unicorn:re_start'
   end
 
   desc 'Create elasticsearch index'

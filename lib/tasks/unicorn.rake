@@ -10,7 +10,7 @@ namespace :unicorn do
   end
 
   desc 'Restart unicorn server'
-  task restart: :environment do
+  task re_start: :environment do
     on roles(:app) do
       invoke 'unicorn:stop'
       invoke 'unicorn:start'
