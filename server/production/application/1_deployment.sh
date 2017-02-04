@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # deploy
-bundle exec cap production deploy --trace
+bundle exec cap production deploy # --trace
 
 # restart
 bundle exec cap production unicorn:re_start
