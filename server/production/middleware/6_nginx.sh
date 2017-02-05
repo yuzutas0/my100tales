@@ -38,8 +38,8 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #
 #  server {
 #    set $app ${app_name};
-#    listen 80;
-#    listen [::]:80;
+#    listen 80 default_server;
+#    listen [::]:80 default_server;
 #    server_name ${domain_name};
 #
 #    root /var/www/$app/current/public;
@@ -53,6 +53,10 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    gzip_min_length 1k;
 #    gzip_types text/html text/css text/javascript application/x-javascript;
 #
+#    location ~* \.php$ {
+#      deny all;
+#    }
+#
 #    location / {
 #      try_files $uri @unicorn;
 #    }
@@ -62,6 +66,17 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 #      proxy_set_header Host $http_host;
 #      proxy_pass http://unicorn_server;
+#    }
+#  }
+#
+#  server {
+#    listen 80;
+#    listen [::]:80;
+#    server_name _;
+#    root /usr/share/nginx/html;
+#
+#    location / {
+#      deny all;
 #    }
 #  }
 
@@ -81,16 +96,16 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  add_header X-Content-Type-Options nosniff;
 #
 #  server {
-#    listen 80;
-#    listen [::]:80;
+#    listen 80 default_server;
+#    listen [::]:80 default_server;
 #    server_name ${domain_name};
 #    return 301 https://$host$request_uri;
 #  }
 #
 #  server {
 #    set $app ${app_name};
-#    listen 443 ssl;
-#    listen [::]:443 ssl;
+#    listen 443 ssl default_server;
+#    listen [::]:443 ssl default_server;
 #
 #    ssl on;
 #    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -111,6 +126,10 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    gzip_min_length 1k;
 #    gzip_types text/html text/css text/javascript application/x-javascript;
 #
+#    location ~* \.php$ {
+#      deny all;
+#    }
+#
 #    location / {
 #      try_files $uri @unicorn;
 #    }
@@ -120,6 +139,17 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 #      proxy_set_header Host $http_host;
 #      proxy_pass http://unicorn_server;
+#    }
+#  }
+#
+#  server {
+#    listen 80;
+#    listen [::]:80;
+#    server_name _;
+#    root /usr/share/nginx/html;
+#
+#    location / {
+#      deny all;
 #    }
 #  }
 
