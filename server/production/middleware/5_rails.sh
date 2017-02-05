@@ -68,7 +68,7 @@ After=mariadb.service
 User=${os_user}
 WorkingDirectory=/var/www/${app_name}/current
 Environment=RAILS_ENV=production
-SyslogIdentifier=${app_name}-unicorn
+SyslogIdentifier=${app_name}_unicorn
 PIDFile=/var/www/${app_name}/shared/tmp/pids/unicorn.pid
 
 ExecStart=/home/${os_user}/.rbenv/bin/rbenv exec bundle exec "unicorn -c config/unicorn/production.rb -E production"
@@ -86,3 +86,13 @@ systemctl enable ${app_name}_unicorn
 
 systemctl status ${app_name}_unicorn
 # check active
+
+# ================================
+# enable restart without password
+# ================================
+
+visudo
+# --------------------------------------------------------------------
+# after: %wheel        ALL=(ALL)       NOPASSWD: ALL
+# add:   ${os_user} ALL=NOPASSWD: /bin/systemctl * ${app_name}_unicorn
+# --------------------------------------------------------------------

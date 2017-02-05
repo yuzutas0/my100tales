@@ -49,7 +49,7 @@ iostat
 
 ps
 
-free
+free -h
 
 # ================================
 # disksize
