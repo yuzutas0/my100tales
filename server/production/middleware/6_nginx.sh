@@ -32,6 +32,9 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  }
 #
 #  server_tokens off;
+#  add_header X-Frame-Options SAMEORIGIN;
+#  add_header X-XSS-Protection "1; mode=block";
+#  add_header X-Content-Type-Options nosniff;
 #
 #  server {
 #    set $app ${app_name};
@@ -76,6 +79,9 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  }
 #
 #  server_tokens off;
+#  add_header X-Frame-Options SAMEORIGIN;
+#  add_header X-XSS-Protection "1; mode=block";
+#  add_header X-Content-Type-Options nosniff;
 #
 #  server {
 #    listen 80;
