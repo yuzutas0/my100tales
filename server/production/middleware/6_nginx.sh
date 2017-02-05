@@ -45,7 +45,7 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #
 #    error_page 404 /404.html;
 #    error_page 422 /422.html;
-#    error_page 400 401 403 404 500 501 502 503 504 /500.html;
+#    error_page 400 401 403 500 501 502 503 504 /500.html;
 #
 #    gzip on;
 #    gzip_proxied any;
@@ -117,7 +117,7 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #
 #    error_page 404 /404.html;
 #    error_page 422 /422.html;
-#    error_page 400 401 403 404 500 501 502 503 504 /500.html;
+#    error_page 400 401 403 500 501 502 503 504 /500.html;
 #
 #    gzip on;
 #    gzip_proxied any;
