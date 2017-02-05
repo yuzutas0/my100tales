@@ -8,6 +8,10 @@ namespace :unicorn do
     set :unicorn_rack_env, -> { :production }
   end
 
+  def system_start
+    execute :sudo, :systemctl, "start #{fetch(:application)}_unicorn"
+  end
+
   def force_start
     within current_path do
       with rails_env: fetch(:rails_env) do
@@ -17,22 +21,41 @@ namespace :unicorn do
     end
   end
 
+  def system_stop
+    execute :sudo, :systemctl, "stop #{fetch(:application)}_unicorn"
+  end
+
   def force_stop
     execute :kill, "$(< #{fetch(:unicorn_pid)})"
   end
 
-  desc 'Restart unicorn server'
-  task re_start: :environment do
-    on roles(fetch(:unicorn_roles)) do
-      invoke 'unicorn:stop'
-      force_start
-    end
+  def system_restart
+    execute :sudo, :systemctl, "restart #{fetch(:application)}_unicorn"
+  end
+
+  def system_reload
+    execute :sudo, :systemctl, "reload #{fetch(:application)}_unicorn"
   end
 
   desc 'Stop unicorn server immediately'
   task force_stop: :environment do
     on roles(fetch(:unicorn_roles)) do
       force_stop
+    end
+  end
+
+  desc 'Restart unicorn server by systemctl'
+  task system_restart: :environment do
+    on roles(fetch(:unicorn_roles)) do
+      system_restart
+    end
+  end
+
+  desc 'Restart unicorn server'
+  task custom_restart: :environment do
+    on roles(fetch(:unicorn_roles)) do
+      invoke 'unicorn:stop'
+      force_start
     end
   end
 end
