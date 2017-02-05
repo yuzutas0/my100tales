@@ -112,14 +112,16 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    set $app ${app_name};
 #    listen 443 ssl;
 #    listen [::]:443 ssl;
+#    server_name ${domain_name};
 #
 #    ssl on;
 #    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 #    ssl_prefer_server_ciphers on;
 #    ssl_ciphers ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!EXPORT:!DES:!3DES:!MD5:!DSS;
 #
-#    ssl_certificate /etc/letsencrypt/live/$host/cert.pem;
-#    ssl_certificate_key /etc/letsencrypt/live/$host/privkey.pem;
+#    ssl_certificate /etc/letsencrypt/live/${domain_name}/fullchain.pem;
+#    ssl_certificate_key /etc/letsencrypt/live/${domain_name}/privkey.pem;
+#    ssl_trusted_certificate /etc/letsencrypt/live/${domain_name}/cert.pem;
 #
 #    root /var/www/$app/current/public;
 #
@@ -149,10 +151,11 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  }
 #
 #  server {
+#    set $app ${app_name};
 #    listen 80;
 #    listen [::]:80;
 #    server_name _;
-#    root /usr/share/nginx/html;
+#    root /var/www/$app/current/public;
 #
 #    location / {
 #      deny all;
