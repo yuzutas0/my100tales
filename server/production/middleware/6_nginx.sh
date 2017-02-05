@@ -33,13 +33,12 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #
 #  server_tokens off;
 #  add_header X-Frame-Options SAMEORIGIN;
-#  add_header X-XSS-Protection "1; mode=block";
 #  add_header X-Content-Type-Options nosniff;
 #
 #  server {
 #    set $app ${app_name};
-#    listen 80 default_server;
-#    listen [::]:80 default_server;
+#    listen 80;
+#    listen [::]:80;
 #    server_name ${domain_name};
 #
 #    root /var/www/$app/current/public;
@@ -92,20 +91,19 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #
 #  server_tokens off;
 #  add_header X-Frame-Options SAMEORIGIN;
-#  add_header X-XSS-Protection "1; mode=block";
 #  add_header X-Content-Type-Options nosniff;
 #
 #  server {
-#    listen 80 default_server;
-#    listen [::]:80 default_server;
+#    listen 80;
+#    listen [::]:80;
 #    server_name ${domain_name};
 #    return 301 https://$host$request_uri;
 #  }
 #
 #  server {
 #    set $app ${app_name};
-#    listen 443 ssl default_server;
-#    listen [::]:443 ssl default_server;
+#    listen 443 ssl;
+#    listen [::]:443 ssl;
 #
 #    ssl on;
 #    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
