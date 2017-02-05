@@ -145,17 +145,17 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    location @unicorn {
 #      proxy_set_header X-Real-IP $remote_addr;
 #      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#      proxy_set_header X-Forwarded-Proto https;
 #      proxy_set_header Host $http_host;
 #      proxy_pass http://unicorn_server;
 #    }
 #  }
 #
 #  server {
-#    set $app ${app_name};
 #    listen 80;
 #    listen [::]:80;
 #    server_name _;
-#    root /var/www/$app/current/public;
+#    root /usr/share/nginx/html;
 #
 #    location / {
 #      deny all;
