@@ -9,7 +9,7 @@ app_name=$2
 domain_name=$3
 
 # ================================
-# operation
+# install
 # ================================
 
 su
@@ -25,6 +25,10 @@ systemctl status nginx
 # access by browser at local machine
 open ${root_url}
 less /etc/nginx/nginx.conf
+
+# ================================
+# settings for HTTP
+# ================================
 
 vim /etc/nginx/conf.d/${app_name}.conf
 #  upstream unicorn_server {
@@ -80,6 +84,10 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  }
 
 systemctl reload nginx
+
+# ================================
+# settings for HTTPs
+# ================================
 
 # after settings about lets encrypt
 

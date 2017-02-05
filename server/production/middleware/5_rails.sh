@@ -52,3 +52,37 @@ exit # from remote server
 sed -i "" -e "s/SECRET_KEY_BASE=XXX/SECRET_KEY_BASE=`bundle exec rake secret`/" ./.env
 scp -i ~/.ssh/${key_name} -P ${ssh_port} .env ${os_user}@${server_ip}:/var/www/${app_name}/shared/
 bundle exec cap production deploy
+
+# ================================
+# auto restart when os reboots
+# ================================
+
+su
+
+cat << _EOF > /etc/systemd/system/${app_name}_unicorn.service
+[Unit]
+Description=${app_name} Unicorn Server
+After=mariadb.service
+
+[Service]
+User=${os_user}
+WorkingDirectory=/var/www/${app_name}/current
+Environment=RAILS_ENV=production
+SyslogIdentifier=${app_name}-unicorn
+PIDFile=/var/www/${app_name}/shared/tmp/pids/unicorn.pid
+
+ExecStart=/home/${os_user}/.rbenv/bin/rbenv exec bundle exec "unicorn -c config/unicorn/production.rb -E production"
+ExecStop=/usr/bin/kill -QUIT $MAINPID
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+_EOF
+
+systemctl daemon-reload
+
+systemctl start ${app_name}_unicorn
+systemctl enable ${app_name}_unicorn
+
+systemctl status ${app_name}_unicorn
+# check active
