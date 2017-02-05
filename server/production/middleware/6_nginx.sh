@@ -65,9 +65,6 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    }
 #  }
 
-
-
-
 systemctl reload nginx
 
 # after settings about lets encrypt
