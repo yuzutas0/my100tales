@@ -65,6 +65,9 @@ group :development do
   # Data
   gem 'yaml_db'
 
+  # Mail
+  gem 'letter_opener'
+
   # Static analysis
   gem 'rubocop', require: false
   gem 'rails_best_practices'
