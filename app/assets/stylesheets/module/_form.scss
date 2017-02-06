@@ -56,4 +56,12 @@
       }
     }
   }
+
+  .module__form__checkbox--default {
+    @extend .checkbox;
+
+    input {
+      margin-left: 0 !important; // cancel bootstrap
+    }
+  }
 }

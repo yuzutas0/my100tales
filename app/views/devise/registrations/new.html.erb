@@ -36,11 +36,11 @@
 
     <hr>
 
-    <div class="module__form__checkbox">
+    <div class="module__form__checkbox--default">
       <% id = 'script__devise__signup__agreement' %>
       <%= check_box_tag 'agreement', true, false, id: id %>
-      <%= label_tag id, class: 'module__form__checkbox__label' do %>
-        <p class="module__form__checkbox__label__inner">
+      <%= label_tag id do %>
+        <p>
           <% terms = link_to t('.terms'), terms_path, target: '_new' %>
           <% privacy = link_to t('.privacy'), privacy_path, target: '_new' %>
           <%= t('.agreement_html', terms: terms, privacy: privacy) %>
