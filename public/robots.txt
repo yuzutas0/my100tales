@@ -5,6 +5,10 @@
 # Disallow: /
 
 User-agent: *
+
 Allow: /
+Allow: /ja
+Allow: /en
+
 Disallow: /*
 Noindex: /*
