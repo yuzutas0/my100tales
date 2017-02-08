@@ -6,6 +6,7 @@
   <hr>
 
   <div class="module__list">
+    <%= t('views.message.blank.tag') if @tags.blank? %>
     <% @tags.each_with_index do |tag, index| %>
       <div id="script__tag__<%= index %>" class="module__list__item">
         <p class="module__label"><%= tag.name %></p>

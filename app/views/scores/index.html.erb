@@ -6,6 +6,7 @@
   <hr>
 
   <div>
+    <%= t('views.message.blank.score') if @scores.blank? %>
     <% index = 0.to_s %>
     <% @scores.map(&:key_name).uniq.each do |key| %>
       <% score = @scores.find { |score| score.key_name == key } %>
