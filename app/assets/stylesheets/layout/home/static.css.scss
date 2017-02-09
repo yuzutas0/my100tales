@@ -70,4 +70,18 @@
       width: 50%;
     }
   }
+
+  .layout__static__support {
+    table {
+      @extend .module__table;
+      table-layout: fixed;
+    }
+
+    table, p {
+      max-width: $editor_size_large;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+  }
 }

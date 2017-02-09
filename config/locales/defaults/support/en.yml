@@ -1,0 +1,26 @@
+# support view
+
+en:
+  views:
+    support:
+      text1: This app supports following browsers.
+      text2_html: |
+        <table>
+          <tbody>
+            <tr>
+              <th>Google Chrome</th>
+              <td>Latest</td>
+            </tr>
+            <tr>
+              <th>Firefox</th>
+              <td>Latest</td>
+            </tr>
+            <tr>
+              <th>Mobile Safari</th>
+              <td>Latest</td>
+            </tr>
+          </tbody>
+        </table>
+      text3_html: |
+        <a href="https://my100tales.yuzutas0.com/en/contact">Contact administrator</a>
+        when you have some troubles with one of these browsers.

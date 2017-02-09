@@ -1,0 +1,26 @@
+# support view
+
+ja:
+  views:
+    support:
+      text1: 本サービスでは以下のブラウザをサポートしています。
+      text2_html: |
+        <table>
+          <tbody>
+            <tr>
+              <th>Google Chrome</th>
+              <td>最新バージョン</td>
+            </tr>
+            <tr>
+              <th>Firefox</th>
+              <td>最新バージョン</td>
+            </tr>
+            <tr>
+              <th>Mobile Safari</th>
+              <td>最新バージョン</td>
+            </tr>
+          </tbody>
+        </table>
+      text3_html: |
+        上記のブラウザにて本サービスが正しく動作しない場合は、
+        <a href="https://my100tales.yuzutas0.com/ja/contact">お問い合わせ</a>までご一報ください。

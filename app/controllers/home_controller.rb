@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   # -----------------------------------------------------------------
   # const
   # -----------------------------------------------------------------
-  ENDPOINTS = [:index, :terms, :privacy, :about, :contact].freeze
+  ENDPOINTS = [:index, :terms, :privacy, :contact, :support, :about].freeze
 
   # -----------------------------------------------------------------
   # filter
@@ -24,9 +24,12 @@ class HomeController < ApplicationController
   def privacy
   end
 
-  def about
+  def contact
   end
 
-  def contact
+  def support
+  end
+
+  def about
   end
 end

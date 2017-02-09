@@ -3,7 +3,12 @@
   <div class="layout__shared__footer__inner">
     <span class="layout__shared__footer__inner__copyright">© 2017 My100Tales.</span>
     <ul class="layout__shared__footer__inner__links">
-      <% hash = { terms: terms_path, privacy: privacy_path, about: about_path, contact: contact_path } %>
+      <% hash = {
+          terms: terms_path,
+          privacy: privacy_path,
+          contact: contact_path,
+          support: support_path,
+          about: about_path } %>
       <% hash.each do |key, value| %>
         <li class="layout__shared__footer__inner__link">
           <%= link_to t('views.path.name.' + key.to_s), value %>

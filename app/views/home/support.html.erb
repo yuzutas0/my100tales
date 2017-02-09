@@ -1,0 +1,10 @@
+<% @page_title = t('views.path.name.support') %>
+<div class="layout__static">
+  <p class="layout__static__header"><%= render 'layouts/breadcrumb_1', second_page: @page_title %></p>
+  <hr>
+  <div class="layout__static__support">
+    <p><%= t('views.support.text1') %></p>
+    <p><%= i18n_table_format t('views.support.text2_html') %></p>
+    <p><%= t('views.support.text3_html') %></p>
+  </div>
+</div>
