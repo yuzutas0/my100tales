@@ -6,6 +6,7 @@ class @My100TalesUtilTagsinput
   ENTER_KEY_CODE = 13
   SPACE_KEY_CODE = 32
   COMMA_KEY_CODE = 44
+  CONFIRM_KEYS = [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
 
   # set suggestion
   # *** use bloodhound.initialize after calling this method ***
@@ -42,6 +43,6 @@ class @My100TalesUtilTagsinput
         templates: templates
       }],
       trimValue: true,
-      confirmKeys: [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE],
+      confirmKeys: CONFIRM_KEYS,
       tagClass: tagClass
     })

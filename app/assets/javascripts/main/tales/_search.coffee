@@ -24,10 +24,10 @@
   if document.getElementById(VUE_SEARCH_ID) != null
 
     # modal
-    @My100TalesUtilModal.createModal('#' + VUE_SEARCH_ID)
+    My100TalesUtilModal.createModal('#' + VUE_SEARCH_ID)
 
     # tab
-    @My100TalesUtilTab.createTab(
+    My100TalesUtilTab.createTab(
       LEFT_TAB_SWITCH_DOM,
       RIGHT_TAB_SWITCH_DOM,
       LEFT_TAB_CONTENT_DOM,
