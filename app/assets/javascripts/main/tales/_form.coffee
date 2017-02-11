@@ -79,3 +79,4 @@
 
     # set tag form
     My100TalesUtilTagsinput.setTagForm(FORM_INPUT_DOM, bloodhound, templates, tagClass)
+    My100TalesUtilTagsinput.setCustomEvent(FORM_INPUT_DOM)

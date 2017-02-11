@@ -46,3 +46,20 @@ class @My100TalesUtilTagsinput
       confirmKeys: CONFIRM_KEYS,
       tagClass: tagClass
     })
+
+  # make score unique
+  @setCustomEvent = (formInputDOM) ->
+    $(formInputDOM).on('beforeItemAdd', (event) ->
+      newTag = event.item.trim()
+      separatorIndex = newTag.indexOf(':')
+      isScore = separatorIndex > 0
+      return unless isScore
+      scoreKey = newTag.substring(0,separatorIndex)
+      formList = $(formInputDOM).tagsinput('items')
+      for item in formList
+        itemIndex = item.indexOf(':')
+        isScore = itemIndex > 0
+        continue unless isScore
+        itemKey = item.substring(0,itemIndex)
+        $(formInputDOM).tagsinput('remove', item) if itemKey == scoreKey
+    )
