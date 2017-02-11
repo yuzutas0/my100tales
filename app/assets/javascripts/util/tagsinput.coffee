@@ -47,17 +47,24 @@ class @My100TalesUtilTagsinput
       tagClass: tagClass
     })
 
-  getHashKeyFromTags = (string) ->
-    separatorIndex = string.indexOf(':')
-    return '' if separatorIndex < 0
-    return string.substring(0, separatorIndex)
+  isHashKey = (tag) ->
+    return tag.indexOf(':') >= 0
+
+  getHashKey = (tag) ->
+    return string.substring(0, tag.indexOf(':'))
+
+  getScores = (key, tags) ->
+    sameScoreList = []
+    for tag in tags
+      itemKey = getHashKeyFromTags(tag)
+      sameScoreList << tag if itemKey == key
+    return sameScoreList
 
   # make score unique
   @setCustomEvent = (formInputDOM) ->
     $(formInputDOM).on('beforeItemAdd', (event) ->
-      scoreKey = getHashKeyFromTags(event.item.trim())
-      return if scoreKey == ''
-      for item in $(formInputDOM).tagsinput('items')
-        itemKey = getHashKeyFromTags(item)
-        $(formInputDOM).tagsinput('remove', item) if itemKey == scoreKey
+      tag = event.item.trim()
+      return unless isHashKey(tag)
+      sameScore = getScores(getHashKey(tag), $(formInputDOM).tagsinput('items'))
+      $(formInputDOM).tagsinput('remove', score) for score in sameScore
     )
