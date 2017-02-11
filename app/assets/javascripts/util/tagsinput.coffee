@@ -52,14 +52,16 @@ class @My100TalesUtilTagsinput
     # private method
     getKeyByTag = (tag) ->
       separatorIndex = tag.indexOf(':')
-      return '' if index < 0
-      return string.substring(0, separatorIndex)
+      return '' if separatorIndex < 0
+      return tag.substring(0, separatorIndex)
 
     # main logic
     $(formInputDOM).on('beforeItemAdd', (event) ->
       scoreKey = getKeyByTag(event.item.trim())
       return if scoreKey == ''
+      targets = []
       for item in $(formInputDOM).tagsinput('items')
         itemKey = getKeyByTag(item)
-        $(formInputDOM).tagsinput('remove', item) if itemKey == scoreKey
+        targets.push(item) if itemKey == scoreKey
+      $(formInputDOM).tagsinput('remove', item) for item in targets
     )
