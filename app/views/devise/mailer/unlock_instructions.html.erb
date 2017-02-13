@@ -5,3 +5,5 @@
 <p><%= t('.description_2') %></p>
 
 <p><%= link_to t('.submit'), unlock_url(@resource, unlock_token: @token) %></p>
+
+<p><%= t('devise.shared.attention.contact_html', link: contact_url) %></p>

@@ -3,3 +3,5 @@
 <p><%= t('.description') %></p>
 
 <p><%= link_to t('.submit'), confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p><%= t('devise.shared.attention.contact_html', link: contact_url) %></p>

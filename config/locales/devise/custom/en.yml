@@ -73,6 +73,13 @@ en:
         forgot: 'Forgot your password?'
         confirmation: "Didn't receive confirmation instructions?"
         unlock: "Didn't receive unlock instructions?"
+      attention:
+        contact_html: >
+          ----------------------------------------------------------------------------------------------------<br />
+          Please do not reply to this email address.<br />
+          You will not receive a response to your replies.<br />
+          <a href="%{link}">Contact administrator</a> when you have some troubles.<br />
+          ----------------------------------------------------------------------------------------------------
     unlocks:
       new:
         title: 'Resend unlock instructions'
