@@ -102,8 +102,9 @@
         width: auto;
         max-width: 40%;
         margin-top: $margin_size_x_small;
+        padding: $margin_size_x_small;
         height: auto;
-        border: 1px solid lighten($brand-primary, 30%);
+        border: 1px dotted lighten($brand-primary, 30%);
 
         @media (max-width: $screen-xs-max) {
           max-width: 90%;
