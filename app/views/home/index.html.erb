@@ -32,8 +32,8 @@
     <hr>
     <div class="layout__home__explain__inner2">
       <div class="layout__home__explain__inner2__title"><h2><%= t('.explain.inner2.title') %></h2></div>
-      <% %w(Editor Detail List Search Comment Backup).each.with_index(1) do |topic, index| %>
-        <p><%= topic %></p>
+      <% (1..6).each do |index| %>
+        <p><%= t('.explain.inner2.image' + index.to_s) %></p>
         <% image_link = 'screenshot' + index.to_s + '.jpg' %>
         <%= link_to image_url(image_link) do %>
           <%= image_tag image_url(image_link), class: 'layout__home__explain__inner2__image' %>

@@ -22,6 +22,12 @@ ja:
             text_html: '少しずつコメントを付け加えて<br />アイデアを深めていきましょう。'
         inner2:
           title: 'スクリーンショット'
+          image1: 'エディタ'
+          image2: '投稿内容'
+          image3: '一覧表示'
+          image4: '検索フォーム'
+          image5: '追記コメント'
+          image6: 'バックアップ'
         inner3:
           title: '登録は無料です'
           text1_html: >

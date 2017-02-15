@@ -22,6 +22,12 @@ en:
             text_html: 'make your ideas deeper and<br />bigger with additional comments.'
         inner2:
           title: 'Screenshot'
+          image1: 'Editor'
+          image2: 'Content Detail'
+          image3: 'List'
+          image4: 'Search Form'
+          image5: 'Sequel/Comment'
+          image6: 'Backup Files'
         inner3:
           title: 'Signup for free'
           text1_html: >
