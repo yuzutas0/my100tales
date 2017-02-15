@@ -101,8 +101,8 @@
       .layout__home__explain__inner2__image {
         width: auto;
         max-width: 60%;
-        margin-top: $margin_size_x_small;
         height: auto;
+        margin-bottom: $margin_size_large;
 
         @media (max-width: $screen-xs-max) {
           max-width: 90%;
