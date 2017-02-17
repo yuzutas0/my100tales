@@ -1,5 +1,7 @@
 # Local Environment
 
+*you should execute these command at application root directory.
+
 ## System dependencies
 
 ```
@@ -53,27 +55,27 @@ $ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate
 ## Database initialization
 
 ```
-$ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake db:migrate:reset
+$ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate:reset
 ```
 
 ## Key Value Store creation
 
 ```
-$ docker build -t [image name] ./server/local/docker/redis/
-$ docker run -d -p 6379:6379 --name [container name] [image name]
+$ docker build -t ${image_name} ./server/local/docker/redis/
+$ docker run -d -p 6379:6379 --name ${container_name} ${image_name}
 ```
 
 ## Search engine creation
 
 ```
-$ docker build -t [image name] ./server/local/docker/elasticsearch/
-$ docker run -d -p 9200:9200 -p 9300:9300 --name [container name] [image name]
+$ docker build -t ${image_name} ./server/local/docker/elasticsearch/
+$ docker run -d -p 9200:9200 -p 9300:9300 --name ${container_name} ${image_name}
 ```
 
 ## Search engine initialization
 
 ```
-$ DB_USERNAME=[username] DB_PASSWORD=[password] bundle exec rake elasticsearch:create_index
+$ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake elasticsearch:create_index
 ```
 
 ## Assets initialization
