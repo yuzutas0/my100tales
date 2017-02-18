@@ -40,7 +40,7 @@
         <% end %>
         <li class="layout__shared__header__inner__menu__list__item">
           <% another_lang_list.each do |key, value| %>
-            <% url_for_params = params.merge(controller:nil, action:nil, locale:nil) %>
+            <% url_for_params = params.merge(controller:nil, action:nil, locale:nil, view_number:nil) %>
             <% url_for_args = {locale: key, only_path: false, params: url_for_params} %>
             <%= link_to fa_icon('language') + ' ' + value, url_for(url_for_args) %>
           <% end %>
