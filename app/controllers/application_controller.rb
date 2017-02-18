@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    return tales_path if %w(/ /en /ja).include?(session[:user_return_to])
+    return tales_path if view_context.root_path_list.include?(session[:user_return_to])
     session[:user_return_to]
   end
 end

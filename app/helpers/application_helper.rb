@@ -22,6 +22,10 @@ module ApplicationHelper
     lang_list.reject { |k, _v| k == I18n.locale }
   end
 
+  def root_path_list
+    lang_list.keys.map(&:to_s).each { |k| k.insert(0, '/') }.push('/')
+  end
+
   # -----------------------------------------------------------------
   # time
   # -----------------------------------------------------------------
