@@ -20,7 +20,8 @@ Rails.application.routes.draw do
                  sign_up: 'signup'
                },
                controllers: {
-                 registrations: 'registrations'
+                 registrations: 'registrations',
+                 sessions: 'sessions'
                }
 
     # tale

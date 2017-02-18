@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
 
   # Devise User Setting
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_filter :store_current_location, unless: :devise_controller?
   before_action :authenticate_user!
 
   # -----------------------------------------------------------------
@@ -41,13 +42,14 @@ class ApplicationController < ActionController::Base
   # for locale lang
   # -----------------------------------------------------------------
   # set information
-  def default_url_options(_options = {})
-    { locale: I18n.locale }
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
   end
 
   # set request parameter
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
+    session[:locale] = I18n.locale
   end
 
   # -----------------------------------------------------------------
@@ -59,7 +61,12 @@ class ApplicationController < ActionController::Base
   end
 
   # friendly forward
+  def store_current_location
+    store_location_for(:user, request.url)
+  end
+
   def after_sign_in_path_for(_resource)
-    session[:user_return_to] || tales_path
+    return tales_path if %w(/ /en /ja).include?(session[:user_return_to])
+    session[:user_return_to]
   end
 end
