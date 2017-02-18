@@ -26,6 +26,14 @@ module ApplicationHelper
     lang_list.keys.map(&:to_s).each { |k| k.insert(0, '/') }.push('/')
   end
 
+  def ignore_params_list
+    params = [:controller, :action, :locale, # common
+     :view_number,                  # tale, sequel
+     :save, :name                   # search tales
+    ]
+    Hash[*[params, Array.new(params.size)].transpose.flatten]
+  end
+
   # -----------------------------------------------------------------
   # time
   # -----------------------------------------------------------------
