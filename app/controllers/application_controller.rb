@@ -22,13 +22,15 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   # -----------------------------------------------------------------
-  # devise
+  # CSRF
   # -----------------------------------------------------------------
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # Devise User Setting
+  # -----------------------------------------------------------------
+  # devise
+  # -----------------------------------------------------------------
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :store_current_location, unless: :devise_controller?
   before_action :authenticate_user!
