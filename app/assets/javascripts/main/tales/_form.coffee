@@ -61,11 +61,11 @@
 
       # loop
       index++
-      FORM_SUGGEST_OPTION_ID = FORM_SUGGEST_OPTIONS_ID + '__' + index
-      break if document.getElementById(FORM_SUGGEST_OPTION_ID) == null
+      formSuggestOptionId = FORM_SUGGEST_OPTIONS_ID + '__' + index
+      break if document.getElementById(formSuggestOptionId) == null
 
       # value
-      option = My100TalesUtilXss.escapeString(document.getElementById(FORM_SUGGEST_OPTION_ID).innerText).split(WHITE_SPACE)
+      option = My100TalesUtilXss.escapeString(document.getElementById(formSuggestOptionId).innerText).split(WHITE_SPACE)
       suggestion = { value: option[TAG_OPTIONS_NAME], countlist: option[TAG_OPTIONS_SIZE] }
       suggestList.push(suggestion)
 
