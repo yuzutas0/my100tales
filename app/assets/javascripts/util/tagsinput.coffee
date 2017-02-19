@@ -9,12 +9,9 @@ class @My100TalesUtilTagsinput
   CONFIRM_KEYS = [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
 
   # private method: escape for XSS
-  escapeString = (string) ->
-    String(string).replace(/[&<>"'`=\/]/g, '').trim()
-
   escapeTagsInput = (formInputDOM) ->
     for item in $(formInputDOM).tagsinput('items')
-      escaped = escapeString(item)
+      escaped = My100TalesUtilXss.escapeString(item)
       if item != escaped
         $(formInputDOM).tagsinput('remove', item)
         $(formInputDOM).tagsinput('add', escaped)
@@ -79,7 +76,7 @@ class @My100TalesUtilTagsinput
       $(formInputDOM).tagsinput('remove', item) for item in targets
 
     $(formInputDOM).on('beforeItemAdd', (event) ->
-      event.item = escapeString(event.item)
+      event.item = My100TalesUtilXss.escapeString(event.item)
       makeScoreUnique(event)
     )
 
