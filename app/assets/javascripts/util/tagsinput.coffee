@@ -47,21 +47,37 @@ class @My100TalesUtilTagsinput
       tagClass: tagClass
     })
 
-  # make score unique
   @setCustomEvent = (formInputDOM) ->
-    # private method
-    getKeyByTag = (tag) ->
+    # private method: escape for XSS
+    escapeString = (string) ->
+      String(string).replace(/[&<>"'`=\/]/g, '').trim()
+
+    # private method: make score unique
+    getScoreKeyByTagForm = (tag) ->
       separatorIndex = tag.indexOf(':')
       return '' if separatorIndex < 0
       return tag.substring(0, separatorIndex)
 
-    # main logic
-    $(formInputDOM).on('beforeItemAdd', (event) ->
-      scoreKey = getKeyByTag(event.item.trim())
+    makeScoreUnique = (event) ->
+      scoreKey = getScoreKeyByTagForm(event.item)
       return if scoreKey == ''
       targets = []
       for item in $(formInputDOM).tagsinput('items')
-        itemKey = getKeyByTag(item)
+        itemKey = getScoreKeyByTagForm(item)
         targets.push(item) if itemKey == scoreKey
       $(formInputDOM).tagsinput('remove', item) for item in targets
+
+    # main logic: make score unique
+    $(formInputDOM).on('beforeItemAdd', (event) ->
+      event.item = escapeString(event.item)
+      makeScoreUnique(event)
+    )
+
+    # block XSS for saving data
+    $(formInputDOM).on('itemAdded', (event) ->
+      for item in $(formInputDOM).tagsinput('items')
+        escaped = escapeString(item)
+        if item != escaped
+          $(formInputDOM).tagsinput('remove', item)
+          $(formInputDOM).tagsinput('add', escaped)
     )
