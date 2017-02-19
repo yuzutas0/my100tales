@@ -30,11 +30,16 @@ ja:
           image6: 'バックアップ'
         inner3:
           title: '登録は無料です'
-          text1_html: >
-            他人に投稿内容が見られないよう、<br class="visible-xs-block" />アカウント毎に投稿を管理します。
-            <br class="hidden-sm" />
-            アカウントを認証するために<br class="visible-xs-block" />メールアドレスが必要となります。
-          text2: 'アカウント登録は1分で完了します。'
+          text1: 'アカウント登録は1分で完了します。'
+          text2_html: >
+            他人に投稿内容が見られないよう、<br class="visible-xs-block" />
+            アカウント毎に投稿を管理します。<br class="hidden-sm" />
+            アカウントを認証するために<br class="visible-xs-block" />
+            メールアドレスが必要となります。
+          text3_html: >
+            投稿内容はエクスポートできるので、<br class="visible-xs-block" />
+            後々のことが不安な方も<br class="visible-xs-block" />
+            ぜひお気軽にご利用ください。
     about:
       name_title: '名前の由来'
       name_description_html: >

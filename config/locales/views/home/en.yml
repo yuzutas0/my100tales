@@ -30,10 +30,14 @@ en:
           image6: 'Backup Files'
         inner3:
           title: 'Signup for free'
-          text1_html: >
+          text1: 'Signup is going to be completed without time and money.'
+          text2_html: >
             We request your signup to provide the secret space for each accounts,
             and email is required to authenticate the account.
-          text2: 'Signup is going to be completed without time and money.'
+          text3_html: >
+            Don't be afraid of losing your posts
+            because you can download backup files
+            whenever you want to do it.
     about:
       name_title: 'Meaning of name'
       name_description_html: >
