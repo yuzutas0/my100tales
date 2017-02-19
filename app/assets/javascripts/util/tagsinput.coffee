@@ -8,6 +8,17 @@ class @My100TalesUtilTagsinput
   COMMA_KEY_CODE = 44
   CONFIRM_KEYS = [ENTER_KEY_CODE, SPACE_KEY_CODE, COMMA_KEY_CODE]
 
+  # private method: escape for XSS
+  escapeString = (string) ->
+    String(string).replace(/[&<>"'`=\/]/g, '').trim()
+
+  escapeTagsInput = (formInputDOM) ->
+    for item in $(formInputDOM).tagsinput('items')
+      escaped = escapeString(item)
+      if item != escaped
+        $(formInputDOM).tagsinput('remove', item)
+        $(formInputDOM).tagsinput('add', escaped)
+
   # set suggestion
   # *** use bloodhound.initialize after calling this method ***
   @setSuggestion = (suggestList) ->
@@ -29,6 +40,7 @@ class @My100TalesUtilTagsinput
 
   # set tag form
   @setTagForm = (formInputDOM, bloodhound, templates, tagClass) ->
+    # set form
     $(formInputDOM).tagsinput({
       typeaheadjs: [{
         hint: true,
@@ -46,13 +58,12 @@ class @My100TalesUtilTagsinput
       confirmKeys: CONFIRM_KEYS,
       tagClass: tagClass
     })
+    # block XSS
+    escapeTagsInput(formInputDOM)
 
+  # set custom event
   @setCustomEvent = (formInputDOM) ->
-    # private method: escape for XSS
-    escapeString = (string) ->
-      String(string).replace(/[&<>"'`=\/]/g, '').trim()
-
-    # private method: make score unique
+    # make score unique
     getScoreKeyByTagForm = (tag) ->
       separatorIndex = tag.indexOf(':')
       return '' if separatorIndex < 0
@@ -67,7 +78,6 @@ class @My100TalesUtilTagsinput
         targets.push(item) if itemKey == scoreKey
       $(formInputDOM).tagsinput('remove', item) for item in targets
 
-    # main logic: make score unique
     $(formInputDOM).on('beforeItemAdd', (event) ->
       event.item = escapeString(event.item)
       makeScoreUnique(event)
@@ -75,9 +85,5 @@ class @My100TalesUtilTagsinput
 
     # block XSS for saving data
     $(formInputDOM).on('itemAdded', (event) ->
-      for item in $(formInputDOM).tagsinput('items')
-        escaped = escapeString(item)
-        if item != escaped
-          $(formInputDOM).tagsinput('remove', item)
-          $(formInputDOM).tagsinput('add', escaped)
+      escapeTagsInput(formInputDOM)
     )
