@@ -1,8 +1,18 @@
 # tale_service
 class TaleService
   # -----------------------------------------------------------------
+  # Const
+  # -----------------------------------------------------------------
+  RECORDS_MAX_SIZE = 10_000
+
+  # -----------------------------------------------------------------
   # Create
   # -----------------------------------------------------------------
+
+  # validate new page
+  def self.validate(user_id)
+    TaleRepository.count(user_id) < RECORDS_MAX_SIZE
+  end
 
   # render page for create
   def self.new

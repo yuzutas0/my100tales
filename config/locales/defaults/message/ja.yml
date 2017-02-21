@@ -3,6 +3,8 @@
 ja:
   views:
     message:
+      validate:
+        limit: '上限に達しました。'
       create:
         doing: '作成中です.'
         success: '作成に成功しました.'

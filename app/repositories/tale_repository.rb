@@ -28,6 +28,11 @@ class TaleRepository
         .merge(Score.order('scores.view_number DESC'))
   end
 
+  # count records
+  def self.count(user_id)
+    Tale.where(user_id: user_id).count
+  end
+
   # -----------------------------------------------------------------
   # Read - detail
   # -----------------------------------------------------------------

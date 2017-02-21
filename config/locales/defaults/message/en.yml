@@ -3,6 +3,8 @@
 en:
   views:
     message:
+      validate:
+        limit: 'There are too many records.'
       create:
         doing: 'Now creating.'
         success: 'Successfully created.'
