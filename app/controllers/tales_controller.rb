@@ -13,7 +13,7 @@ class TalesController < ApplicationController
   # -----------------------------------------------------------------
   # GET /tales/new
   def new
-    redirect_to tales_path, notice: t('views.message.validate.limit') unless TaleService.validate(current_user.id)
+    redirect_to tales_path, alert: t('views.message.validate.limit') unless TaleService.validate(current_user.id)
     @tale = TaleService.new
     ready_form(@tale, current_user.id)
   end
