@@ -1,7 +1,17 @@
 #!/bin/bash
 
-# TODO: after deployment
+# Not execute
+# It's the same as logrotate
+
+# ================================
+# variables
+# ================================
+
 app_name=$1
+
+# ================================
+# operation
+# ================================
 
 su
 
