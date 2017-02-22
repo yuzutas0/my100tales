@@ -10,16 +10,15 @@ os_user=$2
 yum -y install logwatch
 # check: /usr/share/logwatch/default.conf/logwatch.conf
 
-# TODO: after deployment
-cat << _EOF > /etc/logrotate.d/unicorn
-/var/www/${app_name}/log/unicorn.log {
+cat << \_EOF > /etc/logrotate.d/unicorn
+/var/www/${app_name}/shared/log/production.log {
   weekly
   rotate 4
   missingok
   notifempty
   copytruncate
   create 0664 wheel ${os_user}
-      minsize 1M
+    minsize 1M
   lastaction
     pid=/tmp/unicorn.pid
     test -s $pid && kill -USR1 "$(cat $pid)"
