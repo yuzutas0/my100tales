@@ -63,4 +63,12 @@ class TagRepository
     # execute
     CommonRepository.select_hash_with_user_id(user_id, query)
   end
+
+  # -----------------------------------------------------------------
+  # Update
+  # -----------------------------------------------------------------
+
+  def self.update(tag, name)
+    tag.update(name: name)
+  end
 end

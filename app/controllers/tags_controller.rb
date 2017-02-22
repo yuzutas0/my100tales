@@ -20,7 +20,7 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   # PATCH /tags/:view_number
   def update
-    if @tag.update(tag_params)
+    if TagService.update(@tag, tag_params)
       flash[:notice] = t('views.message.update.success')
     else
       flash[:alert] = TagDecorator.flash(@tag, flash)

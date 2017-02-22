@@ -12,6 +12,16 @@ class TagService
   end
 
   # -----------------------------------------------------------------
+  # Update
+  # -----------------------------------------------------------------
+
+  # called by TagsController#update
+  # one request can update only one column
+  def self.update(tag, params)
+    TagRepository.update(tag, TaleForm.escape(params[:name]))
+  end
+
+  # -----------------------------------------------------------------
   # Read
   # -----------------------------------------------------------------
 

@@ -75,10 +75,6 @@ class ScoreRepository
   # Update
   # -----------------------------------------------------------------
 
-  def self.update(score, params)
-    score.update(params)
-  end
-
   def self.update_key(score, key, user_id)
     # valid
     return false if key.blank?
@@ -99,6 +95,10 @@ class ScoreRepository
     result = ActiveRecord::Base.connection.update(sql)
     # return
     result > 0
+  end
+
+  def self.update_value(score, value)
+    score.update(value: value)
   end
 
   # -----------------------------------------------------------------
