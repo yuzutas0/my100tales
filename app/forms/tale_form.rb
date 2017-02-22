@@ -3,17 +3,8 @@ class TaleForm
   attr_reader :tags, :scores
 
   def initialize(params = {})
-    @tags = escape params[:tags]
+    @tags = self.class.escape params[:tags]
     @scores = []
-  end
-
-  # same as: javascripts/util/xss.coffee#escapeString
-  def escape(tags)
-    escaped = []
-    tags.each do |tag|
-      escaped << tag.gsub(/[&<>"'`=\/]/, '').strip
-    end
-    escaped
   end
 
   # @tags = 'tag1,tag2,score:value1,score:value2'
@@ -29,5 +20,10 @@ class TaleForm
       @scores << { score_content[0] => score_content[2] }
     end
     self
+  end
+
+  # same as: javascripts/util/xss.coffee#escapeString
+  def self.escape(tag = '')
+    tag.gsub(/[&<>"'`=\/]/, '').strip
   end
 end
