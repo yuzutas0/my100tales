@@ -32,6 +32,7 @@ class @My100TalesUtilMarkdownPreview
   # preview
   @previewMarkdown = (VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM) ->
     # bind data by Vue.js
+    Vue.config.devtools = false
     new Vue(
       el: VUE_MARKDOWN_DOM
       data:

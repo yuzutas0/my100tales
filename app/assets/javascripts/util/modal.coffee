@@ -2,6 +2,7 @@
 class @My100TalesUtilModal
 
   @createModal = (dom, actions...) ->
+    Vue.config.devtools = false
     new Vue(
       el: dom
       data:
