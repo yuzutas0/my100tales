@@ -18,8 +18,8 @@ class ScoreService
   # called by ScoresController#update
   # one request can update only one column, whether key or value
   def self.update(score, params, user_id)
-    key = TaleForm.escape(params[:key_name])
-    return ScoreRepository.update_key(score, key, user_id) if score.key_name != key
+    key = params[:key_name]
+    return ScoreRepository.update_key(score, TaleForm.escape(key), user_id) if score.key_name != key
     ScoreRepository.update_value(score, TaleForm.escape(params[:value]))
   end
 
