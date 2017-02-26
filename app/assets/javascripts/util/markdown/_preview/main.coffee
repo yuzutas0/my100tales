@@ -30,16 +30,16 @@ class @My100TalesUtilMarkdownPreview
       $(editorDom).scrollTop(top)
 
   # preview
-  @previewMarkdown = (VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM) ->
+  @previewMarkdown = (editorDom, previewDom, vueDom) ->
     # bind data by Vue.js
     Vue.config.devtools = false
     new Vue(
-      el: VUE_MARKDOWN_DOM
+      el: vueDom
       data:
-        content: $(VUE_MARKDOWN_EDITOR_DOM).val()
+        content: $(editorDom).val()
       filters:
         preview: (content) ->
           markdownToHtml(content)
     )
     # scroll
-    scroll(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM)
+    scroll(editorDom, previewDom)
