@@ -63,3 +63,11 @@ vim /etc/sysconfig/rkhunter
 # from: ALLOW_SSH_PROT_V1=2
 # to:   ALLOW_SSH_PROT_V1=0
 # -----------------------------------------
+
+# ================================
+# falsification
+# ================================
+
+yum -y install aide
+
+
