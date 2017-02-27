@@ -70,4 +70,20 @@ vim /etc/sysconfig/rkhunter
 
 yum -y install aide
 
+aide --init
 
+mv -f /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
+
+vim /etc/aide.conf
+# -----------------------------------------
+# # custom
+# /var/www CONTENT_EX
+# !/var/log
+# !/proc
+# -----------------------------------------
+
+aide -C
+
+less /var/log/aide/aide.log
+
+aide --update
