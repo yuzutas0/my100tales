@@ -76,10 +76,15 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    listen 80;
 #    listen [::]:80;
 #    server_name _;
-#    root /usr/share/nginx/html;
+#    error_page 403 404 500 503 = /custom_404.html;
 #
 #    location / {
 #      deny all;
+#    }
+#
+#    location /custom_404.html {
+#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL $request_uri was not found on this server.</p>\n</body></html>";
+#      internal;
 #    }
 #  }
 
@@ -155,10 +160,15 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    listen 80;
 #    listen [::]:80;
 #    server_name _;
-#    root /usr/share/nginx/html;
+#    error_page 403 404 500 503 = /custom_404.html;
 #
 #    location / {
 #      deny all;
+#    }
+#
+#    location /custom_404.html {
+#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL $request_uri was not found on this server.</p>\n</body></html>";
+#      internal;
 #    }
 #  }
 
