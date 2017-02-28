@@ -137,7 +137,7 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #    gzip on;
 #    gzip_proxied any;
 #    gzip_min_length 1k;
-#    gzip_types text/html text/css text/javascript application/x-javascript;
+#    gzip_types text/css text/javascript application/x-javascript;
 #
 #    location ~* \.php$ {
 #      deny all;
@@ -157,19 +157,93 @@ vim /etc/nginx/conf.d/${app_name}.conf
 #  }
 #
 #  server {
-#    listen 80;
-#    listen [::]:80;
+#    listen 80 default_server;
+#    listen [::]:80 default_server;
 #    server_name _;
-#    error_page 403 404 500 503 = /custom_404.html;
+#    error_page 400 401 403 404 500 501 502 503 504 = /custom_404.html;
 #
 #    location / {
 #      deny all;
 #    }
 #
 #    location /custom_404.html {
-#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL $request_uri was not found on this server.</p>\n</body></html>";
+#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body>\n</html>";
 #      internal;
 #    }
 #  }
+#
+#  server {
+#    listen 443 ssl default_server;
+#    listen [::]:443 ssl default_server;
+#    server_name _;
+#
+#    ssl on;
+#    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+#    ssl_prefer_server_ciphers on;
+#    ssl_ciphers ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!EXPORT:!DES:!3DES:!MD5:!DSS;
+#
+#    ssl_certificate /etc/letsencrypt/live/${domain_name}/fullchain.pem;
+#    ssl_certificate_key /etc/letsencrypt/live/${domain_name}/privkey.pem;
+#    ssl_trusted_certificate /etc/letsencrypt/live/${domain_name}/cert.pem;
+#
+#    error_page 400 401 403 404 500 501 502 503 504 = /custom_404.html;
+#
+#    location / {
+#      deny all;
+#    }
+#
+#    location /custom_404.html {
+#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body>\n</html>";
+#      internal;
+#    }
+#  }
+
+vim /etc/nginx/nginx.conf
+# --------------------------------------------------
+# from:
+# --------------------------------------------------
+#    server {
+#        listen       80 default_server;
+#        listen       [::]:80 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+#
+#        # Load configuration files for the default server block.
+#        include /etc/nginx/default.d/*.conf;
+#
+#        location / {
+#        }
+#
+#        error_page 404 /404.html;
+#            location = /40x.html {
+#        }
+#
+#        error_page 500 502 503 504 /50x.html;
+#            location = /50x.html {
+#        }
+#    }
+# --------------------------------------------------
+# to:
+# --------------------------------------------------
+# #    server {
+# #        listen       80 default_server;
+# #        listen       [::]:80 default_server;
+# #        server_name  _;
+# #        root         /usr/share/nginx/html;
+# #
+# #        # Load configuration files for the default server block.
+# #        include /etc/nginx/default.d/*.conf;
+# #
+# #        location / {
+# #        }
+# #
+# #        error_page 404 /404.html;
+# #            location = /40x.html {
+# #        }
+# #
+# #        error_page 500 502 503 504 /50x.html;
+# #            location = /50x.html {
+# #        }
+# #    }
 
 systemctl reload nginx
