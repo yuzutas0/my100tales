@@ -87,3 +87,23 @@ aide -C
 less /var/log/aide/aide.log
 
 aide --update
+
+cat << \_EOF > /etc/cron.daily/aidechecker
+#!/bin/bash
+
+MAILTO=root
+LOGFILE=/var/log/aide/aide.log
+AIDEDIR=/var/lib/aide
+
+/usr/sbin/aide -u > $LOGFILE
+cp $AIDEDIR/aide.db.new.gz $AIDEDIR/aide.db.gz
+
+x=$(grep "Looks okay" $LOGFILE | wc -l)
+if [ $x -eq 1 ]
+then
+  echo "All Systems Look OK" | /bin/mail -s "AIDE OK" $MAILTO
+else
+  echo "$(egrep "added|changed|removed" $LOGFILE)" | /bin/mail -s "AIDE DETECTED CHANGES" $MAILTO
+fi
+exit
+_EOF
