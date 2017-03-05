@@ -13,7 +13,7 @@ So, my100tales grows your ideas in order to make dreams come true.
 - Unicorn
 - MariaDB
 - Redis
-- ElasticSearch
+- Elasticsearch
 - Postfix
 
 ## Ruby version

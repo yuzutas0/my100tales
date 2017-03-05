@@ -5,7 +5,7 @@ namespace :elasticsearch do
     Tale.create_index
   end
 
-  desc 'Import to ElasticSearch'
+  desc 'Import to Elasticsearch'
   task import: :environment do
     Tale.import_index
   end
