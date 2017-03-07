@@ -50,3 +50,15 @@ _EOF
 etckeeper init
 
 etckeeper commit "First Commit"
+
+# ================================
+# cache clean
+# ================================
+
+cat << \_EOF > /etc/cron.daily/yum-clean
+#!/bin/bash
+
+yum clean all
+
+exit
+_EOF
