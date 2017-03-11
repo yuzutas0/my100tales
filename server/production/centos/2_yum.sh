@@ -60,5 +60,4 @@ cat << \_EOF > /etc/cron.daily/yum-clean
 
 yum clean all
 
-exit
 _EOF
