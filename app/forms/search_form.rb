@@ -47,11 +47,7 @@ class SearchForm
   # eq - '=='
   # le - '<='
   def self.compare_master
-    [
-      { ge: '>=' },
-      { eq: '=' },
-      { le: '<=' }
-    ]
+    [{ ge: '>=' }, { eq: '=' }, { le: '<=' }]
   end
 
   def self.compare_to_query(compare)
@@ -107,11 +103,7 @@ class SearchForm
   end
 
   def convert_scores(scores)
-    {
-      key: scores[:key].map(&:html_safe),
-      co: scores[:co],
-      val: scores[:val].map(&:html_safe)
-    }
+    { key: scores[:key].map(&:html_safe), co: scores[:co], val: scores[:val].map(&:html_safe) }
   end
 
   def valid_sort?(sort, score_master)
