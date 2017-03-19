@@ -24,6 +24,6 @@ class TaleForm
 
   # same as: javascripts/util/xss.coffee#escapeString
   def self.escape(tag = '')
-    tag.gsub(/[&<>"'`=\/]/, '').strip
+    tag.gsub(%r{[&<>"'`=/]}, '').strip
   end
 end
