@@ -94,6 +94,7 @@ $ rake rubocop
 $ rake rubocop:auto_correct
 $ rubocop --auto-gen-config # => make source code better!
 $ rails_best_practices # => make source code better!
+$ bundle exec brakeman # => make apps secure!
 ```
 
 ## Deployment instructions
