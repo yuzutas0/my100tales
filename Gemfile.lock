@@ -63,6 +63,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bower-rails (0.10.0)
+    brakeman (3.5.0)
     builder (3.2.2)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
@@ -312,6 +313,7 @@ DEPENDENCIES
   activerecord-import
   better_errors
   bower-rails
+  brakeman
   bullet
   byebug
   capistrano

@@ -70,7 +70,10 @@ group :development do
 
   # Static analysis
   gem 'rubocop', require: false
-  gem 'rails_best_practices'
+  gem 'rails_best_practices', require: false
+
+  # Security
+  gem 'brakeman', require: false
 
   # Deploy
   gem 'capistrano'
