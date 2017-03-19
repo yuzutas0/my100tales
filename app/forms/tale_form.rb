@@ -3,8 +3,7 @@ class TaleForm
   attr_reader :tags, :scores
 
   def initialize(params = {})
-    @tags = self.class.escape params[:tags]
-    @scores = []
+    @tags, @scores = self.class.escape(params[:tags]), []
   end
 
   # @tags = 'tag1,tag2,score:value1,score:value2'
