@@ -5,15 +5,28 @@
 ## System dependencies
 
 ```
+# Sass
 $ brew install libsass
+
+# Bower
 $ brew install node
 $ npm install -g bower
+
+# Nokogiri -> Rails
+$ brew tap homebrew/dupes
+$ brew install libxml2 libxslt libiconv
+$ brew link --force libxml2
+$ brew link --force libxslt
 ```
 
 ## Configuration
 
 ```
+# Gemfile
+$ bundle config build.nokogiri --use-system-libraries
 $ bundle install --path vendor/bundle --without=production
+
+# Bower
 $ bundle exec rake bower:install
 ```
 
