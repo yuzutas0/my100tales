@@ -38,6 +38,14 @@ class ScoreRepository
         tale_score_relationships R
       ON
         S.id = R.score_id
+        AND R.tale_id IN (
+          SELECT
+            id
+          FROM
+            tales TL
+          WHERE
+            TL.user_id = S.user_id
+        ) -- reject for other user's post
       WHERE
         S.user_id = ?
       GROUP BY
@@ -62,6 +70,14 @@ class ScoreRepository
         tale_score_relationships R
       ON
         S.id = R.score_id
+        AND R.tale_id IN (
+          SELECT
+            id
+          FROM
+            tales TL
+          WHERE
+            TL.user_id = S.user_id
+        ) -- reject for other user's post
       WHERE
         S.user_id = ?
       GROUP BY

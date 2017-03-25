@@ -29,6 +29,14 @@ class TagRepository
         tale_tag_relationships R
       ON
         T.id = R.tag_id
+        AND R.tale_id IN (
+          SELECT
+            id
+          FROM
+            tales TL
+          WHERE
+            TL.user_id = T.user_id
+        ) -- reject for other user's post
       WHERE
         T.user_id = ?
       GROUP BY
@@ -54,6 +62,14 @@ class TagRepository
         tale_tag_relationships R
       ON
         T.id = R.tag_id
+        AND R.tale_id IN (
+          SELECT
+            id
+          FROM
+            tales TL
+          WHERE
+            TL.user_id = T.user_id
+        ) -- reject for other user's post
       WHERE
         T.user_id = ?
       GROUP BY
