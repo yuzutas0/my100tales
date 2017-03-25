@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 # Base
-gem 'rails', '4.2.6'
+ruby '2.3.0'
+gem 'rails', '4.2.7.1'
 gem 'sdoc', '~> 0.4.0', group: :doc # TODO: document
 
 # ENV
@@ -10,8 +11,8 @@ gem 'dotenv-rails'
 # M/W
 gem 'mysql2'
 gem 'redis-rails'
-gem 'elasticsearch-rails'
-gem 'elasticsearch-model'
+gem 'elasticsearch-rails', '0.1.9'
+gem 'elasticsearch-model', '0.1.9'
 
 # SQL Performance
 gem 'activerecord-import'
@@ -32,17 +33,17 @@ gem 'data-confirm-modal'
 
 # Stylesheet
 gem 'sassc-rails' # gem 'sass-rails', '~> 5.0'
-gem 'honoka-rails' # gem 'bootstrap-sass'
+gem 'honoka-rails', '~> 3.3.6.0' # gem 'bootstrap-sass'
 
 # JavaScript
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'vuejs-rails'
+gem 'jquery-rails', '4.1.1'
+gem 'vuejs-rails', '1.0.21'
 gem 'bower-rails'
 
 # View Performance
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5.0'
 
 # View Log
 gem 'quiet_assets'

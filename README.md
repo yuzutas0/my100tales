@@ -16,12 +16,6 @@ So, my100tales grows your ideas in order to make dreams come true.
 - Elasticsearch
 - Postfix
 
-## Ruby version
-
-```
-2.3.0
-```
-
 ## Setup
 
 - [Local](server/local/)
