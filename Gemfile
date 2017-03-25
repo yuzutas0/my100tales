@@ -28,7 +28,7 @@ gem 'rubyzip'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'redcarpet'
-gem 'gemoji'
+gem 'gemoji', '~> 2.1.0'
 gem 'data-confirm-modal'
 
 # Stylesheet
