@@ -3,7 +3,7 @@ require 'dotenv'
 Dotenv.load '.env'
 
 # config valid only for current version of Capistrano
-lock '3.7.1'
+lock '~> 3.7.0'
 
 set :application, 'my100tales'
 set :repo_url, 'https://github.com/yuzutas0/my100tales.git'

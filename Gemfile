@@ -77,7 +77,7 @@ group :development do
   gem 'brakeman', require: false
 
   # Deploy
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.7.0'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
