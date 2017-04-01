@@ -23,7 +23,7 @@ $ brew link --force libxslt
 
 ```
 # Gemfile
-$ bundle config build.nokogiri --use-system-libraries
+$ bundle config build.nokogiri --use-system-libraries # FIXME
 $ bundle install --path vendor/bundle --without=production
 
 # Bower
