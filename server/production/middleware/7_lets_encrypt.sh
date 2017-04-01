@@ -35,3 +35,5 @@ su
 cat << _EOF > /etc/cron.weekly/certbot
 /home/${os_user}/certbot/certbot-auto renew --post-hook "systemctl restart nginx" 1 > /dev/null 2 > /dev/null
 _EOF
+
+chmod 755 /etc/cron.weekly/certbot

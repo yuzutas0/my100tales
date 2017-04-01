@@ -61,3 +61,5 @@ cat << \_EOF > /etc/cron.daily/yum-clean
 yum clean all
 
 _EOF
+
+chmod 755 /etc/cron.daily/yum-clean

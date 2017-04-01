@@ -107,3 +107,5 @@ else
 fi
 exit
 _EOF
+
+chmod 755 /etc/cron.daily/aidechecker
