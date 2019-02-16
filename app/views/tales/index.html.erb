@@ -43,6 +43,7 @@
       <div>
         <% tale.tale_tag_relationships.each do |relation| %>
           <% tag = (@tags.select { |tag| tag.id == relation.tag_id }).first %>
+          <% next if tag.blank? %>
           <% path = tales_path('tags':{'id':[tag.view_number]}) %>
           <%= link_to path, class: 'module__label layout__tales__index__list__item__tags' do %>
             <%= fa_icon('tag') + ' ' + tag.name %>
@@ -51,6 +52,7 @@
 
         <% tale.tale_score_relationships.each do |relation| %>
           <% score = (@scores.select { |score| score.id == relation.score_id }).first %>
+          <% next if score.blank? %>
           <% path = tales_path('scores': {
               'key': [score.key_name],
               'co': [score.key_name + ':eq'],
